@@ -13,9 +13,9 @@ My research combines growth theory, applied econometrics and computable general 
 
 Research interests
 ------
-Development Economics · Environmental Economics · Circular Economy<br>
-General Equilibrium · Applied CGE Modelling<br>
-Applied Econometrics · AI and Business Analytics
+Development&nbsp;Economics · Environmental&nbsp;Economics · Circular&nbsp;Economy<br>
+General&nbsp;Equilibrium · Applied&nbsp;CGE&nbsp;Modelling<br>
+Applied&nbsp;Econometrics · AI&nbsp;and&nbsp;Business&nbsp;Analytics
 
 Current positions
 ------
