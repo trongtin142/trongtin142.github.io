@@ -132,7 +132,7 @@ atom_feed:
 
 
 # SEO Related
-google_site_verification :
+google_site_verification : "GpXo4pNMFlwi4mRld6GGNhUdSAf6r1T83vrOygmtV9Y"
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
@@ -194,6 +194,7 @@ exclude:
   - README
   - tmp
   - vendor
+  - talkmap
 keep_files:
   - .git
   - .svn
