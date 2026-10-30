@@ -62,9 +62,10 @@ h1, h2, h3, h4, h5, h6,
     color: var(--global-heading-color);
 }
 
-/* Avatar ring in jacket blue */
-.author__avatar img {
-    border: 3px solid var(--global-base-color);
-    padding: 3px;
-    background: var(--global-bg-color);
+/* Avatar ring in jacket blue (desktop sidebar) */
+html .author__avatar img {
+    @include breakpoint($large) {
+        border: 2px solid var(--global-base-color);
+        padding: 4px;
+    }
 }
