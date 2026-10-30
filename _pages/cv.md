@@ -34,7 +34,9 @@ Research visits
 
 Research interests
 ======
-Development Economics · Applied Econometrics · Environmental Economics and Circular Economy · General Equilibrium · Applied CGE Modelling · AI and Business Analytics
+Development Economics · Environmental Economics · Circular Economy<br>
+General Equilibrium · Applied CGE Modelling<br>
+Applied Econometrics · AI and Business Analytics
 
 {% if site.publications.size > 0 %}
 Research
