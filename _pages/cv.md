@@ -11,54 +11,55 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* **PhD in Economics** (in progress), EconomiX, Université Paris Nanterre, Doctoral School ED 396
+  * Dissertation: *Productive efficiency, corruption and economic growth in aid recipient countries*
+  * Supervisor: Thi Kim Cuong Pham; co-supervisor: Ngoc-Sang Pham (EM Normandie)
+* **MA in Development Economics**, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City and Erasmus University Rotterdam, 2011–2013
+* **BA in Business Administration**, University of Economics Ho Chi Minh City, 2006–2010
 
-Work experience
+Academic positions
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* **Contract Lecturer**, ESCP Business School, Paris, 2026–present
+  * Microeconomics (first-year international Bachelor students)
+* **Contract Lecturer**, Sciences Po
+  * Mathematics for the Economy; Quantitative Methods for the Social Sciences; Trade and International Finance
+* **Lecturer**, School of Business, International University, VNU-HCMC
+* **Contract Lecturer**, EconomiX, Université Paris Nanterre, 2023–2025
+* **Lecturer**, Faculty of Management, Ho Chi Minh City University of Law, 2013–2023
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
+Research visits
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* **Tallinn University of Technology**, Estonia, 2018–2019
+  * Research secondment funded by the EU Horizon 2020 programme, project *Institutions for Knowledge Intensive Development*
 
-Publications
+Research interests
+======
+Development Economics · Applied Econometrics · Environmental Economics and Circular Economy · General Equilibrium · Applied CGE Modelling · AI and Business Analytics
+
+{% if site.publications.size > 0 %}
+Research
 ======
   <ul>{% for post in site.publications reversed %}
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
-  
-Talks
+{% endif %}
+
+{% if site.talks.size > 0 %}
+Conference presentations
 ======
   <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
+    {% include archive-single-talk-cv.html %}
   {% endfor %}</ul>
-  
-Teaching
+{% endif %}
+
+Professional service
 ======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
+* **Journal referee**: Journal for International Business and Entrepreneurship Development (2025)
+* **Conference referee**: MBIC 2026 (International University, VNU-HCMC); SEBL 2026 (University of Economics and Law, VNU-HCMC)
+* **Session chair**: ICDE 2025 (Paris); VEAM 2025
+* **Organizing committee**: ICDE 2025
+
+Professional memberships
 ======
-* Currently signed in to 43 different slack teams
+* International Society for Vietnamese Economists (ISVE), 2025–present
+* French Economic Association (AFSE), 2026–present
