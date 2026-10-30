@@ -14,8 +14,8 @@ Education
 * **PhD in Economics** (in progress), EconomiX, Université Paris Nanterre, Doctoral School ED 396
   * Dissertation: *Productive efficiency, corruption and economic growth in aid recipient countries*
   * Supervisor: Thi Kim Cuong Pham; co-supervisor: Ngoc-Sang Pham (EM Normandie)
-* **MA in Development Economics**, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City and Erasmus University Rotterdam, 2011–2013
-* **BA in Business Administration**, University of Economics Ho Chi Minh City, 2006–2010
+* **MA in Development Economics**, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City (UEH) and Erasmus University Rotterdam (ISS), 2011–2013
+* **BA in Business Administration**, University of Economics Ho Chi Minh City (UEH), 2006–2010
 
 Teaching experience
 ======
