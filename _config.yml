@@ -26,9 +26,9 @@ author:
   avatar           : "profile.png"
   name             : "Tin NGUYEN-TRONG"
   pronouns         : # example: "she/her"  
-  bio              : "PhD candidate in Economics"
+  bio              : "PhD candidate in Economics, EconomiX (CNRS), Université Paris Nanterre"
   location         : "Paris, France"
-  employer         : "EconomiX, Université Paris Nanterre"
+  employer         : # short institution name (long names get cut off)
   uri              : # URL
   email            : # add an email address here
 
