@@ -38,5 +38,3 @@ Education
 * PhD in Economics (in progress), Université Paris Nanterre
 * MA in Development Economics, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City (UEH) and Erasmus University Rotterdam (ISS)
 * BA in Business Administration, University of Economics Ho Chi Minh City (UEH)
-
-See my [CV](/cv/) for details.
