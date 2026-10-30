@@ -13,7 +13,7 @@ My research combines growth theory, applied econometrics and computable general 
 
 Research interests
 ------
-<div class="research-interests" style="display:grid; grid-template-columns:9em 1fr; column-gap:1.5em; row-gap:0.35em; margin-bottom:1.3em;">
+<div class="research-interests" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.35em; margin-bottom:1.3em;">
   <div>Growth</div><div>Endogenous Innovation and Economic Growth; Institutions and Governance</div>
   <div>Sustainability</div><div>Development Economics; Environmental Economics; Circular Economy</div>
   <div>Methods</div><div>CGE Modeling; Applied Econometrics; AI and Business Analytics</div>
