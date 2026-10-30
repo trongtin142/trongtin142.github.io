@@ -7,6 +7,38 @@ author_profile: true
 
 {% include base_path %}
 
+<h2>Sciences Po</h2>
+<ul>
+  <li><strong>Trade and International Finance</strong>, tutorials, Reims campus, 2026/2027</li>
+  <li><strong>Mathematics for the Economy</strong></li>
+  <li><strong>Quantitative Methods for the Social Sciences</strong></li>
+</ul>
+
+<h2>ESCP Business School, Paris</h2>
+<ul>
+  <li><strong>Microeconomics</strong>, first-year international Bachelor students, Fall 2026</li>
+</ul>
+
+<h2>International University, VNU-HCMC</h2>
+<ul>
+  <li><strong>Organizational Behavior</strong> (BA130IU)</li>
+  <li><strong>Statistics for Business</strong></li>
+  <li><strong>Workshop 1</strong> (BA256IU)</li>
+</ul>
+
+<h2>Université Paris Nanterre</h2>
+<ul>
+  <li>Contract Lecturer, EconomiX, 2023–2025</li>
+</ul>
+
+<h2>Ho Chi Minh City University of Law</h2>
+<ul>
+  <li>Lecturer, Faculty of Management, 2013–2023</li>
+</ul>
+
+{% if site.teaching.size > 0 %}
+<h2>Course pages</h2>
 {% for post in site.teaching reversed %}
   {% include archive-single.html %}
 {% endfor %}
+{% endif %}
