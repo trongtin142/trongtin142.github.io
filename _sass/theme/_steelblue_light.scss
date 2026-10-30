@@ -1,0 +1,70 @@
+/* ==========================================================================
+    STEEL BLUE THEME - LIGHT VERSION
+    Palette drawn from the profile portrait: steel-blue jacket, royal-blue
+    tie, cool grey background.
+    ========================================================================== */
+
+/* Color codes used for the theme */
+$primary-color              : #2E6DA4;   // jacket blue
+$navy                       : #1B3A5C;   // deep navy (headings)
+$royal                      : #1F4FA8;   // tie blue (hover)
+$ink                        : #2E343C;   // charcoal body text
+$slate                      : #5E6A78;   // muted text
+$page-bg                    : #F5F7FA;   // cool off-white
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+$lighter-gray               : mix(#fff, $gray, 90%);
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #2E6DA4;
+$notice-color               : #6B7785;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Steel Blue light theme for the site */
+:root {
+    --global-base-color                 : #{$primary-color};
+    --global-bg-color                   : #{$page-bg};
+    --global-footer-bg-color            : #E9EEF4;
+    --global-border-color               : #DDE3EA;
+    --global-dark-border-color          : #C3CCD6;
+    --global-code-background-color      : #EEF2F6;
+    --global-code-text-color            : #{$ink};
+    --global-fig-caption-color          : #{$slate};
+    --global-heading-color              : #{$navy};
+    --global-link-color                 : #{$primary-color};
+    --global-link-color-hover           : #{$royal};
+    --global-link-color-visited         : #{$primary-color};
+    --global-masthead-link-color        : #{$navy};
+    --global-masthead-link-color-hover  : #{$primary-color};
+    --global-text-color                 : #{$ink};
+    --global-text-color-light           : #{$slate};
+    --global-thead-color                : #E9EEF4;
+}
+
+/* Headings and the sidebar name take the deep navy of the portrait */
+h1, h2, h3, h4, h5, h6,
+.page__title,
+.author__name {
+    color: var(--global-heading-color);
+}
+
+/* Avatar ring in jacket blue */
+.author__avatar img {
+    border: 3px solid var(--global-base-color);
+    padding: 3px;
+    background: var(--global-bg-color);
+}

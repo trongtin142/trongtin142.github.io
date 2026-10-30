@@ -1,0 +1,52 @@
+/* ==========================================================================
+    STEEL BLUE THEME - DARK VERSION
+    ========================================================================== */
+
+/* Color codes used for the theme */
+$primary-color              : #3E78B5;
+$gray                       : #7a8288;
+$dark-gray                  : mix(#000, $gray, 40%);
+$darker-gray                : mix(#000, $gray, 60%);
+$light-gray                 : mix(#fff, $gray, 50%);
+
+$background                 : #101B28;   // night navy
+$text                       : #E6EBF1;
+$link                       : #7FB2E5;
+
+/* Color codes used for the site */
+$danger-color               : #ee5f5b;
+$info-color                 : #3E78B5;
+$notice-color               : #7a8288;
+$success-color              : #62c462;
+$warning-color              : #f89406;
+
+/* Other basic settings for the template */
+$border-radius              : 4px;
+$box-shadow                 : 0 1px 1px rgba(0, 0, 0, 0.125);
+$global-transition          : all 0.2s ease-in-out;
+$masthead-height            : 70px;
+$navicon-width              : 28px;
+$navicon-height             : 4px;
+$sidebar-link-max-width     : 250px;
+$sidebar-screen-min-width   : 1024px;
+
+/* Steel Blue dark theme for the site */
+html[data-theme="dark"] {
+    --global-base-color                 : #{$primary-color};
+    --global-bg-color                   : #{$background};
+    --global-footer-bg-color            : #0B141E;
+    --global-border-color               : #2C3E52;
+    --global-dark-border-color          : #3A5068;
+    --global-code-background-color      : #1A2838;
+    --global-code-text-color            : #{$text};
+    --global-fig-caption-color          : #A9B6C4;
+    --global-heading-color              : #CFE0F2;
+    --global-link-color                 : #{$link};
+    --global-link-color-hover           : #A9CDF0;
+    --global-link-color-visited         : #{$link};
+    --global-masthead-link-color        : #{$text};
+    --global-masthead-link-color-hover  : #{$link};
+    --global-text-color                 : #{$text};
+    --global-text-color-light           : #A9B6C4;
+    --global-thead-color                : #1A2838;
+}
