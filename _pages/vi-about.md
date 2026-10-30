@@ -1,0 +1,17 @@
+---
+permalink: /vi/
+title: "Giới thiệu"
+lang: vi
+author_profile: true
+---
+
+Tôi là nhà nghiên cứu và giảng viên Kinh tế học và Kinh tế lượng, hiện là nghiên cứu sinh tiến sĩ tại EconomiX (CNRS), Đại học Paris Nanterre, đồng thời giảng dạy tại ESCP Business School và Sciences Po. Tôi tin rằng kết hợp nghiên cứu với giảng dạy là cách tốt nhất để đóng góp cho ngành, và tôi luôn tâm huyết với việc chia sẻ tri thức cho thế hệ các nhà kinh tế học kế tiếp.
+
+Nghiên cứu của tôi xoay quanh bốn hướng chính:
+
+* **Lý thuyết cân bằng tổng thể.** Các mô hình cân bằng liên thời gian về tăng trưởng kinh tế, đổi mới sáng tạo và tài chính công, được xây dựng bằng các công cụ tối ưu lồi, nhằm nghiên cứu cách thuế, tham nhũng và thể chế định hình hiệu quả sản xuất và tăng trưởng dài hạn.
+* **Mô hình CGE ứng dụng.** Phân tích cân bằng tổng thể khả tính (CGE) đối với các chính sách khí hậu và thương mại, như định giá carbon và Cơ chế điều chỉnh carbon qua biên giới (CBAM) của EU, với trọng tâm là Việt Nam.
+* **Kinh tế lượng ứng dụng.** Phân tích dữ liệu bảng về viện trợ nước ngoài, quản trị nhà nước và chi tiêu công ở các quốc gia nhận viện trợ, sử dụng Stata, R và Python.
+* **Kinh tế tuần hoàn và nông lâm kết hợp.** Cách các nguyên tắc kinh tế tuần hoàn và hệ thống nông lâm kết hợp, chẳng hạn vườn rừng kết hợp cây lâu năm và cây trồng trên cùng một diện tích, có thể hỗ trợ sinh kế nông thôn bền vững và phục hồi đất ở Việt Nam.
+
+Tôi luôn mong muốn được kết nối với các nhà nghiên cứu và người làm thực tiễn, cũng như mở rộng mạng lưới hợp tác giữa châu Âu và Việt Nam. Xin vui lòng liên hệ với tôi nếu quan tâm đến việc hợp tác hoặc muốn trao đổi về các dự án tiềm năng.

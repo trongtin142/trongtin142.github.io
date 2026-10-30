@@ -1,0 +1,50 @@
+---
+layout: archive
+title: "Nghiên cứu"
+permalink: /vi/publications/
+lang: vi
+author_profile: true
+---
+
+{% if site.author.googlescholar %}
+  <div class="wordwrap">Danh sách bài báo cũng có trên <a href="{{site.author.googlescholar}}">hồ sơ Google Scholar</a> của tôi.</div>
+{% endif %}
+
+{% include base_path %}
+
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        <h2>{{ site.data.i18n.vi.publication_category[category[0]] | default: category[1].title }}</h2><hr />
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}
+
+<h2>Sách</h2>
+<ol class="pub-list" style="margin-bottom:1.5em;">
+  <li style="margin-bottom:0.6em;">Nguyen, T. H., <strong>Nguyen-Trong, T.</strong>, et al. (2016). <em>The analytical framework to adjust citizens’ behavior towards green growth in Vietnam cities</em>. UEH Publishing House. ISBN 978-604-922-158-3.</li>
+</ol>
+
+<h2>Kỷ yếu hội thảo</h2>
+<ol class="pub-list" style="margin-bottom:1.5em;">
+  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2020). Behavioral theories and research models of entrepreneurial intention: An overview. In <em>Proceedings of the Scientific Conference “Start-up 4.0”</em>. Vietnam National University Ho Chi Minh City Press. ISBN 978-604-73-7826-5.</li>
+  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2018). Applying Granger causality tests in VAR or VECM frameworks. In <em>Proceedings of the Scientific Conference “Models in Finance: Theory and Evidence”</em>. UEH Publishing House. ISBN 978-604-922-641-0.</li>
+  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2017). The causal relationship between money supply, inflation, and economic growth in Vietnam. In <em>Proceedings of the 4th International Conference on Finance and Economics</em>. ISBN 978-80-87990-11-7.</li>
+</ol>
+
+<h2>Phần mềm và dữ liệu</h2>
+<ol class="pub-list" style="margin-bottom:1.5em;">
+  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2026). <em>COFOG-Panel: Harmonising IMF GFS COFOG data into reproducible panel datasets</em> (Version 1.0.5) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.23558078">doi:10.5281/zenodo.23558078</a>.</li>
+</ol>
