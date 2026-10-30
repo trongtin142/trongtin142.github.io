@@ -17,18 +17,3 @@ My research is organised around four strands:
 * **Circular economy and agroforestry.** How circular economy principles and agroforestry systems, such as forest gardens that combine trees and crops on the same land, can support sustainable rural livelihoods and land restoration in Vietnam.
 
 I enjoy connecting with researchers and practitioners and expanding collaborative networks between Europe and Vietnam. Please do not hesitate to contact me if you are interested in collaborating or discussing potential projects.
-
-Research interests
-------
-<div class="research-interests" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.35em; margin-bottom:1.3em;">
-  <div>Growth</div><div>Endogenous Innovation and Economic Growth; Institutions and Governance</div>
-  <div>Sustainability</div><div>Development Economics; Environmental Economics; Circular Economy</div>
-  <div>Methods</div><div>CGE Modeling; Applied Econometrics; AI and Business Analytics</div>
-</div>
-
-Current positions
-------
-* PhD Candidate in Economics, EconomiX, Université Paris Nanterre
-* Contract Lecturer, Sciences Po
-* Contract Lecturer, ESCP Business School, Paris
-* Lecturer, School of Business, International University, VNU-HCMC
