@@ -17,15 +17,22 @@ Education
 * **MA in Development Economics**, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City and Erasmus University Rotterdam, 2011–2013
 * **BA in Business Administration**, University of Economics Ho Chi Minh City, 2006–2010
 
-Academic positions
+Teaching experience
 ======
-* **Contract Lecturer**, ESCP Business School, Paris, 2026–present
-  * Microeconomics (first-year international Bachelor students)
-* **Contract Lecturer**, Sciences Po
-  * Mathematics for the Economy; Quantitative Methods for the Social Sciences; Trade and International Finance
-* **Lecturer**, School of Business, International University, VNU-HCMC
-* **Contract Lecturer**, EconomiX, Université Paris Nanterre, 2023–2025
-* **Lecturer**, Faculty of Management, Ho Chi Minh City University of Law, 2013–2023
+<div class="cv-grid" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.9em; margin-bottom:1.3em;">
+  <div>2026–present</div>
+  <div><strong>ESCP Business School, France</strong><br>Microeconomics (UG)</div>
+  <div>2025–present</div>
+  <div><strong>Sciences Po, France</strong><br>Trade and International Finance; The Economy; Quantitative Methods for the Humanities and Social Sciences; Mathematics Applied to Quantitative Social Sciences (UG)</div>
+  <div>2025–present</div>
+  <div><strong>School of Business, International University, VNU-HCM, Vietnam</strong><br>Statistics for Business; Organizational Behavior; Workshop I (UG)</div>
+  <div>2023–2025</div>
+  <div><strong>Université Paris Nanterre, France</strong><br>Mathematics and Probability (M1); Programming: Focus on Power BI (M2); Business English for Banking and Finance (M1)</div>
+  <div>2013–2023</div>
+  <div><strong>Ho Chi Minh City University of Law, Vietnam</strong><br>Econometrics; Macroeconomics; Microeconomics (UG)</div>
+  <div></div>
+  <div><em>Supervision of undergraduate theses and student research projects</em></div>
+</div>
 
 Research visits
 ======
