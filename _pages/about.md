@@ -32,9 +32,3 @@ Current positions
 * Contract Lecturer, Sciences Po
 * Contract Lecturer, ESCP Business School, Paris
 * Lecturer, School of Business, International University, VNU-HCMC
-
-Education
-------
-* PhD in Economics (in progress), Université Paris Nanterre
-* MA in Development Economics, Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City (UEH) and Erasmus University Rotterdam (ISS)
-* BA in Business Administration, University of Economics Ho Chi Minh City (UEH)
