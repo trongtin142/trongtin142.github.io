@@ -34,9 +34,11 @@ Research visits
 
 Research interests
 ======
-Development&nbsp;Economics · Environmental&nbsp;Economics · Circular&nbsp;Economy<br>
-General&nbsp;Equilibrium · Applied&nbsp;CGE&nbsp;Modelling<br>
-Applied&nbsp;Econometrics · AI&nbsp;and&nbsp;Business&nbsp;Analytics
+<div class="research-interests" style="display:grid; grid-template-columns:9em 1fr; column-gap:1.5em; row-gap:0.35em; margin-bottom:1.3em;">
+  <div>Growth</div><div>Endogenous Innovation and Economic Growth; Institutions and Governance</div>
+  <div>Sustainability</div><div>Development Economics; Environmental Economics; Circular Economy</div>
+  <div>Methods</div><div>CGE Modeling; Applied Econometrics; AI and Business Analytics</div>
+</div>
 
 {% if site.publications.size > 0 %}
 Research
