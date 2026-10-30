@@ -1,14 +1,15 @@
 {% include base_path %}
+{% include lang-setup %}
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
         <button><span class="navicon"></span></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == '/' or page.url == '/index.html' %}selected{% endif %}">
-            <a href="{{ base_path }}/">{{ site.title }}</a>
+          <li class="masthead__menu-item masthead__menu-item--lg persist {% if page.url == home_url or page.url == '/index.html' %}selected{% endif %}">
+            <a href="{{ base_path }}{{ home_url }}">{{ site.title }}</a>
           </li>
-          {% for link in site.data.navigation.main %}
+          {% for link in nav_links %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
             {% else %}
@@ -20,6 +21,19 @@
           {% endfor %}
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
+          </li>
+          <li id="lang-switch" class="masthead__menu-item persist lang-switch">
+            {% if page_lang == "vi" %}
+            <a href="{{ base_path }}{{ alt_url }}" hreflang="en" lang="en" title="View this page in English">
+              <svg class="lang-switch__flag" viewBox="0 0 60 30" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><clipPath id="uk-flag-s"><path d="M0,0 v30 h60 v-30 z"/></clipPath><clipPath id="uk-flag-t"><path d="M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z"/></clipPath><g clip-path="url(#uk-flag-s)"><path d="M0,0 v30 h60 v-30 z" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" stroke-width="6"/><path d="M0,0 L60,30 M60,0 L0,30" clip-path="url(#uk-flag-t)" stroke="#C8102E" stroke-width="4"/><path d="M30,0 v30 M0,15 h60" stroke="#fff" stroke-width="10"/><path d="M30,0 v30 M0,15 h60" stroke="#C8102E" stroke-width="6"/></g></svg>
+              <span class="lang-switch__label">English</span>
+            </a>
+            {% else %}
+            <a href="{{ base_path }}{{ alt_url }}" hreflang="vi" lang="vi" title="Xem trang này bằng tiếng Việt">
+              <svg class="lang-switch__flag" viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15.00,4.00 16.35,8.15 20.71,8.15 17.18,10.71 18.53,14.85 15.00,12.29 11.47,14.85 12.82,10.71 9.29,8.15 13.65,8.15"/></svg>
+              <span class="lang-switch__label">Tiếng Việt</span>
+            </a>
+            {% endif %}
           </li>
         </ul>
         <ul class="hidden-links hidden"></ul>

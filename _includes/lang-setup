@@ -1,0 +1,32 @@
+{% comment %}
+  Language setup for the English / Vietnamese versions of the site.
+  English pages live at their usual URLs; Vietnamese pages set `lang: vi`
+  in their front matter and live under /vi/ (e.g. /vi/positions/).
+  Sets: page_lang, alt_lang, alt_url, has_alt, home_url, nav_links.
+{% endcomment %}
+{% if page.lang == "vi" %}
+  {% assign page_lang = "vi" %}
+  {% assign alt_lang = "en" %}
+  {% assign home_url = "/vi/" %}
+  {% assign nav_links = site.data.navigation.vi %}
+  {% assign alt_url = page.url | remove_first: "/vi" %}
+  {% if alt_url == "" %}{% assign alt_url = "/" %}{% endif %}
+  {% assign has_alt = true %}
+{% else %}
+  {% assign page_lang = site.locale | slice: 0, 2 | default: "en" %}
+  {% assign alt_lang = "vi" %}
+  {% assign home_url = "/" %}
+  {% assign nav_links = site.data.navigation.main %}
+  {% if page.url == "/" or page.url == "/index.html" %}
+    {% assign alt_url = "/vi/" %}
+  {% else %}
+    {% assign alt_url = "/vi" | append: page.url %}
+  {% endif %}
+  {% assign alt_page = site.pages | where: "url", alt_url | first %}
+  {% if alt_page %}
+    {% assign has_alt = true %}
+  {% else %}
+    {% assign has_alt = false %}
+    {% assign alt_url = "/vi/" %}
+  {% endif %}
+{% endif %}
