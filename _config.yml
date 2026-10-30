@@ -30,7 +30,7 @@ author:
   location         : "Paris, France"
   employer         : # short institution name (long names get cut off)
   uri              : # URL
-  email            : # add an email address here
+  email            : "trongtin.nguyen@parisnanterre.fr"
 
   # Academic websites
   academia         : # URL
@@ -38,7 +38,7 @@ author:
   googlescholar    : # URL
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            : # URL
+  orcid            : "https://orcid.org/0009-0006-0017-6374"
   semantic         : # URL
   ssrn             : # URL
   pubmed           : # URL
@@ -51,7 +51,7 @@ author:
   bitbucket        : # Username - Update with your username on the site
   codepen          : # Username
   dribbble         : # Username
-  github           : # Username
+  github           : "trongtin142"
   kaggle           : # Username  
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
@@ -66,7 +66,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "trongtin142"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
