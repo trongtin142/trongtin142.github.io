@@ -36,3 +36,34 @@
     "layout/archive",
     "layout/sidebar"
 ;
+
+
+/* Language switch (EN / VI flag button in the masthead) */
+.greedy-nav .visible-links .lang-switch a {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-left: 0.5rem;
+}
+
+.lang-switch__flag {
+  flex: none;
+  width: 24px;
+  height: 16px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(127, 127, 127, 0.35);
+}
+
+.lang-switch__label {
+  font-size: 0.9em;
+}
+
+@media (max-width: 420px) {
+  .greedy-nav .visible-links .lang-switch a {
+    gap: 0.3em;
+    margin-left: 0.25rem;
+  }
+  .lang-switch__label {
+    font-size: 0.8em;
+  }
+}
