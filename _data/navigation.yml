@@ -19,3 +19,23 @@ main:
 
   - title: "Contact"
     url: /contact/
+
+# Vietnamese menu, used on pages with `lang: vi` (same order as above).
+vi:
+  - title: "Công tác"
+    url: /vi/positions/
+
+  - title: "Học vấn"
+    url: /vi/education/
+
+  - title: "Nghiên cứu"
+    url: /vi/publications/
+
+  - title: "Dự án"
+    url: /vi/projects/
+
+  - title: "Giảng dạy"
+    url: /vi/teaching/
+
+  - title: "Liên hệ"
+    url: /vi/contact/

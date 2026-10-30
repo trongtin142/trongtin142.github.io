@@ -1,0 +1,18 @@
+# Interface text for the Vietnamese version of the site (pages with `lang: vi`).
+# English pages keep using _config.yml and _data/ui-text.yml as before.
+
+vi:
+  bio: "Nghiên cứu sinh Tiến sĩ Kinh tế học, EconomiX (CNRS), Đại học Paris Nanterre"
+  location: "Paris, Pháp"
+  email_label: "Email"
+  follow_button: "Theo dõi"
+  follow_label: "Theo dõi:"
+  powered_by: "Xây dựng bằng"
+  fork_of: "một nhánh của"
+  last_updated: "Cập nhật lần cuối"
+  site_map: "Sơ đồ trang"
+  publication_category:
+    published: "Bài báo đã công bố"
+    underreview: "Bài báo đang phản biện"
+    workingpapers: "Bài nghiên cứu (working papers)"
+    wip: "Nghiên cứu đang thực hiện"
