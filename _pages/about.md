@@ -7,9 +7,16 @@ redirect_from:
   - /about.html
 ---
 
-I am a PhD candidate in Economics at EconomiX (CNRS), Université Paris Nanterre. My dissertation, *Productive efficiency, corruption and economic growth in aid recipient countries*, is supervised by Thi Kim Cuong Pham and co-supervised by Ngoc-Sang Pham (EM Normandie).
+I am a researcher and lecturer in Economics and Econometrics, currently a PhD candidate at EconomiX (CNRS), Université Paris Nanterre, and a lecturer at ESCP Business School and Sciences Po. I believe that combining research and teaching is the best way to contribute to the field, and I am strongly committed to sharing knowledge with the next generation of economists.
 
-My research combines growth theory, applied econometrics and computable general equilibrium (CGE) modelling. My dissertation studies how foreign aid, taxation, corruption and public expenditure shape productive efficiency and economic growth in aid recipient countries. In parallel, I use CGE models to evaluate climate and trade policies, such as carbon pricing and the EU Carbon Border Adjustment Mechanism, with a focus on Vietnam.
+My research is organised around four strands:
+
+* **General equilibrium theory.** Intertemporal equilibrium models of economic growth, innovation and public finance, built with tools from convex optimization, to study how taxation, corruption and institutions shape productive efficiency and long-run growth.
+* **Applied CGE modelling.** Computable general equilibrium analysis of climate and trade policies, such as carbon pricing and the EU Carbon Border Adjustment Mechanism, with a focus on Vietnam.
+* **Applied econometrics.** Panel data analysis of foreign aid, governance and public expenditure in aid recipient countries, using Stata, R and Python.
+* **Circular economy and agroforestry.** How circular economy principles and agroforestry systems, such as forest gardens that combine trees and crops on the same land, can support sustainable rural livelihoods and land restoration in Vietnam.
+
+I enjoy connecting with researchers and practitioners and expanding collaborative networks between Europe and Vietnam. Please do not hesitate to contact me if you are interested in collaborating or discussing potential projects.
 
 Research interests
 ------
