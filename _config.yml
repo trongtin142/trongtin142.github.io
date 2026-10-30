@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
+site_theme               : "steelblue" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
 title                    : "Tin NGUYEN-TRONG"
 title_separator          : "-"
 name                     : &name "Tin NGUYEN-TRONG"
@@ -23,7 +23,7 @@ repository               : "trongtin142/trongtin142.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Tin NGUYEN-TRONG"
   pronouns         : # example: "she/her"  
   bio              : "PhD candidate in Economics, EconomiX (CNRS), Université Paris Nanterre"
