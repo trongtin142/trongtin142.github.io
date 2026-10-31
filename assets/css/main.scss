@@ -58,6 +58,11 @@
   font-size: 0.9em;
 }
 
+/* Keep the always-visible items (title, theme, language) clear of the menu button */
+#site-nav button:not(.hidden) ~ .visible-links {
+  padding-right: 3rem;
+}
+
 @media (max-width: 420px) {
   .greedy-nav .visible-links .lang-switch a {
     gap: 0.3em;
@@ -65,5 +70,20 @@
   }
   .lang-switch__label {
     font-size: 0.8em;
+  }
+  .masthead__menu-item--lg {
+    padding-right: 1em;
+  }
+  .greedy-nav .visible-links #theme-toggle a {
+    margin: 0 0.6rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .masthead__menu-item--lg {
+    padding-right: 0.5em;
+  }
+  .greedy-nav .visible-links #theme-toggle a {
+    margin: 0 0.4rem;
   }
 }
