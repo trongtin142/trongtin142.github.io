@@ -11,8 +11,8 @@ layout: compress
     {% include head.html %}
     {% include head/custom.html %}
     {% if has_alt %}
-    <link rel="alternate" hreflang="{{ page_lang }}" href="{{ site.url }}{{ base_path }}{{ page.url }}">
-    <link rel="alternate" hreflang="{{ alt_lang }}" href="{{ site.url }}{{ base_path }}{{ alt_url }}">
+    <link rel="alternate" hreflang="{{ page_lang }}" href="{{ base_path }}{{ page.url }}">
+    <link rel="alternate" hreflang="{{ alt_lang }}" href="{{ base_path }}{{ alt_url }}">
     {% endif %}
   </head>
 
