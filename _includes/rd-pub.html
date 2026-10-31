@@ -1,0 +1,81 @@
+{%- comment -%}
+  One publication. Usage: {% include rd-pub.html pub=p %} or with compact=true (home page).
+{%- endcomment -%}
+{%- assign p = include.pub -%}
+{%- assign ty = site.data.publications.types | where: "key", p.type | first -%}
+{%- if page_lang == "vi" -%}
+  {%- assign badge = ty.badge_vi -%}
+  {%- assign note = p.note_vi | default: p.note -%}
+  {%- assign abs = p.abstract_vi | default: p.abstract -%}
+  {%- assign pubs_url = "/vi/publications/" -%}
+{%- else -%}
+  {%- assign badge = ty.badge -%}
+  {%- assign note = p.note -%}
+  {%- assign abs = p.abstract -%}
+  {%- assign pubs_url = "/publications/" -%}
+{%- endif -%}
+{%- assign authors_html = p.authors | replace: "Nguyen-Trong, T.", "<strong>Nguyen-Trong, T.</strong>" -%}
+<article class="pub" id="{% if include.compact %}home-{% endif %}{{ p.id }}"{% unless include.compact %} data-filter-item data-tags="{{ p.type }}" data-text="{{ p.title | downcase | escape }} {{ p.authors | downcase | escape }} {{ p.year }} {{ p.venue | downcase | escape }}"{% endunless %}>
+  <div class="pub__meta">
+    <span class="badge badge--{{ ty.tone }}">{{ badge }}</span>
+    <span class="pub__year">{{ p.year }}</span>
+    {% if p.rank %}<span class="pub__rank">{{ p.rank }}</span>{% endif %}
+    {% if p.extra and include.compact %}<span class="pub__rank">{{ p.extra | remove: "(" | remove: ")" | remove: "[Computer software]" | strip }}</span>{% endif %}
+  </div>
+  {% if include.compact %}
+  <h3 class="pub__title"><a href="{{ base_path }}{{ pubs_url }}#{{ p.id }}">{{ p.title }}</a></h3>
+  {% else %}
+  <h3 class="pub__title">{{ p.title }}</h3>
+  {% endif %}
+  <p class="pub__by">{{ authors_html }}
+    {%- if p.venue %} · <em>{{ p.venue }}</em>{% if note %} ({{ note }}){% endif %}{% endif -%}
+    {%- if p.booktitle %} · <em>{{ p.booktitle }}</em>{% endif -%}
+    {%- unless include.compact -%}
+      {%- if p.extra %} · {{ p.extra }}{% endif -%}
+      {%- if p.publisher %} · {{ p.publisher }}{% endif -%}
+      {%- if p.isbn %} · ISBN {{ p.isbn }}{% endif -%}
+    {%- endunless -%}
+  </p>
+  {%- unless include.compact -%}
+  {%- assign ob = "{" -%}{%- assign cb = "}" -%}
+  {%- capture bib -%}
+@{{ p.bib_type }}{{ ob }}{{ p.id }},
+  author    = {{ ob }}{{ p.bib_authors }}{{ cb }},
+  title     = {{ ob }}{{ p.title }}{{ cb }},
+{%- if p.venue %}
+  journal   = {{ ob }}{{ p.venue }}{{ cb }},{% endif -%}
+{%- if p.booktitle %}
+  booktitle = {{ ob }}{{ p.booktitle | replace: "“", "``" | replace: "”", "''" }}{{ cb }},{% endif -%}
+{%- if p.publisher %}
+  publisher = {{ ob }}{{ p.publisher }}{{ cb }},{% endif -%}
+{%- if p.bib_version %}
+  version   = {{ ob }}{{ p.bib_version }}{{ cb }},{% endif -%}
+{%- if p.isbn %}
+  isbn      = {{ ob }}{{ p.isbn }}{{ cb }},{% endif -%}
+{%- if p.doi %}
+  doi       = {{ ob }}{{ p.doi }}{{ cb }},{% endif -%}
+{%- if p.url %}
+  url       = {{ ob }}{{ p.url }}{{ cb }},{% endif -%}
+{%- if p.note %}
+  note      = {{ ob }}{{ p.note }}{{ cb }},{% endif %}
+  year      = {{ ob }}{{ p.year }}{{ cb }}
+{{ cb }}
+  {%- endcapture -%}
+  {%- capture apa -%}{{ p.authors }} ({{ p.year }}). {{ p.title }}{% if p.extra %} {{ p.extra }}{% endif %}.{% if p.venue %} {{ p.venue }}{% if p.note %} ({{ p.note }}){% endif %}.{% endif %}{% if p.booktitle %} In {{ p.booktitle }}.{% endif %}{% if p.publisher %} {{ p.publisher }}.{% endif %}{% if p.isbn %} ISBN {{ p.isbn }}.{% endif %}{% if p.doi %} https://doi.org/{{ p.doi }}{% endif %}{%- endcapture -%}
+  <div class="pub__act">
+    {% if abs %}<button class="btn btn--sm" type="button" data-toggle="abs-{{ p.id }}" aria-expanded="false" aria-controls="abs-{{ p.id }}">{{ t.abstract }}</button>{% endif %}
+    <button class="btn btn--sm" type="button" data-toggle="bib-{{ p.id }}" aria-expanded="false" aria-controls="bib-{{ p.id }}">{{ t.bibtex }}</button>
+    <button class="btn btn--sm" type="button" data-copy-text="{{ apa | strip | escape }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy_apa }}</span></button>
+    {% if p.doi %}<a class="btn btn--sm" href="https://doi.org/{{ p.doi }}">DOI{% include rd-icon.html name="ext" %}</a>{% endif %}
+    {% if p.url %}<a class="btn btn--sm" href="{{ p.url }}">{% if p.url contains "github.com" %}GitHub{% else %}Link{% endif %}{% include rd-icon.html name="ext" %}</a>{% endif %}
+    {% if p.pdf %}<a class="btn btn--sm" href="{{ p.pdf }}">{% include rd-icon.html name="file" %}PDF</a>{% endif %}
+    {% if p.slides %}<a class="btn btn--sm" href="{{ p.slides }}">{% include rd-icon.html name="board" %}Slides</a>{% endif %}
+    {% if p.doi %}<span class="altmetric-embed" data-badge-type="2" data-doi="{{ p.doi }}" data-hide-no-mentions="true"></span>{% endif %}
+  </div>
+  {% if abs %}<div class="pub__panel" id="abs-{{ p.id }}" hidden><p>{{ abs }}</p></div>{% endif %}
+  <div class="pub__panel" id="bib-{{ p.id }}" hidden>
+    <pre class="bib" id="bibtext-{{ p.id }}">{{ bib | strip | escape }}</pre>
+    <button class="btn btn--sm" type="button" data-copy="#bibtext-{{ p.id }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy_bibtex }}</span></button>
+  </div>
+  {%- endunless -%}
+</article>
