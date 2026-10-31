@@ -47,18 +47,3 @@ author_profile: true
 </div>
 
 </div>
-
-<div class="conf-section">
-<h2>Chủ tọa phiên và ban tổ chức</h2>
-
-<div class="conf-item">
-<div class="conf-item__event">Hội thảo quốc tế lần thứ 5 về Kinh tế phát triển (ICDE 2025), Đại học Paris Nanterre, Pháp</div>
-<div class="conf-item__detail">Thành viên ban tổ chức; chủ tọa phiên</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Hội nghị thường niên các nhà kinh tế học Việt Nam (VEAM 2025), Thái Nguyên, Việt Nam</div>
-<div class="conf-item__detail">Chủ tọa phiên</div>
-</div>
-
-</div>
