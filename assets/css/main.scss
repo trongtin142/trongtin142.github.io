@@ -97,3 +97,8 @@
     margin: 0 0.4rem;
   }
 }
+
+/* Alias part of the name, e.g. "(Tommy Nguyen)" on Vietnamese pages, in muted grey */
+.name-alias {
+  color: var(--global-text-color-light);
+}
