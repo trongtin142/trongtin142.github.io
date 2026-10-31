@@ -102,3 +102,35 @@
 .name-alias {
   color: var(--global-text-color-light);
 }
+
+/* Skills page: cards in a two-column grid (one column on narrow screens) */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5em;
+  margin: 0 0 1.5em;
+}
+
+.skill-card {
+  padding: 1.3em 1.6em;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  border-radius: 8px;
+}
+
+.skill-card h2 {
+  margin: 0 0 0.7em;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 1.2em;
+  line-height: 1.35;
+}
+
+.skill-card ul {
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
