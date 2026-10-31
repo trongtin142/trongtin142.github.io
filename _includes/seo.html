@@ -1,4 +1,6 @@
 {% include base_path %}
+{% assign seo_site_title = site.data.i18n[page.lang].name | default: site.title %}
+{% assign seo_site_description = site.data.i18n[page.lang].description | default: site.description %}
 
 {% if site.url %}
   {% assign seo_url = site.url | append: site.baseurl %}
@@ -7,14 +9,14 @@
 {% assign seo_url = seo_url | default: site.github.url %}
 
 {% if page.title %}
-  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: site.title %}
+  {% assign seo_title = page.title | append: " " | append: site.title_separator | append: " " | append: seo_site_title %}
 {% endif %}
 {% if seo_title %}
   {% assign seo_title = seo_title | markdownify | strip_html | strip_newlines | escape_once %}
 {% endif %}
-<title>{{ seo_title | default: site.title }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
+<title>{{ seo_title | default: seo_site_title }}{% if paginator %}{% unless paginator.page == 1 %} {{ site.title_separator }} {{ site.data.ui-text[site.locale].page | default: "Page" }} {{ paginator.page }}{% endunless %}{% endif %}</title>
 
-{% assign seo_description = page.description | default: page.excerpt | default: site.description %}
+{% assign seo_description = page.description | default: page.excerpt | default: seo_site_description %}
 {% if seo_description %}
   {% assign seo_description = seo_description | markdownify | strip_html | strip_newlines | escape_once %}
 {% endif %}
@@ -71,7 +73,7 @@ Twitter username (site.twitter.username), matching upstream behavior.
 {% endcomment %}
 {% if site.twitter.username %}
   <meta name="twitter:site" content="@{{ site.twitter.username | replace: "@", "" }}">
-  <meta name="twitter:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
+  <meta name="twitter:title" content="{{ page.title | default: seo_site_title | markdownify | strip_html | strip_newlines | escape_once }}">
   <meta name="twitter:description" content="{{ seo_description }}">
   {% if canonical_url %}
     <meta name="twitter:url" content="{{ canonical_url }}">
@@ -109,7 +111,7 @@ Twitter username (site.twitter.username), matching upstream behavior.
     {
       "@context" : "http://schema.org",
       "@type" : "{% if site.social.type %}{{ site.social.type }}{% else %}Person{% endif %}",
-      "name" : "{{ site.social.name | default: site.name }}",
+      "name" : "{{ site.data.i18n[page.lang].name | default: site.social.name | default: site.name }}",
       "url" : {{ seo_url | jsonify }},
       "sameAs" : {{ site.social.links | jsonify }}
     }
@@ -131,8 +133,8 @@ Twitter username (site.twitter.username), matching upstream behavior.
 
 {% comment %} Open Graph protocol data (https://ogp.me/), used by social media {% endcomment %}
 <meta property="og:locale" content="{{ site.locale | default: "en" }}">
-<meta property="og:site_name" content="{{ site.title }}"> 
-<meta property="og:title" content="{{ page.title | default: site.title | markdownify | strip_html | strip_newlines | escape_once }}">
+<meta property="og:site_name" content="{{ seo_site_title }}"> 
+<meta property="og:title" content="{{ page.title | default: seo_site_title | markdownify | strip_html | strip_newlines | escape_once }}">
 {% if page.date %}
   <meta property="og:type" content="article">
 {% endif %}
