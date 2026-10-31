@@ -9,6 +9,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Weekly rebuild so the ORCID list on the Publications page stays current
+  schedule:
+    - cron: "17 4 * * 1"
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -46,9 +50,33 @@ jobs:
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v6.0.0
+      - name: Fetch ORCID works
+        # Refreshes _data/orcid.json from the public ORCID API; keeps the committed copy if the call fails
+        run: |
+          if curl -sf -H "Accept: application/json" "https://pub.orcid.org/v3.0/0009-0006-0017-6374/works" -o /tmp/orcid.json && python3 -c "import json; json.load(open('/tmp/orcid.json'))"; then
+            cp /tmp/orcid.json _data/orcid.json
+          else
+            echo "ORCID fetch failed, keeping the committed snapshot"
+          fi
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
+        env:
+          JEKYLL_ENV: production
+      - name: Check out the redesign branch for the /preview/ site
+        id: preview
+        continue-on-error: true
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: redesign
+          path: preview-src
+      - name: Build /preview/ (redesign branch, not indexed)
+        if: steps.preview.outcome == 'success'
+        run: |
+          if [ -f preview-src/_data/orcid.json ] && [ -f /tmp/orcid.json ]; then cp /tmp/orcid.json preview-src/_data/orcid.json; fi
+          bundle exec jekyll build --source preview-src --destination _site/preview \
+            --baseurl "${{ steps.pages.outputs.base_path }}/preview" \
+            --config preview-src/_config.yml,preview-src/_config_preview.yml
         env:
           JEKYLL_ENV: production
       - name: Upload GitHub Pages artifact
