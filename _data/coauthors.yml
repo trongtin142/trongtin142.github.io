@@ -1,0 +1,20 @@
+# Co-authors, referenced by id from _data/publications.yml (field `coauthors`).
+# Affiliations are optional; leave them out when unknown.
+
+- id: levan
+  name: "Cuong Le-Van"
+  affiliation: "Professor Emeritus, Paris School of Economics"
+  affiliation_vi: "Giáo sư danh dự, Trường Kinh tế Paris (Paris School of Economics)"
+
+- id: pham-ns
+  name: "Ngoc-Sang Pham"
+  affiliation: "Professor of Economics, EM Normandie Business School"
+  affiliation_vi: "Giáo sư Kinh tế học, EM Normandie Business School"
+
+- id: pham-tkc
+  name: "Thi Kim Cuong Pham"
+  affiliation: "EconomiX (CNRS), Université Paris Nanterre"
+  affiliation_vi: "EconomiX (CNRS), Đại học Paris Nanterre"
+
+- id: nguyen-th
+  name: "T. H. Nguyen"
