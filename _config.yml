@@ -85,7 +85,7 @@ author:
 # Redesign (2026) settings. Leave a value empty to keep that feature hidden.
 rd:
   goatcounter              : "trongtin142"   # GoatCounter code, e.g. "trongtin" for https://trongtin.goatcounter.com
-  formspree                : ""   # Formspree form id, e.g. "xyzabcd" from https://formspree.io/f/xyzabcd
+  formspree                : "mjyyawll"   # Formspree form id, e.g. "xyzabcd" from https://formspree.io/f/xyzabcd
   orcid_sync               : true # list ORCID works that are not yet on the Publications page
   orcid_id                 : "0009-0006-0017-6374"
   cofog_repo               : "trongtin142/cofog-panel"
