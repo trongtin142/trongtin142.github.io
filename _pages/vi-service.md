@@ -13,10 +13,10 @@ author_profile: true
 
 <table class="service-table">
 <thead>
-<tr><th>Tạp chí</th><th>Số bài đã phản biện</th></tr>
+<tr><th>Tạp chí</th></tr>
 </thead>
 <tbody>
-<tr><td>Journal for International Business and Entrepreneurship Development <span class="service-table__publisher">(Inderscience)</span></td><td>8</td></tr>
+<tr><td>Journal for International Business and Entrepreneurship Development <span class="service-table__publisher">(Inderscience)</span></td></tr>
 </tbody>
 </table>
 
