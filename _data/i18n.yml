@@ -2,6 +2,8 @@
 # English pages keep using _config.yml and _data/ui-text.yml as before.
 
 vi:
+  name: "Nguyễn Trọng Tín (Tommy Nguyen)"
+  description: "Nguyễn Trọng Tín (Tommy Nguyen), nghiên cứu sinh Tiến sĩ Kinh tế học tại EconomiX, Đại học Paris Nanterre"
   bio: "Nghiên cứu sinh Tiến sĩ Kinh tế học, EconomiX (CNRS), Đại học Paris Nanterre"
   location: "Paris, Pháp"
   email_label: "Email"
