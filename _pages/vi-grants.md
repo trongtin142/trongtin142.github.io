@@ -9,11 +9,11 @@ author_profile: true
 {% include base_path %}
 
 <div class="conf-section">
-<h2>Tài trợ nghiên cứu cạnh tranh</h2>
+<h2>Tài trợ nghiên cứu</h2>
 
 <div class="conf-item">
 <div class="conf-item__event">Tài trợ trao đổi nghiên cứu EU Horizon 2020</div>
-<div class="conf-item__detail">Biệt phái nghiên cứu tại Đại học Công nghệ Tallinn, Estonia (từ tháng 9/2018 đến tháng 1/2019), dự án <em>Institutions for Knowledge Intensive Development</em> (mã tài trợ 734712)</div>
+<div class="conf-item__detail">Học giả nghiên cứu (Visiting Scholar) tại Đại học Công nghệ Tallinn, Estonia (từ tháng 9/2018 đến tháng 1/2019), dự án <em>Institutions for Knowledge Intensive Development</em> (mã tài trợ 734712)</div>
 <div class="conf-item__detail">2018–2019</div>
 </div>
 
