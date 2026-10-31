@@ -16,7 +16,7 @@
   </div>
 
   <div class="author__content">
-    <h3 class="author__name">{{ i18n.name | default: author.name }}</h3>
+    <h3 class="author__name">{% if i18n.name_alias %}{{ i18n.name_primary }} <span class="name-alias">{{ i18n.name_alias }}</span>{% else %}{{ i18n.name | default: author.name }}{% endif %}</h3>
     {% if author.pronouns %}<p class="author__pronouns">{{ author.pronouns }}</p>{% endif %}
     {% if author.bio %}<p class="author__bio">{{ i18n.bio | default: author.bio }}</p>{% endif %}
   </div>
