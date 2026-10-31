@@ -17,6 +17,9 @@ main:
   - title: "Teaching"
     url: /teaching/
 
+  - title: "Conferences"
+    url: /conferences/
+
   - title: "Skills"
     url: /skills/
 
@@ -39,6 +42,9 @@ vi:
 
   - title: "Giảng dạy"
     url: /vi/teaching/
+
+  - title: "Hội thảo"
+    url: /vi/conferences/
 
   - title: "Kỹ năng"
     url: /vi/skills/
