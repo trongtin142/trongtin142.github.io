@@ -14,6 +14,9 @@ main:
   - title: "Projects"
     url: /projects/
 
+  - title: "Grants"
+    url: /grants/
+
   - title: "Teaching"
     url: /teaching/
 
@@ -42,6 +45,9 @@ vi:
 
   - title: "Dự án"
     url: /vi/projects/
+
+  - title: "Tài trợ"
+    url: /vi/grants/
 
   - title: "Giảng dạy"
     url: /vi/teaching/
