@@ -18,20 +18,13 @@ author_profile: true
 </div>
 
 <div class="skill-card">
-<h2>Kinh tế lượng</h2>
+<h2>Phần mềm và công cụ</h2>
 <ul>
-<li>Stata, EViews, R, SPSS, AMOS, SmartPLS</li>
+<li>Stata, EViews, R, SPSS, AMOS, SmartPLS, Python, Power BI, LaTeX</li>
 </ul>
 </div>
 
-<div class="skill-card">
-<h2>Tin học</h2>
-<ul>
-<li>Python, Power BI, LaTeX</li>
-</ul>
-</div>
-
-<div class="skill-card">
+<div class="skill-card skill-card--wide">
 <h2>Ngôn ngữ</h2>
 <ul>
 <li>Tiếng Việt (bản ngữ); Tiếng Anh (C1); Tiếng Pháp (A2)</li>
