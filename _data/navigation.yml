@@ -17,6 +17,9 @@ main:
   - title: "Teaching"
     url: /teaching/
 
+  - title: "Skills"
+    url: /skills/
+
   - title: "Contact"
     url: /contact/
 
@@ -36,6 +39,9 @@ vi:
 
   - title: "Giảng dạy"
     url: /vi/teaching/
+
+  - title: "Kỹ năng"
+    url: /vi/skills/
 
   - title: "Liên hệ"
     url: /vi/contact/
