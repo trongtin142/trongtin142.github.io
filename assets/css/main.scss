@@ -39,11 +39,28 @@
 
 
 /* Language switch (EN / VI flag button in the masthead) */
+
+/* Slightly tighter menu spacing so the language button fits without
+   pushing tabs (e.g. Projects) into the overflow menu */
+.greedy-nav .visible-links a {
+  margin: 0 0.7rem;
+}
+.greedy-nav .visible-links li:first-child a {
+  margin-left: 0;
+}
+.masthead__menu-item--lg {
+  padding-right: 0.75em;
+}
+.greedy-nav .visible-links #theme-toggle a {
+  margin: 0 0.5rem;
+}
+
 .greedy-nav .visible-links .lang-switch a {
   display: flex;
   align-items: center;
   gap: 0.4em;
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
+  margin-right: 0;
 }
 
 .lang-switch__flag {
@@ -66,16 +83,9 @@
 @media (max-width: 420px) {
   .greedy-nav .visible-links .lang-switch a {
     gap: 0.3em;
-    margin-left: 0.25rem;
   }
   .lang-switch__label {
     font-size: 0.8em;
-  }
-  .masthead__menu-item--lg {
-    padding-right: 1em;
-  }
-  .greedy-nav .visible-links #theme-toggle a {
-    margin: 0 0.6rem;
   }
 }
 
