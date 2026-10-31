@@ -1,0 +1,90 @@
+---
+layout: rd
+---
+{% include rd-ctx.html %}
+{%- assign lp = "" -%}{%- if page_lang == "vi" -%}{%- assign lp = "/vi" -%}{%- endif -%}
+<section class="hero">
+  <div class="wrap hero__in">
+    <div class="hero__text">
+      <p class="eyebrow">{{ t.eyebrow }}</p>
+      <h1 class="hero__name">{% if t.name_alias %}{{ t.name_primary }} <span class="hero__alias">{{ t.name_alias }}</span>{% else %}{{ t.name }}{% endif %}</h1>
+      <p class="hero__role">{{ t.bio }} · {{ t.role }}</p>
+      <p class="hero__lead">{{ page.intro }}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/publications/">{% include rd-icon.html name="book" %}<span>{{ t.research }}</span></a>
+        <a class="btn" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+      </div>
+      {% include rd-profiles.html class="profiles--hero" %}
+    </div>
+    <figure class="hero__photo">
+      <img src="{{ base_path }}/images/profile.jpg" alt="{{ t.name }}" width="500" height="500" fetchpriority="high">
+      <figcaption>{% include rd-icon.html name="pin" %}{{ t.location }}</figcaption>
+    </figure>
+  </div>
+</section>
+
+{%- assign n_uni = site.data.timeline.teaching | size -%}
+{%- assign n_talks = site.data.conferences.talks | size -%}
+<section class="stats" aria-label="{{ t.name }}">
+  <div class="wrap stats__in">
+    <div class="stat"><b data-count="{{ page.themes | size }}">{{ page.themes | size }}</b><span>{{ t.stats_strands }}</span></div>
+    <div class="stat"><b data-count="{{ n_uni }}">{{ n_uni }}</b><span>{{ t.stats_universities }}</span></div>
+    <div class="stat"><b data-count="{{ n_talks }}">{{ n_talks }}</b><span>{{ t.stats_talks }}</span></div>
+    <div class="stat"><b data-count="3">3</b><span>{{ t.stats_countries }}</span></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <h2 class="section-title">{{ t.research_themes }}</h2>
+    <div class="themes">
+      {%- for th in page.themes -%}
+      <article class="card theme reveal">
+        {% include rd-icon.html name=th.icon %}
+        <h3>{{ th.title }}</h3>
+        <p>{{ th.text }}</p>
+      </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="wrap split">
+    <div>
+      <div class="section-head">
+        <h2 class="section-title">{{ t.selected_work }}</h2>
+        <a class="more" href="{{ base_path }}{{ lp }}/publications/">{{ t.all_research }}{% include rd-icon.html name="arrow" %}</a>
+      </div>
+      <div class="pubs pubs--compact">
+        {%- for p in site.data.publications.items -%}{%- if p.featured -%}{% include rd-pub.html pub=p compact=true %}{%- endif -%}{%- endfor -%}
+      </div>
+    </div>
+    <div>
+      <div class="section-head">
+        <h2 class="section-title">{{ t.news }}</h2>
+        <a class="more" href="{{ base_path }}{{ lp }}/news/">{{ t.all_news }}{% include rd-icon.html name="arrow" %}</a>
+      </div>
+      <ul class="news news--compact">
+        {%- for n in site.data.news limit: 3 -%}
+        <li class="news__item">
+          <time class="news__when">{% if page_lang == "vi" %}{{ n.label_vi }}{% else %}{{ n.label }}{% endif %}</time>
+          <p class="news__text">{% if page_lang == "vi" %}{{ n.text_vi }}{% else %}{{ n.text }}{% endif %}</p>
+        </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <p>{{ page.closing }}</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+        <a class="btn" href="{{ base_path }}{{ lp }}/projects/">{% include rd-icon.html name="sprout" %}<span>{{ t.projects }}</span></a>
+      </div>
+    </div>
+  </div>
+</section>
