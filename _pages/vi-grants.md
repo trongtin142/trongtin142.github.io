@@ -19,7 +19,7 @@ author_profile: true
 
 <div class="conf-item">
 <div class="conf-item__event">Đề tài NAFOSTED, Bộ Khoa học và Công nghệ</div>
-<div class="conf-item__detail">Thành viên nghiên cứu (chủ nhiệm: GS. Trong-Hoai Nguyen), đề tài cạnh tranh cấp quốc gia do Quỹ Phát triển Khoa học và Công nghệ Quốc gia tài trợ, đề tài <em>Điều chỉnh hành vi của người dân tại các đô thị Việt Nam – Tầm nhìn đến năm 2030</em></div>
+<div class="conf-item__detail">Thành viên nghiên cứu (chủ nhiệm: GS.TS Nguyễn Trọng Hoài), đề tài cạnh tranh cấp quốc gia do Quỹ Phát triển Khoa học và Công nghệ Quốc gia tài trợ, đề tài <em>Điều chỉnh hành vi của người dân tại các đô thị Việt Nam – Tầm nhìn đến năm 2030</em></div>
 <div class="conf-item__detail">2014–2016</div>
 </div>
 
@@ -30,19 +30,19 @@ author_profile: true
 
 <div class="conf-item">
 <div class="conf-item__event">Các yếu tố ảnh hưởng đến động lực nghiên cứu khoa học của sinh viên</div>
-<div class="conf-item__detail">Thành viên chính (chủ nhiệm: Huynh-Giang Ngo)</div>
+<div class="conf-item__detail">Thành viên chính (chủ nhiệm: ThS Ngô Huỳnh Giang)</div>
 <div class="conf-item__detail">2020–2022</div>
 </div>
 
 <div class="conf-item">
 <div class="conf-item__event">Các yếu tố ảnh hưởng đến động lực nghiên cứu khoa học của giảng viên</div>
-<div class="conf-item__detail">Thành viên chính (chủ nhiệm: TS. Van-Long Hoang)</div>
+<div class="conf-item__detail">Thành viên chính (chủ nhiệm: TS. Hoàng Văn Long)</div>
 <div class="conf-item__detail">2020–2021</div>
 </div>
 
 <div class="conf-item">
 <div class="conf-item__event">Thiết kế chương trình và phương pháp giảng dạy kỹ năng mềm</div>
-<div class="conf-item__detail">Thành viên chính (chủ nhiệm: TS. Quyet-Chien Nguyen)</div>
+<div class="conf-item__detail">Thành viên chính (chủ nhiệm: TS. Nguyễn Quyết Chiến)</div>
 <div class="conf-item__detail">2014–2015</div>
 </div>
 
