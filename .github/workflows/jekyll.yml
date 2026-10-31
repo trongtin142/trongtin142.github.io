@@ -63,22 +63,6 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
-      - name: Check out the redesign branch for the /preview/ site
-        id: preview
-        continue-on-error: true
-        uses: actions/checkout@v7.0.1
-        with:
-          ref: redesign
-          path: preview-src
-      - name: Build /preview/ (redesign branch, not indexed)
-        if: steps.preview.outcome == 'success'
-        run: |
-          if [ -f preview-src/_data/orcid.json ] && [ -f /tmp/orcid.json ]; then cp /tmp/orcid.json preview-src/_data/orcid.json; fi
-          bundle exec jekyll build --source preview-src --destination _site/preview \
-            --baseurl "${{ steps.pages.outputs.base_path }}/preview" \
-            --config preview-src/_config.yml,preview-src/_config_preview.yml
-        env:
-          JEKYLL_ENV: production
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5.0.0
 
