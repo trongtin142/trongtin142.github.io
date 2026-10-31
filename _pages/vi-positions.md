@@ -1,24 +1,18 @@
 ---
-layout: archive
 title: "Công tác"
-permalink: /vi/positions/
-lang: vi
-author_profile: true
+eyebrow: "Giới thiệu"
+permalink: "/vi/positions/"
+lang: "vi"
+chip_teaching: "Giảng dạy"
+chip_research: "Nghiên cứu"
+description: "Quá trình công tác của Nguyễn Trọng Tín (Tommy Nguyen): ESCP Business School, Sciences Po, Trường Đại học Quốc tế ĐHQG-HCM, Đại học Paris Nanterre, Đại học Công nghệ Tallinn."
 ---
+{% include rd-ctx.html %}
 
-{% include base_path %}
-
-<div class="cv-grid" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.9em; margin-bottom:1.3em;">
-  <div>2026–nay</div>
-  <div><strong>Giảng viên thỉnh giảng</strong><br>ESCP Business School, Pháp</div>
-  <div>2025–nay</div>
-  <div><strong>Giảng viên</strong><br>Khoa Quản trị Kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM, Việt Nam</div>
-  <div>2025–nay</div>
-  <div><strong>Giảng viên thỉnh giảng</strong><br>Sciences Po, Pháp</div>
-  <div>2023–2025</div>
-  <div><strong>Giảng viên thỉnh giảng</strong><br>Đại học Paris Nanterre, EconomiX, Pháp</div>
-  <div>2018–2019</div>
-  <div><strong>Nghiên cứu viên thỉnh giảng</strong><br>Đại học Công nghệ Tallinn, Khoa Kinh tế và Tài chính, Estonia (biệt phái nghiên cứu, từ tháng 9/2018 đến tháng 1/2019)</div>
-  <div>2013–2023</div>
-  <div><strong>Giảng viên</strong><br>Khoa Quản trị, Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
+<div class="filters" data-filter-for="tl-positions">
+  <div class="chips" role="group"><button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}</button><button class="chip" type="button" data-key="teaching" aria-pressed="false">{{ page.chip_teaching }}</button><button class="chip" type="button" data-key="research" aria-pressed="false">{{ page.chip_research }}</button><button class="chip" type="button" data-key="current" aria-pressed="false">{{ t.now }}</button></div>
+</div>
+<div id="tl-positions">
+  {% include rd-timeline.html items=site.data.timeline.positions %}
+  <p class="empty" data-filter-empty hidden>{{ t.no_match }}</p>
 </div>

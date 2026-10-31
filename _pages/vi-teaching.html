@@ -1,35 +1,27 @@
 ---
-layout: archive
 title: "Giảng dạy"
-permalink: /vi/teaching/
-lang: vi
-author_profile: true
+eyebrow: "Giảng dạy"
+permalink: "/vi/teaching/"
+lang: "vi"
+chip_current: "Hiện tại"
+chip_past: "Trước đây"
+supervision: "Hướng dẫn khóa luận tốt nghiệp đại học và đề tài nghiên cứu khoa học của sinh viên."
+guest_title: "Thỉnh giảng và tư vấn"
+guest_text: "Vui lòng liên hệ."
+description: "Hoạt động giảng dạy của Nguyễn Trọng Tín (Tommy Nguyen): kinh tế vi mô, thương mại và tài chính quốc tế, phương pháp định lượng, thống kê và kinh tế lượng tại ESCP, Sciences Po, ĐH Quốc tế ĐHQG-HCM và Đại học Paris Nanterre."
 ---
+{% include rd-ctx.html %}
 
-{% include base_path %}
-
-<div class="cv-grid" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.9em; margin-bottom:1.3em;">
-  <div>2026–nay</div>
-  <div><strong>ESCP Business School, Pháp</strong><br>Kinh tế vi mô (đại học)</div>
-  <div>2025–nay</div>
-  <div><strong>Sciences Po, Pháp</strong><br>Thương mại và Tài chính quốc tế; Nền kinh tế (The Economy); Phương pháp định lượng cho Khoa học xã hội và nhân văn; Toán ứng dụng trong Khoa học xã hội định lượng (đại học)</div>
-  <div>2025–nay</div>
-  <div><strong>Khoa Quản trị Kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM, Việt Nam</strong><br>Thống kê trong kinh doanh; Hành vi tổ chức; Workshop I (đại học)</div>
-  <div>2023–2025</div>
-  <div><strong>Đại học Paris Nanterre, Pháp</strong><br>Toán và Xác suất (M1); Lập trình: chuyên đề Power BI (M2); Tiếng Anh thương mại cho Ngân hàng và Tài chính (M1)</div>
-  <div>2013–2023</div>
-  <div><strong>Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</strong><br>Kinh tế lượng; Kinh tế vĩ mô; Kinh tế vi mô (đại học)</div>
-  <div></div>
-  <div><em>Hướng dẫn khóa luận tốt nghiệp đại học và đề tài nghiên cứu khoa học của sinh viên</em></div>
+{%- assign lp = "" -%}{%- if page.lang == "vi" -%}{%- assign lp = "/vi" -%}{%- endif -%}
+<div class="filters" data-filter-for="tl-teaching">
+  <div class="chips" role="group"><button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}</button><button class="chip" type="button" data-key="current" aria-pressed="false">{{ page.chip_current }}</button><button class="chip" type="button" data-key="past" aria-pressed="false">{{ page.chip_past }}</button></div>
+  <a class="btn btn--sm" href="{{ base_path }}{{ lp }}/teaching/courses/">{% include rd-icon.html name="file" %}<span>{{ t.courses_link }}</span></a>
 </div>
-
-<div class="teaching-contact" style="margin:1.6em 0 1.3em; padding:0.9em 1.2em; border-left:4px solid #B8860B; background:rgba(184,134,11,0.09); border-radius:0 6px 6px 0;">
-  <strong>Thỉnh giảng và tư vấn</strong>. Vui lòng <a href="{{ base_path }}/vi/contact/" style="font-weight:600; text-decoration:underline; text-decoration-color:#B8860B; text-underline-offset:3px;">liên hệ</a>.
+<div id="tl-teaching">
+  {% include rd-timeline.html items=site.data.timeline.teaching %}
 </div>
-
-{% if site.teaching.size > 0 %}
-<h2>Trang môn học</h2>
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
-{% endif %}
+<p class="muted">{{ page.supervision }}</p>
+<div class="callout">
+  <p><strong>{{ page.guest_title }}</strong>. {{ page.guest_text }}</p>
+  <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+</div>

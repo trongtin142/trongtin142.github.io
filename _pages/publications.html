@@ -1,54 +1,37 @@
 ---
-layout: archive
-title: "Research"
-permalink: /publications/
-author_profile: true
+title: "Publications"
+eyebrow: "Research"
+permalink: "/publications/"
+altmetric: true
+description: "Publications of Trong-Tin (Tommy) NGUYEN: articles under revision, books, conference proceedings and research software, with BibTeX and APA citations."
 ---
+{% include rd-ctx.html %}
 
-{% if site.author.googlescholar %}
-  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
-{% endif %}
-
-{% include base_path %}
-
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        <h2>{{ category[1].title }}</h2><hr />
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
-
-<h2>Revise and Resubmit</h2>
-<ol class="pub-list" style="margin-bottom:1.5em;">
-  <li style="margin-bottom:0.6em;">Le-Van, C., <strong>Nguyen-Trong, T.</strong>, Pham, N.-S., &amp; Pham, T. K. C. (2026). From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model. <em>Mathematical Social Sciences (R1 under review)</em>. <span style="font-size:0.85em; color:var(--global-text-color-light);">[SSCI · ABDC A · ABS 2]</span></li>
-</ol>
-
-<h2>Books</h2>
-<ol class="pub-list" style="margin-bottom:1.5em;">
-  <li style="margin-bottom:0.6em;">Nguyen, T. H., <strong>Nguyen-Trong, T.</strong>, et al. (2016). <em>The analytical framework to adjust citizens’ behavior towards green growth in Vietnam cities</em>. UEH Publishing House. ISBN 978-604-922-158-3.</li>
-</ol>
-
-<h2>Conference Proceedings</h2>
-<ol class="pub-list" style="margin-bottom:1.5em;">
-  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2020). Behavioral theories and research models of entrepreneurial intention: An overview. In <em>Proceedings of the Scientific Conference “Start-up 4.0”</em>. Vietnam National University Ho Chi Minh City Press. ISBN 978-604-73-7826-5.</li>
-  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2018). Applying Granger causality tests in VAR or VECM frameworks. In <em>Proceedings of the Scientific Conference “Models in Finance: Theory and Evidence”</em>. UEH Publishing House. ISBN 978-604-922-641-0.</li>
-  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2017). The causal relationship between money supply, inflation, and economic growth in Vietnam. In <em>Proceedings of the 4th International Conference on Finance and Economics</em>. ISBN 978-80-87990-11-7.</li>
-</ol>
-
-<h2>Software and Data</h2>
-<ol class="pub-list" style="margin-bottom:1.5em;">
-  <li style="margin-bottom:0.6em;"><strong>Nguyen-Trong, T.</strong> (2026). <em>COFOG-Panel: Harmonising IMF GFS COFOG data into reproducible panel datasets</em> (Version 1.0.5) [Computer software]. Zenodo. <a href="https://doi.org/10.5281/zenodo.23558078">doi:10.5281/zenodo.23558078</a>.</li>
-</ol>
+{%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+<div class="filters" data-filter-for="pub-list">
+  <div class="chips" role="group" aria-label="{{ t.filter_search }}">
+    <button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}<span>{{ site.data.publications.items | size }}</span></button>
+    {%- for ty in site.data.publications.types -%}
+    {%- assign n = site.data.publications.items | where: "type", ty.key | size -%}
+    {%- if n > 0 -%}
+    <button class="chip" type="button" data-key="{{ ty.key }}" aria-pressed="false">{% if vi %}{{ ty.badge_vi }}{% else %}{{ ty.badge }}{% endif %}<span>{{ n }}</span></button>
+    {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <label class="field">{% include rd-icon.html name="search" %}<input type="search" data-filter-search placeholder="{{ t.filter_search }}" aria-label="{{ t.filter_search }}"></label>
+</div>
+<div id="pub-list">
+  {%- for ty in site.data.publications.types -%}
+  {%- assign items = site.data.publications.items | where: "type", ty.key -%}
+  {%- if items.size > 0 -%}
+  <section class="pub-section" data-filter-section>
+    <h2>{% if vi %}{{ ty.title_vi }}{% else %}{{ ty.title }}{% endif %}</h2>
+    <div class="pubs">
+      {%- for p in items -%}{% include rd-pub.html pub=p %}{%- endfor -%}
+    </div>
+  </section>
+  {%- endif -%}
+  {%- endfor -%}
+  <p class="empty" data-filter-empty hidden>{{ t.no_match }}</p>
+  {% include rd-orcid.html %}
+</div>

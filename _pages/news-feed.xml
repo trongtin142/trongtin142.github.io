@@ -1,0 +1,24 @@
+---
+permalink: /news/feed.xml
+layout: null
+sitemap: false
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Trong-Tin (Tommy) NGUYEN · News</title>
+  <link>{{ site.url }}{{ site.baseurl }}/news/</link>
+  <atom:link href="{{ site.url }}{{ site.baseurl }}/news/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Papers, talks, teaching and service of Trong-Tin (Tommy) NGUYEN, economist at EconomiX, Université Paris Nanterre.</description>
+  <language>en</language>
+  <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+  {%- for n in site.data.news %}
+  <item>
+    <title>{{ n.label | xml_escape }}: {{ n.text | truncate: 80 | xml_escape }}</title>
+    <link>{{ site.url }}{{ site.baseurl }}{{ n.url | default: "/news/" }}</link>
+    <guid isPermaLink="false">news-{{ n.year }}-{{ n.text | slugify | truncate: 60, "" }}</guid>
+    <description>{{ n.text | xml_escape }}</description>
+  </item>
+  {%- endfor %}
+</channel>
+</rss>

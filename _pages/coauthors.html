@@ -1,0 +1,34 @@
+---
+title: "Co-authors"
+eyebrow: "Research"
+width: "wide"
+permalink: "/coauthors/"
+l_work: "work"
+l_works: "works"
+l_list: "All co-authors"
+description: "Co-authors of Trong-Tin (Tommy) NGUYEN, shown as an interactive network built from the publication list."
+---
+{% include rd-ctx.html %}
+
+{%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- assign sep = "" -%}
+{%- capture gjson -%}
+{"pubsUrl": {% if vi %}"/vi/publications/"{% else %}"/publications/"{% endif %},
+ "labels": {"joint": {{ t.joint_papers | jsonify }}, "work": {{ page.l_work | jsonify }}, "works": {{ page.l_works | jsonify }}},
+ "coauthors": [{%- for c in site.data.coauthors -%}{{ sep }}{"id": {{ c.id | jsonify }}, "name": {{ c.name | jsonify }}, "aff": {% if vi %}{{ c.affiliation_vi | default: c.affiliation | default: "" | jsonify }}{% else %}{{ c.affiliation | default: "" | jsonify }}{% endif %}}{%- assign sep = "," -%}{%- endfor -%}],
+ {%- assign sep = "" -%}
+ "papers": [{%- for p in site.data.publications.items -%}{%- if p.coauthors -%}{{ sep }}{"id": {{ p.id | jsonify }}, "title": {{ p.title | jsonify }}, "year": {{ p.year }}, "coauthors": {{ p.coauthors | jsonify }}}{%- assign sep = "," -%}{%- endif -%}{%- endfor -%}]}
+{%- endcapture -%}
+<script type="application/json" id="coauthor-data">{{ gjson }}</script>
+<div class="graph-wrap">
+  <div id="coauthor-graph" data-label="{{ page.title }}"></div>
+  <div class="card coauthor-panel" id="coauthor-panel" aria-live="polite"><p class="muted">{{ t.select_coauthor }}</p></div>
+</div>
+<section class="block note-after">
+  <h2>{{ page.l_list }}</h2>
+  <ul class="rows">
+  {%- for c in site.data.coauthors -%}
+    <li class="row"><span class="row__title">{{ c.name }}</span>{% assign aff = c.affiliation %}{% if vi %}{% assign aff = c.affiliation_vi | default: c.affiliation %}{% endif %}{% if aff %}<p class="row__detail">{{ aff }}</p>{% endif %}</li>
+  {%- endfor -%}
+  </ul>
+</section>

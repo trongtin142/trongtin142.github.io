@@ -1,0 +1,24 @@
+---
+title: "Notes"
+eyebrow: "Research"
+permalink: "/notes/"
+sitemap: false
+description: "Short notes on CGE methods, research findings and policy, in English and Vietnamese."
+---
+{% include rd-ctx.html %}
+
+{%- assign shown = 0 -%}
+{%- capture note_rows -%}
+{%- for n in site.posts -%}
+  {%- assign nl = n.lang | default: "en" -%}
+  {%- if nl == page_lang -%}
+  {%- assign shown = shown | plus: 1 -%}
+  <li class="row"><a class="row__title" href="{{ base_path }}{{ n.url }}">{{ n.title }}</a><span class="row__when">{{ n.date | date: "%Y-%m-%d" }}</span>{% if n.excerpt %}<p class="row__detail">{{ n.excerpt | strip_html | truncate: 180 }}</p>{% endif %}</li>
+  {%- endif -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if shown > 0 -%}
+<ul class="rows">{{ note_rows }}</ul>
+{%- else -%}
+<p class="muted">{{ t.notes_empty }}</p>
+{%- endif -%}

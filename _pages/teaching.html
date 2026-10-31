@@ -1,34 +1,26 @@
 ---
-layout: archive
 title: "Teaching"
-permalink: /teaching/
-author_profile: true
+eyebrow: "Teaching"
+permalink: "/teaching/"
+chip_current: "Current"
+chip_past: "Previous"
+supervision: "Supervision of undergraduate theses and student research projects."
+guest_title: "Guest lecturing & consulting"
+guest_text: "Please contact me."
+description: "Teaching of Trong-Tin (Tommy) NGUYEN: microeconomics, trade and international finance, quantitative methods, statistics and econometrics at ESCP, Sciences Po, IU VNU-HCM and Université Paris Nanterre."
 ---
+{% include rd-ctx.html %}
 
-{% include base_path %}
-
-<div class="cv-grid" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.9em; margin-bottom:1.3em;">
-  <div>2026–present</div>
-  <div><strong>ESCP Business School, France</strong><br>Microeconomics (UG)</div>
-  <div>2025–present</div>
-  <div><strong>Sciences Po, France</strong><br>Trade and International Finance; The Economy; Quantitative Methods for the Humanities and Social Sciences; Mathematics Applied to Quantitative Social Sciences (UG)</div>
-  <div>2025–present</div>
-  <div><strong>School of Business, International University, VNU-HCM, Vietnam</strong><br>Statistics for Business; Organizational Behavior; Workshop I (UG)</div>
-  <div>2023–2025</div>
-  <div><strong>Université Paris Nanterre, France</strong><br>Mathematics and Probability (M1); Programming: Focus on Power BI (M2); Business English for Banking and Finance (M1)</div>
-  <div>2013–2023</div>
-  <div><strong>Ho Chi Minh City University of Law, Vietnam</strong><br>Econometrics; Macroeconomics; Microeconomics (UG)</div>
-  <div></div>
-  <div><em>Supervision of undergraduate theses and student research projects</em></div>
+{%- assign lp = "" -%}{%- if page.lang == "vi" -%}{%- assign lp = "/vi" -%}{%- endif -%}
+<div class="filters" data-filter-for="tl-teaching">
+  <div class="chips" role="group"><button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}</button><button class="chip" type="button" data-key="current" aria-pressed="false">{{ page.chip_current }}</button><button class="chip" type="button" data-key="past" aria-pressed="false">{{ page.chip_past }}</button></div>
+  <a class="btn btn--sm" href="{{ base_path }}{{ lp }}/teaching/courses/">{% include rd-icon.html name="file" %}<span>{{ t.courses_link }}</span></a>
 </div>
-
-<div class="teaching-contact" style="margin:1.6em 0 1.3em; padding:0.9em 1.2em; border-left:4px solid #B8860B; background:rgba(184,134,11,0.09); border-radius:0 6px 6px 0;">
-  <strong>Guest lecturing &amp; consulting</strong>. Please <a href="{{ base_path }}/contact/" style="font-weight:600; text-decoration:underline; text-decoration-color:#B8860B; text-underline-offset:3px;">contact</a> me.
+<div id="tl-teaching">
+  {% include rd-timeline.html items=site.data.timeline.teaching %}
 </div>
-
-{% if site.teaching.size > 0 %}
-<h2>Course pages</h2>
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-{% endfor %}
-{% endif %}
+<p class="muted">{{ page.supervision }}</p>
+<div class="callout">
+  <p><strong>{{ page.guest_title }}</strong>. {{ page.guest_text }}</p>
+  <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+</div>

@@ -1,0 +1,24 @@
+---
+title: "News"
+eyebrow: "About"
+permalink: "/news/"
+description: "News from Trong-Tin (Tommy) NGUYEN: papers, conference talks, teaching and professional service."
+---
+{% include rd-ctx.html %}
+
+{%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- assign prev = "" -%}
+{%- for n in site.data.news -%}
+  {%- if n.year != prev -%}
+    {%- unless forloop.first -%}</ul>{%- endunless -%}
+    <h2 class="news-year">{{ n.year }}</h2>
+    <ul class="news">
+  {%- endif -%}
+  <li class="news__item">
+    <time class="news__when">{% if vi %}{{ n.label_vi }}{% else %}{{ n.label }}{% endif %}</time>
+    <p class="news__text">{% if vi %}{{ n.text_vi }}{% else %}{{ n.text }}{% endif %}{% if n.url %} <a href="{{ base_path }}{% if vi %}/vi{% endif %}{{ n.url }}">{{ t.read_more }}</a>{% endif %}</p>
+  </li>
+  {%- assign prev = n.year -%}
+  {%- if forloop.last -%}</ul>{%- endif -%}
+{%- endfor -%}
+<p class="muted note-after"><a href="{{ base_path }}/news/feed.xml">{% include rd-icon.html name="rss" %} RSS</a></p>

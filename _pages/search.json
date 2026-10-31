@@ -1,0 +1,33 @@
+---
+permalink: /search.json
+layout: null
+sitemap: false
+---
+{%- assign sep = "" -%}
+[
+{%- for p in site.pages -%}
+  {%- if p.title and p.sitemap != false -%}{%- unless p.url contains ".json" or p.url contains ".xml" or p.url contains ".css" or p.url contains "404" -%}
+  {%- assign pl = p.lang | default: "en" -%}
+  {%- assign grp = "Page" -%}{%- if pl == "vi" -%}{%- assign grp = "Trang" -%}{%- endif -%}
+  {{ sep }}{"t": {{ p.title | jsonify }}, "d": {{ p.description | default: "" | jsonify }}, "u": {{ p.url | jsonify }}, "l": {{ pl | jsonify }}, "g": {{ grp | jsonify }}}
+  {%- assign sep = "," -%}
+  {%- endunless -%}{%- endif -%}
+{%- endfor -%}
+{%- for x in site.data.publications.items -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/publications/#" | append: x.id | jsonify }}, "l": "en", "g": "Publication", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | jsonify }}}
+  {%- assign sep = "," -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/vi/publications/#" | append: x.id | jsonify }}, "l": "vi", "g": "Ấn phẩm", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | jsonify }}}
+{%- endfor -%}
+{%- for x in site.data.conferences.talks -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.event | append: ", " | append: x.year | jsonify }}, "u": "/conferences/", "l": "en", "g": "Talk"}
+  {{ sep }}{"t": {{ x.title_vi | jsonify }}, "d": {{ x.event_vi | append: ", " | append: x.year | jsonify }}, "u": "/vi/conferences/", "l": "vi", "g": "Báo cáo"}
+{%- endfor -%}
+{%- for x in site.data.courses -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.institution | jsonify }}, "u": {{ "/teaching/courses/#" | append: x.id | jsonify }}, "l": "en", "g": "Course", "k": {{ x.code | default: "" | jsonify }}}
+  {{ sep }}{"t": {{ x.title_vi | jsonify }}, "d": {{ x.institution_vi | default: x.institution | jsonify }}, "u": {{ "/vi/teaching/courses/#" | append: x.id | jsonify }}, "l": "vi", "g": "Môn học", "k": {{ x.code | default: "" | jsonify }}}
+{%- endfor -%}
+{%- for x in site.data.news -%}
+  {{ sep }}{"t": {{ x.text | truncate: 90 | jsonify }}, "d": {{ x.label | jsonify }}, "u": "/news/", "l": "en", "g": "News", "k": {{ x.text | jsonify }}}
+  {{ sep }}{"t": {{ x.text_vi | truncate: 90 | jsonify }}, "d": {{ x.label_vi | jsonify }}, "u": "/vi/news/", "l": "vi", "g": "Tin mới", "k": {{ x.text_vi | jsonify }}}
+{%- endfor -%}
+]
