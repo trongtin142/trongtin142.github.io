@@ -129,6 +129,11 @@
   margin: 0;
 }
 
+/* A card that spans the full row, e.g. Languages */
+.skill-card--wide {
+  grid-column: 1 / -1;
+}
+
 @media (max-width: 600px) {
   .skills-grid {
     grid-template-columns: 1fr;
