@@ -46,18 +46,3 @@ author_profile: true
 </div>
 
 </div>
-
-<div class="conf-section">
-<h2>Session chair &amp; organizing</h2>
-
-<div class="conf-item">
-<div class="conf-item__event">5th International Conference on Development Economics (ICDE 2025), Université Paris Nanterre, France</div>
-<div class="conf-item__detail">Organizing committee member; session chair</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Vietnam Economist Annual Meeting (VEAM 2025), Thai Nguyen, Vietnam</div>
-<div class="conf-item__detail">Session chair</div>
-</div>
-
-</div>
