@@ -82,6 +82,24 @@ author:
   youtube          : # Username
   zhihu            : # Username
 
+# Redesign (2026) settings. Leave a value empty to keep that feature hidden.
+rd:
+  goatcounter              : ""   # GoatCounter code, e.g. "trongtin" for https://trongtin.goatcounter.com
+  formspree                : ""   # Formspree form id, e.g. "xyzabcd" from https://formspree.io/f/xyzabcd
+  orcid_sync               : true # list ORCID works that are not yet on the Publications page
+  orcid_id                 : "0009-0006-0017-6374"
+  cofog_repo               : "trongtin142/cofog-panel"
+
+# Academic profiles used in the header, footer, Contact page and structured data
+profiles:
+  orcid                    : "https://orcid.org/0009-0006-0017-6374"
+  scholar                  : ""   # Google Scholar profile URL
+  repec                    : ""   # RePEc/IDEAS profile URL
+  ssrn                     : ""   # SSRN author page URL
+  researchgate             : ""   # ResearchGate profile URL
+  github                   : "https://github.com/trongtin142"
+  linkedin                 : "https://www.linkedin.com/in/trongtin142/"
+
 # Publication Category - The following the list of publication categories and their headings
 publication_category:
   published:
@@ -145,7 +163,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : og-cover.png   # Social media default site image (lives in /images/)
+og_image                 : og-en.png   # Social media default site image (lives in /images/); Vietnamese pages use og-vi.png
 og_description           :  # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
@@ -256,8 +274,7 @@ defaults:
       path: ""
       type: pages
     values:
-      layout: single
-      author_profile: true
+      layout: rd-page
   # _teaching
   - scope:
       path: ""
