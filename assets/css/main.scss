@@ -187,3 +187,50 @@
     padding: 0.9em 1em;
   }
 }
+
+/* Service page: refereeing table inside a framed section (sections and cards reuse .conf-*) */
+.service-table {
+  margin: 0;
+  border: none;
+  font-size: 1em;
+}
+
+.service-table thead {
+  background-color: transparent;
+}
+
+.service-table th {
+  padding: 0.6em 0.8em;
+  border-right: none;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.35);
+  font-size: 0.8em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.service-table td {
+  padding: 0.85em 0.8em;
+  border-right: none;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.service-table tr:last-child td {
+  border-bottom: none;
+}
+
+.service-table th:last-child,
+.service-table td:last-child {
+  width: 28%;
+}
+
+.service-table__publisher {
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 600px) {
+  .service-table th,
+  .service-table td {
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+  }
+}
