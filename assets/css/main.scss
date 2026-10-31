@@ -139,3 +139,51 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Conferences page: one framed section per type, one card per event */
+.conf-section {
+  margin: 0 0 1.8em;
+  padding: 1.4em 1.6em 1.6em;
+  border: 1px solid rgba(127, 127, 127, 0.25);
+  border-radius: 12px;
+}
+
+.conf-section h2 {
+  margin: 0 0 1em;
+  padding-bottom: 0;
+  border-bottom: none;
+  font-size: 1.25em;
+  line-height: 1.35;
+}
+
+.conf-item {
+  margin: 0 0 1em 1.2em;
+  padding: 1em 1.3em;
+  border: 1px solid rgba(127, 127, 127, 0.35);
+  border-radius: 10px;
+}
+
+.conf-item:last-child {
+  margin-bottom: 0;
+}
+
+.conf-item__event {
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.conf-item__detail {
+  margin-top: 0.35em;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+@media (max-width: 600px) {
+  .conf-section {
+    padding: 1.1em 1em 1.2em;
+  }
+  .conf-item {
+    margin-left: 0;
+    padding: 0.9em 1em;
+  }
+}
