@@ -16,7 +16,7 @@ description: "Các đồng tác giả của Nguyễn Trọng Tín (Tommy Nguyen)
 {%- capture gjson -%}
 {"pubsUrl": {% if vi %}"/vi/publications/"{% else %}"/publications/"{% endif %},
  "labels": {"joint": {{ t.joint_papers | jsonify }}, "work": {{ page.l_work | jsonify }}, "works": {{ page.l_works | jsonify }}},
- "coauthors": [{%- for c in site.data.coauthors -%}{{ sep }}{"id": {{ c.id | jsonify }}, "name": {{ c.name | jsonify }}, "aff": {% if vi %}{{ c.affiliation_vi | default: c.affiliation | default: "" | jsonify }}{% else %}{{ c.affiliation | default: "" | jsonify }}{% endif %}}{%- assign sep = "," -%}{%- endfor -%}],
+ "coauthors": [{%- for c in site.data.coauthors -%}{{ sep }}{"id": {{ c.id | jsonify }}, "name": {% if vi %}{{ c.name_vi | default: c.name | jsonify }}{% else %}{{ c.name | jsonify }}{% endif %}, "aff": {% if vi %}{{ c.affiliation_vi | default: c.affiliation | default: "" | jsonify }}{% else %}{{ c.affiliation | default: "" | jsonify }}{% endif %}}{%- assign sep = "," -%}{%- endfor -%}],
  {%- assign sep = "" -%}
  "papers": [{%- for p in site.data.publications.items -%}{%- if p.coauthors -%}{{ sep }}{"id": {{ p.id | jsonify }}, "title": {{ p.title | jsonify }}, "year": {{ p.year }}, "coauthors": {{ p.coauthors | jsonify }}}{%- assign sep = "," -%}{%- endif -%}{%- endfor -%}]}
 {%- endcapture -%}
@@ -29,7 +29,7 @@ description: "Các đồng tác giả của Nguyễn Trọng Tín (Tommy Nguyen)
   <h2>{{ page.l_list }}</h2>
   <ul class="rows">
   {%- for c in site.data.coauthors -%}
-    <li class="row"><span class="row__title">{{ c.name }}</span>{% assign aff = c.affiliation %}{% if vi %}{% assign aff = c.affiliation_vi | default: c.affiliation %}{% endif %}{% if aff %}<p class="row__detail">{{ aff }}</p>{% endif %}</li>
+    <li class="row"><span class="row__title">{% if vi %}{{ c.name_vi | default: c.name }}{% else %}{{ c.name }}{% endif %}</span>{% assign aff = c.affiliation %}{% if vi %}{% assign aff = c.affiliation_vi | default: c.affiliation %}{% endif %}{% if aff %}<p class="row__detail">{{ aff }}</p>{% endif %}</li>
   {%- endfor -%}
   </ul>
 </section>
