@@ -253,7 +253,7 @@
   var gEl = $("#coauthor-graph"), gData = $("#coauthor-data");
   if (gEl && gData) {
     var G = JSON.parse(gData.textContent);
-    var W = 600, H = 600, cx = W / 2, cy = H / 2, R = 200, NS = "http://www.w3.org/2000/svg";
+    var W = 600, H = 600, cx = W / 2, cy = H / 2, R = 185, NS = "http://www.w3.org/2000/svg";
     var svg = doc.createElementNS(NS, "svg");
     svg.setAttribute("viewBox", "0 0 " + W + " " + H); svg.setAttribute("class", "graph"); svg.setAttribute("role", "group");
     svg.setAttribute("aria-label", gEl.getAttribute("data-label") || "Co-authors");
@@ -273,13 +273,13 @@
     function addNode(x, y, r, label, sub, cls) {
       var g = doc.createElementNS(NS, "g"); g.setAttribute("class", "node " + cls);
       var c = doc.createElementNS(NS, "circle"); c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", r); g.appendChild(c);
-      var t = doc.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", cls.indexOf("is-me") !== -1 ? y + 5 : y + r + 18); t.setAttribute("text-anchor", "middle"); t.textContent = label; g.appendChild(t);
-      if (sub) { var s = doc.createElementNS(NS, "text"); s.setAttribute("x", x); s.setAttribute("y", y + r + 34); s.setAttribute("text-anchor", "middle"); s.setAttribute("class", "sub"); s.textContent = sub; g.appendChild(s); }
+      var t = doc.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", cls.indexOf("is-me") !== -1 ? y + 10 : y + r + 28); t.setAttribute("text-anchor", "middle"); t.textContent = label; g.appendChild(t);
+      if (sub) { var s = doc.createElementNS(NS, "text"); s.setAttribute("x", x); s.setAttribute("y", y + r + 52); s.setAttribute("text-anchor", "middle"); s.setAttribute("class", "sub"); s.textContent = sub; g.appendChild(s); }
       svg.appendChild(g); return g;
     }
-    addNode(cx, cy, 34, "TN", null, "is-me");
+    addNode(cx, cy, 42, "TN", null, "is-me");
     nodes.forEach(function (n) {
-      var g = addNode(n.x, n.y, 18, n.c.name, n.w + " " + (n.w > 1 ? G.labels.works : G.labels.work), "");
+      var g = addNode(n.x, n.y, 22, n.c.name, n.w + " " + (n.w > 1 ? G.labels.works : G.labels.work), "");
       g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", n.c.name);
       n.g = g;
       function pick() {
