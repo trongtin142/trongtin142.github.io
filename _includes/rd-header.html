@@ -1,0 +1,42 @@
+<header class="site-header" data-header>
+  <div class="wrap site-header__in">
+    <a class="brand" href="{{ base_path }}{{ home_url }}">
+      {% include rd-mono.html %}
+      <span class="brand__name">{% if t.name_alias %}{{ t.name_primary }} <span class="brand__alias">{{ t.name_alias }}</span>{% else %}{{ t.name }}{% endif %}</span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="{{ t.menu }}">
+      <ul class="nav__list">
+        {%- for item in nav_links -%}
+        {%- if item.children -%}
+          {%- assign group_active = false -%}
+          {%- for c in item.children -%}{%- if page.url == c.url -%}{%- assign group_active = true -%}{%- endif -%}{%- endfor -%}
+          <li class="nav__item has-sub{% if group_active %} is-active{% endif %}">
+            <button class="nav__link nav__toggle" type="button" aria-expanded="false" aria-controls="nav-sub-{{ forloop.index }}">{{ item.title }}{% include rd-icon.html name="chevron" class="nav__chev" %}</button>
+            <ul class="nav__sub" id="nav-sub-{{ forloop.index }}">
+              {%- for c in item.children -%}
+              <li><a href="{{ base_path }}{{ c.url }}"{% if page.url == c.url %} aria-current="page"{% endif %}>{% include rd-icon.html name=c.icon %}<span>{{ c.title }}</span></a></li>
+              {%- endfor -%}
+            </ul>
+          </li>
+        {%- else -%}
+          <li class="nav__item{% if page.url == item.url %} is-active{% endif %}"><a class="nav__link" href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="tools">
+      <button class="tool tool--search" type="button" data-search-open aria-label="{{ t.search }}">{% include rd-icon.html name="search" %}<kbd>Ctrl K</kbd></button>
+      <div class="lang" role="group" aria-label="{{ t.language }}">
+        {%- if page_lang == "vi" -%}
+        <a href="{{ base_path }}{{ alt_url }}" hreflang="en" lang="en" title="View this page in English">EN</a><span aria-current="true" lang="vi">VI</span>
+        {%- else -%}
+        <span aria-current="true" lang="en">EN</span><a href="{{ base_path }}{{ alt_url }}" hreflang="vi" lang="vi" title="Xem trang này bằng tiếng Việt">VI</a>
+        {%- endif -%}
+      </div>
+      <button class="tool tool--theme" type="button" data-theme-toggle aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}">{% include rd-icon.html name="moon" class="i-moon" %}{% include rd-icon.html name="sun" class="i-sun" %}</button>
+      <button class="tool tool--menu" type="button" data-nav-open aria-controls="site-nav" aria-expanded="false" aria-label="{{ t.menu }}">{% include rd-icon.html name="menu" class="i-menu" %}{% include rd-icon.html name="x" class="i-x" %}</button>
+    </div>
+  </div>
+</header>

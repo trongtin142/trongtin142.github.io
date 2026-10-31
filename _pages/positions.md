@@ -1,23 +1,17 @@
 ---
-layout: archive
 title: "Positions"
-permalink: /positions/
-author_profile: true
+eyebrow: "About"
+permalink: "/positions/"
+chip_teaching: "Teaching"
+chip_research: "Research"
+description: "Academic positions of Trong-Tin (Tommy) NGUYEN: ESCP Business School, Sciences Po, International University VNU-HCM, Université Paris Nanterre, Tallinn University of Technology."
 ---
+{% include rd-ctx.html %}
 
-{% include base_path %}
-
-<div class="cv-grid" style="display:grid; grid-template-columns:max-content 1fr; column-gap:2em; row-gap:0.9em; margin-bottom:1.3em;">
-  <div>2026–present</div>
-  <div><strong>Contract Lecturer</strong><br>ESCP Business School, France</div>
-  <div>2025–present</div>
-  <div><strong>Lecturer</strong><br>School of Business, International University, VNU-HCM, Vietnam</div>
-  <div>2025–present</div>
-  <div><strong>Contract Lecturer</strong><br>Sciences Po, France</div>
-  <div>2023–2025</div>
-  <div><strong>Contract Lecturer</strong><br>Université Paris Nanterre, EconomiX, France</div>
-  <div>2018–2019</div>
-  <div><strong>Visiting Scholar</strong><br>Tallinn University of Technology, Department of Economics and Finance, Estonia (research secondment, September 2018 to January 2019)</div>
-  <div>2013–2023</div>
-  <div><strong>Lecturer</strong><br>Faculty of Management, Ho Chi Minh City University of Law, Vietnam</div>
+<div class="filters" data-filter-for="tl-positions">
+  <div class="chips" role="group"><button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}</button><button class="chip" type="button" data-key="teaching" aria-pressed="false">{{ page.chip_teaching }}</button><button class="chip" type="button" data-key="research" aria-pressed="false">{{ page.chip_research }}</button><button class="chip" type="button" data-key="current" aria-pressed="false">{{ t.now }}</button></div>
+</div>
+<div id="tl-positions">
+  {% include rd-timeline.html items=site.data.timeline.positions %}
+  <p class="empty" data-filter-empty hidden>{{ t.no_match }}</p>
 </div>

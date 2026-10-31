@@ -1,0 +1,4 @@
+{%- comment -%} Sets base_path, page_lang, alt_url, home_url, nav_links and t (interface strings). Include at the top of layouts and pages that use them. {%- endcomment -%}
+{%- include base_path -%}
+{%- include lang-setup -%}
+{%- assign t = site.data.i18n[page_lang] -%}

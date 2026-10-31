@@ -1,0 +1,119 @@
+# Conference presentations (Conferences page, home-page counter, map) and other places on the map.
+# place: id of an entry under `places`. slides / video: optional links shown as buttons.
+
+talks:
+  - year: 2026
+    event: "Workshop SHIFT: Sustainability Harnessing Individual and Further Transitions"
+    event_vi: "Hội thảo SHIFT: Sustainability Harnessing Individual and Further Transitions"
+    host: "Université Paris Nanterre, France"
+    host_vi: "Đại học Paris Nanterre, Pháp"
+    title: "Foreign aid, governance, and environmental expenditure: Micro-founded approach and empirical evidence"
+    title_vi: "Viện trợ nước ngoài, quản trị và chi tiêu môi trường: Cách tiếp cận có nền tảng vi mô và bằng chứng thực nghiệm"
+    place: nanterre
+  - year: 2025
+    event: "Vietnam Economist Annual Meeting (VEAM 2025)"
+    event_vi: "Hội nghị thường niên các nhà kinh tế học Việt Nam (VEAM 2025)"
+    host: "Thai Nguyen, Vietnam"
+    host_vi: "Thái Nguyên, Việt Nam"
+    title: "Endogenous innovation in a growth model à la Solow"
+    title_vi: "Đổi mới sáng tạo nội sinh trong mô hình tăng trưởng kiểu Solow"
+    place: thainguyen
+  - year: 2021
+    event: "Scientific Conference: Research Experiences in Economics"
+    event_vi: "Hội thảo khoa học: Kinh nghiệm nghiên cứu trong kinh tế học"
+    host: "Ho Chi Minh City University of Law, Vietnam"
+    host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
+    title: "Discussion and proposal of a research model for lecturers’ research motivation"
+    title_vi: "Thảo luận và đề xuất mô hình nghiên cứu động lực nghiên cứu khoa học của giảng viên"
+    place: hcmlaw
+  - year: 2020
+    event: "Orientation for Scientific Research"
+    event_vi: "Định hướng nghiên cứu khoa học"
+    host: "Ho Chi Minh City University of Law, Vietnam"
+    host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
+    title: "Models and research methods on lecturers’ research motivation"
+    title_vi: "Các mô hình và phương pháp nghiên cứu về động lực nghiên cứu khoa học của giảng viên"
+    place: hcmlaw
+  - year: 2020
+    event: "Start-up 4.0"
+    event_vi: "Khởi nghiệp 4.0"
+    host: "Ho Chi Minh City University of Law, Vietnam"
+    host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
+    title: "Behavioral theories and models of entrepreneurial intention"
+    title_vi: "Các lý thuyết hành vi và mô hình về ý định khởi nghiệp"
+    place: hcmlaw
+  - year: 2018
+    event: "Models in Finance: Theory and Evidence"
+    event_vi: "Mô hình trong tài chính: Lý thuyết và bằng chứng"
+    host: "Ho Chi Minh City University of Law, Vietnam"
+    host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
+    title: "Granger causality in VAR/VECM"
+    title_vi: "Kiểm định nhân quả Granger trong mô hình VAR/VECM"
+    place: hcmlaw
+  - year: 2016
+    event: "Exchange Rate Policy in Vietnam in the Context of the ASEAN Economic Community"
+    event_vi: "Chính sách tỷ giá của Việt Nam trong bối cảnh Cộng đồng Kinh tế ASEAN"
+    host: "Ho Chi Minh City University of Law, Vietnam"
+    host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
+    title: "Financial system development and growth"
+    title_vi: "Phát triển hệ thống tài chính và tăng trưởng kinh tế"
+    place: hcmlaw
+
+# Other activities shown on the map (kind: service | visit | teaching)
+others:
+  - place: nanterre
+    kind: service
+    year: 2025
+    text: "ICDE 2025: organizing committee and session chair"
+    text_vi: "ICDE 2025: Ban tổ chức và chủ tọa phiên"
+  - place: thainguyen
+    kind: service
+    year: 2025
+    text: "VEAM 2025: session chair, Macroeconomic Dynamics"
+    text_vi: "VEAM 2025: chủ tọa phiên Động học kinh tế vĩ mô"
+  - place: iu
+    kind: service
+    year: 2026
+    text: "MBIC 2026: conference reviewer"
+    text_vi: "MBIC 2026: phản biện hội thảo"
+  - place: uel
+    kind: service
+    year: 2026
+    text: "SEBL 2026: conference reviewer"
+    text_vi: "SEBL 2026: phản biện hội thảo"
+  - place: tallinn
+    kind: visit
+    year: 2018
+    text: "Visiting Scholar, Tallinn University of Technology (EU Horizon 2020 secondment)"
+    text_vi: "Nghiên cứu viên thỉnh giảng, Đại học Công nghệ Tallinn (tài trợ EU Horizon 2020)"
+  - place: escp
+    kind: teaching
+    year: 2026
+    text: "ESCP Business School: Microeconomics"
+    text_vi: "ESCP Business School: Kinh tế vi mô"
+  - place: sciencespo-paris
+    kind: teaching
+    year: 2025
+    text: "Sciences Po, Paris campus"
+    text_vi: "Sciences Po, cơ sở Paris"
+  - place: sciencespo-reims
+    kind: teaching
+    year: 2026
+    text: "Sciences Po, Reims campus: Trade and International Finance"
+    text_vi: "Sciences Po, cơ sở Reims: Thương mại và Tài chính quốc tế"
+  - place: iu
+    kind: teaching
+    year: 2025
+    text: "International University, VNU-HCM: Statistics, Organizational Behavior, Workshop I"
+    text_vi: "Trường Đại học Quốc tế, ĐHQG-HCM: Thống kê, Hành vi tổ chức, Workshop I"
+
+places:
+  nanterre: { name: "Nanterre", name_vi: "Nanterre", lat: 48.9032, lng: 2.2121 }
+  escp: { name: "Paris", name_vi: "Paris", lat: 48.8653, lng: 2.3783 }
+  sciencespo-paris: { name: "Paris", name_vi: "Paris", lat: 48.8541, lng: 2.3285 }
+  sciencespo-reims: { name: "Reims", name_vi: "Reims", lat: 49.2597, lng: 4.0392 }
+  tallinn: { name: "Tallinn", name_vi: "Tallinn", lat: 59.3956, lng: 24.6713 }
+  thainguyen: { name: "Thai Nguyen", name_vi: "Thái Nguyên", lat: 21.5942, lng: 105.8482 }
+  hcmlaw: { name: "Ho Chi Minh City", name_vi: "TP. Hồ Chí Minh", lat: 10.7618, lng: 106.7061 }
+  iu: { name: "Ho Chi Minh City (Thu Duc)", name_vi: "TP. Hồ Chí Minh (Thủ Đức)", lat: 10.8770, lng: 106.8013 }
+  uel: { name: "Ho Chi Minh City (Thu Duc)", name_vi: "TP. Hồ Chí Minh (Thủ Đức)", lat: 10.8702, lng: 106.7782 }

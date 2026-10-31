@@ -1,0 +1,4 @@
+# Extra settings for the /preview/ build of the redesign branch (see .github/workflows/jekyll.yml).
+# The preview must never be indexed or counted.
+noindex: true
+preview: true

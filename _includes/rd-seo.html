@@ -1,0 +1,58 @@
+{%- comment -%}
+  Title, description, canonical URL, Open Graph, Twitter/X card and JSON-LD (Person).
+  Needs base_path, page_lang and t (i18n strings) from the layout.
+{%- endcomment -%}
+{%- assign seo_name = t.name | default: site.title -%}
+{%- if page.url == "/" or page.url == "/vi/" -%}
+  {%- assign seo_title = seo_name -%}
+{%- else -%}
+  {%- assign seo_title = page.title | append: " · " | append: seo_name -%}
+{%- endif -%}
+{%- assign seo_description = page.description | default: t.description | strip_html | strip_newlines | escape_once -%}
+{%- assign seo_url = page.url | replace: "index.html", "" | prepend: base_path -%}
+{%- assign seo_image = t.og_image | default: site.og_image | prepend: "/images/" | prepend: base_path -%}
+<title>{{ seo_title | escape_once }}</title>
+<meta name="description" content="{{ seo_description }}">
+<link rel="canonical" href="{{ seo_url }}">
+{% if site.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% if site.google_site_verification and site.noindex != true %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+<meta property="og:type" content="{% if page.url == '/' or page.url == '/vi/' %}profile{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ seo_name }}">
+<meta property="og:locale" content="{{ t.og_locale }}">
+<meta property="og:title" content="{{ seo_title | escape_once }}">
+<meta property="og:description" content="{{ seo_description }}">
+<meta property="og:url" content="{{ seo_url }}">
+<meta property="og:image" content="{{ seo_image }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{{ seo_name }}, {{ t.bio }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ seo_title | escape_once }}">
+<meta name="twitter:description" content="{{ seo_description }}">
+<meta name="twitter:image" content="{{ seo_image }}">
+{%- assign same_sep = "" -%}
+{%- capture same_as -%}
+{%- for p in site.profiles -%}{%- if p[1] and p[1] != "" -%}{{ same_sep }}"{{ p[1] }}"{%- assign same_sep = ", " -%}{%- endif -%}{%- endfor -%}
+{%- endcapture -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Trong-Tin (Tommy) NGUYEN",
+  "alternateName": ["Nguyễn Trọng Tín", "Tin Nguyen-Trong", "Tommy Nguyen"],
+  "url": {{ site.url | append: "/" | jsonify }},
+  "image": {{ "/images/profile.jpg" | prepend: base_path | jsonify }},
+  "jobTitle": "PhD candidate in Economics",
+  "affiliation": [
+    { "@type": "Organization", "name": "EconomiX (UMR 7235, CNRS), Université Paris Nanterre" },
+    { "@type": "Organization", "name": "ESCP Business School" },
+    { "@type": "Organization", "name": "Sciences Po" }
+  ],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Economics Ho Chi Minh City" },
+    { "@type": "CollegeOrUniversity", "name": "Erasmus University Rotterdam" }
+  ],
+  "knowsAbout": ["Development economics", "General equilibrium theory", "Computable general equilibrium modelling", "Applied econometrics", "Circular economy"],
+  "sameAs": [{{ same_as }}]
+}
+</script>

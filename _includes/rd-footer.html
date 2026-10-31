@@ -1,0 +1,29 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <div class="site-footer__id">
+      {% include rd-mono.html %}
+      <div>
+        <strong>{{ t.name }}</strong>
+        <span>{{ t.bio }}</span>
+      </div>
+    </div>
+    {% include rd-profiles.html class="profiles--footer" %}
+    <p class="site-footer__meta">
+      © {{ site.time | date: "%Y" }} {{ t.name }} · {{ t.last_updated }} <time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: "%Y-%m-%d" }}</time>
+      · <a href="{{ base_path }}/news/feed.xml">{% include rd-icon.html name="rss" %}RSS</a>
+    </p>
+  </div>
+</footer>
+
+<div class="search" data-search hidden>
+  <div class="search__backdrop" data-search-close></div>
+  <div class="search__panel" role="dialog" aria-modal="true" aria-label="{{ t.search }}">
+    <div class="search__bar">
+      {% include rd-icon.html name="search" %}
+      <input class="search__input" type="search" id="site-search" placeholder="{{ t.search_placeholder }}" autocomplete="off" aria-label="{{ t.search }}" aria-controls="site-search-results">
+      <button class="tool" type="button" data-search-close aria-label="{{ t.close }}">{% include rd-icon.html name="x" %}</button>
+    </div>
+    <ul class="search__results" id="site-search-results" role="listbox" aria-label="{{ t.search }}"></ul>
+    <p class="search__hint" data-search-hint data-hint="{{ t.search_hint }}" data-empty="{{ t.search_empty }}">{{ t.search_hint }}</p>
+  </div>
+</div>

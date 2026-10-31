@@ -1,37 +1,25 @@
 ---
-layout: archive
 title: "Sitemap"
+eyebrow: "About"
 permalink: /sitemap/
-author_profile: true
+description: "All pages of the site, in English and Vietnamese."
 ---
-
-{% include base_path %}
-
-A list of all the posts and pages found on the site. For you robots out there, there is an [XML version]({{ base_path }}/sitemap.xml) available for digesting as well.
-
-<h2>Pages</h2>
-{% for post in site.pages %}
-  {% include archive-single.html %}
-{% endfor %}
-
-<h2>Posts</h2>
-{% for post in site.posts %}
-  {% include archive-single.html %}
-{% endfor %}
-
-{% capture written_label %}'None'{% endcapture %}
-
-{% for collection in site.collections %}
-{% unless collection.output == false or collection.label == "posts" %}
-  {% capture label %}{{ collection.label }}{% endcapture %}
-  {% if label != written_label %}
-  <h2>{{ label }}</h2>
-  {% capture written_label %}{{ label }}{% endcapture %}
-  {% endif %}
-{% endunless %}
-{% for post in collection.docs %}
-  {% unless collection.output == false or collection.label == "posts" %}
-  {% include archive-single.html %}
-  {% endunless %}
-{% endfor %}
-{% endfor %}
+{% include rd-ctx.html %}
+<p class="prose">All pages of the site. An <a href="{{ base_path }}/sitemap.xml">XML version</a> is available for search engines.</p>
+{%- assign sorted = site.pages | sort: "url" -%}
+<section class="block">
+<h2>English</h2>
+<ul class="rows">
+{%- for p in sorted -%}{%- if p.title and p.sitemap != false and p.lang != "vi" -%}{%- unless p.url contains ".xml" or p.url contains ".json" or p.url contains ".css" -%}
+  <li class="row"><a class="row__title" href="{{ base_path }}{{ p.url }}">{{ p.title }}</a><span class="row__when">{{ p.url }}</span></li>
+{%- endunless -%}{%- endif -%}{%- endfor -%}
+</ul>
+</section>
+<section class="block">
+<h2>Tiếng Việt</h2>
+<ul class="rows">
+{%- for p in sorted -%}{%- if p.title and p.sitemap != false and p.lang == "vi" -%}
+  <li class="row"><a class="row__title" href="{{ base_path }}{{ p.url }}">{{ p.title }}</a><span class="row__when">{{ p.url }}</span></li>
+{%- endif -%}{%- endfor -%}
+</ul>
+</section>

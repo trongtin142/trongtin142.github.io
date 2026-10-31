@@ -1,0 +1,110 @@
+# Publications shown on the Publications page (English and Vietnamese) and on the home page.
+#
+# types: the sections of the Publications page, in display order.
+# items: one entry per work.
+#   type      one of the keys under `types`
+#   authors   APA author string; "Nguyen-Trong, T." is shown in bold automatically
+#   bib_*     fields used to build the BibTeX entry
+#   coauthors ids from _data/coauthors.yml (used by the Co-authors page)
+#   featured  true = shown under "Selected work" on the home page
+#   abstract / abstract_vi, doi, url, pdf, slides: optional; buttons appear only when filled
+
+types:
+  - key: rr
+    title: "Revise and Resubmit"
+    title_vi: "Đang chỉnh sửa theo yêu cầu phản biện (R&R)"
+    badge: "Revise & resubmit"
+    badge_vi: "R&R"
+    tone: rr
+  - key: book
+    title: "Books"
+    title_vi: "Sách"
+    badge: "Book"
+    badge_vi: "Sách"
+    tone: ok
+  - key: proceedings
+    title: "Conference Proceedings"
+    title_vi: "Kỷ yếu hội thảo"
+    badge: "Proceedings"
+    badge_vi: "Kỷ yếu"
+    tone: ok
+  - key: software
+    title: "Software and Data"
+    title_vi: "Phần mềm và dữ liệu"
+    badge: "Software"
+    badge_vi: "Phần mềm"
+    tone: wp
+
+items:
+  - id: levan2026balanced
+    type: rr
+    year: 2026
+    authors: "Le-Van, C., Nguyen-Trong, T., Pham, N.-S., & Pham, T. K. C."
+    title: "From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model"
+    venue: "Mathematical Social Sciences"
+    note: "R1 under review"
+    note_vi: "đang phản biện vòng R1"
+    rank: "SSCI · ABDC A · ABS 2"
+    coauthors: [levan, pham-ns, pham-tkc]
+    featured: true
+    bib_type: article
+    bib_authors: "Le-Van, Cuong and Nguyen-Trong, Tin and Pham, Ngoc-Sang and Pham, Thi Kim Cuong"
+
+  - id: nguyen2016framework
+    type: book
+    year: 2016
+    authors: "Nguyen, T. H., Nguyen-Trong, T., et al."
+    title: "The analytical framework to adjust citizens’ behavior towards green growth in Vietnam cities"
+    publisher: "UEH Publishing House"
+    isbn: "978-604-922-158-3"
+    coauthors: [nguyen-th]
+    bib_type: book
+    bib_authors: "Nguyen, T. H. and Nguyen-Trong, Tin and others"
+
+  - id: nguyentrong2020startup
+    type: proceedings
+    year: 2020
+    authors: "Nguyen-Trong, T."
+    title: "Behavioral theories and research models of entrepreneurial intention: An overview"
+    booktitle: "Proceedings of the Scientific Conference “Start-up 4.0”"
+    publisher: "Vietnam National University Ho Chi Minh City Press"
+    isbn: "978-604-73-7826-5"
+    bib_type: inproceedings
+    bib_authors: "Nguyen-Trong, Tin"
+
+  - id: nguyentrong2018granger
+    type: proceedings
+    year: 2018
+    authors: "Nguyen-Trong, T."
+    title: "Applying Granger causality tests in VAR or VECM frameworks"
+    booktitle: "Proceedings of the Scientific Conference “Models in Finance: Theory and Evidence”"
+    publisher: "UEH Publishing House"
+    isbn: "978-604-922-641-0"
+    bib_type: inproceedings
+    bib_authors: "Nguyen-Trong, Tin"
+
+  - id: nguyentrong2017money
+    type: proceedings
+    year: 2017
+    authors: "Nguyen-Trong, T."
+    title: "The causal relationship between money supply, inflation, and economic growth in Vietnam"
+    booktitle: "Proceedings of the 4th International Conference on Finance and Economics"
+    isbn: "978-80-87990-11-7"
+    bib_type: inproceedings
+    bib_authors: "Nguyen-Trong, Tin"
+
+  - id: nguyentrong2026cofog
+    type: software
+    year: 2026
+    authors: "Nguyen-Trong, T."
+    title: "COFOG-Panel: Harmonising IMF GFS COFOG data into reproducible panel datasets"
+    extra: "(Version 1.0.5) [Computer software]"
+    publisher: "Zenodo"
+    doi: "10.5281/zenodo.23558078"
+    url: "https://github.com/trongtin142/cofog-panel"
+    featured: true
+    abstract: "A traceable Python tool that builds cross-country panels of government expenditure by function (COFOG) from IMF Government Finance Statistics. Every cleaning and harmonisation step is documented so that the resulting panels can be reproduced and audited."
+    abstract_vi: "Công cụ Python có khả năng truy vết, dùng để xây dựng dữ liệu bảng xuyên quốc gia về chi tiêu chính phủ theo chức năng (COFOG) từ Thống kê Tài chính Chính phủ (GFS) của IMF. Mọi bước làm sạch và hài hòa hóa dữ liệu đều được ghi chép đầy đủ để bộ dữ liệu bảng có thể được tái lập và kiểm chứng."
+    bib_type: software
+    bib_authors: "Nguyen-Trong, Tin"
+    bib_version: "1.0.5"

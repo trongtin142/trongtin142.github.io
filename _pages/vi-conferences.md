@@ -1,49 +1,65 @@
 ---
-layout: archive
 title: "Hội thảo"
-permalink: /vi/conferences/
-lang: vi
-author_profile: true
+eyebrow: "Hội thảo"
+permalink: "/vi/conferences/"
+lang: "vi"
+map: true
+l_talks: "Báo cáo"
+description: "Các báo cáo hội thảo của Nguyễn Trọng Tín (Tommy Nguyen), kèm bản đồ tương tác về hội thảo, hoạt động chuyên môn và công tác học thuật."
 ---
+{% include rd-ctx.html %}
 
-{% include base_path %}
-
-<div class="conf-section">
-<h2>Báo cáo</h2>
-
-<div class="conf-item">
-<div class="conf-item__event">Hội thảo SHIFT: Sustainability Harnessing Individual and Further Transitions (2026), Đại học Paris Nanterre, Pháp</div>
-<div class="conf-item__detail">“Viện trợ nước ngoài, quản trị và chi tiêu môi trường: Cách tiếp cận có nền tảng vi mô và bằng chứng thực nghiệm”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Hội nghị thường niên các nhà kinh tế học Việt Nam (VEAM 2025), Thái Nguyên, Việt Nam</div>
-<div class="conf-item__detail">“Đổi mới sáng tạo nội sinh trong mô hình tăng trưởng kiểu Solow”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Hội thảo khoa học: Kinh nghiệm nghiên cứu trong kinh tế học (2021), Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
-<div class="conf-item__detail">“Thảo luận và đề xuất mô hình nghiên cứu động lực nghiên cứu khoa học của giảng viên”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Định hướng nghiên cứu khoa học (2020), Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
-<div class="conf-item__detail">“Các mô hình và phương pháp nghiên cứu về động lực nghiên cứu khoa học của giảng viên”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Khởi nghiệp 4.0 (2020), Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
-<div class="conf-item__detail">“Các lý thuyết hành vi và mô hình về ý định khởi nghiệp”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Mô hình trong tài chính: Lý thuyết và bằng chứng (2018), Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
-<div class="conf-item__detail">“Kiểm định nhân quả Granger trong mô hình VAR/VECM”</div>
-</div>
-
-<div class="conf-item">
-<div class="conf-item__event">Chính sách tỷ giá của Việt Nam trong bối cảnh Cộng đồng Kinh tế ASEAN (2016), Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam</div>
-<div class="conf-item__detail">“Phát triển hệ thống tài chính và tăng trưởng kinh tế”</div>
-</div>
-
-</div>
+{%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- assign C = site.data.conferences -%}
+<section class="block">
+  <h2>{{ t.map_title }}</h2>
+  <p class="block__intro">{{ t.map_note }}</p>
+  <div class="map" id="talk-map" role="region" aria-label="{{ t.map_title }}"></div>
+  <ul class="map-legend">
+    <li><i class="dot--talk"></i>{{ t.map_talk }}</li>
+    <li><i class="dot--service"></i>{{ t.map_service }}</li>
+    <li><i class="dot--visit"></i>{{ t.map_visit }}</li>
+    <li><i class="dot--teaching"></i>{{ t.map_teaching }}</li>
+  </ul>
+</section>
+{%- assign sep = "" -%}
+{%- capture mapjson -%}
+[{%- for pl in C.places -%}
+  {%- assign pid = pl[0] -%}{%- assign P = pl[1] -%}
+  {%- assign kinds = "" -%}{%- assign lines = "" -%}
+  {%- for x in C.talks -%}{%- if x.place == pid -%}
+    {%- assign kinds = kinds | append: "talk," -%}
+    {%- if vi -%}{%- assign line = x.year | append: " · " | append: x.event_vi -%}{%- else -%}{%- assign line = x.year | append: " · " | append: x.event -%}{%- endif -%}
+    {%- assign lines = lines | append: line | append: "||" -%}
+  {%- endif -%}{%- endfor -%}
+  {%- for x in C.others -%}{%- if x.place == pid -%}
+    {%- assign kinds = kinds | append: x.kind | append: "," -%}
+    {%- if vi -%}{%- assign line = x.year | append: " · " | append: x.text_vi -%}{%- else -%}{%- assign line = x.year | append: " · " | append: x.text -%}{%- endif -%}
+    {%- assign lines = lines | append: line | append: "||" -%}
+  {%- endif -%}{%- endfor -%}
+  {%- if lines != "" -%}
+  {{ sep }}{"name": {% if vi %}{{ P.name_vi | jsonify }}{% else %}{{ P.name | jsonify }}{% endif %}, "lat": {{ P.lat }}, "lng": {{ P.lng }}, "kinds": {{ kinds | split: "," | jsonify }}, "items": {{ lines | split: "||" | jsonify }}}
+  {%- assign sep = "," -%}
+  {%- endif -%}
+{%- endfor -%}]
+{%- endcapture -%}
+<script type="application/json" id="map-data">{{ mapjson }}</script>
+<section class="block">
+  <h2>{{ page.l_talks }}</h2>
+  <div class="talks">
+  {%- assign prev = "" -%}
+  {%- for x in C.talks -%}
+    {%- assign P = C.places[x.place] -%}
+    <article class="talk{% if prev == x.year %} is-same-year{% endif %}">
+      <span class="talk__year">{{ x.year }}</span>
+      <div>
+        <p class="talk__event">{% if vi %}{{ x.event_vi }}{% else %}{{ x.event }}{% endif %}</p>
+        <p class="talk__title">“{% if vi %}{{ x.title_vi }}{% else %}{{ x.title }}{% endif %}”</p>
+        <span class="talk__loc">{% include rd-icon.html name="pin" %}{% if vi %}{{ x.host_vi }}{% else %}{{ x.host }}{% endif %}</span>
+        {%- if x.slides or x.video -%}<div class="pub__act">{% if x.slides %}<a class="btn btn--sm" href="{{ x.slides }}">{% include rd-icon.html name="board" %}Slides</a>{% endif %}{% if x.video %}<a class="btn btn--sm" href="{{ x.video }}">{% include rd-icon.html name="ext" %}Video</a>{% endif %}</div>{%- endif -%}
+      </div>
+    </article>
+    {%- assign prev = x.year -%}
+  {%- endfor -%}
+  </div>
+</section>

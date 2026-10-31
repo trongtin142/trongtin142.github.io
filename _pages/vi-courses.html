@@ -1,0 +1,37 @@
+---
+title: "Môn học"
+eyebrow: "Giảng dạy"
+permalink: "/vi/teaching/courses/"
+lang: "vi"
+width: "wide"
+intro: "Các môn tôi đang giảng dạy. Mỗi môn có đường dẫn riêng để bạn có thể chia sẻ trực tiếp."
+l_level: "Bậc học"
+l_format: "Hình thức"
+l_campus: "Cơ sở"
+l_since: "Từ năm"
+description: "Các môn học Nguyễn Trọng Tín (Tommy Nguyen) đang giảng dạy tại ESCP Business School, Sciences Po và Trường Đại học Quốc tế, ĐHQG-HCM."
+---
+{% include rd-ctx.html %}
+
+{%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+<p class="prose">{{ page.intro }}</p>
+<div class="cards cards--2">
+{%- for c in site.data.courses -%}
+  <article class="card course" id="{{ c.id }}">
+    <p class="eyebrow">{% if vi %}{{ c.institution_vi | default: c.institution }}{% else %}{{ c.institution }}{% endif %}</p>
+    <h3><a href="#{{ c.id }}">{% if vi %}{{ c.title_vi }}{% else %}{{ c.title }}{% endif %}</a>{% if c.code %}<span class="course__code">{{ c.code }}</span>{% endif %}</h3>
+    <dl class="course__meta">
+      <dt>{{ page.l_level }}</dt><dd>{% if vi %}{{ c.level_vi }}{% else %}{{ c.level }}{% endif %}</dd>
+      {% if c.format %}<dt>{{ page.l_format }}</dt><dd>{% if vi %}{{ c.format_vi }}{% else %}{{ c.format }}{% endif %}</dd>{% endif %}
+      {% if c.campus %}<dt>{{ page.l_campus }}</dt><dd>{% if vi %}{{ c.campus_vi }}{% else %}{{ c.campus }}{% endif %}</dd>{% endif %}
+      <dt>{{ page.l_since }}</dt><dd>{{ c.since }}</dd>
+    </dl>
+    {%- if c.materials -%}
+    <div class="card__links">
+      {%- for m in c.materials -%}<a class="btn btn--sm" href="{{ m.url }}">{% include rd-icon.html name="file" %}<span>{% if vi %}{{ m.title_vi | default: m.title }}{% else %}{{ m.title }}{% endif %}</span></a>{%- endfor -%}
+    </div>
+    {%- endif -%}
+  </article>
+{%- endfor -%}
+</div>
+<p class="muted note-after">{{ t.materials_later }}</p>

@@ -1,34 +1,22 @@
 ---
-layout: archive
 title: "Kỹ năng"
-permalink: /vi/skills/
-lang: vi
-author_profile: true
+eyebrow: "Giới thiệu"
+permalink: "/vi/skills/"
+lang: "vi"
+description: "Kỹ năng của Nguyễn Trọng Tín (Tommy Nguyen): mô hình CGE (GEMPACK, RunGTAP, GTAP-E, GTAP-AEZ, GTAP-CM), phần mềm kinh tế lượng và dữ liệu, ngoại ngữ."
 ---
-
-{% include base_path %}
-
-<div class="skills-grid">
-
-<div class="skill-card">
-<h2>Mô hình CGE</h2>
-<ul>
-<li>GEMPACK, RunGTAP; GTAP-E, GTAP-AEZ, GTAP-CM</li>
-</ul>
-</div>
-
-<div class="skill-card">
-<h2>Phần mềm và công cụ</h2>
-<ul>
-<li>Stata, EViews, R, SPSS, AMOS, SmartPLS, Python, Power BI, LaTeX</li>
-</ul>
-</div>
-
-<div class="skill-card skill-card--wide">
-<h2>Ngôn ngữ</h2>
-<ul>
-<li>Tiếng Việt (bản ngữ); Tiếng Anh (C1); Tiếng Pháp (A2)</li>
-</ul>
-</div>
-
+{% include rd-ctx.html %}
+<div class="cards cards--2">
+<article class="card">
+  <h2>{% include rd-icon.html name="chart" %} Mô hình CGE</h2>
+  <p>GEMPACK, RunGTAP; GTAP-E, GTAP-AEZ, GTAP-CM</p>
+</article>
+<article class="card">
+  <h2>{% include rd-icon.html name="code" %} Phần mềm và công cụ</h2>
+  <p>Stata, EViews, R, SPSS, AMOS, SmartPLS, Python, Power BI, LaTeX</p>
+</article>
+<article class="card card--wide">
+  <h2>{% include rd-icon.html name="users" %} Ngôn ngữ</h2>
+  <p>Tiếng Việt (bản ngữ); Tiếng Anh (C1); Tiếng Pháp (A2)</p>
+</article>
 </div>

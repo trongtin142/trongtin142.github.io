@@ -1,0 +1,66 @@
+# News, newest first. The home page shows the first three items; /news/ shows all.
+# label / label_vi: the date as displayed; year: used to group items on the News page.
+# Add a new line at the top for each new item.
+
+- year: 2026
+  label: "Oct 2026"
+  label_vi: "10/2026"
+  text: "Reviewer for SEBL 2026, the 3rd Global Conference on Sustainability in Economics, Business and Law, University of Economics and Law, VNU-HCM."
+  text_vi: "Phản biện cho SEBL 2026, Hội thảo toàn cầu lần thứ 3 về Phát triển bền vững trong Kinh tế, Kinh doanh và Luật, Trường Đại học Kinh tế - Luật, ĐHQG-HCM."
+  url: /service/
+
+- year: 2026
+  label: "Fall 2026"
+  label_vi: "Học kỳ thu 2026"
+  text: "Started teaching Microeconomics at ESCP Business School, Paris, and Trade and International Finance at Sciences Po."
+  text_vi: "Bắt đầu giảng dạy Kinh tế vi mô tại ESCP Business School, Paris, và Thương mại và Tài chính quốc tế tại Sciences Po."
+  url: /teaching/courses/
+
+- year: 2026
+  label: "Jul 2026"
+  label_vi: "7/2026"
+  text: "Reviewer for MBIC 2026, International Conference on Marketing, Management and Business Innovation, International University, VNU-HCM."
+  text_vi: "Phản biện cho MBIC 2026, Hội thảo quốc tế về Marketing, Quản trị và Đổi mới kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM."
+  url: /service/
+
+- year: 2026
+  label: "2026"
+  label_vi: "2026"
+  text: "The revised version of “From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model”, with C. Le-Van, N.-S. Pham and T. K. C. Pham, is under review at Mathematical Social Sciences."
+  text_vi: "Bản chỉnh sửa của bài “From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model”, cùng C. Le-Van, N.-S. Pham và T. K. C. Pham, đang được phản biện (vòng R1) tại Mathematical Social Sciences."
+  url: /publications/
+
+- year: 2026
+  label: "2026"
+  label_vi: "2026"
+  text: "Presented “Foreign aid, governance, and environmental expenditure: Micro-founded approach and empirical evidence” at the Workshop SHIFT, Université Paris Nanterre."
+  text_vi: "Báo cáo “Viện trợ nước ngoài, quản trị và chi tiêu môi trường: Cách tiếp cận có nền tảng vi mô và bằng chứng thực nghiệm” tại Hội thảo SHIFT, Đại học Paris Nanterre."
+  url: /conferences/
+
+- year: 2026
+  label: "2026"
+  label_vi: "2026"
+  text: "Joined the French Economic Association (AFSE)."
+  text_vi: "Trở thành hội viên Hội Kinh tế học Pháp (AFSE)."
+  url: /service/
+
+- year: 2025
+  label: "Jul 2025"
+  label_vi: "7/2025"
+  text: "Member of the organizing committee and session chair (Environmental Policy & Energy Economics) at ICDE 2025, AFEDEV and Université Paris Nanterre."
+  text_vi: "Thành viên Ban tổ chức và chủ tọa phiên “Chính sách môi trường và Kinh tế năng lượng” tại ICDE 2025, AFEDEV và Đại học Paris Nanterre."
+  url: /service/
+
+- year: 2025
+  label: "2025"
+  label_vi: "2025"
+  text: "Presented “Endogenous innovation in a growth model à la Solow” and chaired the session Macroeconomic Dynamics at VEAM 2025, Thai Nguyen."
+  text_vi: "Báo cáo “Đổi mới sáng tạo nội sinh trong mô hình tăng trưởng kiểu Solow” và chủ tọa phiên “Động học kinh tế vĩ mô” tại VEAM 2025, Thái Nguyên."
+  url: /conferences/
+
+- year: 2025
+  label: "2025"
+  label_vi: "2025"
+  text: "Joined the International Society for Vietnamese Economists (ISVE)."
+  text_vi: "Trở thành hội viên Hiệp hội Quốc tế các nhà Kinh tế học Việt Nam (ISVE)."
+  url: /service/

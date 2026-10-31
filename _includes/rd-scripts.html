@@ -1,0 +1,6 @@
+<script>window.RD_I18N = {{ t | jsonify }};</script>
+<script src="{{ base_path }}/assets/js/rd.js" defer></script>
+{% if page.math %}<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>{% endif %}
+{% if page.map %}<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>{% endif %}
+{% if page.altmetric %}<script src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js" async></script>{% endif %}
+{% if site.rd.goatcounter and site.rd.goatcounter != "" and site.noindex != true %}<script data-goatcounter="https://{{ site.rd.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}

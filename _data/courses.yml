@@ -1,0 +1,83 @@
+# Current courses, shown on /teaching/courses/ (EN) and /vi/teaching/courses/ (VI).
+# Each course gets an anchor (#id). Add materials as a list of {title, title_vi, url}:
+#   materials:
+#     - title: "Syllabus"
+#       title_vi: "Đề cương"
+#       url: /files/micro-syllabus.pdf
+
+- id: escp-microeconomics
+  title: "Microeconomics"
+  title_vi: "Kinh tế vi mô"
+  institution: "ESCP Business School"
+  campus: "Paris"
+  campus_vi: "Paris"
+  level: "Undergraduate, first-year international Bachelor students"
+  level_vi: "Đại học, sinh viên năm nhất chương trình Cử nhân quốc tế"
+  format: "Seminars (TD), two classes"
+  format_vi: "Seminar (TD), hai lớp"
+  since: "2026"
+
+- id: sciencespo-trade-finance
+  title: "Trade and International Finance"
+  title_vi: "Thương mại và Tài chính quốc tế"
+  institution: "Sciences Po"
+  campus: "Reims"
+  campus_vi: "Reims"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  format: "Tutorials (TD), two groups"
+  format_vi: "Lớp thảo luận (TD), hai nhóm"
+  since: "2026"
+
+- id: sciencespo-the-economy
+  title: "The Economy"
+  title_vi: "Nền kinh tế (The Economy)"
+  institution: "Sciences Po"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"
+
+- id: sciencespo-quantitative-methods
+  title: "Quantitative Methods for the Humanities and Social Sciences"
+  title_vi: "Phương pháp định lượng cho Khoa học xã hội và nhân văn"
+  institution: "Sciences Po"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"
+
+- id: sciencespo-mathematics
+  title: "Mathematics Applied to Quantitative Social Sciences"
+  title_vi: "Toán ứng dụng trong Khoa học xã hội định lượng"
+  institution: "Sciences Po"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"
+
+- id: iu-statistics
+  title: "Statistics for Business"
+  title_vi: "Thống kê trong kinh doanh"
+  institution: "International University, VNU-HCM"
+  institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"
+
+- id: iu-organizational-behavior
+  title: "Organizational Behavior"
+  title_vi: "Hành vi tổ chức"
+  code: "BA130IU"
+  institution: "International University, VNU-HCM"
+  institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"
+
+- id: iu-workshop-1
+  title: "Workshop I"
+  title_vi: "Workshop I"
+  code: "BA256IU"
+  institution: "International University, VNU-HCM"
+  institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
+  level: "Undergraduate"
+  level_vi: "Đại học"
+  since: "2025"

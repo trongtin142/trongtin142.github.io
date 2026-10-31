@@ -1,65 +1,107 @@
-# Order of the links in the header of the website.
-# The home page (About) is always reached by clicking the site title.
+# Header menu. The home page is reached by clicking the name.
+# An item with `children` opens a drop-down; `icon` names an icon in _includes/rd-icon.html.
+# Pages left out of the menu (e.g. Notes) stay reachable by URL.
 
 main:
-  - title: "Positions"
-    url: /positions/
-
-  - title: "Education"
-    url: /education/
-
   - title: "Research"
-    url: /publications/
-
-  - title: "Projects"
-    url: /projects/
-
-  - title: "Grants"
-    url: /grants/
+    children:
+      - title: "Publications"
+        url: /publications/
+        icon: book
+      - title: "Projects"
+        url: /projects/
+        icon: sprout
+      - title: "Grants"
+        url: /grants/
+        icon: award
+      - title: "Software & Data"
+        url: /software/
+        icon: code
+      - title: "Co-authors"
+        url: /coauthors/
+        icon: users
 
   - title: "Teaching"
-    url: /teaching/
+    children:
+      - title: "Overview"
+        url: /teaching/
+        icon: board
+      - title: "Courses"
+        url: /teaching/courses/
+        icon: file
 
   - title: "Conferences"
     url: /conferences/
 
-  - title: "Service"
-    url: /service/
-
-  - title: "Skills"
-    url: /skills/
+  - title: "About"
+    children:
+      - title: "Positions"
+        url: /positions/
+        icon: brief
+      - title: "Education"
+        url: /education/
+        icon: cap
+      - title: "Service"
+        url: /service/
+        icon: handshake
+      - title: "Skills"
+        url: /skills/
+        icon: layers
+      - title: "News"
+        url: /news/
+        icon: news
 
   - title: "Contact"
     url: /contact/
 
-# Vietnamese menu, used on pages with `lang: vi` (same order as above).
 vi:
-  - title: "Công tác"
-    url: /vi/positions/
-
-  - title: "Học vấn"
-    url: /vi/education/
-
   - title: "Nghiên cứu"
-    url: /vi/publications/
-
-  - title: "Dự án"
-    url: /vi/projects/
-
-  - title: "Tài trợ"
-    url: /vi/grants/
+    children:
+      - title: "Ấn phẩm"
+        url: /vi/publications/
+        icon: book
+      - title: "Dự án"
+        url: /vi/projects/
+        icon: sprout
+      - title: "Tài trợ"
+        url: /vi/grants/
+        icon: award
+      - title: "Phần mềm & Dữ liệu"
+        url: /vi/software/
+        icon: code
+      - title: "Đồng tác giả"
+        url: /vi/coauthors/
+        icon: users
 
   - title: "Giảng dạy"
-    url: /vi/teaching/
+    children:
+      - title: "Tổng quan"
+        url: /vi/teaching/
+        icon: board
+      - title: "Môn học"
+        url: /vi/teaching/courses/
+        icon: file
 
   - title: "Hội thảo"
     url: /vi/conferences/
 
-  - title: "Hoạt động"
-    url: /vi/service/
-
-  - title: "Kỹ năng"
-    url: /vi/skills/
+  - title: "Giới thiệu"
+    children:
+      - title: "Công tác"
+        url: /vi/positions/
+        icon: brief
+      - title: "Học vấn"
+        url: /vi/education/
+        icon: cap
+      - title: "Hoạt động"
+        url: /vi/service/
+        icon: handshake
+      - title: "Kỹ năng"
+        url: /vi/skills/
+        icon: layers
+      - title: "Tin mới"
+        url: /vi/news/
+        icon: news
 
   - title: "Liên hệ"
     url: /vi/contact/

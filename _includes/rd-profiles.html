@@ -1,0 +1,10 @@
+{%- comment -%} Academic profile links. Empty entries in _config.yml `profiles` are skipped. {%- endcomment -%}
+<ul class="profiles{% if include.class %} {{ include.class }}{% endif %}">
+  {%- if site.profiles.orcid != "" %}<li><a href="{{ site.profiles.orcid }}" rel="me"><i class="ai ai-orcid" aria-hidden="true"></i><span>ORCID</span></a></li>{% endif -%}
+  {%- if site.profiles.scholar != "" %}<li><a href="{{ site.profiles.scholar }}" rel="me"><i class="ai ai-google-scholar" aria-hidden="true"></i><span>Google Scholar</span></a></li>{% endif -%}
+  {%- if site.profiles.repec != "" %}<li><a href="{{ site.profiles.repec }}" rel="me"><i class="ai ai-ideas-repec" aria-hidden="true"></i><span>RePEc</span></a></li>{% endif -%}
+  {%- if site.profiles.ssrn != "" %}<li><a href="{{ site.profiles.ssrn }}" rel="me"><i class="ai ai-ssrn" aria-hidden="true"></i><span>SSRN</span></a></li>{% endif -%}
+  {%- if site.profiles.researchgate != "" %}<li><a href="{{ site.profiles.researchgate }}" rel="me"><i class="ai ai-researchgate" aria-hidden="true"></i><span>ResearchGate</span></a></li>{% endif -%}
+  {%- if site.profiles.github != "" %}<li><a href="{{ site.profiles.github }}" rel="me">{% include rd-icon.html name="code" %}<span>GitHub</span></a></li>{% endif -%}
+  {%- if site.profiles.linkedin != "" %}<li><a href="{{ site.profiles.linkedin }}" rel="me">{% include rd-icon.html name="id" %}<span>LinkedIn</span></a></li>{% endif -%}
+</ul>

@@ -1,0 +1,43 @@
+{%- comment -%}
+  Works on the ORCID record that are not on the Publications page yet.
+  _data/orcid.json is refreshed by the deploy workflow (weekly) from the public ORCID API.
+{%- endcomment -%}
+{%- if site.rd.orcid_sync and site.data.orcid and site.data.orcid.group -%}
+{%- capture known -%}{% for p in site.data.publications.items %}|{{ p.title | downcase | strip }}|{% if p.doi %}{{ p.doi | downcase }}|{% endif %}{% endfor %}{%- endcapture -%}
+{%- assign orcid_shown = 0 -%}
+{%- capture orcid_items -%}
+{%- for g in site.data.orcid.group -%}
+  {%- assign w = g["work-summary"][0] -%}
+  {%- assign wt = w.title.title.value -%}
+  {%- assign key = wt | downcase | strip | prepend: "|" | append: "|" -%}
+  {%- assign wdoi = "" -%}{%- assign wlink = w.url.value -%}{%- assign wid = "" -%}
+  {%- for x in w["external-ids"]["external-id"] -%}
+    {%- if x["external-id-type"] == "doi" -%}{%- assign wdoi = x["external-id-value"] | downcase -%}{%- endif -%}
+    {%- if wlink == nil or wlink == "" -%}{%- assign wlink = x["external-id-url"].value -%}{%- endif -%}
+    {%- if wid == "" -%}{%- assign wid = x["external-id-type"] | upcase | append: " " | append: x["external-id-value"] -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign is_known = false -%}
+  {%- if known contains key -%}{%- assign is_known = true -%}{%- endif -%}
+  {%- if wdoi != "" -%}{%- assign dkey = wdoi | prepend: "|" | append: "|" -%}{%- if known contains dkey -%}{%- assign is_known = true -%}{%- endif -%}{%- endif -%}
+  {%- unless is_known -%}
+  {%- assign orcid_shown = orcid_shown | plus: 1 -%}
+  <article class="pub">
+    <div class="pub__meta">
+      <span class="badge badge--wp">{{ w.type | replace: "-", " " | capitalize }}</span>
+      <span class="pub__year">{{ w["publication-date"].year.value }}</span>
+      {% if wid != "" %}<span class="pub__rank">{{ wid }}</span>{% endif %}
+    </div>
+    <h3 class="pub__title">{% if wlink and wlink != "" %}<a href="{{ wlink }}">{{ wt }}</a>{% else %}{{ wt }}{% endif %}</h3>
+    {% if w["journal-title"] %}<p class="pub__by"><em>{{ w["journal-title"].value }}</em></p>{% endif %}
+  </article>
+  {%- endunless -%}
+{%- endfor -%}
+{%- endcapture -%}
+{%- if orcid_shown > 0 -%}
+<section class="orcid-block">
+  <h2><i class="ai ai-orcid" aria-hidden="true"></i>{{ t.orcid_title }}</h2>
+  <p class="block__intro">{{ t.orcid_note }}</p>
+  <div class="pubs">{{ orcid_items }}</div>
+</section>
+{%- endif -%}
+{%- endif -%}
