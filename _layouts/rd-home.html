@@ -9,7 +9,7 @@ layout: rd
       <p class="eyebrow">{{ t.eyebrow }}</p>
       <h1 class="hero__name">{% if t.name_alias %}{{ t.name_primary }} <span class="hero__alias">{{ t.name_alias }}</span>{% elsif t.name_nick %}<span class="hero__given">{{ t.name_given }} <span class="hero__nick">{{ t.name_nick }}</span></span> {{ t.name_family }}{% else %}{{ t.name }}{% endif %}</h1>
       <p class="hero__role"><span>{{ t.bio }}</span> <span>{{ t.role }}</span></p>
-      <p class="hero__lead">{{ page.intro }}</p>
+      <div class="hero__lead">{% if page.intro.first %}{% for para in page.intro %}<p>{{ para }}</p>{% endfor %}{% else %}<p>{{ page.intro }}</p>{% endif %}</div>
       <div class="actions">
         <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/publications/">{% include rd-icon.html name="book" %}<span>{{ t.pubs_btn }}</span></a>
         <a class="btn" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
