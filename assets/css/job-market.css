@@ -126,6 +126,12 @@ i, em { font-style: italic; }
 .cv-foot { max-width: 1000px; margin: 8px auto 0; padding: 0 max(var(--gutter), env(safe-area-inset-left, 0px)) 48px; }
 .cv-foot p { font: 400 13.5px/1.5 var(--sans); color: var(--muted); border-top: 2px solid var(--crimson); padding-top: 16px; }
 
+/* Medium screens (tablets, split or narrow windows): headings above full-width content, so lines are not squeezed */
+@media screen and (max-width: 1040px) {
+  .cv-sec { display: block; padding: 24px 0 12px; }
+  .cv-h { margin: 0 0 14px; }
+}
+
 /* Small screens */
 @media screen and (max-width: 760px) {
   :root { --gutter: 16px; }
