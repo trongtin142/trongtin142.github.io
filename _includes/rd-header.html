@@ -20,7 +20,7 @@
             </ul>
           </li>
         {%- else -%}
-          <li class="nav__item{% if page.url == item.url %} is-active{% endif %}"><a class="nav__link" href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          <li class="nav__item{% if item.cta %} nav__item--cta{% endif %}{% if page.url == item.url %} is-active{% endif %}"><a class="nav__link" href="{{ base_path }}{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}{% if item.cta and page_lang == "vi" %} hreflang="en"{% endif %}>{{ item.title }}</a></li>
         {%- endif -%}
         {%- endfor -%}
       </ul>
