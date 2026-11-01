@@ -7,7 +7,7 @@ redirect_from:
   - /about/
   - /about.html
 intro:
-  - "I am an economist working on growth, public finance, and climate and trade policy. I combine dynamic general equilibrium theory, CGE modeling and applied econometrics (Stata, R, Python) to produce evidence for policy decisions. I am completing my PhD at EconomiX (CNRS), Université Paris Nanterre."
+  - "I am an economist working on growth, public finance, and climate and trade policy. I combine general equilibrium theory, CGE modeling and applied econometrics (Stata, R, Python) to produce evidence for policy decisions. I am completing my PhD at EconomiX (CNRS), Université Paris Nanterre."
   - "I teach at ESCP Business School and Sciences Po, drawing on more than a decade of university teaching in microeconomics, macroeconomics, development economics and econometrics in France and Vietnam. I welcome collaboration, whether joint papers, data-driven projects, guest lectures or policy work."
 themes:
   - image: /images/research/general-equilibrium.jpg
