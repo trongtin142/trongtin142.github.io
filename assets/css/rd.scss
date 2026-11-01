@@ -539,6 +539,40 @@ body.nav-locked { overflow: hidden; }
 .form__status { margin: 0; font-weight: 600; }
 .form__status.is-ok { color: var(--ok); }
 .form__status.is-error { color: #C0362C; }
+/* Optional details: phone, website, "how did you find me" chips, updates opt-in */
+.form__more { display: grid; gap: 14px; min-width: 0; margin: 4px 0 0; padding: 18px 0 0; border: 0; border-top: 1px solid var(--line); }
+.form__more > legend { float: left; width: 100%; margin: 0; padding: 0; font: 600 var(--fs-label)/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.pick { display: grid; gap: 8px; min-width: 0; margin: 0; padding: 0; border: 0; }
+.pick > legend { float: left; width: 100%; margin: 0; padding: 0; font-weight: 600; font-size: 14.5px; color: var(--ink); }
+.form .pick__opt { display: inline-flex; position: relative; gap: 0; font-weight: 500; }
+.form .pick__opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; padding: 0; border: 0; pointer-events: none; }
+.pick__opt span { font: 500 14px/1 var(--sans); padding: 8px 13px; border-radius: 99px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; }
+.pick__opt:hover span { border-color: var(--line-strong); }
+.pick__opt input:checked + span { background: var(--tint); color: var(--accent); border-color: color-mix(in srgb, var(--accent) 40%, transparent); }
+.pick__opt input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.form .check { display: flex; align-items: flex-start; gap: 10px; font-weight: 400; font-size: 15px; line-height: 1.45; color: var(--text); cursor: pointer; }
+.form .check input { flex: none; width: 18px; height: 18px; margin: 1px 0 0; padding: 0; accent-color: var(--accent); }
+.form__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 4px; }
+.form__foot .btn { flex: none; }
+.form__note { flex: 1 1 240px; margin: 0; font-size: 13.5px; line-height: 1.5; color: var(--muted); }
+.book__text { margin: 0 0 16px; }
+
+/* Footer "Let's connect" row: message / booking on the left, updates sign-up on the right */
+.connect { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 64px; margin: 0 0 30px; padding: 0 0 30px; border-bottom: 1px solid var(--line); }
+.connect__title { display: block; margin: 0 0 6px; font: 600 19px/1.3 var(--serif); color: var(--ink); }
+.connect__text { margin: 0 0 16px; max-width: 52ch; font-size: var(--fs-small); line-height: 1.55; color: var(--muted); }
+.connect__talk .actions { gap: 8px; }
+.connect__field { display: flex; gap: 8px; max-width: 460px; }
+.connect__field input {
+  flex: 1 1 auto; min-width: 0; font: 400 16px/1.4 var(--sans); color: var(--ink); background: var(--bg);
+  border: 1px solid var(--line-strong); border-radius: var(--radius); padding: 9px 12px;
+}
+.connect__field input:focus { outline: 2px solid var(--accent); outline-offset: 0; border-color: var(--accent); }
+.connect__field .btn { flex: none; padding: 0 18px; }
+.connect .form__status { margin-top: 10px; font-size: var(--fs-small); }
+.connect--solo { grid-template-columns: minmax(0, 1fr); }
+.connect--solo .connect__sub { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 14px 48px; align-items: center; }
+.connect--solo .connect__text { margin-bottom: 0; }
 
 /* Visitor statistics (Stats page) */
 .vstats__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; margin: -8px 0 22px; color: var(--muted); font-size: var(--fs-small); }
@@ -724,6 +758,8 @@ a.hbar__label:hover { color: var(--accent); text-decoration: underline; }
   .row__when { grid-row: auto; grid-column: 1; text-align: left; }
   .news__item { grid-template-columns: 1fr; gap: 2px; }
   .site-footer__in { grid-template-columns: 1fr; }
+  .connect, .connect--solo .connect__sub { grid-template-columns: 1fr; gap: 24px; }
+  .connect--solo .connect__sub { gap: 14px; }
   .map { height: 320px; }
   .filters .field { max-width: none; }
 }
