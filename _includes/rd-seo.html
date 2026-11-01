@@ -4,7 +4,7 @@
 {%- endcomment -%}
 {%- assign seo_name = t.name | default: site.title -%}
 {%- if page.url == "/" or page.url == "/vi/" -%}
-  {%- assign seo_title = seo_name -%}
+  {%- assign seo_title = seo_name -%}{%- if t.seo_tagline -%}{%- assign seo_title = seo_name | append: " · " | append: t.seo_tagline -%}{%- endif -%}
 {%- else -%}
   {%- assign seo_title = page.title | append: " · " | append: seo_name -%}
 {%- endif -%}
@@ -52,7 +52,7 @@
     { "@type": "CollegeOrUniversity", "name": "University of Economics Ho Chi Minh City" },
     { "@type": "CollegeOrUniversity", "name": "Erasmus University Rotterdam" }
   ],
-  "knowsAbout": ["Development economics", "General equilibrium theory", "Computable general equilibrium modelling", "Applied econometrics", "Circular economy"],
+  "knowsAbout": ["Development economics", "General equilibrium theory", "Computable general equilibrium modeling", "Applied econometrics", "Circular economy"],
   "sameAs": [{{ same_as }}]
 }
 </script>

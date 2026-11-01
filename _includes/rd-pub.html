@@ -29,6 +29,7 @@
   <p class="pub__by">{{ authors_html }}
     {%- if p.venue %} · <em>{{ p.venue }}</em>{% if note %} ({{ note }}){% endif %}{% endif -%}
     {%- if p.booktitle %} · <em>{{ p.booktitle }}</em>{% endif -%}
+    {%- if include.compact and p.venue == nil and p.booktitle == nil and p.publisher %} · <em>{{ p.publisher }}</em>{% if p.bib_version %}, v{{ p.bib_version }}{% endif %}{% endif -%}
     {%- unless include.compact -%}
       {%- if p.extra %} · {{ p.extra }}{% endif -%}
       {%- if p.publisher %} · {{ p.publisher }}{% endif -%}

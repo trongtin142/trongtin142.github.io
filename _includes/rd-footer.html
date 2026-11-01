@@ -57,7 +57,9 @@
     <p class="site-footer__meta">
       © {{ site.time | date: "%Y" }} {{ t.name }} · {{ t.last_updated }} <time datetime="{{ site.time | date: '%Y-%m-%d' }}">{{ site.time | date: "%Y-%m-%d" }}</time>
       · <a href="{{ base_path }}/news/feed.xml">{% include rd-icon.html name="rss" %}RSS</a>
+      {%- unless page.layout == "rd-home" %}
       <span data-visits hidden>· <a href="{{ base_path }}{% if page_lang == "vi" %}/vi{% endif %}/stats/"><span data-visits-n></span> {{ t.vs_page_visits }}</a></span>
+      {%- endunless %}
     </p>
   </div>
 </footer>
