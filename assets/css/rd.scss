@@ -37,6 +37,7 @@
   --rr: #8A5300; --rr-bg: #FBEFD9;
   --rev: #2348C8; --rev-bg: #E9EEFC;
   --wp: #5D6575; --wp-bg: #EEF0F4;
+  --jm: #A51C30; --jm-tint: #FAF1F2;
   --mono-bg: #161B26; --mono-fg: #F29A5C;
   --chart: #2348C8;
   --seq-1: #BACAF6; --seq-2: #9CB1F0; --seq-3: #6E8BE2; --seq-4: #4567D5; --seq-5: #2348C8; --map-none: #E2E5EB;
@@ -74,6 +75,7 @@
   --rr: #F2C76E; --rr-bg: #3A2E12;
   --rev: #8AA4FF; --rev-bg: #1B2340;
   --wp: #A1A9B8; --wp-bg: #20252F;
+  --jm: #F08C9B; --jm-tint: #3A1A21;
   --chart: #6E8BF2;
   --seq-1: #2D3B70; --seq-2: #3D52A3; --seq-3: #5571D4; --seq-4: #7894F3; --seq-5: #AABDFF; --map-none: #2B3242;
   --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
@@ -164,6 +166,9 @@ main { display: block; flex: 1 0 auto; outline: none; }
 }
 .nav__link:hover { color: var(--ink); background: var(--tint); }
 .nav__item.is-active > .nav__link { color: var(--ink); box-shadow: inset 0 -2px 0 var(--deco); border-radius: 0; }
+.nav__item--cta { margin-left: 6px; }
+.nav__item--cta > .nav__link { color: var(--jm); padding: 8px 12px; border: 1.5px solid var(--jm); border-radius: 99px; }
+.nav__item--cta > .nav__link:hover, .nav__item--cta.is-active > .nav__link { color: var(--jm); background: var(--jm-tint); box-shadow: none; border-radius: 99px; }
 .nav__chev { width: 15px; height: 15px; transition: transform .15s ease; opacity: .7; }
 .nav__toggle[aria-expanded="true"] .nav__chev { transform: rotate(180deg); }
 .nav__sub {
@@ -208,7 +213,7 @@ html:not(.js) .nav__item.has-sub:hover > .nav__sub, html:not(.js) .nav__item.has
 .site-header.is-open .tool--menu .i-menu { display: none; }
 
 .tool--search kbd { display: none; }
-@media (max-width: 1040px) {
+@media (max-width: 1100px) {
   .js .tool--menu { display: inline-flex; }
   .js .nav {
     position: fixed; inset: var(--header-h) 0 0 0; z-index: 49;
@@ -219,6 +224,8 @@ html:not(.js) .nav__item.has-sub:hover > .nav__sub, html:not(.js) .nav__item.has
   .js .nav__list { flex-direction: column; align-items: stretch; gap: 4px; }
   .js .nav__link { width: 100%; justify-content: space-between; font-size: 18px; padding: 14px 8px; border-bottom: 1px solid var(--line); border-radius: 0; }
   .js .nav__item.is-active > .nav__link { box-shadow: none; color: var(--accent); }
+  .js .nav__item--cta { order: -1; margin: 0 0 10px; } /* first in the mobile menu, so it is seen without scrolling */
+  .js .nav__item--cta > .nav__link { justify-content: center; color: var(--jm); border: 1.5px solid var(--jm); border-radius: var(--radius); padding: 13px 8px; }
   .js .nav__sub { position: static; display: block; border: 0; box-shadow: none; background: none; padding: 4px 0 10px 8px; min-width: 0; }
   .js .nav__chev { display: none; }
   .js .nav__sub a { font-size: 16.5px; padding: 10px 8px; }
@@ -226,7 +233,7 @@ html:not(.js) .nav__item.has-sub:hover > .nav__sub, html:not(.js) .nav__item.has
   html:not(.js) .nav__list { flex-wrap: wrap; }
   .brand { font-size: 15.5px; }
 }
-@media (min-width: 641px) and (max-width: 1040px) {
+@media (min-width: 641px) and (max-width: 1100px) {
   .brand__alias { display: inline; }
 }
 @media (max-width: 640px) {
@@ -281,6 +288,9 @@ body.nav-locked { overflow: hidden; }
 .btn--sm .icon { width: 15px; height: 15px; }
 .btn[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); background: var(--tint); }
 .btn.is-done { border-color: var(--ok); color: var(--ok); }
+/* Job market CV: Harvard crimson, the colour of the /job-market/ page it opens */
+.btn--jm { border-color: var(--jm); color: var(--jm); }
+.btn--jm:hover { background: var(--jm-tint); border-color: var(--jm); color: var(--jm); }
 
 .badge { display: inline-flex; align-items: center; font: 700 11px/1 var(--sans); letter-spacing: .07em; text-transform: uppercase; padding: 5px 8px; border-radius: 99px; white-space: nowrap; vertical-align: 2px; }
 .badge--rr { color: var(--rr); background: var(--rr-bg); }
