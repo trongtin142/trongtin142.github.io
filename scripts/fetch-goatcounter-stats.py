@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Fetch visitor statistics from the GoatCounter API into _data/stats.json.
 
-Runs in the Pages build (.github/workflows/jekyll.yml) before Jekyll. The API
+Runs in the Pages build (.github/workflows/jekyll.yml, every 3 hours and on each
+push) before Jekyll. The API
 token comes from the GOATCOUNTER_TOKEN environment variable (a GoatCounter API
 token with only the "Read statistics" permission, stored as a repository
 secret). Without a token, or if the API fails, nothing is written and the
-statistics block on the Contact page stays hidden.
+Stats page shows a short notice instead of the figures.
 
 Usage:
     GOATCOUNTER_TOKEN=... python3 scripts/fetch-goatcounter-stats.py
@@ -65,7 +66,8 @@ def main():
     if not TOKEN:
         print("GOATCOUNTER_TOKEN not set; skipping visitor statistics")
         return 0
-    now = dt.datetime.now(dt.timezone.utc).replace(minute=0, second=0, microsecond=0)
+    fetched = dt.datetime.now(dt.timezone.utc).replace(second=0, microsecond=0)
+    now = fetched.replace(minute=0)
     end = iso(now + dt.timedelta(hours=1))
 
     total = get("/stats/total", start=SINCE, end=end)
@@ -114,7 +116,7 @@ def main():
         c["bin"] = 5 if top <= 1 else 1 + min(4, int(4 * math.log(c["count"]) / math.log(top)))
 
     stats = {
-        "generated": now.strftime("%Y-%m-%d"),
+        "generated": fetched.strftime("%Y-%m-%dT%H:%M:00Z"),   # UTC; shown in the visitor's local time
         "total": int(total.get("total") or 0),
         "last30": int(last30.get("total") or 0),
         "last7": int(last7.get("total") or 0),
