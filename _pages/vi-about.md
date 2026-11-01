@@ -5,7 +5,7 @@ lang: vi
 layout: rd-home
 description: "Nguyễn Trọng Tín (Tommy Nguyen), nghiên cứu sinh ngành Kinh tế học tại EconomiX (CNRS), Đại học Paris Nanterre: cân bằng tổng thể, mô hình CGE, kinh tế lượng."
 intro:
-  - "Tôi là nhà kinh tế học nghiên cứu về tăng trưởng, tài chính công, chính sách khí hậu và thương mại. Tôi kết hợp lý thuyết cân bằng tổng quát động, mô hình CGE và kinh tế lượng ứng dụng (Stata, R, Python) để tạo ra bằng chứng phục vụ các quyết định chính sách. Hiện tôi đang hoàn thành luận án tiến sĩ tại EconomiX (CNRS), Đại học Paris Nanterre."
+  - "Tôi là nhà kinh tế học nghiên cứu về tăng trưởng, tài chính công, chính sách khí hậu và thương mại. Tôi kết hợp lý thuyết cân bằng tổng quát, mô hình CGE và kinh tế lượng ứng dụng (Stata, R, Python) để tạo ra bằng chứng phục vụ các quyết định chính sách. Hiện tôi đang hoàn thành luận án tiến sĩ tại EconomiX (CNRS), Đại học Paris Nanterre."
   - "Tôi giảng dạy tại ESCP Business School và Sciences Po, với hơn 10 năm kinh nghiệm giảng dạy đại học tại Pháp và Việt Nam ở các môn kinh tế vi mô, kinh tế vĩ mô, kinh tế phát triển và kinh tế lượng. Tôi luôn sẵn sàng hợp tác, từ viết bài chung, dự án dữ liệu, thỉnh giảng đến tư vấn chính sách."
 themes:
   - image: /images/research/general-equilibrium.jpg
