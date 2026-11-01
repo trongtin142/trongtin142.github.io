@@ -54,6 +54,9 @@ description: "Conference presentations by Trong-Tin (Tommy) NGUYEN, with an inte
       <div>
         <p class="talk__event">{% if vi %}{{ x.event_vi }}{% else %}{{ x.event }}{% endif %}</p>
         <p class="talk__title">“{% if vi %}{{ x.title_vi }}{% else %}{{ x.title }}{% endif %}”</p>
+        {%- if x.proc %}
+        <p class="talk__proc">{{ t.published_in }} <i>{% if vi %}{{ x.proc_vi | default: x.proc }}{% else %}{{ x.proc }}{% endif %}</i>.{% if x.publisher %} {% if vi %}{{ x.publisher_vi | default: x.publisher }}{% else %}{{ x.publisher }}{% endif %}.{% endif %}{% if x.isbn %} ISBN {{ x.isbn }}.{% endif %}</p>
+        {%- endif %}
         <span class="talk__loc">{% include rd-icon.html name="pin" %}{% if vi %}{{ x.host_vi }}{% else %}{{ x.host }}{% endif %}</span>
         {%- if x.slides or x.video -%}<div class="pub__act">{% if x.slides %}<a class="btn btn--sm" href="{{ x.slides }}">{% include rd-icon.html name="board" %}Slides</a>{% endif %}{% if x.video %}<a class="btn btn--sm" href="{{ x.video }}">{% include rd-icon.html name="ext" %}Video</a>{% endif %}</div>{%- endif -%}
       </div>
