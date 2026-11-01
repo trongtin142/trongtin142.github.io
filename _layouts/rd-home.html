@@ -31,21 +31,7 @@ layout: rd
 <section class="stats" aria-label="{{ t.stats_label }}">
   <div class="wrap">
     <ul class="stats__in">
-      <li>
-        <a class="stat" href="#themes">
-          <span class="stat__head">
-            <b class="stat__num" data-count="{{ page.themes | size }}">{{ page.themes | size }}</b>
-            <span class="stat__label">{{ t.stats_strands }}</span>
-          </span>
-          <span class="marks">
-            {%- for th in page.themes -%}{%- if th.image %}
-            <span class="mark mark--photo" title="{{ th.title }}"><img src="{{ base_path }}{% if th.thumb %}{{ th.thumb }}{% else %}{{ th.image }}{% endif %}" alt="" width="64" height="64" decoding="async"></span>
-            {%- endif -%}{%- endfor %}
-          </span>
-          {% include rd-icon.html name="arrow" class="stat__go" %}
-        </a>
-      </li>
-      <li>
+      <li class="stats__wide">
         <a class="stat" href="{{ base_path }}{{ lp }}/teaching/">
           <span class="stat__head">
             <b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b>
@@ -123,7 +109,7 @@ layout: rd
         {%- else %}
         {% include rd-icon.html name=th.icon %}
         {%- endif %}
-        <h3>{{ th.title }}</h3>
+        <h3><a class="theme__link" href="{{ base_path }}{{ lp }}/publications/">{{ th.title }}</a></h3>
         <p>{{ th.text }}</p>
       </article>
       {%- endfor -%}
