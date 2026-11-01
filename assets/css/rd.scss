@@ -379,16 +379,17 @@ body.nav-locked { overflow: hidden; }
 .stats__in { list-style: none; margin: 0 calc(-1 * var(--stat-pad)); padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .stats__in > li { display: flex; min-width: 0; border-left: 1px solid var(--line); }
 .stats__in > li:first-child { border-left: 0; }
-.stat { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 28px var(--stat-pad) 26px; color: inherit; text-decoration: none; transition: background-color .2s ease; }
+.stat { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 28px var(--stat-pad) 26px; color: inherit; text-decoration: none; transition: background-color .2s ease; }
 .stat:hover { color: inherit; background: color-mix(in srgb, var(--tint) 50%, var(--surface)); }
 .stat:focus-visible { outline-offset: -3px; border-radius: 0; }
 .stat__num { font: 600 44px/1 var(--serif); color: var(--ink); letter-spacing: -.01em; font-variant-numeric: tabular-nums lining-nums; }
-.stat__head { align-self: flex-start; max-width: 100%; display: inline-flex; flex-direction: column; align-items: center; text-align: center; }
+.stat__head { max-width: 100%; display: flex; flex-direction: column; align-items: center; }
 .stat__label { margin-top: 10px; font: 600 var(--fs-label)/1.4 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); transition: color .2s ease; }
 .stat:hover .stat__label { color: var(--accent); }
 .stat__go { position: absolute; top: 30px; right: calc(var(--stat-pad) - 6px); width: 18px; height: 18px; color: var(--accent); opacity: 0; transform: translateX(-6px); transition: opacity .2s ease, transform .2s ease; }
 .stat:hover .stat__go, .stat:focus-visible .stat__go { opacity: 1; transform: none; }
-.marks { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: auto; padding-top: 16px; min-height: 46px; }
+/* the marks sit centred, both ways, in the space under the label, so cards of different heights stay balanced */
+.marks { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px; margin-top: auto; margin-bottom: auto; padding-top: 16px; min-height: 46px; }
 .mark { position: relative; flex: none; overflow: hidden; transition: transform .2s ease; }
 .mark:hover { transform: translateY(-2px); }
 .mark::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px var(--line-strong); pointer-events: none; }
@@ -402,9 +403,12 @@ body.nav-locked { overflow: hidden; }
 .mark--pip { width: 10px; height: 10px; border-radius: 3px; background: color-mix(in srgb, var(--accent) var(--o, 100%), var(--line)); }
 .mark--pip::after { display: none; }
 .marks__range { margin-left: 4px; font: 500 12px/1 var(--mono); color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
-.marks--rows { display: grid; grid-template-columns: auto auto minmax(0, 1fr); align-items: center; gap: 6px 8px; }
+.marks--rows { display: grid; grid-template-columns: auto auto auto; justify-content: center; align-items: center; gap: 6px 8px; }
 .marks__row { display: contents; }
-.marks__country { font: 600 12px/1 var(--sans); letter-spacing: .02em; color: var(--muted); white-space: nowrap; }
+.marks__country { font: 600 12px/1 var(--sans); letter-spacing: .02em; color: var(--muted); white-space: nowrap; text-align: left; }
+.marks--flags { align-items: flex-start; gap: 14px; }
+.marks__item { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+.marks__item .marks__country { text-align: center; }
 .marks__logos { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
 
 .section { padding: 64px 0; }
@@ -636,6 +640,8 @@ a.hbar__label:hover { color: var(--accent); text-decoration: underline; }
   .marks--rows .mark--logo { width: 22px; height: 22px; }
   .marks__country { font-size: 10px; letter-spacing: 0; }
   .marks__logos { gap: 3px; flex-wrap: nowrap; }
+  .marks--flags { gap: 8px; }
+  .marks__item { gap: 5px; }
   .section { padding: 44px 0; }
   .cta { grid-template-columns: 1fr; padding: 24px; }
   .cards--2, .contact, .contact--noform .contact__info, .form__row { grid-template-columns: 1fr; }
@@ -660,7 +666,7 @@ a.hbar__label:hover { color: var(--accent); text-decoration: underline; }
   .filters .field { max-width: none; }
 }
 @media (max-width: 350px) {
-  .marks__country { display: none; }
+  .marks--rows .marks__country { display: none; }
 }
 @media (max-width: 460px) {
   .themes { grid-template-columns: 1fr; }
