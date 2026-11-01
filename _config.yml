@@ -86,6 +86,7 @@ author:
 rd:
   goatcounter              : "trongtin142"   # GoatCounter code, e.g. "trongtin" for https://trongtin.goatcounter.com
   formspree                : "mjyyawll"   # Formspree form id, e.g. "xyzabcd" from https://formspree.io/f/xyzabcd
+  booking                  : ""   # Booking page URL (Google Calendar appointment schedule); the "Book a meeting" buttons appear once it is set
   orcid_sync               : true # list ORCID works that are not yet on the Publications page
   orcid_id                 : "0009-0006-0017-6374"
   cofog_repo               : "trongtin142/cofog-panel"
