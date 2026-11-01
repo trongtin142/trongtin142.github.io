@@ -1,5 +1,6 @@
 # Conference presentations (Conferences page, home-page counter, map) and other places on the map.
 # place: id of an entry under `places`. slides / video: optional links shown as buttons.
+# proc, publisher, isbn (each with an optional _vi version): proceedings in which the paper was published.
 
 talks:
   - year: 2026
@@ -39,17 +40,38 @@ talks:
     event_vi: "Khởi nghiệp 4.0"
     host: "Ho Chi Minh City University of Law, Vietnam"
     host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
-    title: "Behavioral theories and models of entrepreneurial intention"
-    title_vi: "Các lý thuyết hành vi và mô hình về ý định khởi nghiệp"
+    title: "Behavioral theories and research models of entrepreneurial intention: An overview"
+    title_vi: "Các lý thuyết hành vi và mô hình nghiên cứu về ý định khởi nghiệp: Tổng quan"
     place: hcmlaw
+    proc: "Proceedings of the Scientific Conference “Start-up 4.0”"
+    proc_vi: "Kỷ yếu Hội thảo khoa học “Khởi nghiệp 4.0”"
+    publisher: "Vietnam National University Ho Chi Minh City Press"
+    publisher_vi: "NXB Đại học Quốc gia TP. Hồ Chí Minh"
+    isbn: "978-604-73-7826-5"
   - year: 2018
     event: "Models in Finance: Theory and Evidence"
     event_vi: "Mô hình trong tài chính: Lý thuyết và bằng chứng"
     host: "Ho Chi Minh City University of Law, Vietnam"
     host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
-    title: "Granger causality in VAR/VECM"
-    title_vi: "Kiểm định nhân quả Granger trong mô hình VAR/VECM"
+    title: "Applying Granger causality tests in VAR or VECM frameworks"
+    title_vi: "Ứng dụng kiểm định nhân quả Granger trong mô hình VAR hoặc VECM"
     place: hcmlaw
+    proc: "Proceedings of the Scientific Conference “Models in Finance: Theory and Evidence”"
+    proc_vi: "Kỷ yếu Hội thảo khoa học “Mô hình trong tài chính: Lý thuyết và bằng chứng”"
+    publisher: "UEH Publishing House"
+    publisher_vi: "NXB Kinh tế TP. Hồ Chí Minh"
+    isbn: "978-604-922-641-0"
+  - year: 2017
+    event: "4th International Conference on Finance and Economics (ICFE 2017)"
+    event_vi: "Hội thảo quốc tế lần thứ 4 về Tài chính và Kinh tế (ICFE 2017)"
+    host: "Ton Duc Thang University, Ho Chi Minh City, Vietnam"
+    host_vi: "Trường Đại học Tôn Đức Thắng, TP. Hồ Chí Minh, Việt Nam"
+    title: "The causal relationship between money supply, inflation, and economic growth in Vietnam"
+    title_vi: "Mối quan hệ nhân quả giữa cung tiền, lạm phát và tăng trưởng kinh tế ở Việt Nam"
+    place: tdtu
+    proc: "Proceedings of the 4th International Conference on Finance and Economics"
+    proc_vi: "Kỷ yếu Hội thảo quốc tế lần thứ 4 về Tài chính và Kinh tế"
+    isbn: "978-80-87990-11-7"
   - year: 2016
     event: "Exchange Rate Policy in Vietnam in the Context of the ASEAN Economic Community"
     event_vi: "Chính sách tỷ giá của Việt Nam trong bối cảnh Cộng đồng Kinh tế ASEAN"
@@ -115,5 +137,6 @@ places:
   tallinn: { name: "Tallinn", name_vi: "Tallinn", lat: 59.3956, lng: 24.6713 }
   thainguyen: { name: "Thai Nguyen", name_vi: "Thái Nguyên", lat: 21.5942, lng: 105.8482 }
   hcmlaw: { name: "Ho Chi Minh City", name_vi: "TP. Hồ Chí Minh", lat: 10.7618, lng: 106.7061 }
+  tdtu: { name: "Ho Chi Minh City (District 7)", name_vi: "TP. Hồ Chí Minh (Quận 7)", lat: 10.7326, lng: 106.6991 }
   iu: { name: "Ho Chi Minh City (Thu Duc)", name_vi: "TP. Hồ Chí Minh (Thủ Đức)", lat: 10.8770, lng: 106.8013 }
   uel: { name: "Ho Chi Minh City (Thu Duc)", name_vi: "TP. Hồ Chí Minh (Thủ Đức)", lat: 10.8702, lng: 106.7782 }
