@@ -70,9 +70,28 @@ def main():
     now = fetched.replace(minute=0)
     end = iso(now + dt.timedelta(hours=1))
 
-    total = get("/stats/total", start=SINCE, end=end)
-    last30 = get("/stats/total", start=iso(now - dt.timedelta(days=30)), end=end)
-    last7 = get("/stats/total", start=iso(now - dt.timedelta(days=7)), end=end)
+    # All counted paths, paginated. The site also sends GoatCounter events (clicks on email addresses,
+    # PDF downloads, booking links, sent forms), which GoatCounter adds to its totals and location
+    # counts; the public figures below are therefore restricted to page paths whenever events exist.
+    all_hits, seen = [], []
+    for _ in range(20):
+        params = {"start": SINCE, "end": end, "limit": 100}
+        if seen:
+            params["exclude_paths"] = ",".join(seen)
+        res = get("/stats/hits", **params)
+        batch = res.get("hits") or []
+        all_hits += batch
+        seen += [str(h["path_id"]) for h in batch if h.get("path_id") is not None]
+        if not batch or not res.get("more"):
+            break
+    page_ids = [str(h["path_id"]) for h in all_hits if not h.get("event") and h.get("path_id") is not None]
+    only_pages = {}
+    if page_ids and any(h.get("event") for h in all_hits):
+        only_pages = {"include_paths": ",".join(page_ids)}
+
+    total = get("/stats/total", start=SINCE, end=end, **only_pages)
+    last30 = get("/stats/total", start=iso(now - dt.timedelta(days=30)), end=end, **only_pages)
+    last7 = get("/stats/total", start=iso(now - dt.timedelta(days=7)), end=end, **only_pages)
 
     # Monthly visits for the last 12 calendar months, from the per-day overview
     first = (now.replace(day=1) - dt.timedelta(days=330)).replace(day=1, hour=0)
@@ -83,16 +102,15 @@ def main():
         m = (m + dt.timedelta(days=32)).replace(day=1)
     months = months[-12:]
     per_month = dict((k, 0) for k in months)
-    yearly = get("/stats/total", start=iso(first), end=end)
+    yearly = get("/stats/total", start=iso(first), end=end, **only_pages)
     for day in yearly.get("stats") or []:
         key = str(day.get("day", ""))[:7]
         if key in per_month:
             per_month[key] += int(day.get("daily") or 0)
 
     # Most visited pages, English and Vietnamese versions combined
-    hits = get("/stats/hits", start=SINCE, end=end, limit=50)
     pages = {}
-    for h in hits.get("hits") or []:
+    for h in all_hits:
         if h.get("event"):
             continue
         path = h.get("path") or "/"
@@ -105,7 +123,7 @@ def main():
     top_pages = sorted(pages.values(), key=lambda p: -p["count"])[:8]
 
     # Visitors by country; "bin" (1-5, log scale) colours the world map
-    loc = get("/stats/locations", start=SINCE, end=end, limit=100)
+    loc = get("/stats/locations", start=SINCE, end=end, limit=100, **only_pages)
     countries = [
         {"code": s.get("id") or "", "name": s.get("name") or "", "count": int(s.get("count") or 0)}
         for s in (loc.get("stats") or [])
