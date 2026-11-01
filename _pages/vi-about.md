@@ -4,7 +4,7 @@ title: "Giới thiệu"
 lang: vi
 layout: rd-home
 description: "Nguyễn Trọng Tín (Tommy Nguyen), nghiên cứu sinh ngành Kinh tế học tại EconomiX (CNRS), Đại học Paris Nanterre: cân bằng tổng thể, mô hình CGE, kinh tế lượng."
-intro: "Tôi nghiên cứu cách thuế, chi tiêu công và thể chế, cùng với chính sách khí hậu và thương mại, tác động đến tăng trưởng và phúc lợi ở các nền kinh tế đang phát triển, tập trung vào Việt Nam và các quốc gia nhận viện trợ. Nghiên cứu của tôi kết hợp lý thuyết cân bằng tổng thể liên thời gian, mô hình CGE ứng dụng và kinh tế lượng dữ liệu bảng. Song song với nghiên cứu, tôi giảng dạy kinh tế vi mô, thương mại và tài chính quốc tế, cùng các phương pháp định lượng."
+intro: "Tôi là nhà nghiên cứu và giảng viên kinh tế học và kinh tế lượng, với các hướng chính là tăng trưởng, tài chính công, chính sách khí hậu và thương mại. Tôi chuyên về tối ưu lồi và phân tích dữ liệu với Stata, R và Python, nhằm biến dữ liệu thành bằng chứng hỗ trợ các quyết định chính sách và chiến lược có cơ sở. Tôi luôn tâm huyết với việc chia sẻ kiến thức cho thế hệ các nhà kinh tế trẻ, vì tin rằng kết hợp nghiên cứu với giảng dạy là cách tốt nhất để góp phần phát triển lĩnh vực này. Tôi luôn sẵn lòng hợp tác nghiên cứu, từ viết bài chung, các dự án dựa trên dữ liệu đến tư vấn chính sách, vì vậy đừng ngần ngại liên hệ với tôi."
 themes:
   - image: /images/research/general-equilibrium.jpg
     focus: "0% 50%"
@@ -26,5 +26,5 @@ themes:
     credit: "Clement Souchet, Unsplash (unsplash.com/photos/juVccM81b_E)"
     title: "Kinh tế tuần hoàn và nông lâm kết hợp"
     text: "Ứng dụng kinh tế tuần hoàn và nông lâm kết hợp, như mô hình vườn rừng xen cây lâu năm với cây trồng, để phát triển sinh kế nông thôn bền vững và phục hồi đất ở Việt Nam."
-closing: "Tôi mong được hợp tác với các nhà nghiên cứu và người làm thực tiễn tại châu Âu và Việt Nam trong các dự án nghiên cứu, giảng dạy và chính sách. Hãy liên hệ để trao đổi ý tưởng hoặc cùng triển khai dự án."
+closing: "Bạn có ý tưởng cho một bài báo hay dự án chung? Hãy trao đổi với tôi."
 ---
