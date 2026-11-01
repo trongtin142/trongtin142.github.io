@@ -54,6 +54,9 @@ main:
   - title: "Contact"
     url: /contact/
 
+  - title: "Stats"
+    url: /stats/
+
 vi:
   - title: "Giới thiệu"
     children:
@@ -105,3 +108,6 @@ vi:
 
   - title: "Liên hệ"
     url: /vi/contact/
+
+  - title: "Thống kê"
+    url: /vi/stats/
