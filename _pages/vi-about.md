@@ -7,8 +7,9 @@ description: "Nguyễn Trọng Tín (Tommy Nguyen), nhà kinh tế học, nghiê
 intro: "Tôi là nhà nghiên cứu và giảng viên Kinh tế học và Kinh tế lượng, hiện là nghiên cứu sinh tiến sĩ tại EconomiX (CNRS), Đại học Paris Nanterre, đồng thời giảng dạy tại ESCP Business School và Sciences Po. Tôi tin rằng kết hợp nghiên cứu với giảng dạy là cách tốt nhất để đóng góp cho ngành, và tôi luôn tâm huyết với việc chia sẻ tri thức cho thế hệ các nhà kinh tế học kế tiếp."
 themes:
   - image: /images/research/general-equilibrium.jpg
-    alt: "Bảng đen kín các phương trình viết tay"
-    credit: "Thomas T, Unsplash (unsplash.com/photos/OPpCbAAKWv8)"
+    thumb: /images/research/general-equilibrium-icon.jpg
+    focus: "0% 50%"
+    alt: "Hộp Edgeworth vẽ tay cùng các điều kiện cân bằng, bên cạnh cây bút máy"
     title: "Lý thuyết cân bằng tổng thể"
     text: "Các mô hình cân bằng liên thời gian về tăng trưởng kinh tế, đổi mới sáng tạo và tài chính công, được xây dựng bằng các công cụ tối ưu lồi, nhằm nghiên cứu cách thuế, tham nhũng và thể chế định hình hiệu quả sản xuất và tăng trưởng dài hạn."
   - image: /images/research/cge-trade.jpg
