@@ -1,0 +1,16 @@
+{%- comment -%}
+  Grants page body (English and Vietnamese), from _data/grants.yml. No blank lines in the output (safe in Markdown pages).
+{%- endcomment -%}
+{%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- for sec in site.data.grants.sections %}
+<section class="block">
+<h2>{% if vi %}{{ sec.title_vi }}{% else %}{{ sec.title }}{% endif %}</h2>
+<ul class="rows">
+{%- for g in sec.items -%}
+{%- if vi -%}{%- assign g_name = g.name_vi | default: g.name -%}{%- assign g_org = g.org_vi | default: g.org -%}{%- assign g_detail = g.detail_vi | default: g.detail -%}
+{%- else -%}{%- assign g_name = g.name -%}{%- assign g_org = g.org -%}{%- assign g_detail = g.detail -%}{%- endif %}
+  <li class="row"><span class="row__title">{{ g_name }}{% if g_org %}, {{ g_org }}{% endif %}</span><span class="row__when">{{ g.when }}</span>{% if g_detail %}<p class="row__detail">{{ g_detail }}</p>{% endif %}</li>
+{%- endfor %}
+</ul>
+</section>
+{%- endfor %}

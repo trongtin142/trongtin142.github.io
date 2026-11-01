@@ -7,6 +7,7 @@
 
     <nav class="nav" id="site-nav" aria-label="{{ t.menu }}">
       <ul class="nav__list">
+        <li class="nav__item nav__item--search"><button class="nav__search" type="button" data-search-open>{% include rd-icon.html name="search" %}<span>{{ t.search }}</span></button></li>
         {%- for item in nav_links -%}
         {%- if item.children -%}
           {%- assign group_active = false -%}

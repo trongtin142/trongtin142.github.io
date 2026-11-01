@@ -1,0 +1,12 @@
+{%- comment -%}
+  Skills page body (English and Vietnamese), from _data/skills.yml. No blank lines in the output (safe in Markdown pages).
+{%- endcomment -%}
+{%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif %}
+<div class="cards cards--2">
+{%- for s in site.data.skills %}
+<article class="card{% if s.wide %} card--wide{% endif %}">
+  <h2>{% include rd-icon.html name=s.icon %} {% if vi %}{{ s.name_vi | default: s.name | escape }}{% else %}{{ s.name | escape }}{% endif %}</h2>
+  <p>{% if vi %}{{ s.text_vi | default: s.text }}{% else %}{{ s.text }}{% endif %}</p>
+</article>
+{%- endfor %}
+</div>

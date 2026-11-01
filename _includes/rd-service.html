@@ -1,0 +1,18 @@
+{%- comment -%}
+  Service page body (English and Vietnamese), from _data/service.yml. No blank lines in the output (safe in Markdown pages).
+{%- endcomment -%}
+{%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- for sec in site.data.service.sections -%}{%- unless sec.cv_only %}
+<section class="block">
+<h2>{% if vi %}{{ sec.title_vi }}{% else %}{{ sec.title }}{% endif %}</h2>
+<ul class="rows">
+{%- for s in sec.items -%}
+{%- if vi -%}{%- assign s_name = s.name_vi | default: s.name -%}{%- assign s_when = s.when_vi | default: s.when -%}{%- assign s_detail = s.detail_vi | default: s.detail -%}{%- assign s_host = s.host_vi | default: s.host -%}{%- assign s_date = s.date_vi | default: s.date -%}
+{%- else -%}{%- assign s_name = s.name -%}{%- assign s_when = s.when -%}{%- assign s_detail = s.detail -%}{%- assign s_host = s.host -%}{%- assign s_date = s.date -%}{%- endif -%}
+{%- if sec.key == "memberships" -%}{%- capture s_when -%}{{ s.start }}–{{ t.present }}{%- endcapture -%}{%- endif -%}
+{%- if s_host -%}{%- capture s_detail -%}{{ s_host }}{% if s_date %} · {{ s_date }}{% endif %}{%- endcapture -%}{%- endif %}
+  <li class="row"><span class="row__title">{{ s_name }}{% if s.publisher %} <span class="muted">({{ s.publisher }})</span>{% endif %}</span>{% if s_when and sec.key != "refereeing" %}<span class="row__when">{{ s_when }}</span>{% endif %}{% if s_detail %}<p class="row__detail">{{ s_detail }}</p>{% endif %}</li>
+{%- endfor %}
+</ul>
+</section>
+{%- endunless -%}{%- endfor %}

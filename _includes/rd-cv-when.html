@@ -1,0 +1,2 @@
+{%- comment -%} Date range of a timeline entry for the Job Market CV: "2023–2025", "2026" or "2025–present". {%- endcomment -%}
+{%- assign e = include.e -%}{%- if e.end and e.end != e.start -%}{{ e.start }}–{{ e.end }}{%- elsif e.end -%}{{ e.start }}{%- else -%}{{ e.start }}–present{%- endif -%}

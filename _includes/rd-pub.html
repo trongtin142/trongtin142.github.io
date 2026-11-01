@@ -20,7 +20,6 @@
     <span class="badge badge--{{ ty.tone }}">{{ badge }}</span>
     <span class="pub__year">{{ p.year }}</span>
     {% if p.rank %}<span class="pub__rank">{{ p.rank }}</span>{% endif %}
-    {% if p.extra and include.compact %}<span class="pub__rank">{{ p.extra | remove: "(" | remove: ")" | remove: "[Computer software]" | strip }}</span>{% endif %}
   </div>
   {% if include.compact %}
   <h3 class="pub__title"><a href="{{ base_path }}{{ pubs_url }}#{{ p.id }}">{{ p.title }}</a></h3>
