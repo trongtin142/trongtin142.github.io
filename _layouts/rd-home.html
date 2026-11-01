@@ -13,6 +13,7 @@ layout: rd
       <div class="actions">
         <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/publications/">{% include rd-icon.html name="book" %}<span>{{ t.research }}</span></a>
         <a class="btn" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+        <a class="btn btn--jm" href="{{ base_path }}/job-market/"{% if page_lang == "vi" %} hreflang="en"{% endif %}>{% include rd-icon.html name="file" %}<span>{{ t.job_market }}</span></a>
       </div>
       {% include rd-profiles.html class="profiles--hero" %}
     </div>
