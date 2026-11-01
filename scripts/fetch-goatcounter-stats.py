@@ -15,6 +15,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -29,10 +30,15 @@ def get(path, **params):
     query = urllib.parse.urlencode(params, doseq=True)
     req = urllib.request.Request(
         API + path + ("?" + query if query else ""),
-        headers={"Authorization": "Bearer " + TOKEN, "Content-Type": "application/json"},
+        headers={"Authorization": "Bearer " + TOKEN, "Content-Type": "application/json",
+                 "User-Agent": "trongtin142.github.io stats (+https://github.com/trongtin142/trongtin142.github.io)"},
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.load(resp)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.load(resp)
+    except urllib.error.HTTPError as err:
+        body = err.read().decode("utf-8", "replace")[:300]
+        raise RuntimeError("%s %s -> HTTP %s: %s" % (path, query, err.code, body))
     time.sleep(0.3)                         # stay well under the 4 requests/second limit
     return data
 
