@@ -326,4 +326,37 @@
         .then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
   });
+
+  /* ---------- Visitor statistics (GoatCounter) ---------- */
+  var numFmt = window.Intl && Intl.NumberFormat ? new Intl.NumberFormat(LANG === "vi" ? "vi-VN" : "en-GB") : null;
+  function fmtNum(n) { return numFmt ? numFmt.format(n) : String(n); }
+  $$("[data-num]").forEach(function (el) {
+    var n = Number(el.getAttribute("data-num"));
+    if (!isNaN(n)) el.textContent = fmtNum(n);
+  });
+  if (window.Intl && Intl.DisplayNames) {
+    try {
+      var regionNames = new Intl.DisplayNames([LANG], { type: "region" });
+      $$("[data-cc]").forEach(function (el) {
+        var cc = el.getAttribute("data-cc"), name = /^[A-Z]{2}$/.test(cc) ? regionNames.of(cc) : "";
+        if (name && name !== cc) el.textContent = name;
+      });
+    } catch (e) { /* keep the English names */ }
+  }
+  // "N visits to this page" in the footer, from the public GoatCounter counter (cached up to 4 hours)
+  var visits = $("[data-visits]"), gcTag = $("script[data-goatcounter]");
+  if (visits && gcTag && window.fetch) {
+    var gcBase = gcTag.getAttribute("data-goatcounter").replace(/\/count$/, "");
+    var gcPath = location.pathname, canon = $('link[rel="canonical"][href]');
+    if (canon) { try { var cu = new URL(canon.href); if (cu.hostname === location.hostname) gcPath = cu.pathname; } catch (e) { /* ignore */ } }
+    fetch(gcBase + "/counter/" + encodeURI(gcPath) + ".json")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) {
+        var n = d && Number(String(d.count || "").replace(/[^0-9]/g, ""));
+        if (!n) return;
+        $("[data-visits-n]", visits).textContent = fmtNum(n);
+        visits.hidden = false;
+      })
+      .catch(function () { /* blocked or offline: keep it hidden */ });
+  }
 })();
