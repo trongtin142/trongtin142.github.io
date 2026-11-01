@@ -12,30 +12,20 @@ pdf: /files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
   After editing this page, regenerate the PDF in /files/ so the download matches the page.
 {%- endcomment -%}
 <header class="cv-head">
-  <p class="cv-kicker">Academic Job Market 2026–2027</p>
-  <h1 class="cv-name">NGUYEN-TRONG Tin</h1>
-  <p class="cv-role">Ph.D. Candidate in Economics · EconomiX (UMR 7235, CNRS), Université Paris Nanterre</p>
-
+  <img class="cv-photo" src="{{ base_path }}/images/profile.jpg" alt="Photo of NGUYEN-TRONG Tin" width="500" height="500" decoding="async" fetchpriority="high">
+  <div class="cv-id">
+    <p class="cv-kicker">Academic Job Market <span class="cv-nw">2026–2027</span></p>
+    <h1 class="cv-name">NGUYEN-TRONG Tin</h1>
+    <p class="cv-role">Ph.D. Candidate in Economics · EconomiX (UMR 7235, CNRS), <span class="cv-nw">Université Paris Nanterre</span></p>
+  </div>
   <div class="cv-contact">
-    <div class="cv-contact__col">
-      <p class="cv-label">Office address</p>
-      <address>EconomiX (UMR 7235, CNRS)<br>Université Paris Nanterre<br>200 avenue de la République<br>92001 Nanterre Cedex, France</address>
-    </div>
-    <div class="cv-contact__col">
-      <p class="cv-label">Contact</p>
-      <ul class="cv-plain">
-        <li><a href="mailto:trongtin.nguyen@parisnanterre.fr">trongtin.nguyen@parisnanterre.fr</a></li>
-        <li><a href="mailto:nttin@hcmiu.edu.vn">nttin@hcmiu.edu.vn</a></li>
-        <li><a href="{{ base_path }}/">{{ site.url | remove: "https://" }}</a></li>
-      </ul>
-    </div>
-    <div class="cv-contact__col">
-      <p class="cv-label">Profiles</p>
-      <ul class="cv-plain">
-        <li>ORCID <a href="{{ site.profiles.orcid }}">{{ site.rd.orcid_id }}</a></li>
-        <li><a href="{{ site.profiles.linkedin }}">LinkedIn</a> · <a href="{{ site.profiles.github }}">GitHub</a></li>
-      </ul>
-    </div>
+    <address>EconomiX (UMR 7235, CNRS)<br>Université Paris Nanterre<br>200 avenue de la République<br>92001 Nanterre Cedex, France</address>
+    <ul class="cv-plain">
+      <li><a href="mailto:trongtin.nguyen@parisnanterre.fr">trongtin.nguyen@parisnanterre.fr</a></li>
+      <li><a href="mailto:nttin@hcmiu.edu.vn">nttin@hcmiu.edu.vn</a></li>
+      <li><a href="{{ base_path }}/">{{ site.url | remove: "https://" }}</a></li>
+      <li class="cv-links"><a href="{{ site.profiles.orcid }}">ORCID</a><span class="cv-sep" aria-hidden="true">|</span><a href="{{ site.profiles.linkedin }}">LinkedIn</a><span class="cv-sep" aria-hidden="true">|</span><a href="{{ site.profiles.github }}">GitHub</a></li>
+    </ul>
   </div>
 </header>
 
@@ -48,18 +38,6 @@ pdf: /files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
       <p><span class="cv-k">Supervisors:</span> Prof. Thi Kim Cuong Pham and Prof. Ngoc-Sang Pham</p>
       <p><span class="cv-k">Expected defense:</span> May 2027</p>
     </div>
-  </div>
-</section>
-
-<section class="cv-sec" aria-labelledby="s-references">
-  <h2 class="cv-h" id="s-references">References</h2>
-  <div class="cv-b">
-    <ul class="cv-refs">
-      <li><strong>Prof. Thi Kim Cuong Pham</strong><span>Professor of Economics</span><span>EconomiX, Université Paris Nanterre</span><span class="cv-note">Dissertation supervisor</span></li>
-      <li><strong>Prof. Ngoc-Sang Pham</strong><span>Professor of Economics</span><span>EM Normandie Business School</span><span class="cv-note">Dissertation supervisor</span></li>
-      <li><strong>Prof. Cuong Le-Van</strong><span>Professor Emeritus</span><span>Paris School of Economics, CNRS</span></li>
-      <li><strong>Prof. Kerstin Holzheu</strong><span>Professor of Economics</span><span>Sciences Po Paris</span></li>
-    </ul>
   </div>
 </section>
 
@@ -343,5 +321,17 @@ pdf: /files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
       <dt>Software</dt><dd>Python, Stata, EViews, R, SPSS, AMOS, SmartPLS, Power BI, LaTeX</dd>
       <dt>Languages</dt><dd>Vietnamese (native); English (C1); French (A2)</dd>
     </dl>
+  </div>
+</section>
+
+<section class="cv-sec" aria-labelledby="s-references">
+  <h2 class="cv-h" id="s-references">References</h2>
+  <div class="cv-b">
+    <ul class="cv-refs">
+      <li><strong>Prof. Thi Kim Cuong Pham</strong><span>Professor of Economics</span><span>EconomiX, Université Paris Nanterre</span><span class="cv-note">Dissertation supervisor</span></li>
+      <li><strong>Prof. Ngoc-Sang Pham</strong><span>Professor of Economics</span><span>EM Normandie Business School</span><span class="cv-note">Dissertation supervisor</span></li>
+      <li><strong>Prof. Cuong Le-Van</strong><span>Professor Emeritus</span><span>Paris School of Economics, CNRS</span></li>
+      <li><strong>Prof. Kerstin Holzheu</strong><span>Professor of Economics</span><span>Sciences Po Paris</span></li>
+    </ul>
   </div>
 </section>
