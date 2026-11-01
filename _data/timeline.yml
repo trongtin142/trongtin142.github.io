@@ -84,18 +84,24 @@ education:
 teaching:
   - start: 2026
     org: "ESCP Business School, France"
+    logo: /images/logos/escp.png
+    logo_order: 2
     org_vi: "ESCP Business School, Pháp"
     courses: "Microeconomics (UG)"
     courses_vi: "Kinh tế vi mô (đại học)"
     current: true
   - start: 2025
     org: "Sciences Po, France"
+    logo: /images/logos/sciences-po.png
+    logo_order: 3
     org_vi: "Sciences Po, Pháp"
     courses: "Trade and International Finance; The Economy; Quantitative Methods for the Humanities and Social Sciences; Mathematics Applied to Quantitative Social Sciences (UG)"
     courses_vi: "Thương mại và Tài chính quốc tế; Nền kinh tế (The Economy); Phương pháp định lượng cho Khoa học xã hội và nhân văn; Toán ứng dụng trong Khoa học xã hội định lượng (đại học)"
     current: true
   - start: 2025
     org: "School of Business, International University, VNU-HCM, Vietnam"
+    logo: /images/logos/iu-vnuhcm.png
+    logo_order: 4
     org_vi: "Khoa Quản trị Kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM, Việt Nam"
     courses: "Statistics for Business; Organizational Behavior; Workshop I (UG)"
     courses_vi: "Thống kê trong kinh doanh; Hành vi tổ chức; Workshop I (đại học)"
@@ -103,12 +109,16 @@ teaching:
   - start: 2023
     end: 2025
     org: "Université Paris Nanterre, France"
+    logo: /images/logos/paris-nanterre.png
+    logo_order: 1
     org_vi: "Đại học Paris Nanterre, Pháp"
     courses: "Mathematics and Probability (M1); Programming: Focus on Power BI (M2); Business English for Banking and Finance (M1)"
     courses_vi: "Toán và Xác suất (M1); Lập trình: chuyên đề Power BI (M2); Tiếng Anh thương mại cho Ngân hàng và Tài chính (M1)"
   - start: 2013
     end: 2023
     org: "Ho Chi Minh City University of Law, Vietnam"
+    logo: /images/logos/hcmulaw.png
+    logo_order: 5
     org_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
     courses: "Econometrics; Macroeconomics; Microeconomics (UG)"
     courses_vi: "Kinh tế lượng; Kinh tế vĩ mô; Kinh tế vi mô (đại học)"

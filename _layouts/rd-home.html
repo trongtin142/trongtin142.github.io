@@ -28,30 +28,36 @@ layout: rd
 <section class="stats" aria-label="{{ t.name }}">
   <div class="wrap stats__in">
     <div class="stat">
-      <span class="stat__icon">{% include rd-icon.html name="layers" %}</span>
-      <div class="stat__body"><b class="stat__num" data-count="{{ page.themes | size }}">{{ page.themes | size }}</b><span class="stat__label">{{ t.stats_strands }}</span></div>
+      <b class="stat__num" data-count="{{ page.themes | size }}">{{ page.themes | size }}</b>
+      <span class="stat__label">{{ t.stats_strands }}</span>
     </div>
     <div class="stat">
-      <span class="stat__icon">{% include rd-icon.html name="cap" %}</span>
-      <div class="stat__body"><b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b><span class="stat__label">{{ t.stats_universities }}</span></div>
-    </div>
-    <div class="stat">
-      <span class="stat__icon">{% include rd-icon.html name="mic" %}</span>
-      <div class="stat__body"><b class="stat__num" data-count="{{ n_talks }}">{{ n_talks }}</b><span class="stat__label">{{ t.stats_talks }}</span></div>
-    </div>
-    <div class="stat">
-      <span class="stat__icon">{% include rd-icon.html name="globe" %}</span>
-      <div class="stat__body">
-        <div class="stat__line">
-          <b class="stat__num" data-count="3">3</b>
-          <ul class="flags">
-            <li class="flag" title="{{ t.country_vn }}"><svg viewBox="0 0 30 20" role="img" aria-label="{{ t.country_vn }}"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15.00,4.00 16.35,8.15 20.71,8.15 17.18,10.71 18.53,14.85 15.00,12.29 11.47,14.85 12.82,10.71 9.29,8.15 13.65,8.15"/></svg></li>
-            <li class="flag" title="{{ t.country_fr }}"><svg viewBox="0 0 3 2" role="img" aria-label="{{ t.country_fr }}"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></li>
-            <li class="flag" title="{{ t.country_ee }}"><svg viewBox="0 0 3 2" role="img" aria-label="{{ t.country_ee }}"><rect width="3" height=".67" fill="#0072CE"/><rect y=".66" width="3" height=".68" fill="#000000"/><rect y="1.33" width="3" height=".67" fill="#FFFFFF"/></svg></li>
-          </ul>
-        </div>
-        <span class="stat__label">{{ t.stats_countries }}</span>
+      <div class="stat__line">
+        <b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b>
+        <ul class="marks">
+          {%- assign uni_logos = site.data.timeline.teaching | sort: "logo_order", "last" -%}
+          {%- for u in uni_logos -%}{%- if u.logo -%}
+          {%- if page_lang == "vi" and u.org_vi -%}{%- assign u_name = u.org_vi -%}{%- else -%}{%- assign u_name = u.org -%}{%- endif %}
+          <li class="mark mark--logo" title="{{ u_name }}"><img src="{{ base_path }}{{ u.logo }}" alt="{{ u_name }}" width="64" height="64" loading="lazy" decoding="async"></li>
+          {%- endif -%}{%- endfor %}
+        </ul>
       </div>
+      <span class="stat__label">{{ t.stats_universities }}</span>
+    </div>
+    <div class="stat">
+      <b class="stat__num" data-count="{{ n_talks }}">{{ n_talks }}</b>
+      <span class="stat__label">{{ t.stats_talks }}</span>
+    </div>
+    <div class="stat">
+      <div class="stat__line">
+        <b class="stat__num" data-count="3">3</b>
+        <ul class="marks">
+          <li class="mark mark--flag" title="{{ t.country_vn }}"><svg viewBox="0 0 30 20" role="img" aria-label="{{ t.country_vn }}"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15.00,4.00 16.35,8.15 20.71,8.15 17.18,10.71 18.53,14.85 15.00,12.29 11.47,14.85 12.82,10.71 9.29,8.15 13.65,8.15"/></svg></li>
+          <li class="mark mark--flag" title="{{ t.country_fr }}"><svg viewBox="0 0 3 2" role="img" aria-label="{{ t.country_fr }}"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></li>
+          <li class="mark mark--flag" title="{{ t.country_ee }}"><svg viewBox="0 0 3 2" role="img" aria-label="{{ t.country_ee }}"><rect width="3" height=".67" fill="#0072CE"/><rect y=".66" width="3" height=".68" fill="#000000"/><rect y="1.33" width="3" height=".67" fill="#FFFFFF"/></svg></li>
+        </ul>
+      </div>
+      <span class="stat__label">{{ t.stats_countries }}</span>
     </div>
   </div>
 </section>
@@ -62,7 +68,11 @@ layout: rd
     <div class="themes">
       {%- for th in page.themes -%}
       <article class="card theme reveal">
+        {%- if th.image %}
+        <figure class="theme__media"><img src="{{ base_path }}{{ th.image }}" alt="{{ th.alt }}" width="800" height="500" loading="lazy" decoding="async"></figure>
+        {%- else %}
         {% include rd-icon.html name=th.icon %}
+        {%- endif %}
         <h3>{{ th.title }}</h3>
         <p>{{ th.text }}</p>
       </article>
