@@ -343,6 +343,17 @@
       });
     } catch (e) { /* keep the English names */ }
   }
+  // "Last update": shown in the visitor's own time zone (the page carries it in UTC)
+  $$("time[data-local-time]").forEach(function (el) {
+    var d = new Date(el.getAttribute("datetime"));
+    if (isNaN(d.getTime()) || !/T\d/.test(el.getAttribute("datetime"))) return;
+    try {
+      var loc = LANG === "vi" ? "vi-VN" : "en-GB";
+      var tm = d.toLocaleTimeString(loc, { hour: "2-digit", minute: "2-digit", timeZoneName: "short" });
+      var dy = LANG === "vi" ? d.toLocaleDateString(loc) : d.toLocaleDateString(loc, { day: "numeric", month: "long", year: "numeric" });
+      el.textContent = LANG === "vi" ? tm + ", " + dy : dy + ", " + tm;
+    } catch (e) { /* keep the UTC text */ }
+  });
   // World map of visitors: tooltip with country name and visits
   var wmap = $("[data-wmap]");
   if (wmap) {
