@@ -352,6 +352,13 @@ body.nav-locked { overflow: hidden; }
 .profiles a:hover { color: var(--accent); }
 .profiles .ai { font-size: 1.1em; }
 .profiles .icon { width: 17px; height: 17px; }
+.profiles .ai-orcid { color: #A6CE39; }
+.profiles .ai-google-scholar { color: #4285F4; }
+.profiles .ai-researchgate { color: #00CCBB; }
+.profiles .icon--github { color: #181717; }
+.profiles .icon--linkedin { color: #0A66C2; }
+:root[data-theme="dark"] .profiles .icon--github { color: #F0F6FC; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .profiles .icon--github { color: #F0F6FC; } }
 .profiles--hero { margin-top: 22px; }
 
 .stats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
