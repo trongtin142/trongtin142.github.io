@@ -42,3 +42,4 @@ description: "Liên hệ Nguyễn Trọng Tín (Tommy Nguyen): EconomiX (UMR 723
   </form>
 </section>
 {%- endif -%}
+{% include rd-visitor-stats.html %}
