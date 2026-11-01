@@ -117,7 +117,8 @@ layout: rd
       {%- for th in page.themes -%}
       <article class="card theme reveal">
         {%- if th.image %}
-        <figure class="theme__media"><img src="{{ base_path }}{{ th.image }}" alt="{{ th.alt }}" width="800" height="500" loading="lazy" decoding="async"></figure>
+        {%- assign img_base = th.image | split: "." | first %}
+        <figure class="theme__media"><picture><source type="image/webp" srcset="{{ base_path }}{{ img_base }}-560.webp 560w, {{ base_path }}{{ img_base }}-800.webp 800w" sizes="(max-width: 560px) 96px, (max-width: 1000px) 50vw, 270px"><img src="{{ base_path }}{{ th.image }}" alt="{{ th.alt }}" width="800" height="500" loading="lazy" decoding="async"></picture></figure>
         {%- else %}
         {% include rd-icon.html name=th.icon %}
         {%- endif %}

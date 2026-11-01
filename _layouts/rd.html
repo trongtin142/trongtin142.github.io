@@ -6,11 +6,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{%- comment -%}
+  Content Security Policy. The sha256 hash is for the theme script just below: if that script changes,
+  recompute it (base64 SHA-256 of the text between <script> and </script>) or the theme flash returns.
+  GitHub Pages cannot send headers, so frame-ancestors and reporting are not available here.
+{%- endcomment %}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-IZkBYAZ5OCMOtOaicwzdoZhCglKqc5gN9GZ0b6oZ8rc=' https://gc.zgo.at https://unpkg.com https://cdn.jsdelivr.net https://d1bxh8uas1mnw7.cloudfront.net https://api.altmetric.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://d1bxh8uas1mnw7.cloudfront.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: https:; connect-src 'self' https://{{ site.rd.goatcounter | default: 'none' }}.goatcounter.com https://formspree.io https://api.github.com https://cdn.jsdelivr.net; frame-src https://www.altmetric.com; form-action 'self' https://formspree.io; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <script>(function(){var d=document.documentElement;d.className+=' js';try{var m=localStorage.getItem('theme');if(m==='dark'||m==='light')d.setAttribute('data-theme',m);}catch(e){}})();</script>
 {% include rd-seo.html %}
 {% if has_alt %}
 <link rel="alternate" hreflang="{{ page_lang }}" href="{{ base_path }}{{ page.url }}">
 <link rel="alternate" hreflang="{{ alt_lang }}" href="{{ base_path }}{{ alt_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ base_path }}{% if page_lang == 'en' %}{{ page.url }}{% else %}{{ alt_url }}{% endif %}">
 {% endif %}
 <meta name="theme-color" content="#F6F7F9" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1218" media="(prefers-color-scheme: dark)">
@@ -20,12 +28,12 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ base_path }}/images/apple-touch-icon-180x180.png">
 <link rel="manifest" href="{{ base_path }}/images/manifest.json">
 <link rel="alternate" type="application/rss+xml" title="{{ t.name }} · {{ t.news }}" href="{{ base_path }}/news/feed.xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="{{ base_path }}/assets/css/rd.css">
-<link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-{% if page.map %}<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">{% endif %}
+{%- comment -%} Self-hosted fonts (assets/fonts, SIL OFL): no third-party request before first paint. {%- endcomment %}
+<link rel="preload" href="{{ base_path }}/assets/fonts/source-sans-3-latin-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ base_path }}/assets/fonts/source-serif-4-600-latin.woff2" as="font" type="font/woff2" crossorigin>
+{% if page_lang == "vi" %}<link rel="preload" href="{{ base_path }}/assets/fonts/source-serif-4-600-vietnamese.woff2" as="font" type="font/woff2" crossorigin>
+{% endif %}<link rel="stylesheet" href="{{ base_path }}/assets/css/rd.css">
+{% if page.map %}<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha384-sHL9NAb7lN7rfvG5lfHpm643Xkcjzp4jFvuavGOndn6pjVqS6ny56CAt3nsEVT4H" crossorigin="anonymous">{% endif %}
 </head>
 <body class="{{ page.body_class }}">
 <a class="skip" href="#main">{{ t.skip }}</a>

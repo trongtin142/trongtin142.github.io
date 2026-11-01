@@ -9,6 +9,15 @@ layout: rd
     {% if page.lead %}<p class="lead">{{ page.lead }}</p>{% endif %}
   </div>
 </header>
-<div class="wrap page-body{% if page.width == 'wide' %} page-body--wide{% endif %}">
+{%- if page.width == 'wide' %}
+<div class="wrap page-body page-body--wide">
 {{ content }}
 </div>
+{%- else %}
+<div class="wrap page-layout" data-page-layout>
+<div class="page-body">
+{{ content }}
+</div>
+<aside class="page-aside" data-page-aside aria-label="{{ t.on_this_page }}" hidden></aside>
+</div>
+{%- endif %}
