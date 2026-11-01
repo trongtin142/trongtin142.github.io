@@ -163,7 +163,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : og-en.png   # Social media default site image (lives in /images/); Vietnamese pages use og-vi.png
+og_image                 : og-en-v2.png   # Social media default site image (lives in /images/); Vietnamese pages use og-vi-v2.png
 og_description           :  # Social media default site image description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
