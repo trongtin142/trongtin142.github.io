@@ -13,10 +13,17 @@ description: "Hoạt động giảng dạy của Nguyễn Trọng Tín (Tommy Ng
 {% include rd-ctx.html %}
 
 {%- assign lp = "" -%}{%- if page.lang == "vi" -%}{%- assign lp = "/vi" -%}{%- endif -%}
+{%- assign n_items = site.data.timeline.teaching | size -%}
+{%- if n_items >= site.rd.filter_min %}
 <div class="filters" data-filter-for="tl-teaching">
   <div class="chips" role="group"><button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}</button><button class="chip" type="button" data-key="current" aria-pressed="false">{{ page.chip_current }}</button><button class="chip" type="button" data-key="past" aria-pressed="false">{{ page.chip_past }}</button></div>
   <a class="btn btn--sm" href="{{ base_path }}{{ lp }}/teaching/courses/">{% include rd-icon.html name="file" %}<span>{{ t.courses_link }}</span></a>
 </div>
+{%- else %}
+<div class="page-actions">
+  <a class="btn btn--sm" href="{{ base_path }}{{ lp }}/teaching/courses/">{% include rd-icon.html name="file" %}<span>{{ t.courses_link }}</span></a>
+</div>
+{%- endif %}
 <div id="tl-teaching">
   {% include rd-timeline.html items=site.data.timeline.teaching %}
 </div>

@@ -5,6 +5,7 @@ permalink: "/vi/software/"
 lang: "vi"
 l_updated: "Cập nhật mã"
 v2: "Phiên bản 2.0.0 đang được phát triển; rất hoan nghênh người đóng góp và người sử dụng."
+cite_note: "Vui lòng trích dẫn đúng phiên bản bạn đã dùng. Mục dưới đây là phiên bản %v; DOI chung %d luôn trỏ đến phiên bản mới nhất."
 more: "Các bộ dữ liệu khác sẽ được giới thiệu tại đây khi công bố."
 description: "Phần mềm và dữ liệu nghiên cứu của Nguyễn Trọng Tín (Tommy Nguyen): COFOG-Panel, công cụ Python có khả năng truy vết cho dữ liệu chi tiêu chính phủ theo chức năng của IMF GFS."
 ---
@@ -13,22 +14,26 @@ description: "Phần mềm và dữ liệu nghiên cứu của Nguyễn Trọng 
 {%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
 {%- assign p = site.data.publications.items | where: "id", "nguyentrong2026cofog" | first -%}
 <article class="card" data-gh-repo="{{ site.rd.cofog_repo }}">
-  <p class="eyebrow">Python · {{ t.version }} 1.0.5</p>
+  <p class="eyebrow">Python · {{ t.open_source }}</p>
   <h2>COFOG-Panel</h2>
   <p>{% if vi %}{{ p.abstract_vi }}{% else %}{{ p.abstract }}{% endif %} {{ page.v2 }}</p>
   <ul class="repo-stats">
-    <li hidden>{% include rd-icon.html name="star" %}<b data-gh-stars></b> {{ t.stars }}</li>
+    <li hidden>{% include rd-icon.html name="star" %}<b data-gh-stars></b> <span data-gh-stars-label data-one="{{ t.star }}">{{ t.stars }}</span></li>
     <li hidden>{% include rd-icon.html name="tag" %}{{ t.latest_release }} <b data-gh-release></b></li>
     <li hidden>{% include rd-icon.html name="calendar" %}{{ page.l_updated }} <b data-gh-updated></b></li>
   </ul>
   <div class="card__links">
     <a class="btn btn--primary" href="https://github.com/{{ site.rd.cofog_repo }}">{% include rd-icon.html name="github" class="icon--brand" %}<span>{{ t.repository }}</span></a>
-    <a class="btn" href="https://doi.org/{{ p.doi }}">Zenodo DOI{% include rd-icon.html name="ext" %}</a>
-    <img class="doi-badge" src="https://zenodo.org/badge/DOI/{{ p.doi }}.svg" alt="DOI {{ p.doi }}" loading="lazy">
+    {%- assign doi_main = p.doi_all | default: p.doi %}
+    <a class="btn" href="https://doi.org/{{ doi_main }}">Zenodo DOI{% include rd-icon.html name="ext" %}</a>
+    <img class="doi-badge" src="https://zenodo.org/badge/DOI/{{ doi_main }}.svg" alt="DOI {{ doi_main }}" loading="lazy">
   </div>
 </article>
 <section class="block">
   <h2>{{ t.cite }}</h2>
+  {%- if p.doi_all %}
+  <p class="block__intro">{{ page.cite_note | replace: "%v", p.bib_version | replace: "%d", p.doi_all }}</p>
+  {%- endif %}
   <div class="pubs">{% include rd-pub.html pub=p %}</div>
 </section>
 <p class="muted">{{ page.more }}</p>

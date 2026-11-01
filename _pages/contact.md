@@ -17,8 +17,8 @@ description: "Contact Trong-Tin (Tommy) NGUYEN: EconomiX (UMR 7235, CNRS), Unive
   </article>
   <article class="card">
     <p class="card__label">{% include rd-icon.html name="mail" %} Email</p>
-    <p class="email-row"><a href="mailto:trongtin.nguyen@parisnanterre.fr">trongtin.nguyen@parisnanterre.fr</a><button class="btn btn--sm" type="button" data-copy-text="trongtin.nguyen@parisnanterre.fr" aria-label="{{ t.copy_email }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy }}</span></button></p>
-    <p class="email-row"><a href="mailto:nttin@hcmiu.edu.vn">nttin@hcmiu.edu.vn</a><button class="btn btn--sm" type="button" data-copy-text="nttin@hcmiu.edu.vn" aria-label="{{ t.copy_email }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy }}</span></button></p>
+    <p class="email-row"><a href="mailto:trongtin.nguyen@parisnanterre.fr">trongtin.nguyen@<wbr>parisnanterre.fr</a><button class="btn btn--sm" type="button" data-copy-text="trongtin.nguyen@parisnanterre.fr" aria-label="{{ t.copy_email }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy }}</span></button></p>
+    <p class="email-row"><a href="mailto:nttin@hcmiu.edu.vn">nttin@<wbr>hcmiu.edu.vn</a><button class="btn btn--sm" type="button" data-copy-text="nttin@hcmiu.edu.vn" aria-label="{{ t.copy_email }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy }}</span></button></p>
     <p class="card__label">{% include rd-icon.html name="link" %} {{ t.profiles }}</p>
     {% include rd-profiles.html %}
   </article>

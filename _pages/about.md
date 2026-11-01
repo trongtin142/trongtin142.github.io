@@ -2,14 +2,13 @@
 permalink: /
 title: "About"
 layout: rd-home
-description: "Trong-Tin (Tommy) NGUYEN, economist and PhD candidate at EconomiX (CNRS), Université Paris Nanterre: general equilibrium theory, applied CGE modelling of climate and trade policy, applied econometrics, circular economy."
+description: "Trong-Tin (Tommy) NGUYEN, PhD candidate in Economics at EconomiX (CNRS), Université Paris Nanterre: general equilibrium, CGE modelling, applied econometrics."
 redirect_from:
   - /about/
   - /about.html
 intro: "I am a researcher and lecturer in Economics and Econometrics, currently a PhD candidate at EconomiX (CNRS), Université Paris Nanterre, and a lecturer at ESCP Business School and Sciences Po. I believe that combining research and teaching is the best way to contribute to the field, and I am strongly committed to sharing knowledge with the next generation of economists."
 themes:
   - image: /images/research/general-equilibrium.jpg
-    thumb: /images/research/general-equilibrium-icon.jpg
     focus: "0% 50%"
     alt: "Hand-drawn Edgeworth box with equilibrium conditions, next to a fountain pen"
     title: "General equilibrium theory"

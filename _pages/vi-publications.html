@@ -9,6 +9,8 @@ description: "Ấn phẩm của Nguyễn Trọng Tín (Tommy Nguyen): bài báo 
 {% include rd-ctx.html %}
 
 {%- assign vi = false -%}{%- if page.lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+{%- assign n_items = site.data.publications.items | size -%}
+{%- if n_items >= site.rd.filter_min %}
 <div class="filters" data-filter-for="pub-list">
   <div class="chips" role="group" aria-label="{{ t.filter_search }}">
     <button class="chip" type="button" data-key="all" aria-pressed="true">{{ t.all }}<span>{{ site.data.publications.items | size }}</span></button>
@@ -21,6 +23,7 @@ description: "Ấn phẩm của Nguyễn Trọng Tín (Tommy Nguyen): bài báo 
   </div>
   <label class="field">{% include rd-icon.html name="search" %}<input type="search" data-filter-search placeholder="{{ t.filter_search }}" aria-label="{{ t.filter_search }}"></label>
 </div>
+{%- endif %}
 <div id="pub-list">
   {%- for ty in site.data.publications.types -%}
   {%- assign items = site.data.publications.items | where: "type", ty.key -%}
