@@ -213,6 +213,34 @@ exclude:
   - tmp
   - vendor
   - talkmap
+  # Repository-only files that should not be served on the public site
+  - README.md
+  - AGENTS.md
+  - docker-compose.yaml
+  - markdown_generator
+  - scripts
+  - talkmap.py
+  - talkmap.ipynb
+  - talkmap_out.ipynb
+  # Legacy Academic Pages theme assets (the site uses rd.css / rd.js and self-hosted fonts)
+  - assets/css/main.scss
+  - assets/css/fontawesome.scss
+  - assets/css/academicons.css
+  - assets/css/academicons.min.css
+  - assets/fonts/academicons.*
+  - assets/webfonts
+  - assets/js/theme.js
+  - images/themes
+  - images/wiki
+  - images/500x300.png
+  - images/editing-talk.png
+  - images/og-cover.png
+  - images/og-image.png
+  - images/og-en.png
+  - images/og-vi.png
+  - images/profile.png
+  - images/bio-photo.jpg
+  - images/bio-photo-2.jpg
 keep_files:
   - .git
   - .svn
