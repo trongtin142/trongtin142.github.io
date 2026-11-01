@@ -46,6 +46,7 @@
         {%- else -%}{%- assign pname = p.title_vi | default: p.path -%}{%- endif -%}
         {%- assign w = p.count | times: 100 | divided_by: pmax -%}
         {%- assign ppath = p.path -%}{%- if vi and p.path != "/" -%}{%- assign ppath = "/vi" | append: p.path -%}{%- elsif vi -%}{%- assign ppath = "/vi/" -%}{%- endif -%}
+        {%- assign plast = ppath | slice: -1, 1 -%}{%- if plast != "/" -%}{%- assign ppath = ppath | append: "/" -%}{%- endif -%}
         {%- assign ppage = site.pages | where: "url", ppath | first -%}{%- if ppage and ppage.title and p.path != "/" -%}{%- assign pname = ppage.title -%}{%- endif %}
         <li class="hbar"><a class="hbar__label" href="{{ base_path }}{{ ppath }}" title="{{ ppath }}">{{ pname }}</a><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ p.count }}">{{ p.count }}</span></li>
         {%- endfor %}
