@@ -386,11 +386,15 @@ body.nav-locked { overflow: hidden; }
 .hero { padding: 64px 0 48px; }
 .hero__in { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 48px; align-items: center; }
 .hero__name { font: 600 var(--fs-display)/1.06 var(--serif); letter-spacing: -.01em; margin: 6px 0 14px; }
-.hero__alias { color: var(--muted); font-weight: 400; }
-.hero__role { font-size: calc(var(--fs-body) + 2px); color: var(--muted); margin: 0 0 18px; max-width: 46ch; }
+/* VI: the alias sits on its own line as a smaller subtitle; EN: the nickname stays in line, muted */
+.hero__alias { display: block; margin-top: 6px; font-size: .56em; line-height: 1.25; letter-spacing: 0; color: var(--muted); font-weight: 400; }
+.hero__given { white-space: nowrap; }
+.hero__nick { color: var(--muted); font-weight: 400; }
+.hero__role { font-size: calc(var(--fs-body) + 2px); line-height: 1.5; color: var(--muted); margin: 0 0 18px; max-width: 62ch; }
+.hero__role > span { display: block; } /* affiliation on one line, teaching posts on the next */
 .hero__lead { max-width: 62ch; margin-bottom: 26px; }
 .hero__photo { margin: 0; justify-self: center; width: min(100%, 300px); }
-.hero__photo img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 7px solid var(--surface); box-shadow: 0 0 0 1.5px var(--deco), var(--shadow); }
+.hero__photo img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 7px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong), var(--shadow); }
 .hero__photo figcaption { margin-top: 14px; text-align: center; color: var(--muted); font-size: var(--fs-small); display: flex; justify-content: center; align-items: center; gap: 6px; }
 .profiles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .profiles a { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); text-decoration: none; font-size: var(--fs-small); font-weight: 600; }
@@ -405,6 +409,8 @@ body.nav-locked { overflow: hidden; }
 :root[data-theme="dark"] .profiles .icon--github { color: #F0F6FC; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .profiles .icon--github { color: #F0F6FC; } }
 .profiles--hero { margin-top: 22px; }
+.hero__pubname { margin: 10px 0 0; font-size: var(--fs-small); color: var(--muted); }
+.hero__pubname b { font-weight: 600; color: var(--text); }
 
 .stats { --stat-pad: var(--gutter); }
 /* framed box aligned with the content column; the band around it keeps the page background */
@@ -457,8 +463,9 @@ body.nav-locked { overflow: hidden; }
 .theme:hover .theme__link { color: var(--accent); }
 .theme__media { margin: -22px -24px 6px; aspect-ratio: 16 / 10; overflow: hidden; background: var(--line); }
 .theme__media picture { display: block; width: 100%; height: 100%; }
-.theme__media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.theme:hover .theme__media img { transform: scale(1.04); }
+/* a shared, slightly muted colour treatment so the four photos read as one set; full colour on hover */
+.theme__media img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) contrast(1.03); transition: transform .6s ease, filter .4s ease; }
+.theme:hover .theme__media img { transform: scale(1.04); filter: none; }
 .theme > .icon { width: 26px; height: 26px; color: var(--accent); }
 .theme h3 { font-size: 17px; margin: 0; }
 .theme p { color: var(--muted); font-size: var(--fs-small); margin: 0; }
@@ -718,6 +725,7 @@ a.hbar__label:hover { color: var(--accent); text-decoration: underline; }
    ========================================================================== */
 @media (max-width: 1000px) {
   .themes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .theme__media { aspect-ratio: 2 / 1; }
   .split { grid-template-columns: 1fr; gap: 40px; }
   .graph-wrap { grid-template-columns: 1fr; }
   .vstats__grid { grid-template-columns: 1fr; }
