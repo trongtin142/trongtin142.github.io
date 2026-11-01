@@ -515,8 +515,9 @@ body.nav-locked { overflow: hidden; }
 .form__status.is-error { color: #C0362C; }
 
 /* Visitor statistics (Stats page) */
-.vstats__meta { display: flex; align-items: center; gap: 9px; margin: -8px 0 22px; color: var(--muted); font-size: var(--fs-small); }
+.vstats__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 9px; margin: -8px 0 22px; color: var(--muted); font-size: var(--fs-small); }
 .vstats__meta time { color: var(--text); font-weight: 600; }
+.vstats__every { margin-left: -3px; }
 .vstats__live { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px var(--ok-bg); }
 .vstats__tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
 .vstats__tile { display: grid; gap: 12px; align-content: space-between; }
