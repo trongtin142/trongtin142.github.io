@@ -83,7 +83,9 @@
   }
   function openSearch() {
     if (!search) return;
-    lastFocus = doc.activeElement;
+    var fromNav = header && header.classList.contains("is-open");
+    if (fromNav) toggleNav(false); // opened from the mobile menu: close the menu first
+    lastFocus = fromNav ? navBtn : doc.activeElement;
     search.hidden = false; doc.body.classList.add("nav-locked");
     sInput.value = ""; render([]); sHint.textContent = sHint.getAttribute("data-hint");
     setTimeout(function () { sInput.focus(); }, 10);
@@ -301,7 +303,9 @@
     (function initMap() {
       if (!window.L) { if (tries++ < 50) setTimeout(initMap, 100); return; }
       var data = JSON.parse(mapData.textContent);
-      var map = window.L.map(mapEl, { scrollWheelZoom: false, worldCopyJump: true });
+      // On touch screens one finger scrolls the page, not the map (pinch and the +/- buttons still zoom)
+      var touch = !!(window.L.Browser && window.L.Browser.mobile) || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+      var map = window.L.map(mapEl, { scrollWheelZoom: false, worldCopyJump: true, dragging: !touch });
       window.L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         maxZoom: 18, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(map);
@@ -370,6 +374,7 @@
     fetch("https://api.github.com/repos/" + repo).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
       if (!d) return;
       var s = $("[data-gh-stars]", box); if (s) { s.textContent = d.stargazers_count; s.parentNode.hidden = false; }
+      var sl = $("[data-gh-stars-label]", box); if (sl && d.stargazers_count === 1 && sl.getAttribute("data-one")) sl.textContent = sl.getAttribute("data-one");
       var u = $("[data-gh-updated]", box); if (u && d.pushed_at) { u.textContent = d.pushed_at.slice(0, 10); u.parentNode.hidden = false; }
     }).catch(function () { /* offline or rate limited: keep static info */ });
     fetch("https://api.github.com/repos/" + repo + "/releases/latest").then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
