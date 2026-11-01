@@ -3,6 +3,24 @@
 # Pages left out of the menu (e.g. Notes) stay reachable by URL.
 
 main:
+  - title: "About"
+    children:
+      - title: "Positions"
+        url: /positions/
+        icon: brief
+      - title: "Education"
+        url: /education/
+        icon: cap
+      - title: "Service"
+        url: /service/
+        icon: handshake
+      - title: "Skills"
+        url: /skills/
+        icon: layers
+      - title: "News"
+        url: /news/
+        icon: news
+
   - title: "Research"
     children:
       - title: "Publications"
@@ -33,28 +51,28 @@ main:
   - title: "Conferences"
     url: /conferences/
 
-  - title: "About"
-    children:
-      - title: "Positions"
-        url: /positions/
-        icon: brief
-      - title: "Education"
-        url: /education/
-        icon: cap
-      - title: "Service"
-        url: /service/
-        icon: handshake
-      - title: "Skills"
-        url: /skills/
-        icon: layers
-      - title: "News"
-        url: /news/
-        icon: news
-
   - title: "Contact"
     url: /contact/
 
 vi:
+  - title: "Giới thiệu"
+    children:
+      - title: "Công tác"
+        url: /vi/positions/
+        icon: brief
+      - title: "Học vấn"
+        url: /vi/education/
+        icon: cap
+      - title: "Hoạt động"
+        url: /vi/service/
+        icon: handshake
+      - title: "Kỹ năng"
+        url: /vi/skills/
+        icon: layers
+      - title: "Tin mới"
+        url: /vi/news/
+        icon: news
+
   - title: "Nghiên cứu"
     children:
       - title: "Ấn phẩm"
@@ -84,24 +102,6 @@ vi:
 
   - title: "Hội thảo"
     url: /vi/conferences/
-
-  - title: "Giới thiệu"
-    children:
-      - title: "Công tác"
-        url: /vi/positions/
-        icon: brief
-      - title: "Học vấn"
-        url: /vi/education/
-        icon: cap
-      - title: "Hoạt động"
-        url: /vi/service/
-        icon: handshake
-      - title: "Kỹ năng"
-        url: /vi/skills/
-        icon: layers
-      - title: "Tin mới"
-        url: /vi/news/
-        icon: news
 
   - title: "Liên hệ"
     url: /vi/contact/
