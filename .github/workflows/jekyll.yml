@@ -9,9 +9,9 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-  # Daily rebuild so the ORCID list and the visitor statistics stay current
+  # Rebuild every 3 hours (at minute 17, UTC) so the visitor statistics and the ORCID list stay current
   schedule:
-    - cron: "17 4 * * *"
+    - cron: "17 */3 * * *"
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -59,7 +59,7 @@ jobs:
             echo "ORCID fetch failed, keeping the committed snapshot"
           fi
       - name: Fetch visitor statistics
-        # Writes _data/stats.json from the GoatCounter API for the Contact page; skipped without the GOATCOUNTER_TOKEN secret
+        # Writes _data/stats.json from the GoatCounter API for the Stats page; skipped without the GOATCOUNTER_TOKEN secret
         env:
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: python3 scripts/fetch-goatcounter-stats.py
