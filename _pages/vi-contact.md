@@ -1,6 +1,7 @@
 ---
 title: "Liên hệ"
 eyebrow: "Liên hệ"
+width: "wide"
 permalink: "/vi/contact/"
 lang: "vi"
 l_address: "Địa chỉ liên hệ"
@@ -8,8 +9,9 @@ l_form: "Gửi tin nhắn"
 description: "Liên hệ Nguyễn Trọng Tín (Tommy Nguyen): EconomiX (UMR 7235, CNRS), Đại học Paris Nanterre, email và hồ sơ học thuật."
 ---
 {% include rd-ctx.html %}
-
-<div class="contact">
+{%- assign has_form = false -%}{%- if site.rd.formspree and site.rd.formspree != "" -%}{%- assign has_form = true -%}{%- endif %}
+<div class="contact{% unless has_form %} contact--noform{% endunless %}">
+  <div class="contact__info">
   <article class="card">
     <p class="card__label">{% include rd-icon.html name="pin" %} {{ page.l_address }}</p>
     <address><strong>EconomiX (UMR 7235, CNRS)</strong><br>Université Paris Nanterre<br>200 avenue de la République<br>92001 Nanterre Cedex, France</address>
@@ -21,11 +23,11 @@ description: "Liên hệ Nguyễn Trọng Tín (Tommy Nguyen): EconomiX (UMR 723
     <p class="card__label">{% include rd-icon.html name="link" %} {{ t.profiles }}</p>
     {% include rd-profiles.html %}
   </article>
-</div>
-{%- if site.rd.formspree and site.rd.formspree != "" -%}
-<section class="block form-block">
-  <h2>{{ page.l_form }}</h2>
-  <form class="form card" action="https://formspree.io/f/{{ site.rd.formspree }}" method="POST" data-formspree>
+  </div>
+{%- if has_form %}
+  <section class="card contact__form" aria-labelledby="cf-title">
+  <h2 class="contact__title" id="cf-title">{{ page.l_form }}</h2>
+  <form class="form" action="https://formspree.io/f/{{ site.rd.formspree }}" method="POST" data-formspree>
     <div class="form__row">
       <label>{{ t.form_name }}<input name="name" id="cf-name" autocomplete="name" required></label>
       <label>{{ t.form_email }}<input name="email" id="cf-email" type="email" autocomplete="email" required></label>
@@ -40,6 +42,6 @@ description: "Liên hệ Nguyễn Trọng Tín (Tommy Nguyen): EconomiX (UMR 723
     <div class="actions"><button class="btn btn--primary" type="submit">{% include rd-icon.html name="send" %}<span>{{ t.form_send }}</span></button></div>
     <p class="form__status" role="status" hidden></p>
   </form>
-</section>
-{%- endif -%}
-{% include rd-visitor-stats.html %}
+  </section>
+{%- endif %}
+</div>
