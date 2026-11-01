@@ -1,0 +1,43 @@
+{%- comment -%}
+  Contact form (Formspree), shared by the English and Vietnamese Contact pages.
+  Required fields first; phone, website and "how did you find me" are grouped as optional details.
+  The sent_from / first_page / came_from fields are filled by rd.js (pages only, never cookies).
+{%- endcomment -%}
+<form class="form" action="https://formspree.io/f/{{ site.rd.formspree }}" method="POST" data-formspree="message">
+  <div class="form__row">
+    <label>{{ t.form_name }}<input name="name" id="cf-name" autocomplete="name" required></label>
+    <label>{{ t.form_email }}<input name="email" id="cf-email" type="email" autocomplete="email" required></label>
+  </div>
+  <div class="form__row">
+    <label>{{ t.form_affiliation }}<input name="affiliation" id="cf-affiliation" autocomplete="organization"></label>
+    <label>{{ t.form_topic }}<select name="topic" id="cf-topic">{% for o in t.form_topics %}<option>{{ o }}</option>{% endfor %}</select></label>
+  </div>
+  <label>{{ t.form_message }}<textarea name="message" id="cf-message" required></textarea></label>
+  <fieldset class="form__more">
+    <legend>{{ t.form_more }}</legend>
+    <div class="form__row">
+      <label>{{ t.form_phone }}<input name="phone" id="cf-phone" type="tel" autocomplete="tel" inputmode="tel"></label>
+      <label>{{ t.form_web }}<input name="website" id="cf-web" type="text" autocomplete="url" inputmode="url" placeholder="linkedin.com/in/…"></label>
+    </div>
+    <fieldset class="pick">
+      <legend>{{ t.form_found }}</legend>
+      <div class="chips">
+        {%- for o in t.form_found_opts %}
+        <label class="pick__opt"><input type="radio" name="found_via" value="{{ o }}"><span>{{ o }}</span></label>
+        {%- endfor %}
+      </div>
+    </fieldset>
+    <label class="check"><input type="checkbox" name="updates" value="yes"><span>{{ t.form_updates }}</span></label>
+  </fieldset>
+  <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <input type="hidden" name="_subject" value="{{ t.form_subject }}">
+  <input type="hidden" name="_language" value="{{ page_lang }}">
+  <input type="hidden" name="sent_from" data-src="page">
+  <input type="hidden" name="first_page" data-src="first">
+  <input type="hidden" name="came_from" data-src="ref">
+  <div class="form__foot">
+    <button class="btn btn--primary" type="submit">{% include rd-icon.html name="send" %}<span>{{ t.form_send }}</span></button>
+    <p class="form__note">{{ t.form_privacy }}</p>
+  </div>
+  <p class="form__status" role="status" hidden></p>
+</form>

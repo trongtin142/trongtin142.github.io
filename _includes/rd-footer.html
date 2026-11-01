@@ -1,4 +1,50 @@
+{%- assign has_form = false -%}{%- if site.rd.formspree and site.rd.formspree != "" -%}{%- assign has_form = true -%}{%- endif -%}
+{%- assign has_booking = false -%}{%- if site.rd.booking and site.rd.booking != "" -%}{%- assign has_booking = true -%}{%- endif -%}
+{%- assign lp = "" -%}{%- if page_lang == "vi" -%}{%- assign lp = "/vi" -%}{%- endif -%}
+{%- comment -%} "Let's connect" is left out where the page already offers it: the home page (closing call to action) and the Contact page. {%- endcomment -%}
+{%- assign show_talk = true -%}
+{%- if page.layout == "rd-home" or page.url contains "/contact/" -%}{%- assign show_talk = false -%}{%- endif -%}
 <footer class="site-footer">
+{%- if has_form or show_talk %}
+  <div class="wrap">
+  <div class="connect{% unless show_talk %} connect--solo{% endunless %}">
+    {%- if show_talk %}
+    <div class="connect__talk">
+      <p class="connect__title">{{ t.connect_title }}</p>
+      <p class="connect__text">{{ t.connect_text }}</p>
+      <div class="actions">
+        <a class="btn btn--sm" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.connect_msg }}</span></a>
+        {%- if has_booking %}
+        <a class="btn btn--sm" href="{{ site.rd.booking }}" target="_blank" rel="noopener" data-track="booking: open">{% include rd-icon.html name="calendar" %}<span>{{ t.book_btn }}</span></a>
+        {%- endif %}
+      </div>
+    </div>
+    {%- endif %}
+    {%- if has_form %}
+    <form class="connect__sub" action="https://formspree.io/f/{{ site.rd.formspree }}" method="POST" data-formspree="subscribe">
+      <div class="connect__copy">
+        <label class="connect__title" for="sub-email">{{ t.sub_title }}</label>
+        <p class="connect__text">{{ t.sub_text }}</p>
+      </div>
+      <div class="connect__box">
+        <div class="connect__field">
+          <input type="email" name="email" id="sub-email" placeholder="{{ t.sub_placeholder }}" autocomplete="email" required>
+          <button class="btn btn--primary" type="submit"><span>{{ t.sub_btn }}</span></button>
+        </div>
+        <p class="form__status" role="status" hidden></p>
+      </div>
+      <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <input type="hidden" name="_subject" value="{{ t.sub_subject }}">
+      <input type="hidden" name="_language" value="{{ page_lang }}">
+      <input type="hidden" name="form_type" value="subscribe">
+      <input type="hidden" name="sent_from" data-src="page">
+      <input type="hidden" name="first_page" data-src="first">
+      <input type="hidden" name="came_from" data-src="ref">
+    </form>
+    {%- endif %}
+  </div>
+  </div>
+{%- endif %}
   <div class="wrap site-footer__in">
     <div class="site-footer__id">
       {% include rd-mono.html %}
