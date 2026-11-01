@@ -60,16 +60,20 @@ i, em { font-style: italic; }
 /* Paper */
 .cv-paper { display: block; max-width: 960px; margin: 0 auto; padding: 56px max(var(--gutter), env(safe-area-inset-left, 0px)) 24px; outline: none; }
 
-/* Header */
-.cv-head { padding-bottom: 26px; border-bottom: 2px solid var(--crimson); margin-bottom: 4px; }
+/* Header: photo on the left, name and two contact columns on the right (as in the CV PDF) */
+.cv-head { display: grid; grid-template-columns: 172px minmax(0, 1fr); grid-template-areas: "photo id" "photo contact"; gap: 0 36px; align-items: start; padding-bottom: 26px; border-bottom: 2px solid var(--crimson); margin-bottom: 4px; }
+.cv-photo { grid-area: photo; display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: 2px; background: #EEE; }
+.cv-id { grid-area: id; min-width: 0; }
 .cv-kicker { font: 600 12.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--crimson); }
-.cv-name { margin: 12px 0 6px; font: 600 46px/1.08 var(--serif); letter-spacing: .005em; color: var(--ink); font-feature-settings: "kern", "liga", "lnum"; }
+.cv-name { margin: 10px 0 6px; font: 600 46px/1.08 var(--serif); letter-spacing: .005em; color: var(--ink); font-feature-settings: "kern", "liga", "lnum"; }
 .cv-role { font-size: 19px; font-style: italic; color: var(--muted); }
-.cv-contact { display: grid; grid-template-columns: 1.15fr 1.25fr 1fr; gap: 20px 32px; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--rule); font-size: 15.5px; line-height: 1.55; }
+.cv-nw { white-space: nowrap; }
+.cv-contact { grid-area: contact; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 14px 32px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 15.5px; line-height: 1.6; }
 .cv-label { font: 600 11.5px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-.cv-contact address { font-style: normal; }
+.cv-contact address { font-style: normal; color: var(--ink); }
 .cv-plain { list-style: none; margin: 0; padding: 0; }
 .cv-contact a { word-break: break-word; }
+.cv-sep { margin: 0 .55em; color: var(--rule-strong); }
 
 /* Sections: label column on the left, content on the right */
 .cv-sec { display: grid; grid-template-columns: var(--label-w) minmax(0, 1fr); gap: 0 32px; padding: 26px 0 14px; border-top: 1px solid var(--rule); }
@@ -128,9 +132,10 @@ i, em { font-style: italic; }
   .cv-bar__title { display: none; }
   .cv-bar__back { margin-right: auto; }
   .cv-btn { padding: 9px 13px; font-size: 14px; }
-  .cv-name { font-size: 34px; }
-  .cv-role { font-size: 17px; }
-  .cv-contact { grid-template-columns: 1fr; gap: 16px; font-size: 15px; }
+  .cv-head { grid-template-columns: 92px minmax(0, 1fr); grid-template-areas: "photo id" "contact contact"; gap: 0 16px; align-items: center; }
+  .cv-name { font-size: 30px; margin: 6px 0 4px; }
+  .cv-role { font-size: 15.5px; line-height: 1.4; }
+  .cv-contact { grid-template-columns: 1fr; gap: 12px; font-size: 15px; }
   .cv-sec { grid-template-columns: minmax(0, 1fr); padding-top: 22px; }
   .cv-h { margin: 0 0 14px; }
   .cv-e__row { flex-direction: column; gap: 0; }
@@ -153,14 +158,14 @@ i, em { font-style: italic; }
   body.cv { font-size: 10.2pt; line-height: 1.42; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cv-skip, .cv-bar, .cv-foot { display: none !important; }
   .cv-paper { max-width: none; padding: 0; }
-  .cv-sec[aria-labelledby="s-research"] { break-before: page; } /* research papers open page 2 instead of leaving their heading alone at the foot of page 1 */
+  .cv-sec[aria-labelledby="s-references"] { break-inside: avoid; } /* keep the four referees together on the last page */
   a { color: inherit; background: none; }
   .cv-head a, .cv-p__venue a, .cv-cites a { color: var(--crimson); }
-  .cv-head { padding-bottom: 12pt; }
+  .cv-head { grid-template-columns: 30mm minmax(0, 1fr); gap: 0 18pt; padding-bottom: 12pt; }
   .cv-kicker { font-size: 8pt; }
-  .cv-name { font-size: 24pt; margin: 5pt 0 3pt; }
+  .cv-name { font-size: 24pt; margin: 4pt 0 3pt; }
   .cv-role { font-size: 11pt; }
-  .cv-contact { margin-top: 10pt; padding-top: 9pt; gap: 6pt 18pt; font-size: 9.2pt; line-height: 1.45; }
+  .cv-contact { margin-top: 9pt; padding-top: 8pt; gap: 6pt 18pt; font-size: 9.4pt; line-height: 1.5; }
   .cv-label { font-size: 7pt; margin-bottom: 2pt; }
   .cv-sec { gap: 0 16pt; padding: 10pt 0 4pt; }
   .cv-h { font-size: 8.4pt; }
