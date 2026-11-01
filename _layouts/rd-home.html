@@ -39,7 +39,7 @@ layout: rd
           </span>
           <span class="marks">
             {%- for th in page.themes -%}{%- if th.image %}
-            <span class="mark mark--photo" title="{{ th.title }}"><img src="{{ base_path }}{{ th.image }}" alt="" width="64" height="64" decoding="async"></span>
+            <span class="mark mark--photo" title="{{ th.title }}"><img src="{{ base_path }}{% if th.thumb %}{{ th.thumb }}{% else %}{{ th.image }}{% endif %}" alt="" width="64" height="64" decoding="async"></span>
             {%- endif -%}{%- endfor %}
           </span>
           {% include rd-icon.html name="arrow" class="stat__go" %}
@@ -119,7 +119,7 @@ layout: rd
       <article class="card theme reveal">
         {%- if th.image %}
         {%- assign img_base = th.image | split: "." | first %}
-        <figure class="theme__media"><picture><source type="image/webp" srcset="{{ base_path }}{{ img_base }}-560.webp 560w, {{ base_path }}{{ img_base }}-800.webp 800w" sizes="(max-width: 560px) 96px, (max-width: 1000px) 50vw, 270px"><img src="{{ base_path }}{{ th.image }}" alt="{{ th.alt }}" width="800" height="500" loading="lazy" decoding="async"></picture></figure>
+        <figure class="theme__media"><picture><source type="image/webp" srcset="{{ base_path }}{{ img_base }}-560.webp 560w, {{ base_path }}{{ img_base }}-800.webp 800w" sizes="(max-width: 560px) 96px, (max-width: 1000px) 50vw, 270px"><img src="{{ base_path }}{{ th.image }}" alt="{{ th.alt }}" width="800" height="500" loading="lazy" decoding="async"{% if th.focus %} style="object-position: {{ th.focus }}"{% endif %}></picture></figure>
         {%- else %}
         {% include rd-icon.html name=th.icon %}
         {%- endif %}
