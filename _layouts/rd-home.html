@@ -165,6 +165,9 @@ layout: rd
       <p>{{ page.closing }}</p>
       <div class="actions">
         <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
+        {%- if site.rd.booking and site.rd.booking != "" %}
+        <a class="btn" href="{{ site.rd.booking }}" target="_blank" rel="noopener" data-track="booking: open">{% include rd-icon.html name="calendar" %}<span>{{ t.book_btn }}</span></a>
+        {%- endif %}
         <a class="btn" href="{{ base_path }}{{ lp }}/projects/">{% include rd-icon.html name="sprout" %}<span>{{ t.projects }}</span></a>
       </div>
     </div>

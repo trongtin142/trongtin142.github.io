@@ -34,7 +34,7 @@
       <span>Main website</span>
     </a>
     <span class="cv-bar__title">Job Market CV</span>
-    {% if page.pdf %}<a class="cv-btn" href="{{ base_path }}{{ page.pdf }}" download>
+    {% if page.pdf %}<a class="cv-btn" href="{{ base_path }}{{ page.pdf }}" download data-goatcounter-click="download: {{ page.pdf | split: '/' | last }}" data-goatcounter-title="{{ page.url }}">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
       <span>Download CV <span class="cv-btn__fmt">(PDF)</span></span>
     </a>{% endif %}
