@@ -1,17 +1,19 @@
-# News, newest first. The home page shows the first three items; /news/ shows all.
+# News, newest first. The home page shows the first three items without `minor: true`; /news/ shows all.
+# minor: true keeps routine items (e.g. conference reviewing) off the home page.
 # label / label_vi: the date as displayed; year: used to group items on the News page.
 # Add a new line at the top for each new item.
 
 - year: 2026
   label: "Oct 2026"
   label_vi: "10/2026"
-  text: "Reviewer for SEBL 2026, the 3rd Global Conference on Sustainability in Economics, Business and Law, University of Economics and Law, VNU-HCM."
-  text_vi: "Phản biện cho SEBL 2026, Hội thảo toàn cầu lần thứ 3 về Phát triển bền vững trong Kinh tế, Kinh doanh và Luật, Trường Đại học Kinh tế - Luật, ĐHQG-HCM."
+  text: "Reviewed papers for SEBL 2026, the 3rd Global Conference on Sustainability in Economics, Business and Law, University of Economics and Law, VNU-HCM."
+  text_vi: "Phản biện bài cho SEBL 2026, Hội thảo toàn cầu lần thứ 3 về Phát triển bền vững trong Kinh tế, Kinh doanh và Luật, Trường Đại học Kinh tế - Luật, ĐHQG-HCM."
   url: /service/
+  minor: true
 
 - year: 2026
-  label: "Fall 2026"
-  label_vi: "Học kỳ thu 2026"
+  label: "Sep 2026"
+  label_vi: "9/2026"
   text: "Started teaching Microeconomics at ESCP Business School, Paris, and Trade and International Finance at Sciences Po."
   text_vi: "Bắt đầu giảng dạy Kinh tế vi mô tại ESCP Business School, Paris, và Thương mại và Tài chính quốc tế tại Sciences Po."
   url: /teaching/courses/
@@ -19,15 +21,16 @@
 - year: 2026
   label: "Jul 2026"
   label_vi: "7/2026"
-  text: "Reviewer for MBIC 2026, International Conference on Marketing, Management and Business Innovation, International University, VNU-HCM."
-  text_vi: "Phản biện cho MBIC 2026, Hội thảo quốc tế về Marketing, Quản trị và Đổi mới kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM."
+  text: "Reviewed papers for MBIC 2026, International Conference on Marketing, Management and Business Innovation, International University, VNU-HCM."
+  text_vi: "Phản biện bài cho MBIC 2026, Hội thảo quốc tế về Marketing, Quản trị và Đổi mới kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM."
   url: /service/
+  minor: true
 
 - year: 2026
   label: "2026"
   label_vi: "2026"
-  text: "The revised version of “From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model”, with C. Le-Van, N.-S. Pham and T. K. C. Pham, is under review at Mathematical Social Sciences."
-  text_vi: "Bản chỉnh sửa của bài “From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model”, cùng C. Le-Van, N.-S. Pham và T. K. C. Pham, đang được phản biện (vòng R1) tại Mathematical Social Sciences."
+  text: "Resubmitted our Solow-type semi-endogenous growth paper, with C. Le-Van, N.-S. Pham and T. K. C. Pham, to Mathematical Social Sciences after revision."
+  text_vi: "Bản chỉnh sửa của bài về mô hình tăng trưởng bán nội sinh kiểu Solow, cùng C. Le-Van, N.-S. Pham và T. K. C. Pham, đã được nộp lại và đang được phản biện tại tạp chí Mathematical Social Sciences."
   url: /publications/
 
 - year: 2026
@@ -47,8 +50,8 @@
 - year: 2025
   label: "Jul 2025"
   label_vi: "7/2025"
-  text: "Member of the organizing committee and session chair (Environmental Policy & Energy Economics) at ICDE 2025, AFEDEV and Université Paris Nanterre."
-  text_vi: "Thành viên Ban tổ chức và chủ tọa phiên “Chính sách môi trường và Kinh tế năng lượng” tại ICDE 2025, AFEDEV và Đại học Paris Nanterre."
+  text: "Served on the organizing committee and chaired the session Environmental Policy & Energy Economics at ICDE 2025, AFEDEV and Université Paris Nanterre."
+  text_vi: "Tham gia Ban tổ chức và chủ tọa phiên “Chính sách môi trường và Kinh tế năng lượng” tại ICDE 2025, AFEDEV và Đại học Paris Nanterre."
   url: /service/
 
 - year: 2025
