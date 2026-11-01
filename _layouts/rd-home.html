@@ -7,15 +7,16 @@ layout: rd
   <div class="wrap hero__in">
     <div class="hero__text">
       <p class="eyebrow">{{ t.eyebrow }}</p>
-      <h1 class="hero__name">{% if t.name_alias %}{{ t.name_primary }} <span class="hero__alias">{{ t.name_alias }}</span>{% else %}{{ t.name }}{% endif %}</h1>
-      <p class="hero__role">{{ t.bio }} · {{ t.role }}</p>
+      <h1 class="hero__name">{% if t.name_alias %}{{ t.name_primary }} <span class="hero__alias">{{ t.name_alias }}</span>{% elsif t.name_nick %}<span class="hero__given">{{ t.name_given }} <span class="hero__nick">{{ t.name_nick }}</span></span> {{ t.name_family }}{% else %}{{ t.name }}{% endif %}</h1>
+      <p class="hero__role"><span>{{ t.bio }}</span> <span>{{ t.role }}</span></p>
       <p class="hero__lead">{{ page.intro }}</p>
       <div class="actions">
-        <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/publications/">{% include rd-icon.html name="book" %}<span>{{ t.research }}</span></a>
+        <a class="btn btn--primary" href="{{ base_path }}{{ lp }}/publications/">{% include rd-icon.html name="book" %}<span>{{ t.pubs_btn }}</span></a>
         <a class="btn" href="{{ base_path }}{{ lp }}/contact/">{% include rd-icon.html name="mail" %}<span>{{ t.get_in_touch }}</span></a>
-        <a class="btn btn--jm" href="{{ base_path }}/job-market/"{% if page_lang == "vi" %} hreflang="en"{% endif %}>{% include rd-icon.html name="file" %}<span>{{ t.job_market }}</span></a>
+        <a class="btn" href="{{ base_path }}/job-market/"{% if page_lang == "vi" %} hreflang="en"{% endif %}>{% include rd-icon.html name="file" %}<span>{{ t.job_market }}</span></a>
       </div>
       {% include rd-profiles.html class="profiles--hero" %}
+      <p class="hero__pubname">{{ t.publishes_as }} <b>Tin Nguyen-Trong</b></p>
     </div>
     <figure class="hero__photo">
       <img src="{{ base_path }}/images/profile.jpg" alt="{{ t.name }}" width="500" height="500" fetchpriority="high">
@@ -34,7 +35,7 @@ layout: rd
       <li class="stats__wide">
         <a class="stat" href="{{ base_path }}{{ lp }}/teaching/">
           <span class="stat__head">
-            <b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b>
+            <b class="stat__num">{{ n_uni }}</b>
             <span class="stat__label">{{ t.stats_universities }}</span>
           </span>
           <span class="marks marks--rows">
@@ -60,7 +61,7 @@ layout: rd
       <li>
         <a class="stat" href="{{ base_path }}{{ lp }}/conferences/">
           <span class="stat__head">
-            <b class="stat__num" data-count="{{ n_talks }}">{{ n_talks }}</b>
+            <b class="stat__num">{{ n_talks }}</b>
             <span class="stat__label">{{ t.stats_talks }}</span>
           </span>
           <span class="marks">
@@ -77,7 +78,7 @@ layout: rd
       <li>
         <a class="stat" href="{{ base_path }}{{ lp }}/positions/">
           <span class="stat__head">
-            <b class="stat__num" data-count="3">3</b>
+            <b class="stat__num">3</b>
             <span class="stat__label">{{ t.stats_countries }}</span>
           </span>
           <span class="marks marks--flags">
@@ -134,7 +135,8 @@ layout: rd
         <a class="more" href="{{ base_path }}{{ lp }}/news/">{{ t.all_news }}{% include rd-icon.html name="arrow" %}</a>
       </div>
       <ul class="news news--compact">
-        {%- for n in site.data.news limit: 3 -%}
+        {%- assign home_news = site.data.news | where_exp: "n", "n.minor != true" -%}
+        {%- for n in home_news limit: 3 -%}
         <li class="news__item">
           <time class="news__when">{% if page_lang == "vi" %}{{ n.label_vi }}{% else %}{{ n.label }}{% endif %}</time>
           <p class="news__text">{% if page_lang == "vi" %}{{ n.text_vi }}{% else %}{{ n.text }}{% endif %}</p>
