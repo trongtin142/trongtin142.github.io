@@ -12,6 +12,7 @@ Usage:
 """
 import datetime as dt
 import json
+import math
 import os
 import sys
 import time
@@ -101,13 +102,16 @@ def main():
             p[field] = clean_title(h.get("title"))
     top_pages = sorted(pages.values(), key=lambda p: -p["count"])[:8]
 
-    # Visitors by country
-    loc = get("/stats/locations", start=SINCE, end=end, limit=12)
+    # Visitors by country; "bin" (1-5, log scale) colours the world map
+    loc = get("/stats/locations", start=SINCE, end=end, limit=100)
     countries = [
         {"code": s.get("id") or "", "name": s.get("name") or "", "count": int(s.get("count") or 0)}
         for s in (loc.get("stats") or [])
         if int(s.get("count") or 0) > 0
     ]
+    top = max([c["count"] for c in countries] or [1])
+    for c in countries:
+        c["bin"] = 5 if top <= 1 else 1 + min(4, int(4 * math.log(c["count"]) / math.log(top)))
 
     stats = {
         "generated": now.strftime("%Y-%m-%d"),
