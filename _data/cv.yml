@@ -1,0 +1,143 @@
+# Job Market CV (/job-market/), English only. Sections and their order follow the CV PDF (Overleaf, October 2026).
+# The page also reads, from other data files (cv: false there leaves an entry out of the CV; cv_* fields give CV wording):
+#   Prior Education, Additional Training, Academic Positions, Teaching   _data/timeline.yml
+#   Publications (Book, Proceedings, Software)                           _data/publications.yml
+#   Grants / Professional Activities / Skills                            _data/grants.yml, service.yml, skills.yml
+#   Conferences and Seminars                                             _data/conferences.yml (talks)
+# Site rules: no phone numbers, no referee e-mails; Working Papers only with Ngoc-Sang Pham and Thi Kim Cuong Pham.
+# Spaces between initials in author lists are non-breaking. After editing, regenerate the PDF in /files/.
+
+kicker: "Academic Job Market"
+season: "2026–2027"
+name: "NGUYEN-TRONG Tin"
+role: "Ph.D. Candidate in Economics · EconomiX (UMR 7235, CNRS),"
+role_end: "Université Paris Nanterre"
+address:
+  - "EconomiX (UMR 7235, CNRS)"
+  - "Université Paris Nanterre"
+  - "200 avenue de la République"
+  - "92001 Nanterre Cedex, France"
+emails:
+  - "trongtin.nguyen@parisnanterre.fr"
+  - "nttin@hcmiu.edu.vn"
+
+fields:
+  - name: "Growth"
+    text: "Endogenous Innovation and Economic Growth; Institutions and Governance"
+  - name: "Sustainability"
+    text: "Development Economics; Environmental Economics; Circular Economy"
+  - name: "Methods"
+    text: "CGE Modeling; Applied Econometrics; AI and Business Analytics"
+
+# Details of the PhD entry of _data/timeline.yml (the one with cv_section: doctoral)
+doctoral:
+  dissertation: "Productive Efficiency, Corruption, and Economic Growth in Aid-Recipient Countries"
+  supervisors: "Prof. Thi Kim Cuong Pham and Prof. Ngoc-Sang Pham"
+  defense: "May 2027"
+
+# Publications section: groups of _data/publications.yml, by type
+publication_groups:
+  - type: book
+    title: "Book"
+  - type: proceedings
+    title: "Conference Proceedings"
+  - type: software
+    title: "Software and Data"
+
+# Research Papers. ref: an id of _data/publications.yml (title, authors, venue, note and rank are taken from there).
+# * after a name = corresponding author; chapter: true = dissertation chapter (†); target: true = "Target:" journal.
+papers_legend: "* Corresponding author. † Dissertation chapter. Rankings: SSCI/SCIE/ESCI (Web of Science), Scopus quartile and SJR 2025 (SCImago), ABDC 2025, ABS (AJG 2024), impact factor 2025 (JCR)."
+papers:
+  - group: "Revise and Resubmit"
+    items:
+      - title: "Can developing economies implement SCC-aligned carbon pricing? Evidence from Vietnam’s pilot ETS under EU CBAM"
+        authors: "Nguyen, D. C., Nguyen, H. P., Lai, N. D., & Nguyen-Trong, T.*"
+        venue: "Economic Analysis and Policy"
+        note: "R1 under review"
+        rank: "SSCI Q1 · ABDC A · IF 9.0"
+      - title: "Partner-country effects of the EU Carbon Border Adjustment Mechanism: A general-equilibrium analysis for Vietnam"
+        authors: "Nguyen, D. C., Nguyen, H. P., & Nguyen-Trong, T.*"
+        venue: "Climate Policy"
+        note: "R1 under review"
+        rank: "SSCI Q1 · IF 5.5"
+      - ref: levan2026balanced
+        chapter: true
+  - group: "Under Review"
+    items:
+      - title: "Midstream chokepoints in critical-mineral supply chains: The general-equilibrium incidence of Chinese export controls"
+        authors: "Nguyen, D. C., Nguyen, Q. K., Huynh, N. C., & Nguyen-Trong, T.*"
+        venue: "Resources Policy"
+        rank: "Scopus Q1 · ABDC B · ABS 2 · SJR 2.05"
+  - group: "Submitted"
+    items:
+      - title: "When do aggregate catch ceilings bind? Stock status, rents and welfare under Vietnam’s 2030 fishing-output target"
+        authors: "Nguyen-Trong, T., & Nguyen, D. C.*"
+        venue: "Environmental and Resource Economics"
+        rank: "SSCI Q1 · ABDC A · ABS 3 · IF 3.5"
+      - title: "Logistics and protection against food price shocks: Transport reform and transfer budgets in Vietnam"
+        authors: "Nguyen, D. C., & Nguyen-Trong, T.*"
+        venue: "Agricultural Economics"
+        rank: "SSCI Q1 · ABDC A · ABS 2 · IF 4.7"
+      - title: "Bringing agriculture into an emerging-economy carbon market: Welfare costs of pricing livestock and rice emissions in Vietnam to 2050"
+        authors: "Nguyen, D. C., Ha, M. T., & Nguyen-Trong, T.*"
+        venue: "Environment, Development and Sustainability"
+        rank: "SCIE · Scopus Q1 · IF 4.9"
+      - title: "Harmonising subsector coverage in IMF government expenditure statistics: A tiered approach and its consequences for comparability"
+        authors: "Nguyen-Trong, T."
+        venue: "Statistical Journal of the IAOS"
+        rank: "ESCI · Scopus Q3 · IF 0.6"
+  - group: "Working Papers"
+    items:
+      - title: "Foreign aid, governance, and environmental expenditure: Micro-founded approach and empirical evidence"
+        chapter: true
+        authors: "Nguyen-Trong, T.*, Pham, N.-S., & Pham, T. K. C."
+        venue: "Economics Letters"
+        target: true
+        rank: "SSCI · ABDC A · ABS 3 · IF 2.0"
+      - title: "Taxation, corruption and growth in intertemporal equilibrium"
+        chapter: true
+        authors: "Nguyen-Trong, T.*, & Pham, N.-S."
+        venue: "Journal of Public Economics"
+        target: true
+        rank: "SSCI · ABDC A* · ABS 3 · IF 3.2"
+
+# Other Publications: peer-reviewed articles in Vietnamese journals
+other_title: "Peer-Reviewed Articles in Vietnamese Journals"
+other:
+  - authors: "Nguyen-Trong, T."
+    year: 2026
+    title: "Forest garden model towards a circular economy: Potential and development solutions in Vietnam"
+    journal: "Journal of Industry and Trade"
+    issue: "8"
+    pages: "80–84"
+  - authors: "Nguyen-Trong, T., & Nguyen, T. N. D."
+    year: 2022
+    title: "Factors affecting scientific research motivation of lecturers at Ho Chi Minh City University of Law"
+    journal: "Journal of Economics and Forecasting"
+    issue: "15"
+  - authors: "Ngo, H. G., Nguyen-Trong, T., et al."
+    year: 2022
+    title: "Proposing a research model of factors affecting scientific research motivation of students at Ho Chi Minh City University of Law"
+    journal: "Journal of Economics and Forecasting"
+    issue: "21"
+  - authors: "Hoang, V. L., Nguyen-Trong, T., et al."
+    year: 2021
+    title: "Proposing a research model of factors affecting scientific research motivation of lecturers at Ho Chi Minh City University of Law"
+    journal: "Journal of Economics and Forecasting"
+    issue: "6"
+
+references:
+  - name: "Prof. Thi Kim Cuong Pham"
+    position: "Professor of Economics"
+    org: "EconomiX, Université Paris Nanterre"
+    note: "Dissertation supervisor"
+  - name: "Prof. Ngoc-Sang Pham"
+    position: "Professor of Economics"
+    org: "EM Normandie Business School"
+    note: "Dissertation supervisor"
+  - name: "Prof. Cuong Le-Van"
+    position: "Professor Emeritus"
+    org: "Paris School of Economics, CNRS"
+  - name: "Prof. Kerstin Holzheu"
+    position: "Professor of Economics"
+    org: "Sciences Po Paris"

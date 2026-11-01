@@ -1,6 +1,7 @@
 # Conference presentations (Conferences page, home-page counter, map) and other places on the map.
 # place: id of an entry under `places`. slides / video: optional links shown as buttons.
 # proc, publisher, isbn (each with an optional _vi version): proceedings in which the paper was published.
+# Job Market CV: cv: false leaves a talk out; cv_title / cv_event give the shorter CV wording.
 
 talks:
   - year: 2026
@@ -13,6 +14,7 @@ talks:
     place: nanterre
   - year: 2025
     event: "Vietnam Economist Annual Meeting (VEAM 2025)"
+    cv_event: "Vietnam Economist Annual Meeting (VEAM)"
     event_vi: "Hội nghị thường niên các nhà kinh tế học Việt Nam (VEAM 2025)"
     host: "Thai Nguyen, Vietnam"
     host_vi: "Thái Nguyên, Việt Nam"
@@ -41,6 +43,7 @@ talks:
     host: "Ho Chi Minh City University of Law, Vietnam"
     host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
     title: "Behavioral theories and research models of entrepreneurial intention: An overview"
+    cv_title: "Behavioral theories and models of entrepreneurial intention"
     title_vi: "Các lý thuyết hành vi và mô hình nghiên cứu về ý định khởi nghiệp: Tổng quan"
     place: hcmlaw
     proc: "Proceedings of the Scientific Conference “Start-up 4.0”"
@@ -54,6 +57,7 @@ talks:
     host: "Ho Chi Minh City University of Law, Vietnam"
     host_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
     title: "Applying Granger causality tests in VAR or VECM frameworks"
+    cv_title: "Granger causality in VAR/VECM"
     title_vi: "Ứng dụng kiểm định nhân quả Granger trong mô hình VAR hoặc VECM"
     place: hcmlaw
     proc: "Proceedings of the Scientific Conference “Models in Finance: Theory and Evidence”"
@@ -69,6 +73,7 @@ talks:
     title: "The causal relationship between money supply, inflation, and economic growth in Vietnam"
     title_vi: "Mối quan hệ nhân quả giữa cung tiền, lạm phát và tăng trưởng kinh tế ở Việt Nam"
     place: tdtu
+    cv: false   # listed under Conference Proceedings in the CV
     proc: "Proceedings of the 4th International Conference on Finance and Economics"
     proc_vi: "Kỷ yếu Hội thảo quốc tế lần thứ 4 về Tài chính và Kinh tế"
     isbn: "978-80-87990-11-7"

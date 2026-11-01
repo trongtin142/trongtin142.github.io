@@ -1,0 +1,86 @@
+# Professional service: Service page (English and Vietnamese) and the Job Market CV.
+# Each section has a key that sets how its items are shown:
+#   refereeing    name, publisher, year (the site shows the journal only; the CV adds the year)
+#   reviewing     name, host, date, when (site column), year (CV column)
+#   organization  site rows (name, when, detail); cv_items: the CV lines, in CV order
+#   memberships   name, start (shown as "start–present")
+#   university    CV only (cv_only: true): text, when, note
+# Text may contain HTML entities (&amp;) and typographic quotes.
+
+sections:
+  - key: refereeing
+    title: "Journal refereeing"
+    title_vi: "Phản biện tạp chí"
+    cv_title: "Journal Refereeing"
+    items:
+      - name: "Journal for International Business and Entrepreneurship Development"
+        publisher: "Inderscience"
+        year: 2025
+
+  - key: reviewing
+    title: "Conference reviewing"
+    title_vi: "Phản biện hội thảo"
+    cv_title: "Conference Reviewing"
+    items:
+      - name: "3rd Global Conference on Sustainability in Economics, Business and Law (SEBL 2026)"
+        name_vi: "Hội thảo toàn cầu lần thứ 3 về Phát triển bền vững trong Kinh tế, Kinh doanh và Luật (SEBL 2026)"
+        host: "University of Economics and Law, VNU-HCM, Ho Chi Minh City, Vietnam"
+        host_vi: "Trường Đại học Kinh tế - Luật, ĐHQG-HCM, TP. Hồ Chí Minh, Việt Nam"
+        date: "6 October 2026"
+        date_vi: "Ngày 6/10/2026"
+        when: "Oct 2026"
+        when_vi: "10/2026"
+        year: 2026
+      - name: "International Conference on Marketing, Management and Business Innovation (MBIC 2026)"
+        name_vi: "Hội thảo quốc tế về Marketing, Quản trị và Đổi mới kinh doanh (MBIC 2026)"
+        host: "International University, VNU-HCM, Ho Chi Minh City, Vietnam"
+        host_vi: "Trường Đại học Quốc tế, ĐHQG-HCM, TP. Hồ Chí Minh, Việt Nam"
+        date: "24–25 July 2026"
+        date_vi: "Ngày 24–25/7/2026"
+        when: "Jul 2026"
+        when_vi: "7/2026"
+        year: 2026
+
+  - key: organization
+    title: "Conference organization &amp; session chairing"
+    title_vi: "Tổ chức hội thảo và chủ tọa phiên"
+    cv_title: "Conference Organization and Session Chairing"
+    items:
+      - name: "5th International Conference on Development Economics (ICDE 2025)"
+        name_vi: "Hội thảo quốc tế lần thứ 5 về Kinh tế phát triển (ICDE 2025)"
+        when: "Jul 2025"
+        when_vi: "7/2025"
+        detail: "AFEDEV and Université Paris Nanterre, France, 2–4 July 2025 · Member of the Organizing Committee; Session Chair, “Environmental Policy &amp; Energy Economics”"
+        detail_vi: "AFEDEV và Đại học Paris Nanterre, Pháp, ngày 2–4/7/2025 · Thành viên Ban tổ chức; Chủ tọa phiên “Chính sách môi trường và Kinh tế năng lượng”"
+      - name: "16th Vietnam Economist Annual Meeting (VEAM 2025)"
+        name_vi: "Hội nghị thường niên các nhà kinh tế học Việt Nam lần thứ 16 (VEAM 2025)"
+        when: "2025"
+        detail: "Thai Nguyen, Vietnam · Session Chair, “Macroeconomic Dynamics”"
+        detail_vi: "Thái Nguyên, Việt Nam · Chủ tọa phiên “Động học kinh tế vĩ mô”"
+    cv_items:
+      - text: "Session Chair, “Environmental Policy &amp; Energy Economics”, 5th International Conference on Development Economics (ICDE 2025), Paris, France"
+        year: 2025
+      - text: "Session Chair, “Macroeconomic Dynamics”, 16th Vietnam Economist Annual Meeting (VEAM 2025), Thai Nguyen, Vietnam"
+        year: 2025
+      - text: "Member of the Organizing Committee, ICDE 2025, AFEDEV and Université Paris Nanterre, France, 2–4 July 2025"
+        year: 2025
+
+  - key: memberships
+    title: "Professional memberships"
+    title_vi: "Hội viên tổ chức chuyên môn"
+    cv_title: "Professional Memberships"
+    items:
+      - name: "French Economic Association (AFSE)"
+        name_vi: "Hội Kinh tế học Pháp (AFSE)"
+        start: 2026
+      - name: "International Society for Vietnamese Economists (ISVE)"
+        name_vi: "Hiệp hội Quốc tế các nhà Kinh tế học Việt Nam (ISVE)"
+        start: 2025
+
+  - key: university
+    cv_only: true
+    cv_title: "University Service"
+    items:
+      - text: "Student Affairs Coordinator (Youth Union Secretary), Faculty of Management, Ho Chi Minh City University of Law, Vietnam"
+        when: "2013–2017"
+        note: "Organized the “Future CEO” student competition on the ASEAN Economic Community and coordinated student volunteer and mentoring programs; received several university awards for student service."

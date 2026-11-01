@@ -3,11 +3,12 @@
 # types: the sections of the Publications page, in display order.
 # items: one entry per work.
 #   type      one of the keys under `types`
-#   authors   APA author string; "Nguyen-Trong, T." is shown in bold automatically
+#   authors   APA author string; "Nguyen-Trong, T." is shown in bold automatically (spaces between initials are non-breaking)
 #   bib_*     fields used to build the BibTeX entry
 #   coauthors ids from _data/coauthors.yml (used by the Co-authors page)
 #   featured  true = shown under "Selected work" on the home page
 #   abstract / abstract_vi, doi, url, pdf, slides: optional; buttons appear only when filled
+#   doi_all   software only: the all-versions (concept) DOI used by the Software & Data page
 
 types:
   - key: rr
@@ -39,7 +40,7 @@ items:
   - id: levan2026balanced
     type: rr
     year: 2026
-    authors: "Le-Van, C., Nguyen-Trong, T., Pham, N.-S., & Pham, T. K. C."
+    authors: "Le-Van, C., Nguyen-Trong, T., Pham, N.-S., & Pham, T. K. C."
     title: "From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model"
     venue: "Mathematical Social Sciences"
     note: "R1 under review"
@@ -53,7 +54,7 @@ items:
   - id: nguyen2016framework
     type: book
     year: 2016
-    authors: "Nguyen, T. H., Nguyen-Trong, T., et al."
+    authors: "Nguyen, T. H., Nguyen-Trong, T., et al."
     title: "The analytical framework to adjust citizens’ behavior towards green growth in Vietnam cities"
     publisher: "UEH Publishing House"
     isbn: "978-604-922-158-3"
@@ -101,6 +102,7 @@ items:
     extra: "(Version 1.0.5) [Computer software]"
     publisher: "Zenodo"
     doi: "10.5281/zenodo.23558078"
+    doi_all: "10.5281/zenodo.23511907"   # concept DOI: all versions, resolves to the latest release
     url: "https://github.com/trongtin142/cofog-panel"
     featured: true
     abstract: "A traceable Python tool that builds cross-country panels of government expenditure by function (COFOG) from IMF Government Finance Statistics. Every cleaning and harmonisation step is documented so that the resulting panels can be reproduced and audited."

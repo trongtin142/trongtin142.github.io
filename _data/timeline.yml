@@ -1,6 +1,8 @@
-# Timelines for the Positions, Education and Teaching pages (English and Vietnamese).
+# Timelines for the Positions, Education and Teaching pages (English and Vietnamese) and the Job Market CV.
 # end: leave empty for "present". tags: used by the filter chips. current: highlights the dot.
 # teaching: logo + logo_order + country (fr / vn) place the logo in its country row on the home page.
+# Job Market CV (/job-market/): cv: false leaves an entry out of the CV; cv_role, cv_org, cv_note, cv_end and
+# cv_extra give CV-specific wording (Harvard style) where it differs from the site; cv_section: doctoral marks the PhD.
 
 positions:
   - start: 2026
@@ -38,6 +40,7 @@ positions:
     org: "HUTECH University, Vietnam"
     org_vi: "Trường Đại học Công nghệ TP. Hồ Chí Minh (HUTECH), Việt Nam"
     tags: [teaching]
+    cv: false
   - start: 2018
     end: 2019
     role: "Visiting Scholar"
@@ -47,6 +50,8 @@ positions:
     note: "Research secondment, September 2018 to January 2019"
     note_vi: "Biệt phái nghiên cứu, từ tháng 9/2018 đến tháng 1/2019"
     tags: [research]
+    cv_org: "Department of Economics and Finance, Tallinn University of Technology, Estonia"
+    cv_note: "September 2018 to January 2019"
   - start: 2013
     end: 2023
     role: "Lecturer"
@@ -65,6 +70,10 @@ education:
     org_vi: "EconomiX (CNRS), Đại học Paris Nanterre, Pháp"
     tags: [degree]
     current: true
+    cv_section: doctoral
+    cv_role: "Ph.D. in Economics"
+    cv_org: "EconomiX (UMR 7235, CNRS), Université Paris Nanterre, France"
+    cv_end: 2027
   - start: 2011
     end: 2013
     role: "MA in Development Economics"
@@ -72,6 +81,9 @@ education:
     org: "Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City (UEH) and Erasmus University Rotterdam (ISS)"
     org_vi: "Chương trình Việt Nam - Hà Lan, Trường Đại học Kinh tế TP. Hồ Chí Minh (UEH) và Đại học Erasmus Rotterdam (ISS)"
     tags: [degree]
+    cv_role: "M.A. in Development Economics"
+    cv_org: "University of Economics Ho Chi Minh City, Vietnam, and ISS, Erasmus University Rotterdam, the Netherlands"
+    cv_note: "Vietnam–Netherlands Programme for Development Economics"
   - start: 2006
     end: 2010
     role: "BA in Business Administration"
@@ -79,6 +91,8 @@ education:
     org: "University of Economics Ho Chi Minh City (UEH), Vietnam"
     org_vi: "Trường Đại học Kinh tế TP. Hồ Chí Minh (UEH), Việt Nam"
     tags: [degree]
+    cv_role: "B.A. in Business Administration"
+    cv_org: "University of Economics Ho Chi Minh City, Vietnam"
   - start: 2026
     end: 2026
     role: "General Equilibrium: Theory and Applications"
@@ -88,6 +102,7 @@ education:
     note: "Instructors: Cuong Le-Van, Professor Emeritus, Paris School of Economics; Ngoc-Sang Pham, Professor of Economics, EM Normandie Business School"
     note_vi: "Giảng viên: Cuong Le-Van, Giáo sư danh dự, Trường Kinh tế Paris (Paris School of Economics); Ngoc-Sang Pham, Giáo sư Kinh tế học, EM Normandie Business School"
     tags: [training]
+    cv_note: "Instructors: Cuong Le-Van (Professor Emeritus, Paris School of Economics) and Ngoc-Sang Pham (Professor of Economics, EM Normandie Business School)"
 
 teaching:
   - start: 2026
@@ -135,6 +150,7 @@ teaching:
     org_vi: "Trường Đại học Công nghệ TP. Hồ Chí Minh (HUTECH), Việt Nam"
     courses: "Microeconomics; Econometrics (UG)"
     courses_vi: "Kinh tế vi mô; Kinh tế lượng (đại học)"
+    cv: false
   - start: 2013
     end: 2023
     org: "Ho Chi Minh City University of Law, Vietnam"
@@ -144,3 +160,4 @@ teaching:
     org_vi: "Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
     courses: "Econometrics; Macroeconomics; Microeconomics (UG)"
     courses_vi: "Kinh tế lượng; Kinh tế vĩ mô; Kinh tế vi mô (đại học)"
+    cv_extra: "Supervision of undergraduate theses and student research projects"

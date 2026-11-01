@@ -1,0 +1,46 @@
+# Research grants and fellowships: Grants page (English and Vietnamese) and the Job Market CV.
+# name, org (optional), when; detail / detail_vi may use <em> for project titles.
+# cv_title, cv_detail: CV-specific wording where it differs from the site. compact: true = one line per grant in the CV.
+
+sections:
+  - key: competitive
+    title: "Competitive research grants"
+    title_vi: "Tài trợ nghiên cứu"
+    cv_title: "Competitive Research Grants"
+    items:
+      - name: "EU Horizon 2020 Mobility Grant"
+        name_vi: "Tài trợ trao đổi nghiên cứu EU Horizon 2020"
+        when: "2018–2019"
+        detail: "Research secondment to Tallinn University of Technology, Estonia (September 2018 to January 2019), project <em>Institutions for Knowledge Intensive Development</em> (Grant No. 734712)"
+        detail_vi: "Học giả nghiên cứu (Visiting Scholar) tại Đại học Công nghệ Tallinn, Estonia (từ tháng 9/2018 đến tháng 1/2019), dự án <em>Institutions for Knowledge Intensive Development</em> (mã tài trợ 734712)"
+        cv_detail: "Visiting Scholar at Tallinn University of Technology, Estonia (September 2018 to January 2019), project <i>Institutions for Knowledge Intensive Development</i> (Grant No. 734712)"
+      - name: "NAFOSTED Research Grant"
+        name_vi: "Đề tài NAFOSTED"
+        org: "Ministry of Science and Technology, Vietnam"
+        org_vi: "Bộ Khoa học và Công nghệ"
+        when: "2014–2016"
+        detail: "Research Member (PI: Prof. Trong-Hoai Nguyen), national competitive grant of the National Foundation for Science and Technology Development, project <em>Adjusting citizens’ behavior in Vietnam’s urban areas – Vision toward 2030</em>"
+        detail_vi: "Thành viên nghiên cứu (chủ nhiệm: GS.TS Nguyễn Trọng Hoài), đề tài cạnh tranh cấp quốc gia do Quỹ Phát triển Khoa học và Công nghệ Quốc gia tài trợ, đề tài <em>Điều chỉnh hành vi của người dân tại các đô thị Việt Nam – Tầm nhìn đến năm 2030</em>"
+        cv_detail: "Research Member (PI: Prof. Trong-Hoai Nguyen), national competitive grant of the National Foundation for Science and Technology Development, project <i>Adjusting citizens’ behavior in Vietnam’s urban areas: Vision toward 2030</i>"
+
+  - key: internal
+    title: "Internal grants, Ho Chi Minh City University of Law"
+    title_vi: "Đề tài cấp trường, Trường Đại học Luật TP. Hồ Chí Minh"
+    cv_title: "Internal Grants, Ho Chi Minh City University of Law"
+    compact: true
+    items:
+      - name: "Factors affecting research motivation of students"
+        name_vi: "Các yếu tố ảnh hưởng đến động lực nghiên cứu khoa học của sinh viên"
+        when: "2020–2022"
+        detail: "Key Researcher (PI: Huynh-Giang Ngo)"
+        detail_vi: "Thành viên chính (chủ nhiệm: ThS Ngô Huỳnh Giang)"
+      - name: "Factors affecting research motivation of lecturers"
+        name_vi: "Các yếu tố ảnh hưởng đến động lực nghiên cứu khoa học của giảng viên"
+        when: "2020–2021"
+        detail: "Key Researcher (PI: Dr. Van-Long Hoang)"
+        detail_vi: "Thành viên chính (chủ nhiệm: TS. Hoàng Văn Long)"
+      - name: "Soft skills program design and teaching methods"
+        name_vi: "Thiết kế chương trình và phương pháp giảng dạy kỹ năng mềm"
+        when: "2014–2015"
+        detail: "Key Researcher (PI: Dr. Quyet-Chien Nguyen)"
+        detail_vi: "Thành viên chính (chủ nhiệm: TS. Nguyễn Quyết Chiến)"

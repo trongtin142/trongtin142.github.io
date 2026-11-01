@@ -1,0 +1,18 @@
+# Skills: Skills page (English and Vietnamese, one card each) and the Job Market CV ("Skills and Languages").
+# icon: a name from _includes/rd-icon.html. wide: true = full-width card. cv_text: CV-specific wording.
+
+- name: "CGE modeling"
+  name_vi: "Mô hình CGE"
+  icon: chart
+  text: "GEMPACK, RunGTAP; GTAP-E, GTAP-AEZ, GTAP-CM"
+- name: "Software & tools"
+  name_vi: "Phần mềm và công cụ"
+  icon: code
+  text: "Stata, EViews, R, SPSS, AMOS, SmartPLS, Python, Power BI, LaTeX"
+  cv_text: "Python, Stata, EViews, R, SPSS, AMOS, SmartPLS, Power BI, LaTeX"
+- name: "Languages"
+  name_vi: "Ngôn ngữ"
+  icon: users
+  wide: true
+  text: "Vietnamese (native); English (C1); French (A2)"
+  text_vi: "Tiếng Việt (bản ngữ); Tiếng Anh (C1); Tiếng Pháp (A2)"
