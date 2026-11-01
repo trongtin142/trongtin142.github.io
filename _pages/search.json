@@ -28,6 +28,6 @@ sitemap: false
 {%- endfor -%}
 {%- for x in site.data.news -%}
   {{ sep }}{"t": {{ x.text | truncate: 90 | jsonify }}, "d": {{ x.label | jsonify }}, "u": "/news/", "l": "en", "g": "News", "k": {{ x.text | jsonify }}}
-  {{ sep }}{"t": {{ x.text_vi | truncate: 90 | jsonify }}, "d": {{ x.label_vi | jsonify }}, "u": "/vi/news/", "l": "vi", "g": "Tin mới", "k": {{ x.text_vi | jsonify }}}
+  {{ sep }}{"t": {{ x.text_vi | truncate: 90 | jsonify }}, "d": {{ x.label_vi | jsonify }}, "u": "/vi/news/", "l": "vi", "g": "Tin tức", "k": {{ x.text_vi | jsonify }}}
 {%- endfor -%}
 ]
