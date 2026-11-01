@@ -1,0 +1,6 @@
+{%- comment -%} Country flag as inline SVG. Pass code = vn, fr or ee. {%- endcomment -%}
+{%- case include.code -%}
+{%- when "vn" -%}<svg viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15.00,4.00 16.35,8.15 20.71,8.15 17.18,10.71 18.53,14.85 15.00,12.29 11.47,14.85 12.82,10.71 9.29,8.15 13.65,8.15"/></svg>
+{%- when "fr" -%}<svg viewBox="0 0 3 2" aria-hidden="true" focusable="false"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg>
+{%- when "ee" -%}<svg viewBox="0 0 3 2" aria-hidden="true" focusable="false"><rect width="3" height=".67" fill="#0072CE"/><rect y=".66" width="3" height=".68" fill="#000000"/><rect y="1.33" width="3" height=".67" fill="#FFFFFF"/></svg>
+{%- endcase -%}
