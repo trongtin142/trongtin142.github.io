@@ -6,7 +6,7 @@ description: "Trong-Tin (Tommy) NGUYEN, PhD candidate in Economics at EconomiX (
 redirect_from:
   - /about/
   - /about.html
-intro: "I study how taxation, public spending and institutions, together with climate and trade policies, shape growth and welfare in developing economies, with a focus on Vietnam and aid-recipient countries. My work combines intertemporal general equilibrium theory, applied CGE modeling and panel data econometrics. Alongside research, I teach microeconomics, international trade and finance, and quantitative methods."
+intro: "I am a researcher and lecturer in economics and econometrics, working on growth, public finance, and climate and trade policy. I specialize in convex optimization and data analysis with Stata, R and Python, which I use to turn data into evidence that supports well-informed policy and strategic decisions. I am also strongly committed to sharing knowledge with the next generation of economists, as I believe that combining research and teaching is the best way to move the field forward. I am always open to research collaboration, whether joint papers, data-driven projects or policy work, so please feel free to get in touch."
 themes:
   - image: /images/research/general-equilibrium.jpg
     focus: "0% 50%"
@@ -28,5 +28,5 @@ themes:
     credit: "Clement Souchet, Unsplash (unsplash.com/photos/juVccM81b_E)"
     title: "Circular economy and agroforestry"
     text: "Circular economy principles and agroforestry systems, such as forest gardens that combine trees and crops, as pathways to sustainable rural livelihoods and land restoration in Vietnam."
-closing: "I welcome collaboration with researchers and practitioners across Europe and Vietnam on research, teaching and policy projects. Get in touch to discuss ideas or joint work."
+closing: "Have an idea for a joint paper or project? Let's talk."
 ---
