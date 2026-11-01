@@ -119,6 +119,7 @@ main { display: block; outline: none; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mono__bg { stroke-width: 2; } }
 .mono__t { fill: var(--mono-fg); font: 600 27px var(--serif); }
 .mono__u { fill: var(--mono-fg); }
+.mono--photo { display: block; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 1.5px var(--deco); }
 
 /* ==========================================================================
    Header and navigation
