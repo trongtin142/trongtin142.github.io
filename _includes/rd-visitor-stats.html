@@ -1,0 +1,65 @@
+{%- comment -%}
+  Visitor statistics (Contact page). Data: _data/stats.json, written in the Pages build by
+  scripts/fetch-goatcounter-stats.py. The block is hidden until that file exists.
+{%- endcomment -%}
+{%- assign S = site.data.stats -%}
+{%- if S and S.total -%}
+{%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
+<section class="block vstats" aria-labelledby="vstats-title">
+  <h2 id="vstats-title">{{ t.vs_title }}</h2>
+  <p class="block__intro">{{ t.vs_intro }} <time datetime="{{ S.generated }}">{{ S.generated }}</time>.</p>
+  <div class="vstats__tiles">
+    <div class="card vstats__tile"><b data-num="{{ S.total }}">{{ S.total }}</b><span>{{ t.vs_total }}</span></div>
+    <div class="card vstats__tile"><b data-num="{{ S.last30 }}">{{ S.last30 }}</b><span>{{ t.vs_30 }}</span></div>
+    <div class="card vstats__tile"><b data-num="{{ S.last7 }}">{{ S.last7 }}</b><span>{{ t.vs_7 }}</span></div>
+  </div>
+  <div class="vstats__grid">
+    {%- if S.monthly.size > 0 -%}
+    {%- assign mmax = 1 -%}{%- for m in S.monthly -%}{%- if m.count > mmax -%}{%- assign mmax = m.count -%}{%- endif -%}{%- endfor %}
+    <figure class="card vstats__card vstats__card--wide">
+      <figcaption class="card__label">{{ t.vs_monthly }}</figcaption>
+      <div class="cols" style="--n: {{ S.monthly.size }}">
+        {%- for m in S.monthly -%}
+        {%- assign mdate = m.month | append: "-01" -%}
+        {%- if vi -%}{%- capture mlab -%}T{{ m.month | slice: 5, 2 | plus: 0 }}{%- endcapture -%}{%- capture mfull -%}Tháng {{ m.month | slice: 5, 2 | plus: 0 }}/{{ m.month | slice: 0, 4 }}{%- endcapture -%}
+        {%- else -%}{%- capture mlab -%}{{ mdate | date: "%b" }}{%- endcapture -%}{%- capture mfull -%}{{ mdate | date: "%B %Y" }}{%- endcapture -%}{%- endif -%}
+        {%- assign h = m.count | times: 100 | divided_by: mmax %}
+        <div class="col{% if forloop.last %} is-last{% endif %}" style="--h: {{ h }}%" tabindex="0" role="img" aria-label="{{ mfull }}: {{ m.count }}">
+          <span class="col__plot"><span class="col__bar{% if m.count == 0 %} is-zero{% endif %}"></span><span class="col__tip"><span data-num="{{ m.count }}">{{ m.count }}</span><em> · {{ mfull }}</em></span></span>
+          <span class="col__x" aria-hidden="true">{{ mlab }}</span>
+        </div>
+        {%- endfor %}
+      </div>
+    </figure>
+    {%- endif -%}
+    {%- if S.pages.size > 0 -%}
+    {%- assign pmax = S.pages.first.count -%}{%- if pmax < 1 -%}{%- assign pmax = 1 -%}{%- endif %}
+    <figure class="card vstats__card">
+      <figcaption class="card__label">{{ t.vs_pages }}</figcaption>
+      <ul class="hbars">
+        {%- for p in S.pages -%}
+        {%- if p.path == "/" -%}{%- assign pname = t.vs_home -%}
+        {%- elsif vi and p.title_vi != "" -%}{%- assign pname = p.title_vi -%}
+        {%- elsif p.title != "" -%}{%- assign pname = p.title -%}
+        {%- else -%}{%- assign pname = p.title_vi | default: p.path -%}{%- endif -%}
+        {%- assign w = p.count | times: 100 | divided_by: pmax %}
+        <li class="hbar"><span class="hbar__label" title="{{ p.path }}">{{ pname }}</span><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ p.count }}">{{ p.count }}</span></li>
+        {%- endfor %}
+      </ul>
+    </figure>
+    {%- endif -%}
+    {%- if S.countries.size > 0 -%}
+    {%- assign cmax = S.countries.first.count -%}{%- if cmax < 1 -%}{%- assign cmax = 1 -%}{%- endif %}
+    <figure class="card vstats__card">
+      <figcaption class="card__label">{{ t.vs_countries }}</figcaption>
+      <ul class="hbars">
+        {%- for c in S.countries -%}
+        {%- assign w = c.count | times: 100 | divided_by: cmax %}
+        <li class="hbar"><span class="hbar__label"{% if c.code != "" %} data-cc="{{ c.code }}"{% endif %}>{% if c.code == "" %}{{ t.vs_unknown }}{% else %}{{ c.name }}{% endif %}</span><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ c.count }}">{{ c.count }}</span></li>
+        {%- endfor %}
+      </ul>
+    </figure>
+    {%- endif %}
+  </div>
+</section>
+{%- endif -%}
