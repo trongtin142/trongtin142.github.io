@@ -90,6 +90,7 @@ rd:
   orcid_sync               : true # list ORCID works that are not yet on the Publications page
   orcid_id                 : "0009-0006-0017-6374"
   cofog_repo               : "trongtin142/cofog-panel"
+  filter_min               : 12   # filter chips, search box and "At a glance" appear only on lists with at least this many items
 
 # Academic profiles used in the header, footer, Contact page and structured data
 profiles:
