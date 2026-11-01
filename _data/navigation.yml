@@ -1,6 +1,7 @@
 # Header menu. The home page is reached by clicking the name.
 # An item with `children` opens a drop-down; `icon` names an icon in _includes/rd-icon.html.
 # Pages left out of the menu (e.g. Notes) stay reachable by URL.
+# `cta: true` shows an item as a highlighted pill (used for the Job Market CV).
 
 main:
   - title: "About"
@@ -57,6 +58,11 @@ main:
   - title: "Stats"
     url: /stats/
 
+  # Highlighted call-to-action: the stand-alone Harvard-style job market CV (English only).
+  - title: "Job Market"
+    url: /job-market/
+    cta: true
+
 vi:
   - title: "Giới thiệu"
     children:
@@ -111,3 +117,7 @@ vi:
 
   - title: "Thống kê"
     url: /vi/stats/
+
+  - title: "Job Market"
+    url: /job-market/
+    cta: true
