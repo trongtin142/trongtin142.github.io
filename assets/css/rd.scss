@@ -212,10 +212,19 @@ html:not(.js) .nav__item.has-sub:hover > .nav__sub, html:not(.js) .nav__item.has
   html:not(.js) .nav__list { flex-wrap: wrap; }
   .brand { font-size: 15.5px; }
 }
+@media (min-width: 1001px) and (max-width: 1180px) {
+  .brand__alias { display: none; }
+}
+@media (max-width: 640px) {
+  .brand { min-width: 0; }
+  .brand__alias { display: none; }
+  .brand__name { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .lang a, .lang span { font-size: 0; gap: 0; padding: 7px 8px; }
+  .lang__flag { width: 18px; height: 12px; }
+}
 @media (max-width: 520px) {
-  .brand__alias, .tool--search { display: none; }
+  .tool--search { display: none; }
   .site-header__in { gap: 8px; }
-  .brand__name { overflow: hidden; text-overflow: ellipsis; max-width: 46vw; }
 }
 body.nav-locked { overflow: hidden; }
 .site-header.is-open { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--surface); }
