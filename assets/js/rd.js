@@ -343,6 +343,30 @@
       });
     } catch (e) { /* keep the English names */ }
   }
+  // World map of visitors: tooltip with country name and visits
+  var wmap = $("[data-wmap]");
+  if (wmap) {
+    var wdata = {}, wtip = $(".wmap__tip", wmap), wnames = null;
+    try { JSON.parse($("[data-wmap-data]", wmap).textContent).forEach(function (c) { if (c.code) wdata[c.code] = c; }); } catch (e) { /* no data */ }
+    try { wnames = new Intl.DisplayNames([LANG], { type: "region" }); } catch (e) { /* fall back to English names */ }
+    var cname = function (cc, fallback) { try { return (wnames && wnames.of(cc)) || fallback || cc; } catch (e) { return fallback || cc; } };
+    $$(".wmap__land path", wmap).forEach(function (p) {
+      var d = wdata[p.getAttribute("data-cc")];
+      if (d) { p.setAttribute("tabindex", "0"); p.setAttribute("aria-label", cname(d.code, d.name) + ": " + fmtNum(d.count)); }
+    });
+    var wshow = function (e) {
+      var p = e.target && e.target.closest ? e.target.closest("path[data-cc]") : null;
+      if (!p) { wtip.hidden = true; return; }
+      var cc = p.getAttribute("data-cc"), d = wdata[cc], box = wmap.getBoundingClientRect(), pb = p.getBoundingClientRect();
+      wtip.innerHTML = "<b>" + esc(cname(cc, d && d.name)) + "</b>" + (d ? esc(fmtNum(d.count) + " " + (T.vs_visits || "")) : esc(T.vs_none || ""));
+      var x = e.clientX ? e.clientX : pb.left + pb.width / 2, y = e.clientY ? e.clientY : pb.top;
+      wtip.style.left = (x - box.left) + "px"; wtip.style.top = (y - box.top) + "px"; wtip.hidden = false;
+    };
+    wmap.addEventListener("mousemove", wshow);
+    wmap.addEventListener("focusin", wshow);
+    wmap.addEventListener("mouseleave", function () { wtip.hidden = true; });
+    wmap.addEventListener("focusout", function () { wtip.hidden = true; });
+  }
   // "N visits to this page" in the footer, from the public GoatCounter counter (cached up to 4 hours)
   var visits = $("[data-visits]"), gcTag = $("script[data-goatcounter]");
   if (visits && gcTag && window.fetch) {
