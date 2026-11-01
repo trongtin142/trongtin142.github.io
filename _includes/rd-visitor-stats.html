@@ -8,7 +8,7 @@
 {%- assign n_cc = 0 -%}{%- for c in S.countries -%}{%- if c.code != "" -%}{%- assign n_cc = n_cc | plus: 1 -%}{%- endif -%}{%- endfor -%}
 <section class="vstats" aria-label="{{ t.vs_title }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
-  <p class="vstats__meta"><span class="vstats__live" aria-hidden="true"></span>{{ t.vs_updated }} <time datetime="{{ S.generated }}">{{ S.generated }}</time></p>
+  <p class="vstats__meta"><span class="vstats__live" aria-hidden="true"></span>{{ t.vs_updated }} <time datetime="{{ S.generated }}" data-local-time>{{ S.generated | date: "%Y-%m-%d %H:%M" }} UTC</time><span class="vstats__every">· {{ t.vs_every }}</span></p>
   <div class="vstats__tiles">
     <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_total }}</span><b data-num="{{ S.total }}">{{ S.total }}</b></div>
     <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_30 }}</span><b data-num="{{ S.last30 }}">{{ S.last30 }}</b></div>
