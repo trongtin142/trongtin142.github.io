@@ -18,7 +18,7 @@ description: "Courses currently taught by Trong-Tin (Tommy) NGUYEN at ESCP Busin
 {%- for c in site.data.courses -%}
   <article class="card course" id="{{ c.id }}">
     <p class="eyebrow">{% if vi %}{{ c.institution_vi | default: c.institution }}{% else %}{{ c.institution }}{% endif %}</p>
-    <h3><a href="#{{ c.id }}">{% if vi %}{{ c.title_vi }}{% else %}{{ c.title }}{% endif %}</a>{% if c.code %}<span class="course__code">{{ c.code }}</span>{% endif %}</h3>
+    <h2 class="course__title"><a href="#{{ c.id }}">{% if vi %}{{ c.title_vi }}{% else %}{{ c.title }}{% endif %}</a>{% if c.code %}<span class="course__code">{{ c.code }}</span>{% endif %}</h2>
     <dl class="course__meta">
       <dt>{{ page.l_level }}</dt><dd>{% if vi %}{{ c.level_vi }}{% else %}{{ c.level }}{% endif %}</dd>
       {% if c.format %}<dt>{{ page.l_format }}</dt><dd>{% if vi %}{{ c.format_vi }}{% else %}{{ c.format }}{% endif %}</dd>{% endif %}
