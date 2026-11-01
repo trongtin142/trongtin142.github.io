@@ -93,10 +93,15 @@ layout: rd
             <b class="stat__num" data-count="3">3</b>
             <span class="stat__label">{{ t.stats_countries }}</span>
           </span>
-          <span class="marks">
-            <span class="mark mark--flag" title="{{ t.country_vn }}">{% include rd-flag.html code="vn" %}</span>
-            <span class="mark mark--flag" title="{{ t.country_fr }}">{% include rd-flag.html code="fr" %}</span>
-            <span class="mark mark--flag" title="{{ t.country_ee }}">{% include rd-flag.html code="ee" %}</span>
+          <span class="marks marks--flags">
+            {%- assign countries = "vn,fr,ee" | split: "," -%}
+            {%- for cc in countries -%}
+            {%- assign cc_key = "country_" | append: cc %}
+            <span class="marks__item">
+              <span class="mark mark--flag" title="{{ t[cc_key] }}">{% include rd-flag.html code=cc %}</span>
+              <span class="marks__country">{{ t[cc_key] }}</span>
+            </span>
+            {%- endfor %}
           </span>
           {% include rd-icon.html name="arrow" class="stat__go" %}
         </a>
