@@ -1,5 +1,6 @@
 /* Job market CV (/job-market/): Harvard-style academic CV. White paper, Source Serif 4, crimson accents.
-   Self-hosted fonts only (see assets/fonts/OFL.txt). Also the print stylesheet used to make the PDF in /files/. */
+   Self-hosted fonts only (see assets/fonts/OFL.txt). Also the print stylesheet used to make the PDF in /files/:
+   in print, section headings sit above full-width content (as in the Overleaf CV) and each page gets a name + page footer. */
 
 @font-face { font-family: "CV Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/source-serif-4-400-latin-ext.woff2") format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF; }
 @font-face { font-family: "CV Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/source-serif-4-400-latin.woff2") format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
@@ -15,14 +16,14 @@
   --crimson-dark: #7E1424;
   --crimson-tint: #FAF1F2;
   --ink: #1A1A1A;
-  --text: #2B2B2B;
-  --muted: #646464;
+  --text: #262626;
+  --muted: #5C5C5C;
   --rule: #E4E0DB;
   --rule-strong: #CFC9C2;
   --paper: #FFFFFF;
   --serif: "CV Serif", "Source Serif 4", Georgia, "Times New Roman", serif;
   --sans: "CV Sans", "Source Sans 3", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
-  --label-w: 200px;
+  --label-w: 184px;
   --gutter: 24px;
   color-scheme: light;
 }
@@ -31,7 +32,7 @@
 html { -webkit-text-size-adjust: 100%; scroll-padding-top: 72px; }
 body.cv {
   margin: 0; background: var(--paper); color: var(--text);
-  font: 400 17px/1.55 var(--serif);
+  font: 400 16.5px/1.6 var(--serif);
   font-feature-settings: "kern", "liga", "onum";
   -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
@@ -48,7 +49,7 @@ i, em { font-style: italic; }
 
 /* Top bar (screen only) */
 .cv-bar { position: sticky; top: 0; z-index: 10; background: rgba(255, 255, 255, .94); -webkit-backdrop-filter: saturate(1.4) blur(8px); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--rule); }
-.cv-bar__in { max-width: 960px; margin: 0 auto; padding: 0 max(var(--gutter), env(safe-area-inset-left, 0px)); min-height: 56px; display: flex; align-items: center; gap: 16px; }
+.cv-bar__in { max-width: 1000px; margin: 0 auto; padding: 0 max(var(--gutter), env(safe-area-inset-left, 0px)); min-height: 56px; display: flex; align-items: center; gap: 16px; }
 .cv-bar__back { display: inline-flex; align-items: center; gap: 4px; font: 500 14.5px/1 var(--sans); color: var(--muted); padding: 8px 6px 8px 0; background: none; }
 .cv-bar__back:hover { color: var(--crimson); }
 .cv-bar__back svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
@@ -58,7 +59,7 @@ i, em { font-style: italic; }
 .cv-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Paper */
-.cv-paper { display: block; max-width: 960px; margin: 0 auto; padding: 56px max(var(--gutter), env(safe-area-inset-left, 0px)) 24px; outline: none; }
+.cv-paper { display: block; max-width: 1000px; margin: 0 auto; padding: 56px max(var(--gutter), env(safe-area-inset-left, 0px)) 24px; outline: none; }
 
 /* Header: photo on the left, name and two contact columns on the right (as in the CV PDF) */
 .cv-head { display: grid; grid-template-columns: 172px minmax(0, 1fr); grid-template-areas: "photo id" "photo contact"; gap: 0 36px; align-items: start; padding-bottom: 26px; border-bottom: 2px solid var(--crimson); margin-bottom: 4px; }
@@ -66,7 +67,7 @@ i, em { font-style: italic; }
 .cv-id { grid-area: id; min-width: 0; }
 .cv-kicker { font: 600 12.5px/1.2 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--crimson); }
 .cv-name { margin: 10px 0 6px; font: 600 46px/1.08 var(--serif); letter-spacing: .005em; color: var(--ink); font-feature-settings: "kern", "liga", "lnum"; }
-.cv-role { font-size: 19px; font-style: italic; color: var(--muted); }
+.cv-role { font-size: 18px; font-style: italic; color: var(--muted); }
 .cv-nw { white-space: nowrap; }
 .cv-contact { grid-area: contact; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 14px 32px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 15.5px; line-height: 1.6; }
 .cv-label { font: 600 11.5px/1.2 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
@@ -78,9 +79,9 @@ i, em { font-style: italic; }
 /* Sections: label column on the left, content on the right */
 .cv-sec { display: grid; grid-template-columns: var(--label-w) minmax(0, 1fr); gap: 0 32px; padding: 26px 0 14px; border-top: 1px solid var(--rule); }
 .cv-head + .cv-sec { border-top: 0; }
-.cv-h { margin: 3px 0 0; font: 600 14px/1.35 var(--sans); letter-spacing: .11em; text-transform: uppercase; color: var(--crimson); }
+.cv-h { margin: 4px 0 0; font: 600 13.5px/1.35 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--crimson); }
 .cv-b { min-width: 0; }
-.cv-h3 { margin: 22px 0 10px; font: italic 400 17.5px/1.3 var(--serif); color: var(--ink); }
+.cv-h3 { margin: 20px 0 9px; font: italic 400 17px/1.3 var(--serif); color: var(--ink); }
 .cv-b > .cv-h3:first-child, .cv-legend + .cv-h3 { margin-top: 0; }
 .cv-h3 + .cv-h3 { margin-top: 0; }
 
@@ -90,38 +91,39 @@ i, em { font-style: italic; }
 .cv-e > p { margin-top: 2px; }
 .cv-e__row { display: flex; align-items: baseline; justify-content: space-between; gap: 6px 24px; }
 .cv-e__what { margin: 0; }
-.cv-e__when { margin: 0; flex: none; font: 500 14.5px/1.55 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
-.cv-k { font: 600 12px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.cv-e__when { margin: 0; flex: none; font: 500 14px/1.65 var(--sans); color: var(--muted); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+.cv-k { font: 600 14px/1 var(--sans); color: var(--muted); margin-right: 3px; }
 .cv-note { font: 500 13px/1.4 var(--sans); color: var(--crimson); margin-top: 4px; }
 
 /* References */
 .cv-refs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; }
-.cv-refs li { display: flex; flex-direction: column; font-size: 16px; line-height: 1.45; }
+.cv-refs li { display: flex; flex-direction: column; font-size: 15.5px; line-height: 1.5; }
 .cv-refs li span:not(.cv-note) { color: var(--text); }
 
-/* Fields, skills */
-.cv-fields { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 6px 20px; margin: 0; }
-.cv-fields dt { font: 600 12px/1.9 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+/* Fields, skills: labels as in the CV (normal case, same size as the text) */
+.cv-fields { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 5px 20px; margin: 0; } /* each line fits on one row on desktop, as in the CV */
+.cv-fields dt { font-weight: 600; color: var(--ink); }
 .cv-fields dd { margin: 0; }
 
 /* Research papers */
-.cv-legend { font: 400 13px/1.5 var(--sans); color: var(--muted); margin-bottom: 18px; max-width: 70ch; }
+.cv-legend { font: 400 13px/1.6 var(--sans); color: var(--muted); margin-bottom: 16px; }
 .cv-papers { list-style: none; margin: 0 0 6px; padding: 0; }
-.cv-papers > li { padding: 0 0 14px 16px; margin-bottom: 14px; border-left: 2px solid var(--rule); }
+.cv-papers > li { padding: 1px 0 1px 16px; margin-bottom: 16px; border-left: 2px solid var(--rule); }
 .cv-papers > li:hover { border-left-color: var(--crimson); }
-.cv-papers > li:last-child { margin-bottom: 18px; }
+.cv-papers > li:last-child { margin-bottom: 20px; }
 .cv-p__title { font-weight: 600; color: var(--ink); line-height: 1.4; }
-.cv-p__auth { font-size: 16px; margin-top: 3px; }
-.cv-p__venue { font-size: 16px; margin-top: 1px; }
+.cv-p__auth { font-size: 15.5px; margin-top: 3px; }
+.cv-p__venue { font-size: 15.5px; margin-top: 1px; }
+.cv-p__auth b, .cv-cites b { white-space: nowrap; } /* never split "Nguyen-Trong, T." across lines */
 .cv-dag { margin-left: 2px; color: var(--crimson); font-weight: 400; }
 .cv-rank { display: inline-block; margin-left: 8px; padding: 1px 7px; font: 500 12px/1.6 var(--sans); letter-spacing: .02em; color: var(--muted); border: 1px solid var(--rule-strong); border-radius: 3px; white-space: nowrap; vertical-align: 1px; }
 
 /* Citations (other publications) */
 .cv-cites { list-style: none; margin: 0 0 6px; padding: 0; }
-.cv-cites > li { padding-left: 1.6em; text-indent: -1.6em; margin-bottom: 9px; font-size: 16px; line-height: 1.5; }
+.cv-cites > li { padding-left: 1.6em; text-indent: -1.6em; margin-bottom: 9px; font-size: 15.5px; line-height: 1.55; }
 
 /* Footer */
-.cv-foot { max-width: 960px; margin: 8px auto 0; padding: 0 max(var(--gutter), env(safe-area-inset-left, 0px)) 48px; }
+.cv-foot { max-width: 1000px; margin: 8px auto 0; padding: 0 max(var(--gutter), env(safe-area-inset-left, 0px)) 48px; }
 .cv-foot p { font: 400 13.5px/1.5 var(--sans); color: var(--muted); border-top: 2px solid var(--crimson); padding-top: 16px; }
 
 /* Small screens */
@@ -142,7 +144,8 @@ i, em { font-style: italic; }
   .cv-e__when { order: -1; font-size: 13.5px; line-height: 1.5; }
   .cv-refs { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   .cv-fields { grid-template-columns: minmax(0, 1fr); gap: 0; }
-  .cv-fields dd { margin-bottom: 8px; }
+  .cv-fields dd { margin-bottom: 10px; }
+  .cv-legend { font-size: 12.5px; }
   .cv-papers > li { padding-left: 12px; }
   .cv-rank { margin: 4px 0 0; display: table; white-space: normal; }
 }
@@ -151,9 +154,12 @@ i, em { font-style: italic; }
 }
 
 /* Print and PDF (A4) */
-@page { size: A4; margin: 16mm 16mm 18mm; }
+@page {
+  size: A4; margin: 16mm 16mm 18mm;
+  @bottom-left { content: "NGUYEN-TRONG Tin \00B7  Curriculum Vitae"; font: 400 7.5pt "CV Sans", "Source Sans 3", Arial, sans-serif; color: #5C5C5C; vertical-align: top; padding-top: 6mm; }
+  @bottom-right { content: counter(page) "/" counter(pages); font: 400 7.5pt "CV Sans", "Source Sans 3", Arial, sans-serif; color: #5C5C5C; vertical-align: top; padding-top: 6mm; }
+}
 @media print {
-  :root { --label-w: 34mm; }
   html, body.cv { background: #fff; }
   body.cv { font-size: 10.2pt; line-height: 1.42; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .cv-skip, .cv-bar, .cv-foot { display: none !important; }
@@ -167,19 +173,19 @@ i, em { font-style: italic; }
   .cv-role { font-size: 11pt; }
   .cv-contact { margin-top: 9pt; padding-top: 8pt; gap: 6pt 18pt; font-size: 9.4pt; line-height: 1.5; }
   .cv-label { font-size: 7pt; margin-bottom: 2pt; }
-  .cv-sec { gap: 0 16pt; padding: 10pt 0 4pt; }
-  .cv-h { font-size: 8.4pt; }
+  .cv-sec { display: block; padding: 10pt 0 2pt; border-top: 0; }
+  .cv-h { margin: 0 0 6pt; padding-bottom: 2.5pt; border-bottom: .75pt solid var(--rule-strong); font-size: 8.6pt; }
   .cv-h3 { font-size: 10.6pt; margin: 9pt 0 5pt; }
   .cv-e { margin-bottom: 6pt; break-inside: avoid; }
   .cv-e--tight { margin-bottom: 3.5pt; }
   .cv-e__when { font-size: 9pt; }
-  .cv-k, .cv-fields dt { font-size: 7.4pt; }
+  .cv-k { font-size: 8.6pt; }
   .cv-note { font-size: 8.2pt; margin-top: 1pt; }
   .cv-refs { gap: 8pt 18pt; }
   .cv-refs li { font-size: 9.8pt; break-inside: avoid; }
-  .cv-fields { grid-template-columns: 26mm minmax(0, 1fr); gap: 2pt 12pt; }
+  .cv-fields { grid-template-columns: 30mm minmax(0, 1fr); gap: 1.5pt 10pt; }
   .cv-legend { font-size: 8pt; margin-bottom: 8pt; }
-  .cv-papers > li { padding: 0 0 0 9pt; margin-bottom: 7pt; break-inside: avoid; }
+  .cv-papers > li { padding: 0 0 0 9pt; margin-bottom: 6.5pt; break-inside: avoid; }
   .cv-papers > li:last-child { margin-bottom: 8pt; }
   .cv-p__auth, .cv-p__venue { font-size: 9.8pt; }
   .cv-rank { font-size: 7.4pt; padding: 0 4pt; margin-left: 5pt; }
