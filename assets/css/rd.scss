@@ -393,6 +393,7 @@ body.nav-locked { overflow: hidden; }
 .hero__role { font-size: calc(var(--fs-body) + 2px); line-height: 1.5; color: var(--muted); margin: 0 0 18px; max-width: 62ch; }
 .hero__role > span { display: block; } /* affiliation on one line, teaching posts on the next */
 .hero__lead { max-width: 62ch; margin-bottom: 26px; }
+.hero__lead > p:last-child { margin-bottom: 0; }
 .hero__photo { margin: 0; justify-self: center; width: min(100%, 300px); }
 .hero__photo img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 7px solid var(--surface); box-shadow: 0 0 0 1px var(--line-strong), var(--shadow); }
 .hero__photo figcaption { margin-top: 14px; text-align: center; color: var(--muted); font-size: var(--fs-small); display: flex; justify-content: center; align-items: center; gap: 6px; }
