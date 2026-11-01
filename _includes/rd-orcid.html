@@ -35,7 +35,7 @@
 {%- endcapture -%}
 {%- if orcid_shown > 0 -%}
 <section class="orcid-block">
-  <h2><i class="ai ai-orcid" aria-hidden="true"></i>{{ t.orcid_title }}</h2>
+  <h2>{% include rd-icon.html name="orcid" class="icon--brand icon--orcid" %}{{ t.orcid_title }}</h2>
   <p class="block__intro">{{ t.orcid_note }}</p>
   <div class="pubs">{{ orcid_items }}</div>
 </section>

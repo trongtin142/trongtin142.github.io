@@ -1,6 +1,6 @@
-<script>window.RD_I18N = {{ t | jsonify }};</script>
+<script type="application/json" id="rd-i18n">{{ t | jsonify }}</script>
 <script src="{{ base_path }}/assets/js/rd.js" defer></script>
-{% if page.math %}<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js"></script>{% endif %}
-{% if page.map %}<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>{% endif %}
+{% if page.math %}<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js" integrity="sha384-400jNHerAiIGzvlAUMbjyo/2BAzAw1swFYh2jBVy17CiCICI2h+MlMRC7+HYV+7D" crossorigin="anonymous"></script>{% endif %}
+{% if page.map %}<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha384-cxOPjt7s7Iz04uaHJceBmS+qpjv2JkIHNVcuOrM+YHwZOmJGBXI00mdUXEq65HTH" crossorigin="anonymous" defer></script>{% endif %}
 {% if page.altmetric %}<script src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js" async></script>{% endif %}
-{% if site.rd.goatcounter and site.rd.goatcounter != "" and site.noindex != true %}<script data-goatcounter="https://{{ site.rd.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}
+{% if site.rd.goatcounter and site.rd.goatcounter != "" and site.noindex != true %}<script data-goatcounter="https://{{ site.rd.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"></script>{% endif %}

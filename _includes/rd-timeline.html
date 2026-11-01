@@ -2,6 +2,7 @@
   Timeline list. Usage: {% include rd-timeline.html items=site.data.timeline.positions %}
   Teaching entries use org as the title and courses as the detail line.
   Output has no blank lines so it is safe inside Markdown pages.
+  Entry titles are h2 because every timeline sits directly under the page h1 (styled small in rd.scss).
 {%- endcomment -%}
 <ol class="tl">
 {%- for e in include.items -%}
@@ -15,6 +16,6 @@
     {%- assign title = e.role | default: e.org -%}{%- assign detail = e.org -%}{%- assign note = e.note -%}
     {%- if e.courses -%}{%- assign detail = e.courses -%}{%- endif -%}
   {%- endif -%}
-<li class="tl__item{% if e.current %} is-current{% endif %}" data-filter-item data-tags="{{ e.tags | join: ' ' }} {% if e.current %}current{% else %}past{% endif %}"><span class="tl__when">{{ when }}</span><div class="tl__body"><h3 class="tl__title">{{ title }}{% if e.current %} <span class="badge badge--ok">{{ t.now }}</span>{% endif %}</h3>{% if detail != title %}<p class="tl__detail">{{ detail }}</p>{% endif %}{% if note %}<p class="tl__note">{{ note }}</p>{% endif %}</div></li>
+<li class="tl__item{% if e.current %} is-current{% endif %}" data-filter-item data-tags="{{ e.tags | join: ' ' }} {% if e.current %}current{% else %}past{% endif %}"><span class="tl__when">{{ when }}</span><div class="tl__body"><h2 class="tl__title">{{ title }}{% if e.current %} <span class="badge badge--ok">{{ t.now }}</span>{% endif %}</h2>{% if detail != title %}<p class="tl__detail">{{ detail }}</p>{% endif %}{% if note %}<p class="tl__note">{{ note }}</p>{% endif %}</div></li>
 {%- endfor -%}
 </ol>
