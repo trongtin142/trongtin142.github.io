@@ -1,6 +1,6 @@
 /* Redesign (2026) site script. Vanilla JS, no dependencies.
    Theme toggle, navigation, search, filters, copy buttons, counters, map, co-author graph,
-   GitHub stats and the contact form. Every feature checks that its markup exists first. */
+   GitHub stats, the contact and subscribe forms and anonymous event counts. Every feature checks that its markup exists first. */
 (function () {
   "use strict";
   var doc = document, root = doc.documentElement;
@@ -377,23 +377,83 @@
     }).catch(function () { /* ignore */ });
   });
 
-  /* ---------- Contact form (Formspree) ---------- */
+  /* ---------- Anonymous event counts (GoatCounter) ----------
+     Clicks on email addresses, PDF downloads, profile links and booking buttons, and sent forms,
+     are counted as GoatCounter events: no cookies, no personal data, only "what was clicked and where". */
+  function track(name) {
+    var gc = window.goatcounter;
+    if (!name || !gc || typeof gc.count !== "function") return;
+    try { gc.count({ path: String(name).slice(0, 180), title: location.pathname, event: true }); } catch (e) { /* ignore */ }
+  }
+  doc.addEventListener("click", function (e) {
+    var el = e.target && e.target.closest ? e.target.closest("a[href], [data-copy-text]") : null;
+    if (!el || el.hasAttribute("data-goatcounter-click")) return; // those are counted by count.js itself
+    var name = el.getAttribute("data-track"), href = el.getAttribute("href") || "";
+    if (!name) {
+      if (el.hasAttribute("data-copy-text")) { var v = el.getAttribute("data-copy-text"); if (v.indexOf("@") > 0) name = "email copied: " + v; }
+      else if (/^mailto:/i.test(href)) name = "email: " + href.slice(7).split("?")[0];
+      else if (/\.pdf(?:$|[?#])/i.test(href)) name = "download: " + href.split(/[?#]/)[0].split("/").pop();
+      else if (el.closest(".profiles")) name = "profile: " + el.textContent.trim();
+    }
+    track(name);
+  });
+
+  /* ---------- Where a visitor came from (sent with the forms only) ----------
+     Kept for the browser tab session in sessionStorage: the first page seen and the referring site
+     (browsers usually pass only its domain). Nothing is stored or sent unless a form is submitted. */
+  var src = null;
+  try { src = JSON.parse(sessionStorage.getItem("rd-src") || "null"); } catch (e) { src = null; }
+  if (!src) {
+    var ref = "", q = null, utm = "";
+    try { if (doc.referrer && new URL(doc.referrer).hostname !== location.hostname) ref = doc.referrer; } catch (e) { /* ignore */ }
+    try {
+      q = new URLSearchParams(location.search);
+      utm = ["utm_source", "utm_medium", "utm_campaign"].map(function (k) { return q.get(k); }).filter(Boolean).join(" / ");
+    } catch (e) { /* ignore */ }
+    src = { first: location.pathname, ref: ref + (utm ? (ref ? " · " : "") + utm : "") };
+    try { sessionStorage.setItem("rd-src", JSON.stringify(src)); } catch (e) { /* private mode: keep it for this page only */ }
+  }
+  function fillSource(form) {
+    $$("input[data-src]", form).forEach(function (i) {
+      var k = i.getAttribute("data-src");
+      i.value = k === "page" ? location.pathname : k === "first" ? (src.first || "") : (src.ref || "(direct or unknown)");
+    });
+  }
+
+  /* ---------- Contact and subscribe forms (Formspree) ---------- */
   $$("form[data-formspree]").forEach(function (form) {
+    var kind = form.getAttribute("data-formspree") || "message";
     var status = $(".form__status", form), btn = $("button[type=submit]", form);
+    var okMsg = kind === "subscribe" ? T.sub_ok : T.form_ok, errMsg = kind === "subscribe" ? T.sub_error : T.form_error;
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.reportValidity()) return;
+      fillSource(form);
+      var wantsUpdates = !!$("input[name=updates]:checked", form);
       var label = btn.innerHTML; btn.disabled = true; btn.textContent = T.form_sending || "Sending…";
       status.hidden = true; status.className = "form__status";
       fetch(form.action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
         .then(function (r) {
           status.hidden = false;
-          if (r.ok) { status.textContent = T.form_ok; status.classList.add("is-ok"); form.reset(); }
-          else { status.textContent = T.form_error; status.classList.add("is-error"); }
+          if (r.ok) {
+            status.textContent = okMsg; status.classList.add("is-ok"); form.reset();
+            track(kind === "subscribe" ? "subscribe: footer" : "contact form: sent");
+            if (wantsUpdates) track("subscribe: contact form");
+          } else { status.textContent = errMsg; status.classList.add("is-error"); }
         })
-        .catch(function () { status.hidden = false; status.textContent = T.form_error; status.classList.add("is-error"); })
+        .catch(function () { status.hidden = false; status.textContent = errMsg; status.classList.add("is-error"); })
         .then(function () { btn.disabled = false; btn.innerHTML = label; });
     });
+  });
+  // "How did you find me?" chips are optional: a second click on the chosen one clears it
+  $$(".pick").forEach(function (box) {
+    var last = null, form = box.closest("form");
+    box.addEventListener("click", function (e) {
+      var r = e.target && e.target.closest ? e.target.closest("input[type=radio]") : null;
+      if (!r) return;
+      if (last === r) { r.checked = false; last = null; } else last = r;
+    });
+    if (form) form.addEventListener("reset", function () { last = null; });
   });
 
   /* ---------- Visitor statistics (GoatCounter) ---------- */
