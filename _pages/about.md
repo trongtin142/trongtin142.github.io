@@ -6,7 +6,9 @@ description: "Trong-Tin (Tommy) NGUYEN, PhD candidate in Economics at EconomiX (
 redirect_from:
   - /about/
   - /about.html
-intro: "I am a researcher and lecturer in economics and econometrics, working on growth, public finance, and climate and trade policy. I specialize in convex optimization and data analysis with Stata, R and Python, which I use to turn data into evidence that supports well-informed policy and strategic decisions. I am also strongly committed to sharing knowledge with the next generation of economists, as I believe that combining research and teaching is the best way to move the field forward. I am always open to research collaboration, whether joint papers, data-driven projects or policy work, so please feel free to get in touch."
+intro:
+  - "I am an economist working on growth, public finance, and climate and trade policy. I combine dynamic general equilibrium theory, CGE modeling and applied econometrics (Stata, R, Python) to produce evidence for policy decisions. I am completing my PhD at EconomiX (CNRS), Université Paris Nanterre."
+  - "I teach at ESCP Business School and Sciences Po, drawing on more than a decade of university teaching in microeconomics, macroeconomics, development economics and econometrics in France and Vietnam. I welcome collaboration, whether joint papers, data-driven projects, guest lectures or policy work."
 themes:
   - image: /images/research/general-equilibrium.jpg
     focus: "0% 50%"
