@@ -2,7 +2,7 @@
   <div class="wrap site-header__in">
     <a class="brand" href="{{ base_path }}{{ home_url }}">
       {% include rd-mono.html %}
-      <span class="brand__name">{% if t.name_alias %}{{ t.name_primary }} <span class="brand__alias">{{ t.name_alias }}</span>{% else %}{%- assign name_words = t.name | split: " " -%}{%- for w in name_words -%}<span class="nw">{{ w }}</span>{% unless forloop.last %} {% endunless %}{%- endfor -%}{% endif %}</span>
+      <span class="brand__name">{% if t.name_alias %}{{ t.name_primary }} <span class="brand__alias">{{ t.name_alias }}</span>{% else %}<span class="nw">{{ t.name | split: " " | join: '</span> <span class="nw">' }}</span>{% endif %}</span>
     </a>
 
     <nav class="nav" id="site-nav" aria-label="{{ t.menu }}">
