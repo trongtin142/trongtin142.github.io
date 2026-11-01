@@ -1,4 +1,6 @@
-# Workflow for building and deploying an Academic Pages / Jekyll site to GitHub Pages
+# Build the Jekyll site and deploy it to GitHub Pages.
+# Third-party actions are pinned to full commit SHAs (the tag is in the comment);
+# Dependabot (.github/dependabot.yml) proposes updates once a week.
 name: Deploy Academic Pages template site to Pages
 
 on:
@@ -13,11 +15,8 @@ on:
   schedule:
     - cron: "17 */3 * * *"
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# Nothing by default; each job asks only for what it needs.
+permissions: {}
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -26,34 +25,32 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  # Build job: read-only access to the repository. It holds the GoatCounter token
+  # but cannot write to the repo or deploy.
   build:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pages: read
     steps:
       - name: Checkout
-        uses: actions/checkout@v7.0.1
-      - name: Setup Node.js
-        uses: actions/setup-node@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: '24'        
-      - name: Setup Ruby, JRuby and TruffleRuby
-        uses: ruby/setup-ruby@v1.328.0
+          persist-credentials: false
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@e81a8fa391b11a595c1b7ed84177cc0fe02faf83 # v1.328.0
         with:
           ruby-version: '3.1'
           bundler-cache: true
           cache-version: 0
-      - name: Install UglifyJS
-        run: npm install -g uglify-js
-      - name: Minify JS files
-        run: |
-          uglifyjs assets/js/plugins/jquery.greedy-navigation.js assets/js/_main.js assets/js/theme.js -c -m -o assets/js/main.min.js
       - name: Configure GitHub Pages
         id: pages
-        uses: actions/configure-pages@v6.0.0
+        uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Fetch ORCID works
         # Refreshes _data/orcid.json from the public ORCID API; keeps the committed copy if the call fails
         run: |
-          if curl -sf -H "Accept: application/json" "https://pub.orcid.org/v3.0/0009-0006-0017-6374/works" -o /tmp/orcid.json && python3 -c "import json; json.load(open('/tmp/orcid.json'))"; then
+          if curl -sf --max-time 30 -H "Accept: application/json" "https://pub.orcid.org/v3.0/0009-0006-0017-6374/works" -o /tmp/orcid.json && python3 -c "import json; json.load(open('/tmp/orcid.json'))"; then
             cp /tmp/orcid.json _data/orcid.json
           else
             echo "ORCID fetch failed, keeping the committed snapshot"
@@ -69,16 +66,20 @@ jobs:
         env:
           JEKYLL_ENV: production
       - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5.0.0
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 
-  # Deployment job
+  # Deployment job: the only job allowed to publish to Pages.
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v5
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
