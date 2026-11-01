@@ -1,23 +1,24 @@
 {%- comment -%}
-  Visitor statistics (Contact page). Data: _data/stats.json, written in the Pages build by
-  scripts/fetch-goatcounter-stats.py. The block is hidden until that file exists.
+  Visitor statistics (Stats page, /stats/ and /vi/stats/). Data: _data/stats.json, written in the
+  Pages build by scripts/fetch-goatcounter-stats.py. Until that file exists, a short notice is shown.
 {%- endcomment -%}
 {%- assign S = site.data.stats -%}
 {%- if S and S.total -%}
 {%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
-<section class="block vstats" aria-labelledby="vstats-title">
+{%- assign n_cc = 0 -%}{%- for c in S.countries -%}{%- if c.code != "" -%}{%- assign n_cc = n_cc | plus: 1 -%}{%- endif -%}{%- endfor -%}
+<section class="vstats" aria-label="{{ t.vs_title }}">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
-  <h2 id="vstats-title">{{ t.vs_title }}</h2>
-  <p class="block__intro">{{ t.vs_intro }} <time datetime="{{ S.generated }}">{{ S.generated }}</time>.</p>
+  <p class="vstats__meta"><span class="vstats__live" aria-hidden="true"></span>{{ t.vs_updated }} <time datetime="{{ S.generated }}">{{ S.generated }}</time></p>
   <div class="vstats__tiles">
-    <div class="card vstats__tile"><b data-num="{{ S.total }}">{{ S.total }}</b><span>{{ t.vs_total }}</span></div>
-    <div class="card vstats__tile"><b data-num="{{ S.last30 }}">{{ S.last30 }}</b><span>{{ t.vs_30 }}</span></div>
-    <div class="card vstats__tile"><b data-num="{{ S.last7 }}">{{ S.last7 }}</b><span>{{ t.vs_7 }}</span></div>
+    <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_total }}</span><b data-num="{{ S.total }}">{{ S.total }}</b></div>
+    <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_30 }}</span><b data-num="{{ S.last30 }}">{{ S.last30 }}</b></div>
+    <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_7 }}</span><b data-num="{{ S.last7 }}">{{ S.last7 }}</b></div>
+    <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_n_countries }}</span><b data-num="{{ n_cc }}">{{ n_cc }}</b></div>
   </div>
   <div class="vstats__grid">
     {%- if S.monthly.size > 0 -%}
     {%- assign mmax = 1 -%}{%- for m in S.monthly -%}{%- if m.count > mmax -%}{%- assign mmax = m.count -%}{%- endif -%}{%- endfor %}
-    <figure class="card vstats__card vstats__card--wide">
+    <figure class="card vstats__card">
       <figcaption class="card__label">{{ t.vs_monthly }}</figcaption>
       <div class="cols" style="--n: {{ S.monthly.size }}">
         {%- for m in S.monthly -%}
@@ -33,16 +34,6 @@
       </div>
     </figure>
     {%- endif -%}
-    {%- if S.countries.size > 0 %}
-    <figure class="card vstats__card vstats__card--wide wmap" data-wmap>
-      <figcaption class="card__label" id="wmap-title">{{ t.vs_map }}</figcaption>
-      <style>{% for c in S.countries %}{% if c.code != "" %}.wmap [data-cc="{{ c.code }}"]{fill:var(--seq-{{ c.bin | default: 1 }})}{% endif %}{% endfor %}</style>
-      {% include rd-world-map.svg %}
-      <script type="application/json" data-wmap-data>{{ S.countries | jsonify }}</script>
-      <div class="wmap__legend" aria-hidden="true"><span>{{ t.vs_less }}</span><i style="background: var(--seq-1)"></i><i style="background: var(--seq-2)"></i><i style="background: var(--seq-3)"></i><i style="background: var(--seq-4)"></i><i style="background: var(--seq-5)"></i><span>{{ t.vs_more }}</span><i class="wmap__none"></i><span>{{ t.vs_none }}</span></div>
-      <div class="wmap__tip" hidden></div>
-    </figure>
-    {%- endif -%}
     {%- if S.pages.size > 0 -%}
     {%- assign pmax = S.pages.first.count -%}{%- if pmax < 1 -%}{%- assign pmax = 1 -%}{%- endif %}
     <figure class="card vstats__card">
@@ -53,13 +44,22 @@
         {%- elsif vi and p.title_vi != "" -%}{%- assign pname = p.title_vi -%}
         {%- elsif p.title != "" -%}{%- assign pname = p.title -%}
         {%- else -%}{%- assign pname = p.title_vi | default: p.path -%}{%- endif -%}
-        {%- assign w = p.count | times: 100 | divided_by: pmax %}
-        <li class="hbar"><span class="hbar__label" title="{{ p.path }}">{{ pname }}</span><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ p.count }}">{{ p.count }}</span></li>
+        {%- assign w = p.count | times: 100 | divided_by: pmax -%}
+        {%- assign ppath = p.path -%}{%- if vi and p.path != "/" -%}{%- assign ppath = "/vi" | append: p.path -%}{%- elsif vi -%}{%- assign ppath = "/vi/" -%}{%- endif %}
+        <li class="hbar"><a class="hbar__label" href="{{ base_path }}{{ ppath }}" title="{{ ppath }}">{{ pname }}</a><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ p.count }}">{{ p.count }}</span></li>
         {%- endfor %}
       </ul>
     </figure>
     {%- endif -%}
-    {%- if S.countries.size > 0 -%}
+    {%- if S.countries.size > 0 %}
+    <figure class="card vstats__card wmap" data-wmap>
+      <figcaption class="card__label" id="wmap-title">{{ t.vs_map }}</figcaption>
+      <style>{% for c in S.countries %}{% if c.code != "" %}.wmap [data-cc="{{ c.code }}"]{fill:var(--seq-{{ c.bin | default: 1 }})}{% endif %}{% endfor %}</style>
+      {% include rd-world-map.svg %}
+      <script type="application/json" data-wmap-data>{{ S.countries | jsonify }}</script>
+      <div class="wmap__legend" aria-hidden="true"><span>{{ t.vs_less }}</span><i style="background: var(--seq-1)"></i><i style="background: var(--seq-2)"></i><i style="background: var(--seq-3)"></i><i style="background: var(--seq-4)"></i><i style="background: var(--seq-5)"></i><span>{{ t.vs_more }}</span><span class="wmap__key"><i class="wmap__none"></i><span>{{ t.vs_none }}</span></span></div>
+      <div class="wmap__tip" hidden></div>
+    </figure>
     {%- assign cmax = S.countries.first.count -%}{%- if cmax < 1 -%}{%- assign cmax = 1 -%}{%- endif %}
     <figure class="card vstats__card">
       <figcaption class="card__label">{{ t.vs_countries }}</figcaption>
@@ -73,4 +73,6 @@
     {%- endif %}
   </div>
 </section>
+{%- else -%}
+<p class="callout vstats__pending">{{ t.vs_pending }}</p>
 {%- endif -%}
