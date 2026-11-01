@@ -32,8 +32,10 @@ layout: rd
     <ul class="stats__in">
       <li>
         <a class="stat" href="#themes">
-          <b class="stat__num" data-count="{{ page.themes | size }}">{{ page.themes | size }}</b>
-          <span class="stat__label">{{ t.stats_strands }}</span>
+          <span class="stat__head">
+            <b class="stat__num" data-count="{{ page.themes | size }}">{{ page.themes | size }}</b>
+            <span class="stat__label">{{ t.stats_strands }}</span>
+          </span>
           <span class="marks">
             {%- for th in page.themes -%}{%- if th.image %}
             <span class="mark mark--photo" title="{{ th.title }}"><img src="{{ base_path }}{{ th.image }}" alt="" width="64" height="64" decoding="async"></span>
@@ -44,22 +46,36 @@ layout: rd
       </li>
       <li>
         <a class="stat" href="{{ base_path }}{{ lp }}/teaching/">
-          <b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b>
-          <span class="stat__label">{{ t.stats_universities }}</span>
-          <span class="marks">
-            {%- assign uni_logos = site.data.timeline.teaching | sort: "logo_order", "last" -%}
-            {%- for u in uni_logos -%}{%- if u.logo -%}
-            {%- if page_lang == "vi" and u.org_vi -%}{%- assign u_name = u.org_vi -%}{%- else -%}{%- assign u_name = u.org -%}{%- endif %}
-            <span class="mark mark--logo" title="{{ u_name }}"><img src="{{ base_path }}{{ u.logo }}" alt="" width="64" height="64" decoding="async"></span>
-            {%- endif -%}{%- endfor %}
+          <span class="stat__head">
+            <b class="stat__num" data-count="{{ n_uni }}">{{ n_uni }}</b>
+            <span class="stat__label">{{ t.stats_universities }}</span>
+          </span>
+          <span class="marks marks--rows">
+            {%- assign uni_countries = "fr,vn" | split: "," -%}
+            {%- for cc in uni_countries -%}
+            {%- assign cc_key = "country_" | append: cc -%}
+            {%- assign uni_logos = site.data.timeline.teaching | where: "country", cc | sort: "logo_order", "last" %}
+            <span class="marks__row">
+              <span class="mark mark--flag" title="{{ t[cc_key] }}">{% include rd-flag.html code=cc %}</span>
+              <span class="marks__country">{{ t[cc_key] }}</span>
+              <span class="marks__logos">
+                {%- for u in uni_logos -%}{%- if u.logo -%}
+                {%- if page_lang == "vi" and u.org_vi -%}{%- assign u_name = u.org_vi -%}{%- else -%}{%- assign u_name = u.org -%}{%- endif %}
+                <span class="mark mark--logo" title="{{ u_name }}"><img src="{{ base_path }}{{ u.logo }}" alt="" width="64" height="64" decoding="async"></span>
+                {%- endif -%}{%- endfor %}
+              </span>
+            </span>
+            {%- endfor %}
           </span>
           {% include rd-icon.html name="arrow" class="stat__go" %}
         </a>
       </li>
       <li>
         <a class="stat" href="{{ base_path }}{{ lp }}/conferences/">
-          <b class="stat__num" data-count="{{ n_talks }}">{{ n_talks }}</b>
-          <span class="stat__label">{{ t.stats_talks }}</span>
+          <span class="stat__head">
+            <b class="stat__num" data-count="{{ n_talks }}">{{ n_talks }}</b>
+            <span class="stat__label">{{ t.stats_talks }}</span>
+          </span>
           <span class="marks">
             {%- for tk in talks -%}
             {%- if page_lang == "vi" and tk.event_vi -%}{%- assign tk_name = tk.event_vi -%}{%- else -%}{%- assign tk_name = tk.event -%}{%- endif -%}
@@ -73,12 +89,14 @@ layout: rd
       </li>
       <li>
         <a class="stat" href="{{ base_path }}{{ lp }}/positions/">
-          <b class="stat__num" data-count="3">3</b>
-          <span class="stat__label">{{ t.stats_countries }}</span>
+          <span class="stat__head">
+            <b class="stat__num" data-count="3">3</b>
+            <span class="stat__label">{{ t.stats_countries }}</span>
+          </span>
           <span class="marks">
-            <span class="mark mark--flag" title="{{ t.country_vn }}"><svg viewBox="0 0 30 20" aria-hidden="true" focusable="false"><rect width="30" height="20" fill="#DA251D"/><polygon fill="#FFFF00" points="15.00,4.00 16.35,8.15 20.71,8.15 17.18,10.71 18.53,14.85 15.00,12.29 11.47,14.85 12.82,10.71 9.29,8.15 13.65,8.15"/></svg></span>
-            <span class="mark mark--flag" title="{{ t.country_fr }}"><svg viewBox="0 0 3 2" aria-hidden="true" focusable="false"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#FFFFFF"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></span>
-            <span class="mark mark--flag" title="{{ t.country_ee }}"><svg viewBox="0 0 3 2" aria-hidden="true" focusable="false"><rect width="3" height=".67" fill="#0072CE"/><rect y=".66" width="3" height=".68" fill="#000000"/><rect y="1.33" width="3" height=".67" fill="#FFFFFF"/></svg></span>
+            <span class="mark mark--flag" title="{{ t.country_vn }}">{% include rd-flag.html code="vn" %}</span>
+            <span class="mark mark--flag" title="{{ t.country_fr }}">{% include rd-flag.html code="fr" %}</span>
+            <span class="mark mark--flag" title="{{ t.country_ee }}">{% include rd-flag.html code="ee" %}</span>
           </span>
           {% include rd-icon.html name="arrow" class="stat__go" %}
         </a>
