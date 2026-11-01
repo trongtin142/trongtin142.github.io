@@ -18,8 +18,8 @@ themes:
     title: "Mô hình CGE ứng dụng"
     text: "Phân tích cân bằng tổng thể khả tính (CGE) đối với các chính sách khí hậu và thương mại, như định giá carbon và Cơ chế điều chỉnh carbon qua biên giới (CBAM) của EU, với trọng tâm là Việt Nam."
   - image: /images/research/econometrics.jpg
-    alt: "Màn hình máy tính hiển thị các biểu đồ thống kê"
-    credit: "Luke Chesser, Unsplash (unsplash.com/photos/JKUTrJ4vK00)"
+    alt: "Cặp kính đặt trước màn hình máy tính hiển thị mã lệnh"
+    credit: "Kevin Ku, Unsplash (unsplash.com/photos/w7ZyuGYNpRQ)"
     title: "Kinh tế lượng ứng dụng"
     text: "Phân tích dữ liệu bảng về viện trợ nước ngoài, quản trị nhà nước và chi tiêu công ở các quốc gia nhận viện trợ, sử dụng Stata, R và Python."
   - image: /images/research/agroforestry.jpg

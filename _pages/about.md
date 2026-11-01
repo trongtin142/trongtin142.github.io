@@ -20,8 +20,8 @@ themes:
     title: "Applied CGE modelling"
     text: "Computable general equilibrium analysis of climate and trade policies, such as carbon pricing and the EU Carbon Border Adjustment Mechanism, with a focus on Vietnam."
   - image: /images/research/econometrics.jpg
-    alt: "Laptop screen showing statistical charts"
-    credit: "Luke Chesser, Unsplash (unsplash.com/photos/JKUTrJ4vK00)"
+    alt: "Eyeglasses in front of a computer screen showing code"
+    credit: "Kevin Ku, Unsplash (unsplash.com/photos/w7ZyuGYNpRQ)"
     title: "Applied econometrics"
     text: "Panel data analysis of foreign aid, governance and public expenditure in aid recipient countries, using Stata, R and Python."
   - image: /images/research/agroforestry.jpg
