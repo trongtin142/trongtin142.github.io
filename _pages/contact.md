@@ -41,3 +41,4 @@ description: "Contact Trong-Tin (Tommy) NGUYEN: EconomiX (UMR 7235, CNRS), Unive
   </form>
 </section>
 {%- endif -%}
+{% include rd-visitor-stats.html %}
