@@ -1,13 +1,13 @@
 {%- comment -%}
   Visitor statistics (Stats page, /stats/ and /vi/stats/). Data: _data/stats.json, written in the
   Pages build by scripts/fetch-goatcounter-stats.py. Until that file exists, a short notice is shown.
+  Country flags are SVG images from flag-icons on jsdelivr (allowed by the img-src CSP rule).
 {%- endcomment -%}
 {%- assign S = site.data.stats -%}
 {%- if S and S.total -%}
 {%- assign vi = false -%}{%- if page_lang == "vi" -%}{%- assign vi = true -%}{%- endif -%}
 {%- assign n_cc = 0 -%}{%- for c in S.countries -%}{%- if c.code != "" -%}{%- assign n_cc = n_cc | plus: 1 -%}{%- endif -%}{%- endfor -%}
 <section class="vstats" aria-label="{{ t.vs_title }}">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
   <p class="vstats__meta"><span class="vstats__live" aria-hidden="true"></span>{{ t.vs_updated }} <time datetime="{{ S.generated }}" data-local-time>{{ S.generated | date: "%Y-%m-%d %H:%M" }} UTC</time><span class="vstats__every">· {{ t.vs_every }}</span></p>
   <div class="vstats__tiles">
     <div class="card vstats__tile"><span class="vstats__k">{{ t.vs_total }}</span><b data-num="{{ S.total }}">{{ S.total }}</b></div>
@@ -68,7 +68,7 @@
       <ul class="hbars">
         {%- for c in S.countries limit: 10 -%}
         {%- assign w = c.count | times: 100 | divided_by: cmax %}
-        <li class="hbar"><span class="hbar__label">{% if c.code != "" %}<span class="fi fi-{{ c.code | downcase }}"></span><span data-cc="{{ c.code }}">{{ c.name }}</span>{% else %}{{ t.vs_unknown }}{% endif %}</span><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ c.count }}">{{ c.count }}</span></li>
+        <li class="hbar"><span class="hbar__label">{% if c.code != "" %}<img class="fi" src="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/flags/4x3/{{ c.code | downcase }}.svg" width="20" height="15" alt="" loading="lazy" decoding="async" style="vertical-align: -2px"><span data-cc="{{ c.code }}">{{ c.name }}</span>{% else %}{{ t.vs_unknown }}{% endif %}</span><span class="hbar__track"><span class="hbar__fill" style="--w: {{ w }}%"></span></span><span class="hbar__val" data-num="{{ c.count }}">{{ c.count }}</span></li>
         {%- endfor %}
       </ul>
     </figure>
