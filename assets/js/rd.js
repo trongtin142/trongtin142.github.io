@@ -4,7 +4,9 @@
 (function () {
   "use strict";
   var doc = document, root = doc.documentElement;
+  // Interface strings come from a JSON block (not executed, so no inline script is needed under the CSP)
   var T = window.RD_I18N || {};
+  try { var i18nEl = doc.getElementById("rd-i18n"); if (i18nEl) T = JSON.parse(i18nEl.textContent) || T; } catch (e) { /* keep defaults */ }
   var BASE = root.getAttribute("data-base") || "";
   var LANG = root.getAttribute("data-lang") || "en";
   var $ = function (s, r) { return (r || doc).querySelector(s); };
@@ -164,6 +166,73 @@
     });
     if (input) input.addEventListener("input", apply);
   });
+
+  /* ---------- "On this page" side column (shown on wide screens by CSS) ---------- */
+  var aside = $("[data-page-aside]"), layout = $("[data-page-layout]");
+  if (aside && layout) (function () {
+    var body = $(".page-body", layout) || layout;
+    var used = {};
+    function slug(s) {
+      var b = "sec-" + (fold(s).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "x"), id = b, n = 2;
+      while (used[id] || doc.getElementById(id)) id = b + "-" + n++;
+      used[id] = true; return id;
+    }
+    var heads = $$("h2", body).filter(function (h) { return !h.classList.contains("tl__title") && !h.closest("[data-no-toc]") && h.textContent.trim(); });
+    var html = "", links = [];
+    if (heads.length >= 2) {
+      html += '<nav class="aside__block toc" aria-label="' + esc(T.on_this_page || "On this page") + '"><p class="aside__title">' + esc(T.on_this_page || "On this page") + '</p><ol class="toc__list">';
+      heads.forEach(function (h) {
+        if (!h.id) h.id = slug(h.textContent);
+        html += '<li><a href="#' + esc(h.id) + '">' + esc(h.textContent.trim().replace(/\s+/g, " ")) + "</a></li>";
+      });
+      html += "</ol></nav>";
+    }
+    // "At a glance": item counts per filter chip, for filter bars whose chips do not already show a count
+    var bars = $$("[data-filter-for]", body), rows = [];
+    bars.forEach(function (bar) {
+      var scope = doc.getElementById(bar.getAttribute("data-filter-for"));
+      if (!scope || $("[data-key] span", bar)) return;
+      var items = $$("[data-filter-item]", scope);
+      $$("[data-key]", bar).forEach(function (chip) {
+        var key = chip.getAttribute("data-key");
+        var n = items.filter(function (it) {
+          return key === "all" || (it.getAttribute("data-tags") || "").split(/\s+/).indexOf(key) !== -1;
+        }).length;
+        if (!n) return;
+        rows.push({ chip: chip, n: n, label: key === "all" ? (T.total || "Total") : chip.textContent.trim() });
+      });
+    });
+    if (rows.length > 1) {
+      html += '<div class="aside__block glance"><p class="aside__title">' + esc(T.at_a_glance || "At a glance") + '</p><ul class="glance__list">';
+      rows.forEach(function (r, i) { html += '<li><button type="button" data-glance="' + i + '"><span>' + esc(r.label) + "</span><b>" + r.n + "</b></button></li>"; });
+      html += "</ul></div>";
+    }
+    if (!html) return;
+    html += '<a class="aside__top" href="#main">' + esc(T.back_to_top || "Back to top") + "</a>";
+    aside.innerHTML = html; aside.hidden = false; layout.classList.add("has-aside");
+    $$("[data-glance]", aside).forEach(function (b) {
+      b.addEventListener("click", function () {
+        var r = rows[+b.getAttribute("data-glance")];
+        r.chip.click();
+        var bar = r.chip.closest("[data-filter-for]");
+        if (bar) bar.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+      });
+    });
+    links = $$(".toc__list a", aside);
+    function sync() { // hide entries whose section a filter has hidden
+      links.forEach(function (a) { var h = doc.getElementById(a.getAttribute("href").slice(1)); a.parentNode.hidden = !h || !!h.closest("[hidden]"); });
+    }
+    bars.forEach(function (bar) { bar.addEventListener("click", function () { setTimeout(sync, 0); }); bar.addEventListener("input", function () { setTimeout(sync, 0); }); });
+    if (links.length && "IntersectionObserver" in window) {
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          links.forEach(function (a) { if (a.getAttribute("href") === "#" + en.target.id) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current"); });
+        });
+      }, { rootMargin: "-80px 0px -65% 0px" });
+      heads.forEach(function (h) { spy.observe(h); });
+    }
+  })();
 
   /* ---------- Toggles and copy buttons ---------- */
   doc.addEventListener("click", function (e) {
