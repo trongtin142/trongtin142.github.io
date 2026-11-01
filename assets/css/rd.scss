@@ -389,8 +389,9 @@ body.nav-locked { overflow: hidden; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .profiles .icon--github { color: #F0F6FC; } }
 .profiles--hero { margin-top: 22px; }
 
-.stats { --stat-pad: var(--gutter); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
-.stats__in { list-style: none; margin: 0 calc(-1 * var(--stat-pad)); padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.stats { --stat-pad: var(--gutter); }
+/* framed box aligned with the content column; the band around it keeps the page background */
+.stats__in { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .stats__in > li { display: flex; min-width: 0; border-left: 1px solid var(--line); }
 .stats__in > li:first-child { border-left: 0; }
 .stat { position: relative; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 28px var(--stat-pad) 26px; color: inherit; text-decoration: none; transition: background-color .2s ease; }
