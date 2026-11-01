@@ -24,6 +24,7 @@
   --rev: #2348C8; --rev-bg: #E9EEFC;
   --wp: #5D6575; --wp-bg: #EEF0F4;
   --mono-bg: #161B26; --mono-fg: #F29A5C;
+  --chart: #2348C8;
   --shadow: 0 1px 2px rgba(22, 27, 38, .06), 0 8px 24px rgba(22, 27, 38, .06);
 
   --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
@@ -58,6 +59,7 @@
   --rr: #F2C76E; --rr-bg: #3A2E12;
   --rev: #8AA4FF; --rev-bg: #1B2340;
   --wp: #A1A9B8; --wp-bg: #20252F;
+  --chart: #6E8BF2;
   --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 8px 24px rgba(0, 0, 0, .3);
   color-scheme: dark;
 }
@@ -475,6 +477,37 @@ body.nav-locked { overflow: hidden; }
 .form__status.is-ok { color: var(--ok); }
 .form__status.is-error { color: #C0362C; }
 
+/* Visitor statistics (Contact page) */
+.vstats__tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.vstats__tile { display: grid; gap: 6px; align-content: start; }
+.vstats__tile b { font: 600 34px/1 var(--serif); color: var(--ink); font-variant-numeric: tabular-nums lining-nums; }
+.vstats__tile span { color: var(--muted); font-size: var(--fs-small); line-height: 1.35; }
+.vstats__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.vstats__card { margin: 0; }
+.vstats .block__intro time { white-space: nowrap; }
+.vstats__card--wide { grid-column: 1 / -1; }
+.vstats__card .card__label { margin: 0 0 16px; }
+.cols { display: grid; grid-template-columns: repeat(var(--n, 12), minmax(0, 1fr)); height: 190px; padding-top: 26px; }
+.col { display: grid; grid-template-rows: minmax(0, 1fr) auto; outline: none; }
+.col__plot { position: relative; display: flex; align-items: flex-end; justify-content: center; min-height: 0; }
+.col__bar { width: min(28px, 62%); height: var(--h); min-height: 3px; background: var(--chart); border-radius: 4px 4px 0 0; }
+.col__bar.is-zero { min-height: 0; height: 0; }
+.col__x { border-top: 1px solid var(--line-strong); padding-top: 6px; text-align: center; color: var(--muted); font-size: 11.5px; white-space: nowrap; }
+.col__tip { position: absolute; left: 50%; bottom: calc(var(--h) + 6px); transform: translateX(-50%); padding: 4px 8px; border-radius: 6px; background: var(--surface); box-shadow: var(--shadow); border: 1px solid var(--line); color: var(--ink); font-size: 12.5px; font-weight: 600; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s ease; z-index: 2; }
+.col__tip em { font-style: normal; font-weight: 500; color: var(--muted); }
+.col:hover .col__tip, .col:focus-visible .col__tip { opacity: 1; }
+.col:hover .col__bar, .col:focus-visible .col__bar { filter: brightness(1.12); }
+.col.is-last .col__tip { opacity: 1; background: none; box-shadow: none; border-color: transparent; }
+.col.is-last .col__tip em { display: none; }
+.col.is-last:hover .col__tip, .col.is-last:focus-visible .col__tip { background: var(--surface); box-shadow: var(--shadow); border-color: var(--line); }
+.col.is-last:hover .col__tip em, .col.is-last:focus-visible .col__tip em { display: inline; }
+.hbars { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.hbar { display: grid; grid-template-columns: minmax(0, 10em) minmax(0, 1fr) auto; align-items: center; gap: 12px; font-size: var(--fs-small); }
+.hbar__label { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.hbar__track { height: 10px; }
+.hbar__fill { display: block; width: var(--w); min-width: 3px; height: 100%; background: var(--chart); border-radius: 0 4px 4px 0; }
+.hbar__val { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; min-width: 2.5em; }
+
 .course { scroll-margin-top: calc(var(--header-h) + 24px); }
 .course__meta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; margin: 6px 0 0; font-size: var(--fs-small); }
 .course__meta dt { color: var(--muted); }
@@ -547,6 +580,12 @@ body.nav-locked { overflow: hidden; }
   .section { padding: 44px 0; }
   .cta { grid-template-columns: 1fr; padding: 24px; }
   .cards--2, .contact, .form__row { grid-template-columns: 1fr; }
+  .vstats__grid { grid-template-columns: 1fr; }
+  .vstats__tiles { gap: 10px; }
+  .vstats__tile { padding: 14px 14px 16px; }
+  .vstats__tile b { font-size: 24px; }
+  .hbar { grid-template-columns: minmax(0, 8em) minmax(0, 1fr) auto; gap: 10px; }
+  .col__x { font-size: 10.5px; }
   .page-head { padding: 36px 0 20px; }
   .tl::before { left: 74px; }
   .tl__item { grid-template-columns: 62px minmax(0, 1fr); gap: 30px; }
