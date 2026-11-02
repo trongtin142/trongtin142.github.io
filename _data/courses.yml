@@ -4,11 +4,13 @@
 #     - title: "Syllabus"
 #       title_vi: "Đề cương"
 #       url: /files/micro-syllabus.pdf
+# office_hours / office_hours_vi: optional line on the card.
 
 - id: escp-microeconomics
   title: "Microeconomics"
   title_vi: "Kinh tế vi mô"
   institution: "ESCP Business School"
+  logo: /images/logos/escp.png
   campus: "Paris"
   campus_vi: "Paris"
   level: "Undergraduate, first-year international Bachelor students"
@@ -21,6 +23,7 @@
   title: "Trade and International Finance"
   title_vi: "Thương mại và Tài chính quốc tế"
   institution: "Sciences Po"
+  logo: /images/logos/sciences-po.png
   campus: "Reims"
   campus_vi: "Reims"
   level: "Undergraduate"
@@ -33,6 +36,7 @@
   title: "The Economy"
   title_vi: "Nền kinh tế (The Economy)"
   institution: "Sciences Po"
+  logo: /images/logos/sciences-po.png
   level: "Undergraduate"
   level_vi: "Đại học"
   since: "2025"
@@ -41,6 +45,7 @@
   title: "Quantitative Methods for the Humanities and Social Sciences"
   title_vi: "Phương pháp định lượng cho Khoa học xã hội và nhân văn"
   institution: "Sciences Po"
+  logo: /images/logos/sciences-po.png
   level: "Undergraduate"
   level_vi: "Đại học"
   since: "2025"
@@ -49,6 +54,7 @@
   title: "Mathematics Applied to Quantitative Social Sciences"
   title_vi: "Toán ứng dụng trong Khoa học xã hội định lượng"
   institution: "Sciences Po"
+  logo: /images/logos/sciences-po.png
   level: "Undergraduate"
   level_vi: "Đại học"
   since: "2025"
@@ -57,6 +63,7 @@
   title: "Statistics for Business"
   title_vi: "Thống kê trong kinh doanh"
   institution: "International University, VNU-HCM"
+  logo: /images/logos/iu-vnuhcm.png
   institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
   level: "Undergraduate"
   level_vi: "Đại học"
@@ -67,6 +74,7 @@
   title_vi: "Hành vi tổ chức"
   code: "BA130IU"
   institution: "International University, VNU-HCM"
+  logo: /images/logos/iu-vnuhcm.png
   institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
   level: "Undergraduate"
   level_vi: "Đại học"
@@ -77,6 +85,7 @@
   title_vi: "Workshop I"
   code: "BA256IU"
   institution: "International University, VNU-HCM"
+  logo: /images/logos/iu-vnuhcm.png
   institution_vi: "Trường Đại học Quốc tế, ĐHQG-HCM"
   level: "Undergraduate"
   level_vi: "Đại học"

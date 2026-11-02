@@ -12,7 +12,7 @@
   cv_text: "Python, Stata, EViews, R, SPSS, AMOS, SmartPLS, Power BI, LaTeX"
 - name: "Languages"
   name_vi: "Ngôn ngữ"
-  icon: users
+  icon: globe
   wide: true
   text: "Vietnamese (native); English (C1); French (A2)"
   text_vi: "Tiếng Việt (bản ngữ); Tiếng Anh (C1); Tiếng Pháp (A2)"

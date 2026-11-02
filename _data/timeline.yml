@@ -9,6 +9,7 @@ positions:
     role: "Contract Lecturer"
     role_vi: "Giảng viên thỉnh giảng"
     org: "ESCP Business School, France"
+    logo: /images/logos/escp.png
     org_vi: "ESCP Business School, Pháp"
     tags: [teaching]
     current: true
@@ -16,6 +17,7 @@ positions:
     role: "Lecturer"
     role_vi: "Giảng viên"
     org: "School of Business, International University, VNU-HCM, Vietnam"
+    logo: /images/logos/iu-vnuhcm.png
     org_vi: "Khoa Quản trị Kinh doanh, Trường Đại học Quốc tế, ĐHQG-HCM, Việt Nam"
     tags: [teaching, research]
     current: true
@@ -23,6 +25,7 @@ positions:
     role: "Contract Lecturer"
     role_vi: "Giảng viên thỉnh giảng"
     org: "Sciences Po, France"
+    logo: /images/logos/sciences-po.png
     org_vi: "Sciences Po, Pháp"
     tags: [teaching]
     current: true
@@ -31,6 +34,7 @@ positions:
     role: "Contract Lecturer"
     role_vi: "Giảng viên thỉnh giảng"
     org: "Université Paris Nanterre, EconomiX, France"
+    logo: /images/logos/paris-nanterre.png
     org_vi: "Đại học Paris Nanterre, EconomiX, Pháp"
     tags: [teaching]
   - start: 2020
@@ -38,6 +42,7 @@ positions:
     role: "Contract Lecturer"
     role_vi: "Giảng viên thỉnh giảng"
     org: "HUTECH University, Vietnam"
+    logo: /images/logos/hutech.png
     org_vi: "Trường Đại học Công nghệ TP. Hồ Chí Minh (HUTECH), Việt Nam"
     tags: [teaching]
     cv: false
@@ -57,6 +62,7 @@ positions:
     role: "Lecturer"
     role_vi: "Giảng viên"
     org: "Faculty of Management, Ho Chi Minh City University of Law, Vietnam"
+    logo: /images/logos/hcmulaw.png
     org_vi: "Khoa Quản trị, Trường Đại học Luật TP. Hồ Chí Minh, Việt Nam"
     tags: [teaching, research]
 
@@ -67,6 +73,7 @@ education:
     note: "Expected 2027"
     note_vi: "Dự kiến 2027"
     org: "EconomiX (CNRS), Université Paris Nanterre, France"
+    logo: /images/logos/paris-nanterre.png
     org_vi: "EconomiX (CNRS), Đại học Paris Nanterre, Pháp"
     tags: [degree]
     current: true
