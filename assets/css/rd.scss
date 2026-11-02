@@ -368,6 +368,10 @@ body.nav-locked { overflow: hidden; }
 .tl__body { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 20px; align-items: start; }
 .tl__body > * { grid-column: 1; }
 .tl__logo { grid-column: 2; grid-row: 1 / span 3; }
+/* Logo between the timeline and the text: 14px on both sides of the badge, and its centre on the dot's centre (top: (36 - 14) / 2 - 8 = 3px above the row). */
+.tl--logo-left .tl__body { grid-template-columns: 36px minmax(0, 1fr); column-gap: 14px; }
+.tl--logo-left .tl__body > * { grid-column: 2; }
+.tl--logo-left .tl__logo { grid-column: 1; margin-top: -3px; }
 .tl-sub { margin: 36px 0 20px; }
 .tl__when { font: 600 var(--fs-ui)/1.65 var(--sans); font-variant-numeric: tabular-nums; color: var(--muted); text-align: right; white-space: nowrap; }
 .tl__title, .page-body .tl__title { font: 600 var(--fs-lead)/1.4 var(--sans); margin: 0; }
@@ -885,6 +889,8 @@ a.hbar__label:hover { color: var(--accent); text-decoration: underline; }
   .site-footer__meta a { padding-block: 6px; }
   .tl__logo { width: 30px; height: 30px; }
   .tl__body { column-gap: 12px; }
+  .tl--logo-left .tl__body { grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; }
+  .tl--logo-left .tl__logo { margin-top: 0; }
 }
 @media (max-width: 350px) {
   .marks--rows .marks__country { display: none; }
