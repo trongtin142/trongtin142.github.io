@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:3.0
+N:NGUYEN;Trong-Tin;;;
+FN:Trong-Tin (Tommy) NGUYEN
+NICKNAME:Tommy
+ORG:EconomiX (UMR 7235\, CNRS)\, Université Paris Nanterre
+TITLE:PhD candidate in Economics
+EMAIL;TYPE=INTERNET,WORK:trongtin.nguyen@parisnanterre.fr
+EMAIL;TYPE=INTERNET,WORK:nttin@hcmiu.edu.vn
+ADR;TYPE=WORK:;;200 avenue de la République;Nanterre Cedex;;92001;France
+URL:https://trongtin142.github.io/
+URL:https://orcid.org/0009-0006-0017-6374
+URL:https://www.linkedin.com/in/trongtin142/
+END:VCARD
