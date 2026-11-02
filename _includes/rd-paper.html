@@ -1,0 +1,3 @@
+{%- comment -%} The page of one publication; page.pub_id is its id in _data/publications.yml. {%- endcomment -%}
+{%- assign paper = site.data.publications.items | where: "id", page.pub_id | first -%}
+{% include rd-pub.html pub=paper detail=true %}

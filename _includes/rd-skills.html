@@ -6,7 +6,9 @@
 {%- for s in site.data.skills %}
 <article class="card{% if s.wide %} card--wide{% endif %}">
   <h2>{% include rd-icon.html name=s.icon %} {% if vi %}{{ s.name_vi | default: s.name | escape }}{% else %}{{ s.name | escape }}{% endif %}</h2>
-  <p>{% if vi %}{{ s.text_vi | default: s.text }}{% else %}{{ s.text }}{% endif %}</p>
+  {%- if vi %}{% assign s_text = s.text_vi | default: s.text %}{% else %}{% assign s_text = s.text %}{% endif -%}
+  {%- assign s_items = s_text | replace: "; ", ", " | split: ", " %}
+  <ul class="tags">{% for it in s_items %}<li>{{ it }}</li>{% endfor %}</ul>
 </article>
 {%- endfor %}
 </div>
