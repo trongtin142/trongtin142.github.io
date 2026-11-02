@@ -12,6 +12,8 @@
   var $ = function (s, r) { return (r || doc).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var svgIcon = function (d) { return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + d + "</svg>"; };
+  var ICON_UP = svgIcon('<path d="M12 19V5"/><path d="M6 11l6-6 6 6"/>'), ICON_CHECK = svgIcon('<path d="M5 12.5l4.5 4.5L19 7.5"/>');
   function fold(s) {
     return String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/đ/g, "d");
   }
@@ -28,7 +30,8 @@
   $$("[data-theme-toggle]").forEach(function (b) {
     b.addEventListener("click", function () {
       var next = currentTheme() === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
+      var apply = function () { root.setAttribute("data-theme", next); };
+      if (doc.startViewTransition && !reduceMotion) doc.startViewTransition(apply); else apply();
       try { localStorage.setItem("theme", next); } catch (e) { /* ignore */ }
     });
   });
@@ -210,7 +213,7 @@
       html += "</ul></div>";
     }
     if (!html) return;
-    html += '<a class="aside__top" href="#main">' + esc(T.back_to_top || "Back to top") + "</a>";
+    html += '<a class="aside__top" href="#main">' + ICON_UP + "<span>" + esc(T.back_to_top || "Back to top") + "</span></a>";
     aside.innerHTML = html; aside.hidden = false; layout.classList.add("has-aside");
     $$("[data-glance]", aside).forEach(function (b) {
       b.addEventListener("click", function () {
@@ -251,7 +254,8 @@
     var label = cp.innerHTML;
     function done(ok) {
       cp.classList.toggle("is-done", ok);
-      cp.textContent = ok ? (T.copied || "Copied") + " ✓" : (T.copy_failed || "Selected, press Ctrl+C");
+      if (ok) cp.innerHTML = ICON_CHECK + "<span>" + esc(T.copied || "Copied") + "</span>";
+      else cp.textContent = T.copy_failed || "Selected, press Ctrl+C";
       setTimeout(function () { cp.innerHTML = label; cp.classList.remove("is-done"); }, 1600);
     }
     function fallback() {
@@ -311,14 +315,34 @@
       }).addTo(map);
       var css = getComputedStyle(root);
       var colors = { talk: css.getPropertyValue("--accent").trim(), service: css.getPropertyValue("--deco").trim(), visit: css.getPropertyValue("--ok").trim(), teaching: css.getPropertyValue("--muted").trim() };
-      var bounds = [];
+      var bounds = [], marks = [], ring = css.getPropertyValue("--surface").trim() || "#fff";
       data.forEach(function (p) {
         var kind = p.kinds.indexOf("talk") !== -1 ? "talk" : p.kinds[0];
-        var m = window.L.circleMarker([p.lat, p.lng], { radius: 7 + Math.min(p.items.length, 5), color: "#fff", weight: 2, fillColor: colors[kind] || colors.talk, fillOpacity: .95 }).addTo(map);
+        var m = window.L.circleMarker([p.lat, p.lng], { radius: 7 + Math.min(p.items.length, 5), color: ring, weight: 2, fillColor: colors[kind] || colors.talk, fillOpacity: .95 }).addTo(map);
         m.bindPopup("<b>" + esc(p.name) + "</b><ul>" + p.items.map(function (i) { return "<li>" + esc(i) + "</li>"; }).join("") + "</ul>");
+        marks.push({ m: m, ll: window.L.latLng(p.lat, p.lng) });
         bounds.push([p.lat, p.lng]);
       });
+      // Places too close to tell apart at this zoom fan out around their centre, and return to their true position when zoomed in
+      function spread() {
+        var left = marks.slice();
+        while (left.length) {
+          var a = left.shift(), pa = map.latLngToLayerPoint(a.ll), group = [a];
+          left = left.filter(function (b) {
+            if (pa.distanceTo(map.latLngToLayerPoint(b.ll)) >= 20) return true;
+            group.push(b); return false;
+          });
+          if (group.length === 1) { a.m.setLatLng(a.ll); continue; }
+          var r = 9 + group.length * 3;
+          group.forEach(function (g, i) {
+            var ang = -Math.PI / 2 + (i + .5) * 2 * Math.PI / group.length;
+            g.m.setLatLng(map.layerPointToLatLng(pa.add([r * Math.cos(ang), r * Math.sin(ang)])));
+          });
+        }
+      }
+      map.on("zoomend", spread);
       map.fitBounds(bounds, { padding: [30, 30] });
+      spread();
     })();
   }
 
@@ -343,16 +367,34 @@
       l.setAttribute("class", "edge"); l.setAttribute("stroke-width", 1.5 + w * 1.5);
       svg.appendChild(l); edges.push(l); n.edge = l; n.w = w;
     });
-    function addNode(x, y, r, label, sub, cls) {
-      var g = doc.createElementNS(NS, "g"); g.setAttribute("class", "node " + cls);
+    function svgText(g, x, y, str, cls) {
+      var t = doc.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", y); t.setAttribute("text-anchor", "middle");
+      if (cls) t.setAttribute("class", cls);
+      t.textContent = str; g.appendChild(t); return t;
+    }
+    function initials(name) {
+      var w = name.replace(/-/g, " ").split(/\s+/).filter(Boolean);
+      return (w[0].charAt(0) + (w.length > 1 ? w[w.length - 1].charAt(0) : "")).toUpperCase();
+    }
+    function addNode(x, y, r, label, sub) {
+      var g = doc.createElementNS(NS, "g"); g.setAttribute("class", "node");
       var c = doc.createElementNS(NS, "circle"); c.setAttribute("cx", x); c.setAttribute("cy", y); c.setAttribute("r", r); g.appendChild(c);
-      var t = doc.createElementNS(NS, "text"); t.setAttribute("x", x); t.setAttribute("y", cls.indexOf("is-me") !== -1 ? y + 10 : y + r + 28); t.setAttribute("text-anchor", "middle"); t.textContent = label; g.appendChild(t);
-      if (sub) { var s = doc.createElementNS(NS, "text"); s.setAttribute("x", x); s.setAttribute("y", y + r + 52); s.setAttribute("text-anchor", "middle"); s.setAttribute("class", "sub"); s.textContent = sub; g.appendChild(s); }
+      svgText(g, x, y + 6, initials(label), "ini");
+      // a node above the centre carries its label above it, so the edge never runs through the text
+      var above = y < cy - 1;
+      svgText(g, x, above ? y - r - (sub ? 40 : 14) : y + r + 28, label);
+      if (sub) svgText(g, x, above ? y - r - 14 : y + r + 52, sub, "sub");
       svg.appendChild(g); return g;
     }
-    addNode(cx, cy, 42, "TN", null, "is-me");
+    (function addMe() {
+      var g = doc.createElementNS(NS, "g"); g.setAttribute("class", "node is-me");
+      var c = doc.createElementNS(NS, "circle"); c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", 46); c.setAttribute("class", "me-ring"); g.appendChild(c);
+      var im = doc.createElementNS(NS, "image"); im.setAttribute("href", BASE + "/images/profile.jpg");
+      im.setAttribute("x", cx - 42); im.setAttribute("y", cy - 42); im.setAttribute("width", 84); im.setAttribute("height", 84); g.appendChild(im);
+      svg.appendChild(g);
+    })();
     nodes.forEach(function (n) {
-      var g = addNode(n.x, n.y, 22, n.c.name, n.w + " " + (n.w > 1 ? G.labels.works : G.labels.work), "");
+      var g = addNode(n.x, n.y, 22, n.c.name, n.w + " " + (n.w > 1 ? G.labels.works : G.labels.work));
       g.setAttribute("tabindex", "0"); g.setAttribute("role", "button"); g.setAttribute("aria-label", n.c.name);
       n.g = g;
       function pick() {

@@ -1,0 +1,29 @@
+---
+title: "Digital card"
+permalink: "/card/"
+width: "wide"
+description: "Digital business card of Trong-Tin (Tommy) NGUYEN: scan the QR code or save the contact."
+---
+{% include rd-ctx.html %}
+<article class="card vcard">
+  <div>
+    <div class="vcard__id">
+      <img class="vcard__photo" src="{{ base_path }}/images/profile.jpg" alt="" width="88" height="88">
+      <div>
+        <h2 class="vcard__name">{{ t.name }}</h2>
+        <p class="vcard__role">{{ t.bio }}<br>{{ t.role }}</p>
+      </div>
+    </div>
+    <p class="vcard__mail"><a href="mailto:trongtin.nguyen@parisnanterre.fr">trongtin.nguyen@<wbr>parisnanterre.fr</a></p>
+    <p class="vcard__mail"><a href="mailto:nttin@hcmiu.edu.vn">nttin@<wbr>hcmiu.edu.vn</a></p>
+    <div class="actions">
+      <a class="btn btn--primary" href="{{ base_path }}/assets/trong-tin-nguyen.vcf" download data-track="vcard: download">{% include rd-icon.html name="id" %}<span>Save contact</span></a>
+      <a class="btn" href="{{ base_path }}/">{% include rd-icon.html name="arrow" %}<span>{{ t.website_label | default: "trongtin142.github.io" }}</span></a>
+    </div>
+    {% include rd-profiles.html %}
+  </div>
+  <figure class="vcard__qr">
+    <img src="{{ base_path }}/images/card-qr-en.svg" alt="QR" width="200" height="200">
+    <figcaption>Scan to open this card</figcaption>
+  </figure>
+</article>

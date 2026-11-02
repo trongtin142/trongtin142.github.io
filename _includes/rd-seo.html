@@ -16,7 +16,43 @@
 <link rel="canonical" href="{{ seo_url }}">
 {% if site.noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 {% if site.google_site_verification and site.noindex != true %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
-<meta property="og:type" content="{% if page.url == '/' or page.url == '/vi/' %}profile{% else %}website{% endif %}">
+<meta property="og:type" content="{% if page.url == '/' or page.url == '/vi/' %}profile{% elsif page.pub_id %}article{% else %}website{% endif %}">
+{%- if page.pub_id -%}
+{%- comment -%}
+  Highwire Press tags, read by Google Scholar and reference managers such as Zotero.
+  A paper still under review carries no journal title, so that it is not presented as published there.
+{%- endcomment -%}
+{%- assign cp = site.data.publications.items | where: "id", page.pub_id | first -%}
+{%- assign cp_authors = cp.bib_authors | split: " and " %}
+<meta name="citation_title" content="{{ cp.title | escape }}">
+{%- for a in cp_authors -%}{%- unless a == "others" %}
+<meta name="citation_author" content="{{ a | escape }}">
+{%- endunless -%}{%- endfor %}
+<meta name="citation_publication_date" content="{{ cp.year }}">
+<meta name="citation_language" content="en">
+<meta name="citation_abstract_html_url" content="{{ seo_url }}">
+{%- if cp.venue and cp.type != "rr" %}
+<meta name="citation_journal_title" content="{{ cp.venue | escape }}">
+{%- endif -%}
+{%- if cp.booktitle %}
+<meta name="citation_conference_title" content="{{ cp.booktitle | escape }}">
+{%- endif -%}
+{%- if cp.publisher %}
+<meta name="citation_publisher" content="{{ cp.publisher | escape }}">
+{%- endif -%}
+{%- if cp.isbn %}
+<meta name="citation_isbn" content="{{ cp.isbn }}">
+{%- endif -%}
+{%- if cp.doi %}
+<meta name="citation_doi" content="{{ cp.doi }}">
+{%- endif -%}
+{%- if cp.abstract %}
+<meta name="citation_abstract" content="{{ cp.abstract | strip_html | escape }}">
+{%- endif -%}
+{%- if cp.pdf %}
+<meta name="citation_pdf_url" content="{{ cp.pdf | prepend: base_path }}">
+{%- endif -%}
+{%- endif %}
 <meta property="og:site_name" content="{{ seo_name }}">
 <meta property="og:locale" content="{{ t.og_locale }}">
 <meta property="og:title" content="{{ seo_title | escape_once }}">

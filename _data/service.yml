@@ -46,17 +46,18 @@ sections:
     title_vi: "Tổ chức hội thảo và chủ tọa phiên"
     cv_title: "Conference Organization and Session Chairing"
     items:
+      - name: "16th Vietnam Economist Annual Meeting (VEAM 2025)"
+        name_vi: "Hội nghị thường niên các nhà kinh tế học Việt Nam lần thứ 16 (VEAM 2025)"
+        when: "Dec 2025"
+        when_vi: "12/2025"
+        detail: "Thai Nguyen, Vietnam · Session Chair, “Macroeconomic Dynamics”"
+        detail_vi: "Thái Nguyên, Việt Nam · Chủ tọa phiên “Động học kinh tế vĩ mô”"
       - name: "5th International Conference on Development Economics (ICDE 2025)"
         name_vi: "Hội thảo quốc tế lần thứ 5 về Kinh tế phát triển (ICDE 2025)"
         when: "Jul 2025"
         when_vi: "7/2025"
         detail: "AFEDEV and Université Paris Nanterre, France, 2–4 July 2025 · Member of the Organizing Committee; Session Chair, “Environmental Policy &amp; Energy Economics”"
         detail_vi: "AFEDEV và Đại học Paris Nanterre, Pháp, ngày 2–4/7/2025 · Thành viên Ban tổ chức; Chủ tọa phiên “Chính sách môi trường và Kinh tế năng lượng”"
-      - name: "16th Vietnam Economist Annual Meeting (VEAM 2025)"
-        name_vi: "Hội nghị thường niên các nhà kinh tế học Việt Nam lần thứ 16 (VEAM 2025)"
-        when: "2025"
-        detail: "Thai Nguyen, Vietnam · Session Chair, “Macroeconomic Dynamics”"
-        detail_vi: "Thái Nguyên, Việt Nam · Chủ tọa phiên “Động học kinh tế vĩ mô”"
     cv_items:
       - text: "Session Chair, “Environmental Policy &amp; Energy Economics”, 5th International Conference on Development Economics (ICDE 2025), Paris, France"
         year: 2025
