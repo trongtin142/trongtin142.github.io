@@ -73,6 +73,12 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      - name: Leave the job market PDF out while the page is hidden
+        # rd.job_market_public in _config.yml: false means the PDF must not be served either
+        run: |
+          if grep -Eq '^[[:space:]]*job_market_public[[:space:]]*:[[:space:]]*false' _config.yml; then
+            rm -f _site/files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
+          fi
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
 
