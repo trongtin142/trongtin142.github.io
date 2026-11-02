@@ -1,16 +1,29 @@
 ---
-title: "Job Market CV"
+title: "Job Market"
 permalink: /job-market/
 layout: rd-cv
-description: "Academic CV of NGUYEN-TRONG Tin, Ph.D. candidate in Economics at EconomiX (CNRS), Université Paris Nanterre, on the 2026–2027 academic job market."
+description: "Job market page of NGUYEN-TRONG Tin, Ph.D. candidate in Economics at EconomiX (CNRS), Université Paris Nanterre, on the 2026–2027 academic job market."
 updated: 2026-11-01
 pdf: /files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
 ---
 {%- comment -%}
   Job market CV, Harvard-style. The content comes from _data (see the header of _data/cv.yml for which file holds what);
   this file only sets the layout. Section order follows the CV PDF. After editing the data, regenerate the PDF in /files/.
+  Show or hide: rd.job_market_public in _config.yml. While it is false, the page holds only the note below, and the
+  deploy workflow leaves the PDF out of the site. The CV data stays in _data, ready for the day the switch goes back to true.
 {%- endcomment -%}
 {%- assign cv = site.data.cv -%}
+{%- if site.rd.job_market_public == false %}
+<section class="cv-private">
+  <h1 class="cv-private__msg">{{ cv.private_note.en }}</h1>
+  <p class="cv-private__msg cv-private__msg--vi" lang="vi">{{ cv.private_note.vi }}</p>
+  <ul class="cv-private__mail">
+    {%- for e in cv.emails %}
+    <li><a href="mailto:{{ e }}?subject=Job%20market%20CV">{{ e }}</a></li>
+    {%- endfor %}
+  </ul>
+</section>
+{%- else -%}
 {%- capture me -%}<b>Nguyen-Trong, T.</b>{%- endcapture -%}
 <header class="cv-head">
   <img class="cv-photo" src="{{ base_path }}/images/profile.jpg" alt="Photo of {{ cv.name }}" width="500" height="500" decoding="async" fetchpriority="high">
@@ -256,3 +269,4 @@ pdf: /files/CV_NGUYEN-TRONG_Tin_Job_Market.pdf
     </ul>
   </div>
 </section>
+{%- endif -%}
