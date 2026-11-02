@@ -15,6 +15,6 @@ description: "Academic positions of Trong-Tin (Tommy) NGUYEN: ESCP Business Scho
 </div>
 {%- endif %}
 <div id="tl-positions">
-  {% include rd-timeline.html items=site.data.timeline.positions %}
+  {% include rd-timeline.html items=site.data.timeline.positions logo_left=true %}
   <p class="empty" data-filter-empty hidden>{{ t.no_match }}</p>
 </div>
