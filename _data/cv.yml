@@ -7,6 +7,11 @@
 # Site rules: no phone numbers, no referee e-mails; Working Papers only with Ngoc-Sang Pham and Thi Kim Cuong Pham.
 # Spaces between initials in author lists are non-breaking. After editing, regenerate the PDF in /files/.
 
+# Shown instead of the whole CV while rd.job_market_public is false in _config.yml; the addresses come from emails below.
+private_note:
+  en: "Please email me for the latest version."
+  vi: "Vui lòng email tôi để có phiên bản cập nhật mới nhất."
+
 kicker: "Academic Job Market"
 season: "2026–2027"
 name: "NGUYEN-TRONG Tin"
