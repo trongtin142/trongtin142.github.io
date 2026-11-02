@@ -17,6 +17,7 @@ description: "Courses currently taught by Trong-Tin (Tommy) NGUYEN at ESCP Busin
 <div class="cards cards--2">
 {%- for c in site.data.courses -%}
   <article class="card course" id="{{ c.id }}">
+    {% if c.logo %}<span class="mark mark--logo course__logo"><img src="{{ base_path }}{{ c.logo }}" alt="" width="64" height="64" loading="lazy" decoding="async"></span>{% endif %}
     <p class="eyebrow">{% if vi %}{{ c.institution_vi | default: c.institution }}{% else %}{{ c.institution }}{% endif %}</p>
     <h2 class="course__title"><a href="#{{ c.id }}">{% if vi %}{{ c.title_vi }}{% else %}{{ c.title }}{% endif %}</a>{% if c.code %}<span class="course__code">{{ c.code }}</span>{% endif %}</h2>
     <dl class="course__meta">
@@ -24,6 +25,7 @@ description: "Courses currently taught by Trong-Tin (Tommy) NGUYEN at ESCP Busin
       {% if c.format %}<dt>{{ page.l_format }}</dt><dd>{% if vi %}{{ c.format_vi }}{% else %}{{ c.format }}{% endif %}</dd>{% endif %}
       {% if c.campus %}<dt>{{ page.l_campus }}</dt><dd>{% if vi %}{{ c.campus_vi }}{% else %}{{ c.campus }}{% endif %}</dd>{% endif %}
       <dt>{{ page.l_since }}</dt><dd>{{ c.since }}</dd>
+      {% if c.office_hours %}<dt>{{ t.office_hours }}</dt><dd>{% if vi %}{{ c.office_hours_vi | default: c.office_hours }}{% else %}{{ c.office_hours }}{% endif %}</dd>{% endif %}
     </dl>
     {%- if c.materials -%}
     <div class="card__links">

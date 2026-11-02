@@ -25,8 +25,7 @@ description: "Phần mềm và dữ liệu nghiên cứu của Nguyễn Trọng 
   <div class="card__links">
     <a class="btn btn--primary" href="https://github.com/{{ site.rd.cofog_repo }}">{% include rd-icon.html name="github" class="icon--brand" %}<span>{{ t.repository }}</span></a>
     {%- assign doi_main = p.doi_all | default: p.doi %}
-    <a class="btn" href="https://doi.org/{{ doi_main }}">Zenodo DOI{% include rd-icon.html name="ext" %}</a>
-    <img class="doi-badge" src="https://zenodo.org/badge/DOI/{{ doi_main }}.svg" alt="DOI {{ doi_main }}" loading="lazy">
+    <a class="btn" href="https://doi.org/{{ doi_main }}"><span>DOI <span class="btn__mono">{{ doi_main }}</span></span>{% include rd-icon.html name="ext" %}</a>
   </div>
 </article>
 <section class="block">

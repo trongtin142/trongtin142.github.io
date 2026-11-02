@@ -58,7 +58,7 @@ description: "Conference presentations by Trong-Tin (Tommy) NGUYEN, with an inte
         <p class="talk__proc">{{ t.published_in }} <i>{% if vi %}{{ x.proc_vi | default: x.proc }}{% else %}{{ x.proc }}{% endif %}</i>.{% if x.publisher %} {% if vi %}{{ x.publisher_vi | default: x.publisher }}{% else %}{{ x.publisher }}{% endif %}.{% endif %}{% if x.isbn %} ISBN {{ x.isbn }}.{% endif %}</p>
         {%- endif %}
         <span class="talk__loc">{% include rd-icon.html name="pin" %}{% if vi %}{{ x.host_vi }}{% else %}{{ x.host }}{% endif %}</span>
-        {%- if x.slides or x.video -%}<div class="pub__act">{% if x.slides %}<a class="btn btn--sm" href="{{ x.slides }}">{% include rd-icon.html name="board" %}Slides</a>{% endif %}{% if x.video %}<a class="btn btn--sm" href="{{ x.video }}">{% include rd-icon.html name="ext" %}Video</a>{% endif %}</div>{%- endif -%}
+        {%- if x.slides or x.video or x.paper -%}<div class="pub__act">{% if x.paper %}<a class="btn btn--sm" href="{{ x.paper }}">{% include rd-icon.html name="file" %}{{ t.paper_link }}</a>{% endif %}{% if x.slides %}<a class="btn btn--sm" href="{{ x.slides }}">{% include rd-icon.html name="board" %}Slides</a>{% endif %}{% if x.video %}<a class="btn btn--sm" href="{{ x.video }}">{% include rd-icon.html name="ext" %}Video</a>{% endif %}</div>{%- endif -%}
       </div>
     </article>
     {%- assign prev = x.year -%}

@@ -16,6 +16,12 @@ description: "Học vấn của Nguyễn Trọng Tín (Tommy Nguyen): Tiến sĩ
 </div>
 {%- endif %}
 <div id="tl-education">
-  {% include rd-timeline.html items=site.data.timeline.education %}
+  {%- assign edu_deg = site.data.timeline.education | where_exp: "e", "e.tags contains 'degree'" -%}
+  {%- assign edu_tr = site.data.timeline.education | where_exp: "e", "e.tags contains 'training'" -%}
+  {% include rd-timeline.html items=edu_deg %}
+  {%- if edu_tr.size > 0 %}
+  <h2 class="tl-sub">{{ page.chip_training }}</h2>
+  {% include rd-timeline.html items=edu_tr %}
+  {%- endif %}
   <p class="empty" data-filter-empty hidden>{{ t.no_match }}</p>
 </div>

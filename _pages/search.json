@@ -6,17 +6,17 @@ sitemap: false
 {%- assign sep = "" -%}
 [
 {%- for p in site.pages -%}
-  {%- if p.title and p.sitemap != false -%}{%- unless p.url contains ".json" or p.url contains ".xml" or p.url contains ".css" or p.url contains "404" -%}
+  {%- if p.title and p.sitemap != false and p.pub_id == nil -%}{%- unless p.url contains ".json" or p.url contains ".xml" or p.url contains ".css" or p.url contains "404" -%}
   {%- assign pl = p.lang | default: "en" -%}
   {%- assign grp = "Page" -%}{%- if pl == "vi" -%}{%- assign grp = "Trang" -%}{%- endif -%}
-  {{ sep }}{"t": {{ p.title | jsonify }}, "d": {{ p.description | default: "" | jsonify }}, "u": {{ p.url | jsonify }}, "l": {{ pl | jsonify }}, "g": {{ grp | jsonify }}}
+  {{ sep }}{"t": {{ p.title | jsonify }}, "d": {{ p.description | default: "" | jsonify }}, "u": {{ p.url | jsonify }}, "l": {{ pl | jsonify }}, "g": {{ grp | jsonify }}{% if p.url contains "/projects/" %}, "k": {{ p.content | strip_html | strip_newlines | jsonify }}{% endif %}}
   {%- assign sep = "," -%}
   {%- endunless -%}{%- endif -%}
 {%- endfor -%}
 {%- for x in site.data.publications.items -%}
-  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/publications/#" | append: x.id | jsonify }}, "l": "en", "g": "Publication", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | jsonify }}}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/papers/" | append: x.id | append: "/" | jsonify }}, "l": "en", "g": "Publication", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | append: " " | append: x.abstract | jsonify }}}
   {%- assign sep = "," -%}
-  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/vi/publications/#" | append: x.id | jsonify }}, "l": "vi", "g": "Ấn phẩm", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | jsonify }}}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.authors | append: " (" | append: x.year | append: ")" | jsonify }}, "u": {{ "/vi/papers/" | append: x.id | append: "/" | jsonify }}, "l": "vi", "g": "Ấn phẩm", "k": {{ x.venue | default: x.booktitle | default: x.publisher | default: "" | append: " " | append: x.abstract | jsonify }}}
 {%- endfor -%}
 {%- for x in site.data.conferences.talks -%}
   {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.event | append: ", " | append: x.year | jsonify }}, "u": "/conferences/", "l": "en", "g": "Talk"}
@@ -29,5 +29,37 @@ sitemap: false
 {%- for x in site.data.news -%}
   {{ sep }}{"t": {{ x.text | truncate: 90 | jsonify }}, "d": {{ x.label | jsonify }}, "u": "/news/", "l": "en", "g": "News", "k": {{ x.text | jsonify }}}
   {{ sep }}{"t": {{ x.text_vi | truncate: 90 | jsonify }}, "d": {{ x.label_vi | jsonify }}, "u": "/vi/news/", "l": "vi", "g": "Tin tức", "k": {{ x.text_vi | jsonify }}}
+{%- endfor -%}
+{%- for x in site.data.timeline.positions -%}
+  {{ sep }}{"t": {{ x.role | jsonify }}, "d": {{ x.org | jsonify }}, "u": "/positions/", "l": "en", "g": "Position"}
+  {{ sep }}{"t": {{ x.role_vi | default: x.role | jsonify }}, "d": {{ x.org_vi | default: x.org | jsonify }}, "u": "/vi/positions/", "l": "vi", "g": "Vị trí"}
+{%- endfor -%}
+{%- for x in site.data.timeline.education -%}
+  {{ sep }}{"t": {{ x.role | default: x.org | jsonify }}, "d": {{ x.org | jsonify }}, "u": "/education/", "l": "en", "g": "Education"}
+  {{ sep }}{"t": {{ x.role_vi | default: x.role | default: x.org | jsonify }}, "d": {{ x.org_vi | default: x.org | jsonify }}, "u": "/vi/education/", "l": "vi", "g": "Học vấn"}
+{%- endfor -%}
+{%- for x in site.data.timeline.teaching -%}
+  {{ sep }}{"t": {{ x.org | jsonify }}, "d": {{ x.courses | jsonify }}, "u": "/teaching/", "l": "en", "g": "Teaching"}
+  {{ sep }}{"t": {{ x.org_vi | default: x.org | jsonify }}, "d": {{ x.courses_vi | default: x.courses | jsonify }}, "u": "/vi/teaching/", "l": "vi", "g": "Giảng dạy"}
+{%- endfor -%}
+{%- for x in site.data.skills -%}
+  {{ sep }}{"t": {{ x.name | jsonify }}, "d": {{ x.text | jsonify }}, "u": "/skills/", "l": "en", "g": "Skills"}
+  {{ sep }}{"t": {{ x.name_vi | default: x.name | jsonify }}, "d": {{ x.text_vi | default: x.text | jsonify }}, "u": "/vi/skills/", "l": "vi", "g": "Kỹ năng"}
+{%- endfor -%}
+{%- for sec in site.data.grants.sections -%}{%- for x in sec.items -%}
+  {{ sep }}{"t": {{ x.name | jsonify }}, "d": {{ x.detail | default: "" | strip_html | jsonify }}, "u": "/grants/", "l": "en", "g": "Grant"}
+  {{ sep }}{"t": {{ x.name_vi | default: x.name | jsonify }}, "d": {{ x.detail_vi | default: x.detail | default: "" | strip_html | jsonify }}, "u": "/vi/grants/", "l": "vi", "g": "Tài trợ"}
+{%- endfor -%}{%- endfor -%}
+{%- for sec in site.data.service.sections -%}{%- unless sec.cv_only -%}{%- for x in sec.items -%}
+  {{ sep }}{"t": {{ x.name | jsonify }}, "d": {{ sec.title | jsonify }}, "u": "/service/", "l": "en", "g": "Service"}
+  {{ sep }}{"t": {{ x.name_vi | default: x.name | jsonify }}, "d": {{ sec.title_vi | default: sec.title | jsonify }}, "u": "/vi/service/", "l": "vi", "g": "Hoạt động"}
+{%- endfor -%}{%- endunless -%}{%- endfor -%}
+{%- assign home_en = site.pages | where: "url", "/" | first -%}
+{%- for x in home_en.themes -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.text | jsonify }}, "u": "/#themes", "l": "en", "g": "Research theme"}
+{%- endfor -%}
+{%- assign home_vi = site.pages | where: "url", "/vi/" | first -%}
+{%- for x in home_vi.themes -%}
+  {{ sep }}{"t": {{ x.title | jsonify }}, "d": {{ x.text | jsonify }}, "u": "/vi/#themes", "l": "vi", "g": "Hướng nghiên cứu"}
 {%- endfor -%}
 ]

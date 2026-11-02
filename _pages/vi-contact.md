@@ -22,6 +22,7 @@ description: "Liên hệ Nguyễn Trọng Tín (Tommy Nguyen): EconomiX (UMR 723
     <p class="email-row"><a href="mailto:nttin@hcmiu.edu.vn">nttin@<wbr>hcmiu.edu.vn</a><button class="btn btn--sm" type="button" data-copy-text="nttin@hcmiu.edu.vn" aria-label="{{ t.copy_email }}">{% include rd-icon.html name="copy" %}<span>{{ t.copy }}</span></button></p>
     <p class="card__label">{% include rd-icon.html name="link" %} {{ t.profiles }}</p>
     {% include rd-profiles.html %}
+    <div class="card__links"><a class="btn btn--sm" href="{{ base_path }}/vi/card/">{% include rd-icon.html name="qr" %}<span>{{ t.card_link }}</span></a></div>
   </article>
 {%- if site.rd.booking and site.rd.booking != "" %}
   <article class="card">
