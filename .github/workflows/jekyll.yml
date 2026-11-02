@@ -55,6 +55,14 @@ jobs:
           else
             echo "ORCID fetch failed, keeping the committed snapshot"
           fi
+      - name: Restore the last good visitor statistics
+        # The key is new on every run, so this restores the latest saved _data/stats.json and, when the
+        # job ends, saves whatever the file holds then. If the API fails, the Stats page keeps its figures.
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: _data/stats.json
+          key: goatcounter-stats-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: goatcounter-stats-
       - name: Fetch visitor statistics
         # Writes _data/stats.json from the GoatCounter API for the Stats page; skipped without the GOATCOUNTER_TOKEN secret
         env:
