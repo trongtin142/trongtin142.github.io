@@ -5,8 +5,11 @@ Runs in the Pages build (.github/workflows/jekyll.yml, every 3 hours and on each
 push) before Jekyll. The API
 token comes from the GOATCOUNTER_TOKEN environment variable (a GoatCounter API
 token with only the "Read statistics" permission, stored as a repository
-secret). Without a token, or if the API fails, nothing is written and the
-Stats page shows a short notice instead of the figures.
+secret). Without a token nothing is written. If the API still fails after the
+retries, nothing is written either and the run shows a warning: the workflow
+restores the last good file from the Actions cache before this script runs, so
+the Stats page keeps its previous figures. With no earlier file at all, the page
+shows a short notice instead of the figures.
 
 Usage:
     GOATCOUNTER_TOKEN=... python3 scripts/fetch-goatcounter-stats.py
@@ -26,6 +29,7 @@ SINCE = "2026-01-01T00:00:00Z"            # before tracking started, so "total" 
 API = "https://%s.goatcounter.com/api/v0" % SITE
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "_data", "stats.json")
 TOKEN = os.environ.get("GOATCOUNTER_TOKEN", "").strip()
+RETRY_WAITS = (5, 20)                     # seconds to wait before each new attempt when a call fails
 
 
 def get(path, **params):
@@ -35,12 +39,22 @@ def get(path, **params):
         headers={"Authorization": "Bearer " + TOKEN, "Content-Type": "application/json",
                  "User-Agent": "trongtin142.github.io stats (+https://github.com/trongtin142/trongtin142.github.io)"},
     )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            data = json.load(resp)
-    except urllib.error.HTTPError as err:
-        body = err.read().decode("utf-8", "replace")[:300]
-        raise RuntimeError("%s %s -> HTTP %s: %s" % (path, query, err.code, body))
+    for wait in RETRY_WAITS + (None,):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.load(resp)
+            break
+        except urllib.error.HTTPError as err:
+            body = err.read().decode("utf-8", "replace")[:300]
+            error = "%s %s -> HTTP %s: %s" % (path, query, err.code, body)
+            if err.code in (401, 403):      # a bad token will not fix itself
+                wait = None
+        except (OSError, ValueError) as err:
+            error = "%s %s -> %s" % (path, query, err)
+        if wait is None:
+            raise RuntimeError(error)
+        print("GoatCounter call failed, retrying in %gs: %s" % (wait, error))
+        time.sleep(wait)
     time.sleep(0.3)                         # stay well under the 4 requests/second limit
     return data
 
@@ -153,5 +167,6 @@ if __name__ == "__main__":
     try:
         sys.exit(main())
     except Exception as exc:                # never break the site build over statistics
-        print("GoatCounter statistics not updated: %s" % exc)
+        kept = "keeping the previous figures" if os.path.exists(OUT) else "no earlier figures to keep"
+        print("::warning title=Visitor statistics not updated::%s (%s)" % (" ".join(str(exc).split()), kept))
         sys.exit(0)
