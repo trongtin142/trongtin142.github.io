@@ -22,3 +22,12 @@ Requirements:
 
 The output is byte-reproducible for a given Pillow/font version and is committed
 to the repo, so the build itself does not need Pillow.
+
+## `make-paper-pages.py`
+
+Creates the small stub pages under `_pages/papers/` that give each item of
+`_data/publications.yml` its own page and citation tags. Run it after adding a publication:
+
+```
+python3 scripts/make-paper-pages.py
+```
