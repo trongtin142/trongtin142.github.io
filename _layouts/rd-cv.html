@@ -14,6 +14,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://gc.zgo.at; style-src 'self'; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://{{ site.rd.goatcounter | default: 'none' }}.goatcounter.com; base-uri 'self'; object-src 'none'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 {% include rd-seo.html %}
+{% if site.rd.job_market_public == false and site.noindex != true %}<meta name="robots" content="noindex">{% endif %}
 <meta name="theme-color" content="#FFFFFF">
 <meta name="color-scheme" content="light">
 <link rel="icon" type="image/svg+xml" href="{{ base_path }}/images/favicon.svg">
@@ -25,7 +26,7 @@
 <link rel="stylesheet" href="{{ base_path }}/assets/css/job-market.css">
 </head>
 <body class="cv">
-<a class="cv-skip" href="#cv">Skip to CV</a>
+<a class="cv-skip" href="#cv">Skip to content</a>
 
 <header class="cv-bar">
   <div class="cv-bar__in">
@@ -33,8 +34,8 @@
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 18l-6-6 6-6"/></svg>
       <span>Main website</span>
     </a>
-    <span class="cv-bar__title">Job Market CV</span>
-    {% if page.pdf %}<a class="cv-btn" href="{{ base_path }}{{ page.pdf }}" download data-goatcounter-click="download: {{ page.pdf | split: '/' | last }}" data-goatcounter-title="{{ page.url }}">
+    <span class="cv-bar__title">{% if site.rd.job_market_public == false %}Job Market{% else %}Job Market CV{% endif %}</span>
+    {% if page.pdf and site.rd.job_market_public != false %}<a class="cv-btn" href="{{ base_path }}{{ page.pdf }}" download data-goatcounter-click="download: {{ page.pdf | split: '/' | last }}" data-goatcounter-title="{{ page.url }}">
       <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4v11"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>
       <span>Download CV <span class="cv-btn__fmt">(PDF)</span></span>
     </a>{% endif %}
@@ -46,7 +47,7 @@
 </main>
 
 <footer class="cv-foot">
-  <p>Last updated {{ page.updated | date: "%B %Y" }} · <a href="{{ base_path }}/">{{ site.url | remove: "https://" }}</a></p>
+  <p>{% if site.rd.job_market_public != false %}Last updated {{ page.updated | date: "%B %Y" }} · {% endif %}<a href="{{ base_path }}/">{{ site.url | remove: "https://" }}</a></p>
 </footer>
 
 {% if site.rd.goatcounter and site.rd.goatcounter != "" and site.noindex != true %}<script data-goatcounter="https://{{ site.rd.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.v4.js" integrity="sha384-nRw6qfbWyJha9LhsOtSb2YJDyZdKvvCFh0fJYlkquSFjUxp9FVNugbfy8q1jdxI+" crossorigin="anonymous"></script>{% endif %}
