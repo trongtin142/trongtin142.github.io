@@ -87,6 +87,7 @@ education:
     role: "MA in Development Economics"
     role_vi: "Thạc sĩ Kinh tế Phát triển"
     org: "Vietnam-Netherlands Programme, University of Economics Ho Chi Minh City (UEH) and Erasmus University Rotterdam (ISS)"
+    logo: /images/logos/erasmus.png
     org_vi: "Chương trình Việt Nam - Hà Lan, Trường Đại học Kinh tế TP. Hồ Chí Minh (UEH) và Đại học Erasmus Rotterdam (ISS)"
     tags: [degree]
     cv_role: "M.A. in Development Economics"
@@ -97,6 +98,7 @@ education:
     role: "BA in Business Administration"
     role_vi: "Cử nhân Quản trị Kinh doanh"
     org: "University of Economics Ho Chi Minh City (UEH), Vietnam"
+    logo: /images/logos/ueh.png
     org_vi: "Trường Đại học Kinh tế TP. Hồ Chí Minh (UEH), Việt Nam"
     tags: [degree]
     cv_role: "B.A. in Business Administration"
@@ -106,6 +108,7 @@ education:
     role: "General Equilibrium: Theory and Applications"
     role_vi: "Cân bằng tổng thể: Lý thuyết và Ứng dụng"
     org: "CASED and University of Economics Ho Chi Minh City (UEH), Vietnam"
+    logo: /images/logos/ueh.png
     org_vi: "CASED và Trường Đại học Kinh tế TP. Hồ Chí Minh (UEH), Việt Nam"
     note: "Instructors: Cuong Le-Van, Professor Emeritus, Paris School of Economics; Ngoc-Sang Pham, Professor of Economics, EM Normandie Business School"
     note_vi: "Giảng viên: Cuong Le-Van, Giáo sư danh dự, Trường Kinh tế Paris (Paris School of Economics); Ngoc-Sang Pham, Giáo sư Kinh tế học, EM Normandie Business School"
