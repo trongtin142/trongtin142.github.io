@@ -149,7 +149,7 @@ emails:
       <li>
         <p class="cv-p__title">{{ p.title }}{% if chapter %}<span class="cv-dag" title="Dissertation chapter">†</span>{% endif %}</p>
         <p class="cv-p__auth">{{ p.authors | escape | replace: "Nguyen-Trong, T.", me }}</p>
-        <p class="cv-p__venue">{% if x.target %}Target: {% endif %}<i>{{ p.venue }}</i>{% if p.note %}, {{ p.note }}{% endif %} <span class="cv-rank">{{ p.rank }}</span></p>
+        <p class="cv-p__venue">{% if p.venue %}{% if x.target %}Target: {% endif %}<i>{{ p.venue }}</i>{% if p.note %}, {{ p.note }}{% endif %} <span class="cv-rank">{{ p.rank }}</span>{% else %}{{ p.note }}{% endif %}</p>
       </li>
       {%- endfor %}
     </ol>
