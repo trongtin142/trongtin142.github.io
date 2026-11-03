@@ -11,6 +11,8 @@
 #   summary / summary_vi, takeaways / takeaways_vi (lists), figure, figure_alt, figure_caption / figure_caption_vi:
 #     optional sections of the paper's own page (/papers/<id>/); left out until filled
 #   A new item needs its page: run python3 scripts/make-paper-pages.py
+#   venue, rank  ONLY once a paper is published or accepted. Never name the journal of work still under review
+#             (here, in news.yml or anywhere else): this repository is public. Use `note` for its status instead.
 #   doi_all   software only: the all-versions (concept) DOI used by the Software & Data page
 
 types:
@@ -45,13 +47,11 @@ items:
     year: 2026
     authors: "Le-Van, C., Nguyen-Trong, T., Pham, N.-S., & Pham, T. K. C."
     title: "From balanced growth to innovation cycles: A Solow-type semi-endogenous growth model"
-    venue: "Mathematical Social Sciences"
-    note: "revised version under review"
-    note_vi: "bản chỉnh sửa đang được phản biện"
-    rank: "SSCI · ABDC A · ABS 2"
+    note: "Revised version under review"
+    note_vi: "Bản chỉnh sửa đang được phản biện"
     coauthors: [levan, pham-ns, pham-tkc]
     featured: true
-    bib_type: article
+    bib_type: unpublished
     bib_authors: "Le-Van, Cuong and Nguyen-Trong, Tin and Pham, Ngoc-Sang and Pham, Thi Kim Cuong"
 
   - id: nguyen2016framework
