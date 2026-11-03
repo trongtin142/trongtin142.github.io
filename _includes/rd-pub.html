@@ -31,7 +31,7 @@
   </div>
   {% unless include.detail %}<h3 class="pub__title"><a href="{{ base_path }}{{ paper_url }}">{{ p.title }}</a></h3>{% endunless %}
   <p class="pub__by">{{ authors_html }}
-    {%- if p.venue %} · <em>{{ p.venue }}</em>{% if note %} ({{ note }}){% endif %}{% endif -%}
+    {%- if p.venue %} · <em>{{ p.venue }}</em>{% if note %} ({{ note }}){% endif %}{% elsif note %} · {{ note }}{% endif -%}
     {%- if p.booktitle %} · <em>{{ p.booktitle }}</em>{% endif -%}
     {%- if include.compact and p.venue == nil and p.booktitle == nil and p.publisher %} · <em>{{ p.publisher }}</em>{% if p.bib_version %}, v{{ p.bib_version }}{% endif %}{% endif -%}
     {%- unless include.compact -%}
@@ -65,7 +65,7 @@
   year      = {{ ob }}{{ p.year }}{{ cb }}
 {{ cb }}
   {%- endcapture -%}
-  {%- capture apa -%}{{ p.authors }} ({{ p.year }}). {{ p.title }}{% if p.extra %} {{ p.extra }}{% endif %}.{% if p.venue %} {{ p.venue }}{% if p.note %} ({{ p.note }}){% endif %}.{% endif %}{% if p.booktitle %} In {{ p.booktitle }}.{% endif %}{% if p.publisher %} {{ p.publisher }}.{% endif %}{% if p.isbn %} ISBN {{ p.isbn }}.{% endif %}{% if p.doi %} https://doi.org/{{ p.doi }}{% endif %}{%- endcapture -%}
+  {%- capture apa -%}{{ p.authors }} ({{ p.year }}). {{ p.title }}{% if p.extra %} {{ p.extra }}{% endif %}.{% if p.venue %} {{ p.venue }}{% if p.note %} ({{ p.note }}){% endif %}.{% elsif p.note %} {{ p.note }}.{% endif %}{% if p.booktitle %} In {{ p.booktitle }}.{% endif %}{% if p.publisher %} {{ p.publisher }}.{% endif %}{% if p.isbn %} ISBN {{ p.isbn }}.{% endif %}{% if p.doi %} https://doi.org/{{ p.doi }}{% endif %}{%- endcapture -%}
   {%- if include.detail %}
   <div class="pub__act">
     {% if p.doi %}<a class="btn btn--sm" href="https://doi.org/{{ p.doi }}">DOI{% include rd-icon.html name="ext" %}</a>{% endif %}
